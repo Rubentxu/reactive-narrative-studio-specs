@@ -193,7 +193,7 @@ The hero's journey's CROSSING THE THRESHOLD beat (Act 1 → Act 2 transition) of
 
 - **scene-validator** (`examples/skills/scene-validator/SKILL.md`): Narrative arc provides the macro-structure; scene-validator provides the micro-structure for individual scenes within each act.
 - **character-consistency** (`examples/skills/character-consistency/SKILL.md`): Arc models define character transformation beats; character-consistency ensures the character's voice, idiolect, and behavior remain coherent across those transformation beats.
-- **docs/04-PROFILES.md**: Audience band definitions used as inputs to the arc selection algorithm.
+- **docs/08-PROFILES.md**: Audience band definitions used as inputs to the arc selection algorithm.
 - **docs/10-VISUAL-IR.md**: Narrative arc decisions inform scene visual contracts, particularly the pacing of visual reveals relative to act transitions.
 
 ## Evaluation cases
