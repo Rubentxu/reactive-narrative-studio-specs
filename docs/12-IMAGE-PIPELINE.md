@@ -164,3 +164,14 @@ Use staged quality:
 - final/high-quality.
 
 Track provider cost per asset and per accepted asset.
+
+## Visual quality projection
+
+The Control Plane exposes a per-shot QA surface as
+[`specs/cp-visual-quality.schema.json`](../specs/cp-visual-quality.schema.json).
+Every accepted asset MUST carry a `cp-visual-quality` entry whose
+`verdict` is one of the lowercase status vocabulary tokens
+(`pass | warning | blocked | pending | unknown`) and whose `provider`
+field records the generator that produced the asset. The projection is
+read-only; corrections land as new candidate assets, not as edits to
+the projection.

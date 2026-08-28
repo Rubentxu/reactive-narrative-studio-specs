@@ -94,12 +94,21 @@ Final acceptance.
 Use a matrix:
 
 ```text
-Continuity       PASS
-Editorial        PASS
-Readability      WARNING
-Visual           PASS
-Reader UAT       PASS
-Publishing       BLOCKED
+Continuity       pass
+Editorial        pass
+Readability      warning
+Visual           pass
+Reader UAT       pass
+Publishing       blocked
 ```
+
+> **Vocabulary note (R-02 fix):** the matrix uses the lowercase status
+> tokens that are canonical across the spec pack
+> (`pass | warning | blocked | pending | unknown`). Pre-wave-4 this
+> section carried UPPERCASE tokens; that divergence is now removed.
+> Higher-level result words ("Final acceptance") and historical QA
+> headers may still appear in UPPERCASE in this document when they refer
+> to generic verification lingo (e.g. "PASS/FAIL test outcome"), not to
+> the lifecycle status vocabulary.
 
 Do not produce an unexplained composite score.
