@@ -1,0 +1,34 @@
+schema: narrative-project/v1
+
+project:
+  id: la-biblioteca-secreta
+  title: "La Biblioteca Secreta"
+  language: es-ES
+
+format:
+  type: illustrated-novel
+
+audience:
+  profile: middle-grade-10-11
+
+genre:
+  - fantasy
+  - mystery
+
+runtime:
+  engine: activegraph
+  persistence:
+    type: sqlite
+    path: .narrative/runtime/activegraph.sqlite
+
+scm:
+  provider: git
+  assets:
+    strategy: approved-only
+
+images:
+  policy: hybrid
+
+publishing:
+  targets:
+    - print-pdf

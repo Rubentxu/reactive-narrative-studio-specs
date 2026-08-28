@@ -1,0 +1,30 @@
+id: visual-scene-024
+scene: scene-024
+
+required_visible:
+  - nora
+  - irene
+  - silver-key
+  - lantern
+
+relations:
+  - subject: nora
+    action: holds
+    object: silver-key
+  - subject: irene
+    action: holds
+    object: lantern
+
+composition:
+  shot: medium-wide
+  emphasis: silver-key
+
+references:
+  nora: asset:sha256:CHARACTER_REF
+  irene: asset:sha256:CHARACTER_REF
+  location: asset:sha256:LOCATION_REF
+  style: asset:sha256:STYLE_REF
+
+policy:
+  privacy: local_preferred
+  quality: final

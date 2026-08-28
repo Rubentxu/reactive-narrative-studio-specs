@@ -1,0 +1,29 @@
+id: middle-grade-10-11
+locale: es-ES
+
+reader:
+  age_min: 10
+  age_max: 11
+  independence: independent
+
+narrative:
+  pov_complexity: moderate
+  subplot_complexity: moderate
+  timeline_complexity: moderate
+  chapter_words:
+    preferred_min: 1200
+    preferred_max: 2500
+
+language:
+  sentence_complexity: moderate
+  contextualize_rare_words: true
+
+intensity:
+  peril: medium
+  graphic_violence: none
+  horror: configurable
+
+evaluation:
+  readability:
+    - fernandez-huerta
+    - szigriszt-pazos

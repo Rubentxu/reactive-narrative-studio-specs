@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/specs/control-plane-v1.schema.json",
+  "title": "Control Plane Project Summary",
+  "type": "object",
+  "required": [
+    "schema",
+    "project",
+    "status",
+    "progress"
+  ],
+  "properties": {
+    "schema": {
+      "const": "control-plane/v1"
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "phase"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string"
+        }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "total",
+          "completed"
+        ],
+        "properties": {
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "completed": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "blocking": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

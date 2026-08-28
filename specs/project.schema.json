@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/specs/narrative-project-v1.schema.json",
+  "title": "Narrative Project Manifest",
+  "type": "object",
+  "required": [
+    "schema",
+    "project",
+    "format",
+    "audience",
+    "runtime",
+    "scm"
+  ],
+  "properties": {
+    "schema": {
+      "const": "narrative-project/v1"
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "language"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "minLength": 2
+        }
+      },
+      "additionalProperties": true
+    },
+    "format": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "audience": {
+      "type": "object",
+      "required": [
+        "profile"
+      ],
+      "properties": {
+        "profile": {
+          "type": "string"
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "required": [
+        "engine",
+        "persistence"
+      ],
+      "properties": {
+        "engine": {
+          "type": "string"
+        },
+        "persistence": {
+          "type": "object",
+          "required": [
+            "type",
+            "path"
+          ],
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "scm": {
+      "type": "object",
+      "required": [
+        "provider"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        }
+      }
+    },
+    "images": {
+      "type": "object"
+    },
+    "publishing": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

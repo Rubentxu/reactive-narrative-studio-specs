@@ -1,0 +1,10 @@
+schema: narrative-lock/v1
+
+runtime:
+  activegraph: PIN_ON_IMPLEMENTATION
+
+packs: {}
+skills: {}
+workflows: {}
+renderers:
+  typst: PIN_ON_IMPLEMENTATION
