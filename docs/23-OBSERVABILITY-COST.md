@@ -1,68 +1,53 @@
-# Observability, Resource Use and Cost
+# Observability, Resources and Control Plane Projection — Updated
 
-## Why observability matters
+## Runtime observability
 
-Creative AI workflows fail in expensive, non-obvious ways:
-- repeated model calls;
-- regenerated images;
-- hidden forks;
-- stale assets;
-- manual correction loops.
-
-## Track per run
-
-- frame/run ID;
-- source commit;
-- active profile;
-- packs/skills;
-- model/provider;
-- tokens where available;
-- image generation count;
-- latency;
-- estimated/known cost;
+Keep prior metrics:
+- runs;
+- model calls;
+- image generation;
+- latency/cost;
 - cache hits;
-- accepted/rejected candidates;
-- validation findings.
+- QA failures;
+- accepted/rejected candidates.
 
-## Image efficiency metrics
+## Portal observability
 
-Useful:
-- cost per generated asset;
-- cost per accepted asset;
-- regeneration ratio;
-- QA failure rate;
-- local vs SaaS proportion.
+Expose through projections, never direct runtime coupling.
 
-## Narrative metrics
-
-Display as information:
-- chapter word count;
-- dialogue ratio;
-- POV distribution;
-- character presence;
-- unresolved promise count;
-- readability signals;
-- synthetic/human feedback.
-
-Do not optimize literature to maximize one KPI.
-
-## Control Plane
-
-Show:
-- current phase;
-- work blocked;
-- recent activity;
-- stale assets;
+### Project
+- lifecycle;
+- blockers;
 - pending approvals;
-- costs/resource use;
-- provider failures;
-- UAT status.
+- recent checkpoint;
+- projection freshness.
 
-## Event volume
+### Visual
+- generation count;
+- accepted ratio;
+- stale assets;
+- provider routing;
+- repair count.
 
-If event logs become noisy, introduce:
-- event classes;
-- compacted projections;
-- retention policy for low-value diagnostic events.
+### Capability catalog
+For skills/packs/workflows:
+- version;
+- projects using capability;
+- evaluation status;
+- workflow hash;
+- optional acceptance/cost aggregates.
 
-Do not prematurely remove evidence needed for replay/debugging.
+## UI diagnostics
+
+Local diagnostics panel may show:
+- schema errors;
+- stale projection;
+- source permission errors;
+- search index status;
+- graph render size;
+- extension failures.
+
+## Privacy
+
+Cross-project Home must not accidentally surface raw private manuscript text.
+Home cards should use bounded summaries/projection fields.

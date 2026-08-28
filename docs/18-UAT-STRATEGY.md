@@ -1,79 +1,77 @@
-# UAT Strategy
+# UAT Strategy — Updated
 
-## Purpose
+## Principle
 
-UAT is how milestone progress becomes verifiable.
+Milestones advance on observable user outcomes, not merged code.
 
-Every roadmap milestone MUST define:
-- user-visible outcome;
-- setup;
-- steps;
-- expected evidence;
-- pass/fail criteria;
-- regression fixture.
+## Existing UAT families
 
-## UAT classes
+- Project
+- Narrative
+- Agent
+- Visual
+- Publishing
+- Reader
+- Control Plane
 
-### Project UAT
-Can a user initialize/clone/rebuild a project?
+## Control Plane UAT additions
 
-### Narrative UAT
-Does canon behave correctly?
+### Serverless
+Static application can open a project/snapshot with no application backend.
 
-### Agent UAT
-Can an agent discover the next action and complete it with bounded command use?
+### Contract
+Invalid/stale projection is diagnosed correctly.
 
-### Visual UAT
-Can the system maintain identity and repair failures?
+### Catalog
+Project and entity relations/annotations resolve.
 
-### Control Plane UAT
-Can a user understand project state with no server?
+### Entity composition
+Story/Visual/UAT features can contribute to one entity page without direct
+feature coupling.
 
-### Publishing UAT
-Can a proof artifact pass deterministic preflight?
+### Search
+Search indexes content from independent collators and filters by project/type.
 
-### Reader UAT
-Does the target reader understand/enjoy the work?
+### Docs
+Markdown is rendered safely; script/unsafe HTML fixtures do not execute.
 
-## Human reader UAT
+### Graph
+Large fixture renders through a scoped lens without universal graph lockup.
 
-Keep synthetic and real feedback separate.
+### Recipe parity
+CLI and frontend wizard consume the same recipe schema.
 
-Human form example:
-- Did any part feel boring?
-- What did you not understand?
-- Favorite character and why?
-- What do you think happens next?
-- Do you want to read the next chapter? 1–5.
+### Multi-project
+Two independent projects can appear in Studio Home without shared runtime DB.
 
-Do not expose sensitive child data unnecessarily. Use anonymous reader IDs.
+## Evidence
 
-## Synthetic readers
+Playwright UAT should capture:
+- trace/steps;
+- screenshots;
+- console errors;
+- network log;
+- loaded schema versions.
 
-Synthetic profiles are hypotheses:
-- `reader-8-reluctant`;
-- `reader-10-fantasy`;
-- `reader-11-mystery`;
-- `reader-12-avid`.
+For serverless UAT, a pass requires no mandatory application API call.
 
-They MUST NOT be presented as real children.
+## Accessibility acceptance
 
-## Calibration
+At minimum:
+- keyboard navigation;
+- visible focus;
+- accessible dialog behavior;
+- semantic headings/tabs;
+- no critical axe-class violations in core flows where tooling is integrated.
 
-A later milestone MAY compare predicted vs human feedback:
-- confusion;
-- engagement;
-- favorite scene;
-- next-chapter desire.
+## Security acceptance
 
-## UAT evidence
+Fixtures:
+- malicious Markdown;
+- malformed projection;
+- path traversal attempt in snapshot;
+- unknown extension ID.
 
-```text
-uat/<scenario-id>/
-  report.json
-  evidence/
-  screenshots/
-  artifacts/
-```
-
-A milestone cannot be “done” solely because code merged.
+Expected:
+- sanitized/rejected;
+- no arbitrary script execution.

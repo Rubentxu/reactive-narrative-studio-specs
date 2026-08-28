@@ -1,45 +1,58 @@
-# Glossary
+# Glossary — Updated
 
-**Agent Skill** — portable task knowledge in a `SKILL.md` package.
+**Agent Skill** — portable task knowledge in `SKILL.md`.
 
-**Pack** — domain/runtime bundle containing types, behaviors, policies, tools and prompts.
+**Pack** — runtime/domain bundle of types, behaviors, tools and policies.
 
-**Canon** — accepted story truth.
+**Narrative Graph** — detailed graph of story/runtime entities inside a
+project.
 
-**Candidate** — generated/proposed content not yet accepted.
+**Narrative Catalog** — high-level Control Plane projection of projects,
+capabilities and selected navigable entities.
 
-**Decision** — explicit acceptance/rejection/change record.
+**Catalog Entity** — versioned portal projection envelope with metadata, spec,
+status, annotations and relations.
 
-**Receipt** — evidence that a validation/build/gate occurred.
+**Entity Page** — Control Plane aggregation page that combines several
+feature perspectives around one catalog entity.
 
-**Narrative IR** — structured subset of story semantics needed for machine reasoning.
+**Annotation** — metadata linking a catalog entity to an authoritative source
+or technical resource.
 
-**Visual IR** — structured visual identity, scene and asset contracts.
+**Extension** — statically registered Control Plane contribution such as an
+entity tab, home widget, graph lens or search collator.
 
-**Sequential Art IR** — page/panel/dialogue presentation representation.
+**Feature** — logical frontend capability grouping extensions.
 
-**Visual DNA** — stable visual identity attributes and reference assets.
+**Creation Recipe** — declarative scaffold/profile preset used by both CLI and
+frontend wizard.
 
-**Scene Visual Contract** — required visual evidence for one illustration/panel.
+**Narrative Docs** — safe docs-as-code rendering of project Markdown.
 
-**Projection** — rebuildable read model for UI/reporting.
+**Search Collator** — feature that emits normalized local search documents.
 
-**Runtime DB** — per-project ActiveGraph persistence, not canonical source.
+**Graph Lens** — focused transformation/view of the detailed Narrative Graph.
 
-**Event log** — append-oriented runtime evidence.
+**Studio Home** — cross-project landing page.
 
-**Stale asset** — accepted/generated artifact whose dependencies changed.
+**Workbench** — project-local current-work/next-action view.
 
-**Repair router** — component selecting the smallest corrective generation operation.
+**Catalog Provider** — client-side adapter that supplies catalog entities from
+an explicitly opened project source.
 
-**Profile** — composable configuration axis for audience/format/etc.
+**Snapshot** — portable read-only package of projections/docs/thumbnails for
+serverless Control Plane loading.
 
-**Provider capability** — normalized feature supported by an external/local generation adapter.
+**Projection** — rebuildable read model.
 
-**Fork** — experimental branch of runtime state/creative direction.
+**Runtime DB** — project-local ActiveGraph persistence, not canonical source.
 
-**UAT** — user acceptance testing with explicit evidence and pass criteria.
+**Candidate** — proposal not yet accepted as canon.
 
-**Synthetic reader** — model-driven reader simulation; never equivalent to a real reader.
+**Decision/Receipt** — acceptance/action evidence.
 
-**Control Plane** — static project observability UI consuming projections.
+**Visual DNA** — stable visual identity contract.
+
+**Scene Visual Contract** — required visual evidence for an illustration.
+
+**Synthetic Reader** — advisory model simulation, never human UAT.

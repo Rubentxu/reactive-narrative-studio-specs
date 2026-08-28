@@ -1,83 +1,73 @@
-# Testing and Golden Dataset
+# Testing and Golden Dataset — Updated
 
-## Test pyramid
+## Existing backend/runtime testing remains.
 
-### Unit
-- domain rules;
-- schemas;
-- dependency graph;
-- profile merge;
-- preflight calculations.
+## Control Plane testing layers
 
-### Contract
-- ActiveGraph adapter;
-- image providers;
-- ComfyUI workflow adapter;
-- Typst adapter;
-- projection schemas.
+### Schema fixtures
+Valid and invalid:
+- catalog entities;
+- project projections;
+- recipes;
+- extension config.
 
-### Property-based
-Use Hypothesis for:
-- profile composition;
-- IDs;
-- state transition invariants;
-- timeline ordering;
-- dependency invalidation.
+### Feature unit tests
+Vitest:
+- catalog normalization;
+- entity refs;
+- relation resolution;
+- search collators;
+- recipe normalization.
 
-### Integration
-- project load -> runtime -> projection;
-- visual request -> provider fixture -> QA;
-- build -> preflight.
+### Component tests
+Testing Library:
+- entity cards/tabs;
+- Home widgets;
+- Workbench next action;
+- diagnostics.
 
-### UAT
-Human-visible milestone acceptance.
+### Browser UAT
+Playwright:
+- open snapshot;
+- open directory adapter fixture;
+- search;
+- docs navigation;
+- graph lens;
+- recipe creation.
 
-## Golden corpus
+### Security fixtures
+- malicious Markdown;
+- javascript link;
+- malformed ZIP;
+- oversized/recursive data;
+- path traversal.
+
+### Performance fixtures
+- 10 projects;
+- 1k catalog entities;
+- 10k narrative graph nodes;
+- large docs index.
+
+Performance numbers should become budgets only after first measured M10 build.
+
+## Golden Control Plane workspace
 
 ```text
-golden/
-  short-story/
-  middle-grade/
-  illustrated-book/
-  mystery/
-  fantasy/
-  graphic-novel/
-  manga/
+golden/control-plane/
+├── project-valid/
+├── project-stale-projection/
+├── project-invalid-schema/
+├── project-malicious-docs/
+├── two-project-catalog/
+├── large-graph/
+└── recipes/
 ```
 
-## Deliberately broken cases
+## Extension conformance
 
-- dead-character-reappears;
-- object-used-after-destruction;
-- knowledge-before-reveal;
-- impossible-location;
-- unresolved-promise;
-- wrong-outfit;
-- missing-glasses;
-- missing-prop;
-- stale-asset;
-- low-resolution-image;
-- missing-font;
-- incorrect-reading-order;
-- overlapping-balloon.
-
-## Recorded provider fixtures
-
-Provider adapters MUST support fixtures so CI does not require paid APIs.
-
-A recorded fixture must include:
-- normalized request;
-- normalized response metadata;
-- output asset/hash;
-- provider identity;
-- schema version.
-
-## Skill evaluations
-
-Skills SHOULD include evals checking:
-- correct artifact created;
-- required fields;
-- correct skill selection;
-- failure-mode behavior.
-
-Do not score creative quality with unit tests.
+Every extension:
+- stable ID;
+- API version;
+- no side effects at registration;
+- matching predicate tests;
+- error boundary behavior.

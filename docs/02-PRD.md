@@ -1,154 +1,149 @@
-# Product Requirements Document
+# Product Requirements Document — Updated
 
-## 1. Users
+## Product definition
 
-### Primary
-- Independent author using an AI coding/agent environment.
-- Parent/creator producing books for known readers.
-- Technical creator who values Git, reproducibility and local tooling.
+Reactive Narrative Studio is a local-first production environment where
+authors and agents collaboratively create, validate, illustrate, revise and
+publish narrative works while retaining Git-native project ownership.
 
-### Secondary
-- Illustrator working with AI-assisted references.
-- Editor/reviewer.
-- Beta/UAT reader.
-- Comic/manga creator.
+## Major product areas
 
-## 2. Jobs to be done
+1. Narrative workspace
+2. Reactive runtime
+3. Agent Skills
+4. Visual production
+5. Quality/UAT
+6. Publishing
+7. Serverless Control Plane
 
-1. Start from an idea, outline, existing manuscript or imported project.
-2. Establish audience and format constraints without locking creativity.
-3. Maintain canon and continuity across chapters/scenes.
-4. Draft/revise using specialized skills.
-5. Maintain consistent visual identities.
-6. Generate images locally, remotely or hybrid.
-7. Review and selectively regenerate only failed parts.
-8. Measure deterministic quality signals.
-9. Run reader UAT with synthetic and real readers.
-10. Produce publication artifacts.
-11. Inspect current project state in a no-server frontend.
-12. Rebuild runtime state after clone.
-13. Fork a creative direction and compare outcomes.
+## Control Plane product requirements
 
-## 3. Functional requirements
+### CP-FR-001 Narrative Catalog
+The frontend MUST create a catalog from project projection entities rather
+than querying ActiveGraph internals.
 
-### FR-001 Project lifecycle
-The system MUST support:
-`init`, `adopt`, `inspect`, `next`, `check`, `approve/reject`, `fork`, `build`, `snapshot`, `rebuild`, `doctor`.
+### CP-FR-002 Entity Pages
+The frontend MUST aggregate multiple feature perspectives around a single
+catalog entity.
 
-### FR-002 Canon
-The system MUST model characters, locations, objects, events, facts, relationships, promises and state transitions.
+Reference entity kinds:
+- NarrativeProject
+- Character
+- Chapter
+- Edition
+- Build
+- UATRun
+- Skill
+- Pack
+- Profile
+- Recipe
+- Workflow
+- ProviderCapability
 
-### FR-003 Continuity
-The system MUST detect deterministic contradictions when enough structured evidence exists.
+Not all kinds need to be implemented in M10.
 
-Examples:
-- dead character reappears;
-- destroyed object is used later;
-- character knows a secret before reveal;
-- impossible ownership/location sequence;
-- unresolved required promise at release gate.
+### CP-FR-003 Extension points
+The UI MUST provide typed internal extension points for:
+- pages;
+- entity tabs;
+- entity cards;
+- home widgets;
+- graph lenses;
+- search collators/result renderers;
+- docs addons;
+- recipe form widgets.
 
-### FR-004 Skills
-Creative methodology MUST live in portable Agent Skills and MUST NOT be duplicated as hard-coded domain logic.
+### CP-FR-004 Studio Home
+The Control Plane MUST offer a cross-project landing view with:
+- recent projects;
+- favorites;
+- blocked work;
+- pending approvals;
+- recent activity;
+- optional cost/resource widgets.
 
-### FR-005 Runtime packs
-Reactive runtime behavior MUST be expressed through replaceable domain packs/adapters.
+### CP-FR-005 Workbench
+Each opened project MUST expose a current-work view:
+- current focus;
+- next deterministic action;
+- blockers;
+- active chapter/scene;
+- visual queue;
+- approvals;
+- active fork.
 
-### FR-006 Audience profiles
-Profiles MUST compose:
-- audience;
-- locale;
-- format;
-- genre;
-- tone/intensity;
-- visual style;
-- publishing target.
+### CP-FR-006 Narrative Search
+Search MUST operate locally over normalized search documents contributed by
+features. Search MUST NOT require Elasticsearch or a remote search service.
 
-### FR-007 Image generation
-The system MUST support:
-- ComfyUI local adapter;
-- at least one SaaS image adapter;
-- capability-based routing;
-- multi-reference requests where supported;
-- edits/inpainting when supported;
-- local-only privacy policy;
-- candidate/approved separation.
+### CP-FR-007 Narrative Docs
+The UI MUST render project Markdown safely and may enrich it with:
+- entity links;
+- backlinks;
+- visual previews;
+- continuity findings;
+- Git history.
 
-### FR-008 Visual continuity
-The system MUST model:
-- Character Visual DNA;
-- Location DNA;
-- Prop DNA;
-- Style Bible;
-- Scene Visual Contract;
-- generation provenance.
+Arbitrary executable MDX is forbidden for untrusted project content.
 
-### FR-009 Sequential art
-The domain MUST be extensible to page/panel/dialogue/caption/SFX/reading-direction constructs without changing prose canon types.
+### CP-FR-008 Creation Recipes
+A recipe MUST be usable by both:
+- CLI;
+- Control Plane wizard.
 
-### FR-010 Human gates
-Creative canon changes and final asset approvals MUST support explicit human approval.
+The recipe defines scaffolding/configuration, not a generic runtime workflow.
 
-### FR-011 Publishing
-The initial publishing target MUST be print PDF. EPUB and CBZ are roadmap targets.
+### CP-FR-009 Multi-project catalog
+The browser MAY maintain a local index of explicitly opened projects without
+introducing a central project DB.
 
-### FR-012 Control Plane
-The initial Control Plane MUST:
-- be a static SPA/PWA;
-- work without an application server;
-- read stable JSON projections/snapshots;
-- be read-only in V1;
-- expose project status, graph, manuscript, visual production, QA, UAT and history.
+### CP-FR-010 Catalog providers
+Catalog ingestion MUST be abstracted behind client-side providers. M10 ships:
+- Directory provider;
+- Snapshot provider.
 
-### FR-013 SCM
-A project MUST be valid as an independent Git repository.
+Future providers MAY include Git-hosted read-only snapshots.
 
-### FR-014 Per-project persistence
-Every project MUST own its runtime DB and MUST NOT require global project state.
+### CP-FR-011 Serverless operation
+The normal Control Plane MUST function as static assets. No persistent
+application server is required.
 
-### FR-015 Rebuild
-Deleting `.narrative/runtime/` MUST NOT destroy canonical source or accepted decisions.
+### CP-FR-012 Projection validation
+Every consumed projection MUST be validated against versioned JSON Schema.
 
-### FR-016 Provenance
-Generated assets MUST retain provider/model/workflow/reference hashes and human-approval status.
+### CP-FR-013 No hidden authority
+Editing local Studio metadata (favorites, UI layout, recent projects) MUST NOT
+modify narrative canon.
 
-## 4. Non-functional requirements
+## Non-functional Control Plane requirements
 
-### NFR-001 Provider independence
-No domain model MAY import provider SDK types.
+### CP-NFR-001 Security
+Markdown/HTML must be sanitized. Project data is treated as untrusted input.
 
-### NFR-002 Runtime independence
-No domain model MAY import ActiveGraph types.
+### CP-NFR-002 Performance
+Large graph rendering must use a WebGL-oriented graph renderer and scoped
+lenses instead of rendering a universal graph.
 
-### NFR-003 Determinism boundary
-Schema, continuity, dependency, publishing preflight and project consistency checks SHOULD be deterministic.
+### CP-NFR-003 Offline
+Previously opened snapshot projects SHOULD remain inspectable offline.
 
-### NFR-004 Performance
-Optimization MUST be evidence-driven. Python remains default until profiling identifies a hotspot.
+### CP-NFR-004 Accessibility
+Keyboard navigation, focus management and semantic components are required.
 
-### NFR-005 Portability
-Projects MUST remain understandable using plain files without the Control Plane.
+### CP-NFR-005 Browser support
+Target current evergreen desktop browsers. Directory access is progressive
+enhancement; snapshot loading is the compatibility fallback.
 
-### NFR-006 Auditability
-Every accepted canonical mutation MUST be attributable to source/human/agent/runtime action.
+### CP-NFR-006 Stability
+Extension contracts and projection schemas are versioned independently of
+frontend implementation details.
 
-### NFR-007 Recoverability
-Runtime state MUST be rebuildable or explicitly declared non-rebuildable.
+## Out of scope
 
-### NFR-008 Privacy
-Profiles MUST allow `local_only`, `hybrid`, and `saas_allowed` provider policies.
-
-### NFR-009 Idempotence
-Re-running projection and deterministic validation on unchanged source MUST produce semantically identical outputs.
-
-## 5. Out of scope for V1
-
-- graph server;
-- multi-user backend;
-- remote collaboration;
-- custom image model training platform;
-- custom Workflow DSL;
-- distributed agents;
-- universal plugin marketplace;
-- full series management;
-- production HTML layout through Typst (HTML support is still experimental upstream).
+- central SaaS portal;
+- user/group directory;
+- backend plugin API;
+- arbitrary remote plugin execution;
+- cross-user collaborative writes;
+- server-hosted search;
+- catalog DB as project authority.

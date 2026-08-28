@@ -1,0 +1,58 @@
+schema: creation-recipe/v1
+
+metadata:
+  id: middle-grade-illustrated
+  title: Middle Grade Illustrated Novel
+  description: Starter for an illustrated 8–12 narrative project.
+  tags:
+    - middle-grade
+    - illustrated
+
+parameters:
+  type: object
+  required:
+    - title
+    - projectId
+    - audience
+  properties:
+    title:
+      type: string
+      title: Book title
+    projectId:
+      type: string
+      pattern: "^[a-z0-9][a-z0-9_-]*$"
+    audience:
+      type: string
+      enum:
+        - middle-grade-8-9
+        - middle-grade-9-10
+        - middle-grade-10-11
+        - middle-grade-11-12
+    imagePolicy:
+      type: string
+      default: local_preferred
+      enum:
+        - local_only
+        - local_preferred
+        - hybrid
+        - saas_allowed
+
+project:
+  profiles:
+    - "{{ audience }}"
+  packs:
+    - story_core
+    - characters
+    - editorial
+    - visual_core
+  skills:
+    - story-intake
+    - character-design
+    - story-architecture
+  publishingTargets:
+    - print-pdf
+
+initialGoals:
+  - establish-story-bible
+  - establish-main-cast
+  - outline-story

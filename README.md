@@ -1,94 +1,172 @@
 # Reactive Narrative Studio — Specification Pack
 
-> **Working name only.** The product name is intentionally not locked by these specifications.
+> Working name. Product naming remains intentionally open.
 
-This repository pack defines an **agent-first, Git-native, local-first narrative production system** for creating and maintaining:
+Reactive Narrative Studio is an **agent-first, Git-native, local-first
+narrative production system** for stories, novels, illustrated books,
+graphic novels, comics, manga and future sequential/narrative media.
 
-- short stories and picture books;
-- chapter books and illustrated novels;
-- prose novels;
-- graphic novels and western comics;
-- manga;
-- webtoons / vertical sequential art;
-- future narrative media derived from the same story canon.
+The initial dogfooding profile is Spanish-language readers aged 8–12, while
+the architecture remains audience-neutral through composable profiles.
 
-The initial dogfooding focus is **Spanish-language readers aged 8–12**, without hard-coding the product to children. Audience, format, genre, tone, locale, visual and publishing behavior are expressed through **composable profiles**.
-
-## Architectural thesis
-
-The system is built around four statements:
+## Core thesis
 
 1. **Skills are knowledge.**
 2. **Packs are behavior.**
 3. **The graph is live project state.**
 4. **Events, decisions and receipts are evidence.**
+5. **Git-friendly files hold canonical project source.**
+6. **The Control Plane is a projection consumer, never a source of truth.**
 
-The implementation is **Python-first**, with **ActiveGraph** as an adapter for the reactive/event-sourced runtime, **ComfyUI and SaaS image APIs** as replaceable visual providers, and **Typst** as the first print-layout backend.
+## Runtime architecture
 
-ActiveGraph is explicitly **not the domain model**. ComfyUI is explicitly **not the visual architecture**. Any LLM/image provider is explicitly **not a product dependency**.
+Python-first, with:
 
-## Project invariants
+- ActiveGraph behind a runtime port;
+- per-project SQLite;
+- JSONL evidence/event export;
+- ComfyUI + replaceable SaaS image providers;
+- content-addressed assets;
+- Typst as first print renderer;
+- Agent Skills as the portable creative knowledge layer.
 
-A narrative project MUST:
+## Project isolation
 
-- be self-contained inside one project directory;
-- be independently versionable with Git;
-- have its own runtime database;
-- be cloneable and rebuildable without a global database;
-- keep canonical source and human decisions in text-friendly formats;
-- treat SQLite/cache/projections as rebuildable runtime state;
-- permit deterministic validation without an LLM;
-- permit human approval at creative gates;
-- support local-only, SaaS-only and hybrid AI execution;
-- keep generated candidates separate from accepted canon/assets;
-- expose read-only stable projections to a serverless Control Plane.
+One project directory is one independent SCM/runtime boundary:
 
-## Package contents
+```text
+book-project/
+├── narrative.yaml
+├── narrative.lock
+├── canon/
+├── manuscript/
+├── visual/
+├── assets/
+├── feedback/
+├── .narrative/
+│   ├── events/
+│   ├── decisions/
+│   ├── receipts/
+│   ├── projections/
+│   └── runtime/activegraph.sqlite
+└── build/
+```
 
-| Document | Purpose |
+The runtime DB can be removed and rebuilt from accepted project source and
+evidence.
+
+## Control Plane — refined architecture
+
+The Control Plane takes inspiration from Backstage's strongest UX and
+information-architecture patterns, without adopting Backstage as a platform.
+
+```text
+                    STATIC PWA
+┌─────────────────────────────────────────────────────────┐
+│ Studio Home │ Catalog │ Create │ Search │ Docs          │
+│─────────────────────────────────────────────────────────│
+│ Entity Pages │ Workbench │ Graph Lenses │ QA │ History │
+│─────────────────────────────────────────────────────────│
+│             Feature / Extension Registry                │
+│─────────────────────────────────────────────────────────│
+│               Projection & Catalog Store                │
+└──────────────────────────┬──────────────────────────────┘
+                           │
+                    JSON projections
+                           │
+          ┌────────────────┼─────────────────┐
+          ▼                ▼                 ▼
+         Git          ActiveGraph         Assets
+```
+
+### Backstage patterns intentionally reused
+
+| Backstage pattern | Reactive Narrative Studio |
 |---|---|
-| `docs/01-VISION.md` | Product vision and principles |
-| `docs/02-PRD.md` | Product requirements |
-| `docs/03-ARCHITECTURE.md` | Hexagonal architecture |
-| `docs/04-DOMAIN-MODEL.md` | Narrative ontology/domain |
-| `docs/05-PROJECT-WORKSPACE.md` | Git-native workspace |
-| `docs/06-ACTIVEGRAPH-RUNTIME.md` | ActiveGraph integration |
-| `docs/07-SKILLS-PACKS.md` | Agent Skills + runtime packs |
-| `docs/08-PROFILES.md` | Audience/format/profile system |
-| `docs/09-NARRATIVE-IR.md` | Narrative intermediate representation |
-| `docs/10-VISUAL-IR.md` | Visual contracts |
-| `docs/11-SEQUENTIAL-ART-IR.md` | Comic/manga/webtoon IR |
-| `docs/12-IMAGE-PIPELINE.md` | Local/SaaS visual generation |
-| `docs/13-CONTROL-PLANE.md` | Static no-server frontend |
-| `docs/14-PUBLISHING.md` | PDF/EPUB/CBZ output |
-| `docs/15-SCM-PROVENANCE.md` | Git, assets, evidence, provenance |
-| `docs/16-CLI.md` | Minimal agent-friendly CLI |
-| `docs/17-QUALITY-VALIDATION.md` | Deterministic/heuristic/human QA |
-| `docs/18-UAT-STRATEGY.md` | Acceptance testing model |
-| `docs/19-ROADMAP.md` | Milestones and exit criteria |
-| `docs/20-SPIKES.md` | Risk-reduction experiments |
-| `docs/21-EMERGENT-ARCHITECTURE.md` | Anti-overengineering rules |
-| `docs/22-SECURITY-RIGHTS.md` | Privacy, secrets, AI provenance |
-| `docs/23-OBSERVABILITY-COST.md` | Trace/cost/quality telemetry |
-| `docs/24-TESTING-GOLDEN-DATASET.md` | Automated testing |
-| `docs/25-IMPLEMENTATION-STARTER.md` | First implementation slice |
-| `docs/26-RISKS.md` | Risk register |
-| `docs/27-GLOSSARY.md` | Shared vocabulary |
-| `docs/adrs/` | Architecture Decision Records |
-| `specs/` | Initial machine-readable schemas |
-| `templates/` | Starter project files |
-| `uat/` | Executable acceptance scenarios |
+| Software Catalog | Narrative Catalog |
+| Catalog Entity | Narrative Entity Projection |
+| Entity Page | Narrative Entity Page |
+| Frontend Plugins | Control Plane Features |
+| Extension Blueprints | Typed Extension Points |
+| Software Templates | Creation Recipes |
+| Scaffolder Wizard | New Project Wizard |
+| TechDocs | Narrative Docs |
+| Search/Collators | Narrative Search/Collators |
+| Home Widgets | Studio Home Widgets |
+| Starred Entities | Favorites |
+| Lifecycle | Creative Lifecycle |
+| System/Domain | future Series/Universe |
 
-## First executable objective
+### Backstage complexity deliberately rejected
 
-The first meaningful release is **not** “all formats supported”.
+No mandatory:
+- application backend;
+- central catalog database;
+- server-side scaffolder;
+- backend plugin runtime;
+- Elasticsearch;
+- organization IAM model;
+- dynamic remote plugins.
 
-It is:
+## Control Plane stack baseline
 
-> Given a new Git repository, an agent can create a 3-chapter illustrated middle-grade project, maintain a structured canon, generate a visual bible, produce five AI-assisted illustrations using a replaceable provider, validate narrative and visual invariants, accept/reject candidates through human gates, generate static Control Plane projections, and compile a print-ready proof PDF — while the runtime DB can be deleted and rebuilt from project-controlled source/evidence.
+Current implementation baseline:
 
-This vertical slice proves the architecture before broadening it.
+- Node.js **24 LTS**;
+- TypeScript strict;
+- React **19.2**;
+- Vite **8.1**;
+- pnpm workspace;
+- TanStack Router;
+- Tailwind CSS **4.3**;
+- Radix UI primitives;
+- Lucide icons;
+- Zustand for small client application state;
+- Dexie/IndexedDB for local Studio metadata;
+- Ajv 8 with JSON Schema 2020-12;
+- RJSF **6.8** for Creation Recipe forms;
+- Orama for local full-text search;
+- Sigma.js stable 3.x + Graphology for large graph views;
+- React Markdown / unified ecosystem with sanitization;
+- Vitest + Testing Library;
+- Playwright for browser UAT;
+- PWA/service worker as an optional deployment capability.
 
-## Normative language
+Exact dependency pins belong in the implementation lockfile. Major/minor
+choices above are the architectural baseline, not an excuse to float
+dependencies indefinitely.
 
-`MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT` and `MAY` are used normatively.
+## New specification documents
+
+The Backstage-inspired refinement adds:
+
+- `docs/28-CONTROL-PLANE-STACK.md`
+- `docs/29-NARRATIVE-CATALOG.md`
+- `docs/30-CONTROL-PLANE-EXTENSIONS.md`
+- `docs/31-CREATION-RECIPES.md`
+- `docs/32-NARRATIVE-DOCS-SEARCH.md`
+- `docs/33-STUDIO-HOME-WORKBENCH.md`
+- `docs/34-CONTROL-PLANE-DATA-CONTRACTS.md`
+- `docs/35-CATALOG-PROVIDERS.md`
+
+plus ADRs 021–025 and additional M10 UAT scenarios.
+
+## First product-worthy release remains unchanged
+
+M9 still proves the core before portal expansion:
+
+```text
+Git project
+ -> middle-grade profile
+ -> canon
+ -> 3 chapters
+ -> editorial/continuity QA
+ -> visual bible
+ -> 5 accepted AI illustrations
+ -> Typst proof PDF
+ -> delete runtime
+ -> rebuild
+ -> reproduce valid proof
+```
+
+Only then does M10 build the richer serverless Control Plane.

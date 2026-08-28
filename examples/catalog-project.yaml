@@ -1,0 +1,32 @@
+apiVersion: narrative.dev/v1alpha1
+kind: NarrativeProject
+
+metadata:
+  namespace: default
+  name: la-biblioteca-secreta
+  title: La Biblioteca Secreta
+  description: Novela ilustrada de fantasía y misterio.
+  tags:
+    - middle-grade
+    - fantasy
+    - mystery
+  annotations:
+    narrative.dev/source-path: .
+    narrative.dev/git-revision: abc123
+
+spec:
+  language: es-ES
+  lifecycle: visual-production
+  format: illustrated-novel
+  audienceProfile: middle-grade-10-11
+
+status:
+  checks:
+    continuity: pass
+    visual: warning
+    uat: pending
+    publishing: blocked
+
+relations:
+  - type: usesProfile
+    targetRef: Profile:default/middle-grade-10-11

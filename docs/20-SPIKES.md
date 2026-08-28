@@ -1,124 +1,85 @@
-# Spikes
+# Spikes — Updated
 
-Spikes reduce uncertainty. They are not production features.
+Existing runtime/visual spikes remain valid.
 
-## SPK-001 ActiveGraph Adapter Stability
+## New Control Plane spikes
 
+### SPK-013 Catalog Entity Projection
 Question:
-Can we keep the domain independent while using replay/fork/policies effectively?
-
-Measure:
-- adapter surface size;
-- replay correctness;
-- migration pain across one upstream upgrade.
+Can macro catalog entities remain useful without duplicating the Narrative
+Graph?
 
 Success:
-- domain tests do not import ActiveGraph;
-- adapter can be replaced with test runtime.
+Project/Character/Build pages can navigate to detail while catalog payloads
+remain bounded.
 
-## SPK-002 Rebuild Semantics
-
-Question:
-What is the minimal versioned evidence required to rebuild runtime state?
-
+### SPK-014 Extension Registry
 Compare:
-- source-only rebuild;
-- source + JSONL events;
-- source + decisions + selected events.
+- simple typed registry;
+- package-per-feature.
 
 Success:
-Document exact authority/rebuild rules.
+Choose the smallest mechanism supporting entity tabs/cards/home/search.
 
-## SPK-003 Character Consistency
+Expected outcome:
+simple internal registry.
 
-Generate 20 scenes with 3 recurring characters using:
-- local ComfyUI workflow;
-- selected SaaS providers.
+### SPK-015 Search Engine
+Compare on representative snapshot:
+- Orama;
+- MiniSearch or equivalent.
 
 Measure:
-- identity;
-- outfit;
-- multi-character correctness;
-- correction count;
-- latency/cost.
+- index time;
+- bundle impact;
+- query quality;
+- filtering;
+- persistence.
 
-## SPK-004 Reference Strategy
+Current architectural preference: Orama.
 
-Compare:
-- prompt-only;
-- one image;
-- character sheet;
-- multiple references;
-- LoRA/IP-Adapter-like workflows where available.
+### SPK-016 Large Graph Lens
+Use 1k, 10k and realistic scoped graph fixtures.
 
-Goal:
-Choose the simplest strategy that reaches target consistency.
-
-## SPK-005 Multi-character Scene
-
-Stress:
-- 4 recurring characters;
-- different poses;
+Measure:
+- parse;
+- layout;
 - interaction;
-- location constraint.
+- memory.
 
-This is expected to be a major visual risk.
+Validate Sigma.js stable + Graphology and lens/subgraph strategy.
 
-## SPK-006 Layered Comic Generation
+### SPK-017 Directory vs Snapshot UX
+Validate permissions and reload behavior for:
+- Chromium directory access;
+- snapshot fallback.
 
-Compare:
-- monolithic panel generation;
-- background + character layers + effects.
+Success:
+Snapshot path is first-class, not an error fallback.
 
-Measure:
-- correction cost;
-- seam quality;
-- human effort.
+### SPK-018 Recipe Wizard
+Use one JSON Schema through:
+- CLI prompts;
+- RJSF frontend.
 
-## SPK-007 Visual QA
+Success:
+Normalized output is semantically identical.
 
-Build a deliberately corrupted image set.
+### SPK-019 Safe Narrative Docs
+Attack fixtures:
+- script tags;
+- javascript URLs;
+- HTML injection;
+- malformed wikilinks.
 
-Measure detection:
-- missing glasses;
-- wrong outfit;
-- wrong prop;
-- wrong character count;
-- wrong scene relation.
+Success:
+No code execution; useful diagnostics.
 
-## SPK-008 Spanish Readability
+### SPK-020 IndexedDB Studio Registry
+Validate storing only:
+- recent project metadata;
+- favorites;
+- UI layout.
 
-Validate syllable counting and readability metrics against a small hand-checked corpus.
-
-## SPK-009 Typst Print Pipeline
-
-Given Markdown + images:
-- generate A5/A4 proof;
-- verify bleed/safe area calculations;
-- record deterministic build metadata.
-
-## SPK-010 Control Plane Directory Access
-
-Validate:
-- Chrome/Chromium directory mode;
-- snapshot fallback;
-- permissions;
-- large project performance.
-
-## SPK-011 Synthetic Reader Calibration
-
-Compare synthetic predictions against anonymous real-reader feedback.
-
-Outcome:
-Decide whether synthetic-reader outputs deserve product prominence.
-
-## SPK-012 Semantic Layout Solver
-
-Only after sequential-art UAT.
-
-Compare:
-- hand-designed templates;
-- heuristic solver;
-- optimization solver.
-
-Do not build simulated annealing/constraint solver unless templates measurably fail.
+Success:
+Deleting IndexedDB never deletes project canon.

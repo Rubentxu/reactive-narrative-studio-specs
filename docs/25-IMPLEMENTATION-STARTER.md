@@ -1,143 +1,112 @@
-# Implementation Starter
+# Implementation Starter — Updated
 
-## Recommended stack
+## Core implementation remains Python-first
 
-- Python 3.12
-- `uv`
-- Pydantic v2
-- ActiveGraph pinned version
-- Click
-- pytest
-- Hypothesis
-- Ruff
-- Pyright or mypy
-- Pillow first; pyvips if image-volume profiling justifies it
-- ComfyUI local adapter
-- one SaaS image adapter
-- Typst CLI adapter
+Do M1–M9 before investing heavily in the portal.
 
-## Initial package
+## Control Plane implementation begins after projection contract proves stable
+
+Suggested repository strategy:
 
 ```text
-src/reactive_narrative/
-├── domain/
-│   ├── project.py
-│   ├── narrative.py
-│   ├── visual.py
-│   ├── sequential.py
-│   ├── workflow.py
-│   └── profiles.py
-│
-├── application/
-│   ├── project_service.py
-│   ├── validation_service.py
-│   ├── generation_service.py
-│   └── projection_service.py
-│
-├── ports/
-│   ├── graph_runtime.py
-│   ├── image_provider.py
-│   ├── asset_store.py
-│   ├── renderer.py
-│   ├── scm.py
-│   └── skill_registry.py
-│
-├── adapters/
-│   ├── activegraph/
-│   ├── comfyui/
-│   ├── providers/
-│   ├── typst/
-│   ├── filesystem/
-│   └── git/
-│
-├── packs/
-├── validation/
-├── projections/
-└── cli/
+repo/
+├── pyproject.toml
+├── src/reactive_narrative/
+├── skills/
+├── recipes/
+├── schemas/
+├── control-plane/
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── vite.config.ts
+│   └── src/
+└── tests/
 ```
 
-## First coding sequence
+A monorepo is sufficient. Do not create a separate portal repository unless
+deployment/versioning pressure appears.
 
-### Slice A — Workspace
-1. Define `NarrativeProjectManifest`.
-2. Implement `narrative init`.
-3. Implement project directory policy.
-4. Implement `.gitignore` template.
-5. Implement `inspect --json`.
+## Control Plane first slices
 
-### Slice B — Domain
-1. Character.
-2. Scene.
-3. Fact/Secret.
-4. NarrativeObject.
-5. Promise.
-6. Explicit IDs/references.
-7. YAML loader.
+### CP-A — Build shell
+- Node 24 LTS;
+- pnpm;
+- TypeScript strict;
+- React 19.2;
+- Vite 8.1;
+- routing;
+- design tokens.
 
-### Slice C — Validation
-1. Broken references.
-2. duplicate IDs.
-3. knowledge-before-reveal.
-4. object-after-destroy.
-5. unresolved promise.
+### CP-B — Projection loader
+- SnapshotProjectSource;
+- AJV validation;
+- diagnostics;
+- typed stores.
 
-### Slice D — ActiveGraph
-1. `GraphRuntimePort`.
-2. adapter.
-3. per-project SQLite.
-4. JSONL event sink.
-5. projection builder.
-6. rebuild test.
+Implement snapshot before native directory access to make tests deterministic.
 
-### Slice E — Skills
-Build only:
-- story-intake;
-- character-design;
-- story-architecture;
-- chapter-drafting;
-- continuity-review.
+### CP-C — Catalog
+- CatalogEntity schema;
+- entity refs;
+- CatalogStore;
+- project list;
+- project page.
 
-### Slice F — Visual
-1. Asset model/store.
-2. Character Visual DNA.
-3. Style Bible.
-4. Scene Visual Contract.
-5. ComfyUI fixture adapter before real ComfyUI.
-6. real ComfyUI adapter.
-7. SaaS fixture then real adapter.
+### CP-D — Extension registry
+Only:
+- EntityTab;
+- EntityCard;
+- HomeWidget.
 
-### Slice G — Proof
-1. five approved assets.
-2. Typst template.
-3. `build`.
-4. `preflight`.
-5. receipt.
+Add other extension kinds when used.
 
-## Definition of first implementation success
+### CP-E — Directory source
+- File System Access adapter;
+- permission UX;
+- fallback to snapshot.
 
-From a clean repository:
+### CP-F — Home + Workbench
+- recent project registry;
+- favorites;
+- current focus;
+- deterministic next action.
 
-```text
-narrative init
-agent creates canon + 3 chapters
-narrative check
-agent creates visual bible
-generation produces candidates
-human approves 5 images
-narrative build
-```
+### CP-G — Search + Docs
+- collators;
+- Orama;
+- safe Markdown;
+- entity links.
 
-and a proof PDF is produced.
+### CP-H — Graph lenses
+- Graphology;
+- Sigma stable;
+- scoped project/character/visual lenses.
 
-Then:
+### CP-I — Recipes
+- recipe schema;
+- RJSF;
+- compare generated manifest with CLI.
 
-```text
-rm -rf .narrative/runtime
-narrative rebuild
-narrative check
-narrative build
-```
+## Dependency rule
 
-must still succeed.
+Do not introduce TanStack Query merely because it is common in React.
+There is no remote server query lifecycle in V1.
 
-Do not start the Control Plane until the projection contract is proven by CLI/UAT.
+TanStack Router is selected for routing; state and data have dedicated local
+stores.
+
+## Definition of M10 success
+
+A static production bundle can:
+
+1. open a known project snapshot;
+2. validate projections;
+3. show catalog/entity pages;
+4. show Home/Workbench;
+5. search;
+6. render docs safely;
+7. render graph lens;
+8. work offline after load;
+9. require no application API.
+
+Then directory access and multi-project ergonomics harden the experience.

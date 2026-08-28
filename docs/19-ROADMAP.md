@@ -1,220 +1,139 @@
-# Roadmap
+# Roadmap — Updated
 
-The roadmap is milestone-driven, not calendar-driven.
+Milestones remain outcome-driven and UAT-gated.
 
-A milestone exits only when its UAT passes.
+## M0–M9
 
-## M0 — Research Baseline
+Unchanged strategic sequence:
+- M0 Research Baseline
+- M1 Git-Native Project Core
+- M2 Rebuildable ActiveGraph Runtime
+- M3 Narrative Canon + Continuity
+- M4 Profiles + Middle Grade
+- M5 Editorial Agent Workflow
+- M6 Visual Bible
+- M7 Image Providers
+- M8 Visual QA + Repair
+- M9 Illustrated Book Vertical Slice / first product-worthy release
 
-**Goal:** codify external patterns and lock project vocabulary.
+M9 remains the architectural proof before building the portal.
 
-Deliver:
-- architecture docs;
-- ADRs;
-- source inventory;
-- initial schemas;
-- 5 reference skills;
-- golden-case list.
+## M10 — Control Plane Foundation
 
-Exit:
-- `UAT-M0-01` terminology/schema consistency passes.
+### Deliver
+- React/Vite static shell;
+- projection loader;
+- JSON Schema validation;
+- Directory + Snapshot sources;
+- `CatalogEntity` store;
+- Project catalog;
+- Project entity page;
+- Character entity page;
+- internal Extension Registry;
+- Studio Home;
+- Workbench;
+- local Search;
+- safe Narrative Docs;
+- initial Graph Lenses;
+- offline/static build path.
 
-## M1 — Git-Native Project Core
+### UAT
+- `UAT-M10-01` serverless loading
+- `UAT-M10-02` catalog/entity composition
+- `UAT-M10-03` search/docs
 
-Deliver:
-- `narrative init`;
-- manifest/lock;
-- workspace loader;
-- per-project runtime path;
-- project validation;
-- `inspect --json`.
+### Exit
+No mandatory network/backend calls; invalid projection fixture produces
+diagnostic rather than application crash.
 
-Exit:
-- create project;
-- commit;
-- clone elsewhere;
-- inspect successfully.
+## M10.1 — Creation Recipes
 
-## M2 — Rebuildable ActiveGraph Runtime
+### Deliver
+- recipe schema;
+- RJSF wizard;
+- same recipe consumable by CLI;
+- initial middle-grade illustrated recipe.
 
-Deliver:
-- ActiveGraph adapter;
-- per-project SQLite;
-- event JSONL export;
-- rebuild command;
-- core object/relation mapping.
+### UAT
+`UAT-M10-04`.
 
-Exit:
-- delete runtime DB;
-- rebuild;
-- graph projection is semantically equivalent.
+### Exit
+Wizard and CLI create semantically equivalent project manifests/skeletons.
 
-## M3 — Narrative Canon + Continuity
+## M10.2 — Capability Catalog
 
-Deliver:
-- Character/Scene/Fact/Object/Promise models;
-- timeline/state checks;
-- deterministic continuity validator;
-- initial story skills.
+### Deliver
+Catalog projections/pages for:
+- Skills;
+- Packs;
+- Profiles;
+- Comfy workflows;
+- image providers/capabilities;
+- recipes.
 
-Exit:
-- golden broken stories trigger all expected findings.
+### Goal
+Make the Studio explain the creative toolchain as well as individual books.
 
-## M4 — Profiles + Middle Grade Pack
+## M10.3 — Multi-Project Local Studio
 
-Deliver:
-- profile composition;
-- `es-ES`;
-- 8–9, 9–10, 10–11, 11–12 presets;
-- readability report.
+### Deliver
+- IndexedDB recent-project registry;
+- favorites;
+- multi-project catalog;
+- local Studio Home.
 
-Exit:
-- same chapter analyzed under different profiles produces deterministic profile-specific findings without altering prose.
+### UAT
+`UAT-M10-05`.
 
-## M5 — Editorial Agent Workflow
-
-Deliver:
-- skill registry;
-- editorial pack;
-- structured LLM behavior output;
-- bounded multi-lens review;
-- approval gate.
-
-Exit:
-- draft -> review -> revision -> accepted with trace/evidence.
-
-## M6 — Visual Bible
-
-Deliver:
-- Character/Location/Prop DNA;
-- Style Bible;
-- visual references;
-- Scene Visual Contract;
-- asset store.
-
-Exit:
-- three recurring characters have complete approved visual references and no broken asset relations.
-
-## M7 — Image Generation Providers
-
-Deliver:
-- ComfyUI local adapter;
-- one SaaS adapter;
-- capability router;
-- provenance;
-- fingerprint/cache.
-
-Exit:
-- same VisualSpec can route to local or SaaS without domain changes.
-
-## M8 — Visual QA + Repair
-
-Deliver:
-- technical QA;
-- VLM semantic QA adapter;
-- candidate lifecycle;
-- repair router;
-- minimal regeneration.
-
-Exit:
-- intentionally wrong character/outfit/prop cases are detected and repaired without full-project regeneration.
-
-## M9 — Illustrated Book Vertical Slice — V1
-
-Deliver:
-- 3 chapters;
-- 5 accepted illustrations;
-- layout template;
-- Typst proof PDF;
-- print preflight;
-- human gates.
-
-Exit:
-- end-to-end UAT produces a reproducible proof from a clean clone.
-
-**This is the first product-worthy release.**
-
-## M10 — Static Control Plane
-
-Deliver:
-- projection schemas;
-- static SPA;
-- directory/snapshot mode;
-- overview/story/visual/QA/history views.
-
-Exit:
-- open a project with no backend and correctly show current state.
+No central catalog DB.
 
 ## M11 — Human Reader UAT
 
-Deliver:
-- reader forms;
-- anonymous feedback storage;
-- synthetic reader panel;
-- comparison report.
-
-Exit:
-- complete one real reader round and preserve its evidence.
+As previously defined, with Control Plane projection/pages added.
 
 ## M12 — Sequential Art Core
 
-Deliver:
-- Page/Panel/Dialogue/Caption/SFX IR;
-- LTR/RTL/vertical reading profiles;
-- comic script skill;
-- storyboard projection.
+As previously defined.
 
-Exit:
-- one canon chapter is adapted into a validated 8–10 page storyboard.
+Control Plane additions:
+- panel storyboard page;
+- sequential graph lens.
 
 ## M13 — Comic Renderer
 
-Deliver:
-- panel templates;
-- layered image composition;
-- lettering layer;
-- balloons/captions;
-- CBZ proof.
-
-Exit:
-- produce comic proof with editable text not baked by the image model.
+As previously defined.
 
 ## M14 — Manga Profile
 
-Deliver:
-- RTL;
-- monochrome/screentone settings;
-- manga visual/editorial profile.
-
-Exit:
-- same sequential source can be rendered through distinct comic vs manga presentation profiles.
+As previously defined.
 
 ## M15 — Digital Publishing
 
-Deliver:
-- EPUB reflowable;
-- fixed-layout experiment;
-- validation adapters.
-
-Exit:
-- artifacts open correctly in agreed reference readers.
+As previously defined.
 
 ## M16 — Series Canon
 
-Deliver only after real multi-book demand:
-- Series Bible;
-- cross-book continuity;
-- semantic impact analysis.
+Add future catalog hierarchy only now:
 
-Exit:
-- Book 2 inherits and validates Book 1 canon.
+```text
+Universe
+ -> Series
+ -> NarrativeProject
+ -> Edition
+```
 
-## Explicitly deferred
+Do not create these abstractions earlier without need.
 
-- remote multi-user platform;
-- graph server;
-- custom universal workflow language;
-- custom model training platform;
-- distributed execution;
-- marketplace;
-- Rust rewrite.
+## M17 candidate — Write-capable Control Plane
+
+Only if read-only Control Plane proves useful.
+
+Potential:
+- approve/reject;
+- comment;
+- regeneration request.
+
+Architecture:
+filesystem decision/command records or explicit local runner bridge.
+
+A persistent backend remains optional, not assumed.

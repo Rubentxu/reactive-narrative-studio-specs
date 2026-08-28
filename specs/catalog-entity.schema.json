@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/catalog-entity-v1alpha1.json",
+  "title": "Narrative Catalog Entity",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata"
+  ],
+  "properties": {
+    "apiVersion": {
+      "const": "narrative.dev/v1alpha1"
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "default": "default"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "annotations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "spec": {
+      "type": "object"
+    },
+    "status": {
+      "type": "object"
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "targetRef"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "targetRef": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

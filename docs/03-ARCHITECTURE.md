@@ -1,205 +1,181 @@
-# Architecture
+# Architecture — Updated
 
-## Style
-
-**Hexagonal architecture + reactive/event-sourced adapter + Git-native project workspace.**
-
-The domain does not know ActiveGraph, ComfyUI, OpenAI, Gemini, FLUX, Typst, GitHub or browser APIs.
+## System architecture
 
 ```text
-                    AUTHOR / AGENT / CLI
-                            |
-                      Application API
-                            |
-        +-------------------+-------------------+
-        |                   |                   |
-   Narrative Ports      Visual Ports      Publishing Ports
-        |                   |                   |
-        v                   v                   v
-  ActiveGraph Adapter  Comfy/SaaS Adapters   Typst Adapter
+AUTHOR / AGENT / CLI
         |
-        +---- Runtime DB / Event Log
+        v
+Application layer
+        |
+ +------+---------------------+
+ |                            |
+ v                            v
+Domain                    Project files
+ |                            |
+GraphRuntimePort               | Git
+ |                            |
+ActiveGraph Adapter            |
+ |                            |
+runtime.sqlite + events --------+
+        |
+        v
+Projection Builders
+        |
+        +------------------------------+
+        |                              |
+        v                              v
+Project projections              Catalog entities
+        |                              |
+        +---------------+--------------+
+                        |
+                        v
+                 STATIC CONTROL PLANE
 ```
 
-## Layers
+## Hexagonal boundaries
 
-### Domain
-Pure Python/Pydantic-friendly domain concepts:
+The domain does not know:
+- ActiveGraph;
+- React;
+- Backstage;
+- ComfyUI;
+- image providers;
+- GitHub;
+- Typst;
+- IndexedDB.
+
+## Control Plane architecture
+
+The frontend is its own hexagonal/client architecture:
+
+```text
+                    UI Shell
+                      |
+           +----------+----------+
+           |                     |
+     Feature Extensions      Entity Pages
+           |                     |
+           +----------+----------+
+                      |
+              ControlPlane API
+                      |
+       +--------------+---------------+
+       |              |               |
+ CatalogStore   SearchIndex     StudioSettings
+       |              |               |
+       v              v               v
+CatalogProviders   Collators       IndexedDB
+       |
+       v
+Projection loaders
+       |
+       v
+Project directory / snapshot
+```
+
+## Important separation: two graphs
+
+### Narrative Graph
+Fine-grained domain graph inside a project:
+- Character
+- Scene
+- Fact
+- Secret
+- Asset
+- Panel
+- relations/state
+
+Potentially thousands of nodes.
+
+### Narrative Catalog
+Macroscopic portal model:
 - Project
-- Character / CharacterState
-- Location / Object
-- Event / Scene / Chapter
-- Arc / Promise / Reveal / Fact / Secret
-- VisualIdentity / VisualState / VisualSpec
-- Asset / Generation
-- Page / Panel / Balloon / SFX
-- Evaluation / Decision / Approval
-- Profile / Capability
+- Edition
+- Build
+- UATRun
+- Skill
+- Pack
+- Profile
+- Recipe
+- Workflow
 
-### Application
-Use cases:
-- initialize/adopt project;
-- build/rebuild project state;
-- register/update canon;
-- create/accept candidates;
-- validate;
-- create visual request;
-- route generation;
-- approve/reject;
-- project read models;
-- publish.
+The Catalog MUST NOT duplicate the complete Narrative Graph.
 
-### Ports
-
-```python
-GraphRuntimePort
-EventLogPort
-ProjectRepositoryPort
-SkillRegistryPort
-ImageProviderPort
-VisionReviewerPort
-AssetStorePort
-LayoutRendererPort
-ScmPort
-ProjectionWriterPort
-ClockPort
-```
-
-### Adapters
-
-Initial:
-- `ActiveGraphRuntimeAdapter`
-- `FilesystemProjectRepository`
-- `JsonlEventLogAdapter`
-- `ComfyUIProvider`
-- one SaaS provider
-- `FilesystemContentAddressedAssetStore`
-- `TypstRenderer`
-- `GitCliAdapter`
-- `JsonProjectionWriter`
-
-## ActiveGraph boundary
-
-ActiveGraph is chosen for:
-- event-sourced reactive model;
-- object/relation graph;
-- behaviors and relation behaviors;
-- policies/approvals;
-- replay;
-- fork/diff/promote;
-- packs;
-- SQLite persistence.
-
-Risk: upstream remains relatively young. Therefore:
+## Catalog authority
 
 ```text
-domain/*          MUST NOT import activegraph
-application/*     MUST NOT expose activegraph types
-adapters/runtime/activegraph/* owns translation
+Narrative domain/runtime
+        |
+        v
+Catalog Projector
+        |
+        v
+CatalogEntity[]
 ```
 
-Pin the runtime in `narrative.lock`.
+Never reverse the direction.
 
-## Three kinds of truth
+## Frontend feature model
 
-### Canonical truth
-Version-controlled author/project source:
-- Markdown;
-- YAML/JSON;
-- accepted assets;
-- decisions;
-- human UAT.
+Backstage inspires the extension model but is not a dependency.
 
-### Evidence truth
-Auditable, append-oriented evidence:
-- JSONL events;
-- receipts;
-- provenance;
-- validator results.
-
-### Derived truth
-Rebuildable:
-- SQLite runtime;
-- graph projections;
-- dashboards;
-- caches;
-- thumbnails;
-- reports;
-- build outputs.
-
-Generated candidates are **not canonical** until approved.
-
-## Project data flow
+Internal V1 features:
 
 ```text
-Git source
-   |
-   v
-Project Loader
-   |
-   +----> Domain validation
-   |
-   v
-ActiveGraph adapter
-   |
-   +----> runtime.sqlite
-   +----> JSONL events
-   |
-   v
-Projection builder
-   |
-   +----> control-plane/*.json
-   |
-   v
-Static Control Plane
+features/
+  home/
+  catalog/
+  story/
+  manuscript/
+  visual/
+  docs/
+  search/
+  graph/
+  uat/
+  publishing/
+  history/
 ```
 
-## Reactive flow example
+Each feature can contribute typed extensions.
+
+Do not split into independently published NPM packages until a real external
+extension case exists.
+
+## Serverless rule
+
+Normal flow:
 
 ```text
-character.visual.updated
-          |
-          v
-dependency behavior
-          |
-          v
-asset.stale
-          |
-          v
-repair planner
-          |
-          v
-generation.requested
-          |
-     provider router
-          |
-     image candidate
-          |
-    visual QA fanout
-          |
-       approval
+Browser -> directory/snapshot -> JSON schema validation -> stores -> UI
 ```
 
-## No central mega-orchestrator
+No mandatory HTTP API.
 
-The product SHOULD prefer bounded reactive behaviors over a monolithic pipeline.
+A development server from Vite does not count as application architecture.
 
-Use a director/orchestrator only for:
-- user-facing goal selection;
-- high-level branching;
-- synthesis of multiple review lenses.
+## Catalog federation
 
-Packs coordinate through domain objects/events, not direct agent-to-agent calls.
+A local Studio may aggregate several project handles:
 
-## Architecture constraints
+```text
+DirectoryProvider -> entities
+SnapshotProvider  -> entities
+FutureProvider    -> entities
+                    |
+                    v
+                CatalogStore
+```
 
-1. Domain-first.
-2. Ports before providers.
-3. Text source before DB source.
-4. Events before opaque mutable state.
-5. Candidate before accepted.
-6. Human authority before automated canon promotion.
-7. Explicit capability routing before provider-specific branching.
-8. Incremental invalidation before full regeneration.
-9. Static projections before control-plane backend.
-10. Architecture emerges only after observed pain.
+The provider is merely an ingestion port.
+
+## Stable contracts
+
+Version separately:
+- project manifest;
+- projection schema;
+- catalog entity envelope;
+- recipe schema;
+- extension contract.
+
+Do not serialize React component details into project projections.

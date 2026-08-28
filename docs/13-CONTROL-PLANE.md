@@ -1,125 +1,260 @@
-# Static Control Plane
+# Control Plane — Backstage-Inspired Refinement
 
-## Goal
+## Definition
 
-Provide a rich project observability interface without introducing a server-side product architecture.
+The Control Plane is:
 
-## V1 invariant
+> A serverless, local-first, extensible creative production portal that
+> catalogs projects and capabilities, aggregates multiple perspectives around
+> narrative entities, and provides search, documentation, graph exploration,
+> creation recipes and a current-work workbench over stable projections.
 
-**The Control Plane is a static read-only SPA/PWA consuming stable projections.**
+It is not merely a dashboard.
 
-It does not connect directly to ActiveGraph SQLite.
+## Why Backstage is relevant
 
-## Projection contract
+Backstage demonstrates several durable portal patterns:
+- catalog entities;
+- entity pages;
+- frontend plugins/extensions;
+- software templates;
+- docs-as-code;
+- extensible search;
+- customizable home widgets.
 
-Runtime/application writes:
+We reuse these concepts in a smaller browser-only architecture.
 
-```text
-.narrative/projections/
-  project.json
-  progress.json
-  graph.json
-  workflow.json
-  chapters.json
-  characters.json
-  assets.json
-  visual-quality.json
-  uat.json
-  approvals.json
-  costs.json
-  history.json
-  scm.json
-```
-
-These files are rebuildable.
-
-## Why not read SQLite
-
-Direct SQLite coupling would expose runtime internals and make the UI dependent on ActiveGraph schema evolution.
-
-The stable contract is:
+## Core subsystems
 
 ```text
-Runtime -> Projection Schema -> Static UI
+ControlPlaneCore
+├── AppShell
+├── Catalog
+├── EntityPages
+├── ExtensionRegistry
+├── Search
+├── Docs
+├── Home
+├── Workbench
+├── ProjectLoader
+├── GraphViews
+├── RecipeWizard
+└── StudioSettings
 ```
 
-## Modes
+## Narrative Catalog
 
-### Directory mode
-Use browser File System Access API where supported, after explicit user selection.
+Catalog responsibilities:
+- what projects/capabilities exist;
+- high-level lifecycle/status;
+- relationships between macro entities;
+- source annotations;
+- navigation entry points.
 
-### Snapshot mode
-Open:
-- ZIP;
-- exported projection folder;
-- static embedded snapshot.
+It does NOT own:
+- prose;
+- canon;
+- runtime state;
+- binary assets.
 
-### Standalone dashboard
-`narrative dashboard build` MAY create an immutable static snapshot artifact.
+## Entity envelope
 
-## Initial pages
+Recommended:
 
-1. Overview
-2. Story/Canon
-3. Manuscript
-4. Characters
-5. World
-6. Timeline/Arcs
-7. Visual production
-8. Storyboard
-9. Graph
-10. Workflow
-11. Quality
-12. Reader UAT
-13. Approvals
-14. Publishing
-15. History
-16. SCM
-17. Costs/resources
+```yaml
+apiVersion: narrative.dev/v1alpha1
+kind: NarrativeProject
 
-## Moldable views
+metadata:
+  name: la-biblioteca-secreta
+  title: La Biblioteca Secreta
+  tags:
+    - mystery
+    - middle-grade
+  annotations:
+    narrative.dev/source-path: .
+    narrative.dev/git-revision: abc123
 
-The same graph SHOULD support multiple lenses:
-- Story view;
-- Character view;
-- Mystery view;
-- Visual dependency view;
-- Publishing view.
+spec:
+  language: es-ES
+  lifecycle: visual-production
+  format: illustrated-novel
 
-Avoid one universal hairball graph.
+status:
+  checks:
+    continuity: pass
+    visual: warning
+    uat: pending
 
-## Progress
+relations:
+  - type: usesProfile
+    targetRef: Profile:middle-grade-10-11
+```
 
-Progress MUST be derived from explicit artifacts/gates:
+## Entity pages
+
+A page is an aggregation point.
+
+### Project
+- Overview
+- Story
+- Manuscript
+- Visual
+- UAT
+- Builds
+- Docs
+- Graph
+- History
+
+### Character
+- Overview
+- Arc
+- Relationships
+- Timeline
+- Knowledge
+- Scenes
+- Visual DNA
+- Illustrations
+- Continuity
+- UAT
+
+### Asset
+- Preview
+- Provenance
+- Dependencies
+- QA
+- Usage
+- History
+
+## Studio Home
+
+Cross-project.
+
+Widgets:
+- Continue Working
+- Recent Projects
+- Favorites
+- Pending Approvals
+- Blocking Findings
+- Recent Activity
+- Generation Cost
+- Stale Assets
+
+Widget layout is user-local metadata, not project canon.
+
+## Workbench
+
+Project-local current production focus.
 
 ```text
-chapters approved / chapters planned
-assets approved / assets required
-UAT rounds completed / required
+Current Chapter
+Current Scene
+Current Illustration
+Active Fork
+Pending Approval
+Next Action
+Blocking Findings
 ```
 
-Avoid opaque AI-generated `health_score=84`.
+The Workbench is deliberately separate from Home.
 
-Use dimensions:
-- PASS;
-- WARNING;
-- BLOCKED;
-- PENDING.
+## Narrative Search
 
-## Future V2 write capabilities
+Features contribute normalized search documents.
 
-DEFER:
-- approve;
-- reject;
-- comment.
+Search types:
+- project;
+- character;
+- chapter/scene;
+- asset;
+- decision;
+- UAT;
+- docs;
+- capability.
 
-Possible implementation: write decision files into project directory with explicit browser permission.
+Everything operates locally in V1.
 
-## Future V3 command queue
+## Narrative Docs
 
-DEFER:
-- request regeneration;
-- request agent review;
-- request build.
+Render Git-controlled Markdown.
 
-Could be filesystem commands consumed by a local runner, still without a permanent backend.
+Enhancements may include:
+- entity-link resolution;
+- backlink panel;
+- asset preview;
+- continuity findings;
+- source location;
+- Git revision.
+
+MDX execution is prohibited for project-authored content.
+
+## Graph exploration
+
+Provide lenses:
+- story;
+- character;
+- mystery;
+- visual dependencies;
+- production;
+- publishing.
+
+Do not render an undifferentiated graph by default.
+
+## Creation Recipes
+
+Recipes scaffold new projects and select profiles/packs.
+
+They do NOT become a generic orchestration DSL.
+
+One recipe drives:
+- CLI interactive creation;
+- frontend wizard.
+
+## Lifecycle and status
+
+Lifecycle example:
+
+```text
+idea
+development
+drafting
+editorial
+visual-production
+proof
+uat
+ready
+published
+archived
+```
+
+Status is orthogonal:
+
+```text
+continuity: PASS
+visual: WARNING
+uat: PENDING
+publishing: BLOCKED
+```
+
+## M10 scope
+
+Implement:
+- shell;
+- directory/snapshot project loader;
+- CatalogEntity;
+- Project catalog;
+- Project/Character pages;
+- internal extension registry;
+- Home;
+- Workbench;
+- local search;
+- safe docs;
+- graph lenses;
+- basic recipe wizard.
+
+Defer:
+- write operations;
+- external plugins;
+- remote catalog;
+- remote search;
+- centralized auth.

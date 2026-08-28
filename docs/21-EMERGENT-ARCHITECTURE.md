@@ -1,97 +1,53 @@
-# Emergent Architecture
+# Emergent Architecture — Updated
 
-## Goal
+## Existing principle
 
-Prevent an ambitious vision from becoming an over-engineered framework before the core product works.
+Pain before abstraction.
 
-## Rule 1 — Pain before abstraction
+## Control Plane-specific constraints
 
-A new abstraction requires evidence:
-- duplicated logic in at least 2–3 real paths;
-- measurable performance issue;
-- incompatible providers;
-- recurring UAT failure;
-- migration pain.
+### No Backstage dependency
+We reuse ideas, not runtime/framework packages.
 
-## Rule 2 — One implementation before interface, except external boundaries
+### No plugin marketplace before plugins
+V1 extensions are internal modules.
 
-Create ports early only for unstable/external systems:
-- runtime;
-- image provider;
-- renderer;
-- asset store;
-- SCM.
+Promote to NPM packages only when:
+- a second repository needs to author an extension;
+- independent versioning is required.
 
-Do not create factories for every domain class.
+### No central catalog DB
+Multi-project catalog is browser-local ingestion from explicit sources.
 
-## Rule 3 — One Python package first
+### No vector search before full text fails
+Orama full-text first.
 
-Initial implementation SHOULD be one distributable package with internal modules.
+### No GraphQL/API backend
+Projection schemas are sufficient for M10.
 
-Do not split into dozens of Python packages until release/version boundaries are real.
+### No universal graph
+Build focused graph lenses.
 
-## Rule 4 — No Rust without profiler evidence
+### No Next.js/SSR
+Static Vite application meets requirements.
 
-Python is adequate for:
-- validation;
-- graph orchestration;
-- schemas;
-- image API calls;
-- filesystem;
-- projection generation.
+### No executable project UI extensions
+Project data cannot ship JavaScript into the Studio.
 
-Introduce Rust/PyO3 only if a measured hotspot warrants it.
+### No arbitrary recipe scripting
+Recipe scaffolding is declarative.
 
-## Rule 5 — No graph server by aspiration
+### No rich Series/Universe hierarchy before M16
+Catalog kinds emerge from real cross-book use.
 
-Default per-project SQLite is sufficient until:
-- project scale;
-- query latency;
-- collaboration
+## Fitness functions
 
-proves otherwise.
-
-## Rule 6 — No generic WorkflowIR in V1
-
-Start with:
-- project state;
-- behaviors;
-- pack composition;
-- explicit gates.
-
-If multiple products need programmable workflows, revisit.
-
-## Rule 7 — No backend for Control Plane
-
-Static projection first. Add write operations only when read-only usability is proven.
-
-## Rule 8 — Provider features do not leak
-
-If provider X adds a feature:
-1. add capability vocabulary only if multiple use cases need it;
-2. implement adapter;
-3. do not add provider fields to canon.
-
-## Architecture fitness functions
-
-CI SHOULD enforce:
-- domain imports no adapters;
-- no provider SDK in domain/application contracts;
-- runtime DB path is project-local;
-- projections rebuild;
-- schemas remain backward-readable across supported versions;
-- generated candidates cannot become accepted without valid decision/approval evidence.
-
-## Architecture review checkpoint
-
-At each major milestone ask:
-
-1. What hurt?
-2. What was duplicated?
-3. What was slow?
-4. What was hard to test?
-5. What became coupled?
-6. What abstraction proved unnecessary?
-7. What should be deleted?
-
-Deletion is a valid architecture outcome.
+CI should eventually assert:
+- Control Plane has no dependency on ActiveGraph Python package;
+- no network fetch required for fixture project;
+- catalog entity schema validates all fixtures;
+- project Markdown cannot execute script;
+- domain projection contract is React-independent;
+- extensions cannot bypass typed store boundaries;
+- multi-project Studio has no central narrative DB;
+- recipe output validates as project manifest.

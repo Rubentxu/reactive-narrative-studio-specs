@@ -1,17 +1,26 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/specs/control-plane-v1.schema.json",
-  "title": "Control Plane Project Summary",
+  "$id": "https://narrative.dev/schemas/control-plane-project-v1.json",
+  "title": "Control Plane Project Projection",
   "type": "object",
   "required": [
     "schema",
+    "generatedAt",
+    "sourceRevision",
     "project",
-    "status",
+    "lifecycle",
+    "checks",
     "progress"
   ],
   "properties": {
     "schema": {
-      "const": "control-plane/v1"
+      "const": "control-plane/project/v1"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "sourceRevision": {
+      "type": "string"
     },
     "project": {
       "type": "object",
@@ -25,18 +34,32 @@
         },
         "title": {
           "type": "string"
-        }
-      }
-    },
-    "status": {
-      "type": "object",
-      "required": [
-        "phase"
-      ],
-      "properties": {
-        "phase": {
+        },
+        "language": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "audienceProfile": {
           "type": "string"
         }
+      },
+      "additionalProperties": false
+    },
+    "lifecycle": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "pass",
+          "warning",
+          "blocked",
+          "pending",
+          "unknown"
+        ]
       }
     },
     "progress": {
@@ -44,19 +67,20 @@
       "additionalProperties": {
         "type": "object",
         "required": [
-          "total",
-          "completed"
+          "completed",
+          "total"
         ],
         "properties": {
-          "total": {
-            "type": "integer",
-            "minimum": 0
-          },
           "completed": {
             "type": "integer",
             "minimum": 0
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
           }
-        }
+        },
+        "additionalProperties": false
       }
     },
     "blocking": {
@@ -71,5 +95,6 @@
         "type": "string"
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
