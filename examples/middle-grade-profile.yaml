@@ -1,8 +1,7 @@
 schema: profile/v1
-profileId: middle-grade-10-11
+profileId: profile-middle-grade-10-11
 audience:
   ageBand: middle-grade
-  language: es-ES
   readingLevel: fluent
 format:
   medium: illustrated-book
