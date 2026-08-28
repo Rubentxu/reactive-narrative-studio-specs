@@ -5,14 +5,25 @@
   "description": "Intermediate representation for visual production: prompts, references, composition, and provider-neutral imagePolicy.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "version", "shots"],
+  "required": [
+    "schema",
+    "version",
+    "shots"
+  ],
   "properties": {
-    "schema": {"const": "visual-ir/v1"},
-    "version": {"type": "string", "const": "1.0"},
+    "schema": {
+      "const": "visual-ir/v1"
+    },
+    "version": {
+      "type": "string",
+      "const": "1.0"
+    },
     "shots": {
       "type": "array",
       "minItems": 0,
-      "items": {"$ref": "#/$defs/Shot"}
+      "items": {
+        "$ref": "#/$defs/Shot"
+      }
     }
   },
   "$defs": {
@@ -20,31 +31,62 @@
       "title": "Shot",
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "prompt", "imagePolicy"],
+      "required": [
+        "id",
+        "prompt",
+        "imagePolicy"
+      ],
       "properties": {
-        "id": {"type": "string", "pattern": "^shot-[a-z0-9-]+$"},
-        "prompt": {"type": "string", "minLength": 1},
-        "negativePrompt": {"type": "string"},
+        "id": {
+          "type": "string",
+          "pattern": "^shot-[a-z0-9-]+$"
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "negativePrompt": {
+          "type": "string"
+        },
         "references": {
           "type": "array",
-          "items": {"$ref": "#/$defs/Reference"},
+          "items": {
+            "$ref": "#/$defs/Reference"
+          },
           "minItems": 0
         },
-        "composition": {"$ref": "#/$defs/Composition"},
-        "imagePolicy": {"$ref": "#/$defs/ImagePolicy"}
+        "composition": {
+          "$ref": "#/$defs/Composition"
+        },
+        "imagePolicy": {
+          "$ref": "#/$defs/ImagePolicy"
+        }
       }
     },
     "Reference": {
       "title": "Reference",
       "type": "object",
       "additionalProperties": false,
-      "required": ["kind", "target"],
+      "required": [
+        "kind",
+        "target"
+      ],
       "properties": {
         "kind": {
           "type": "string",
-          "enum": ["character", "location", "prop", "style", "palette"]
+          "enum": [
+            "character",
+            "location",
+            "prop",
+            "style",
+            "palette"
+          ]
         },
-        "target": {"type": "string", "minLength": 1}
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^asset:sha256:[a-f0-9]{64}$"
+        }
       }
     },
     "Composition": {
@@ -52,8 +94,21 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "framing": {"type": "string", "enum": ["wide", "medium", "close", "extreme-close", "pan", "establishing"]},
-        "aspectRatio": {"type": "string", "pattern": "^[0-9]+:[0-9]+$"}
+        "framing": {
+          "type": "string",
+          "enum": [
+            "wide",
+            "medium",
+            "close",
+            "extreme-close",
+            "pan",
+            "establishing"
+          ]
+        },
+        "aspectRatio": {
+          "type": "string",
+          "pattern": "^[0-9]+:[0-9]+$"
+        }
       }
     },
     "ImagePolicy": {
@@ -61,19 +116,34 @@
       "description": "Provider-neutral image generation policy. Providers are pluggable; the schema never binds to provider shape.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["mode"],
+      "required": [
+        "mode"
+      ],
       "properties": {
         "mode": {
           "type": "string",
-          "enum": ["local-only", "saas-only", "hybrid"],
+          "enum": [
+            "local-only",
+            "saas-only",
+            "hybrid"
+          ],
           "description": "RE-IMG-7: the runtime must support all three modes."
         },
         "providers": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": {
+            "type": "string"
+          },
           "minItems": 0
         },
-        "safetyFilter": {"type": "string", "enum": ["strict", "moderate", "off"]}
+        "safetyFilter": {
+          "type": "string",
+          "enum": [
+            "strict",
+            "moderate",
+            "off"
+          ]
+        }
       }
     }
   }

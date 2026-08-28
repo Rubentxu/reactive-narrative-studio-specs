@@ -128,3 +128,7 @@ Comic/complex illustration MAY split:
 - lettering.
 
 This enables minimal regeneration.
+
+## Cross-references
+
+The `asset:sha256:[a-f0-9]{64}` notation is enforced by `specs/visual-ir.schema.json` (see `$defs.Reference.properties.target.pattern`) and `specs/visual-spec.schema.json` (see `properties.continuity.properties.characterRefs.items.pattern` and `properties.continuity.properties.locationRefs.items.pattern`).
