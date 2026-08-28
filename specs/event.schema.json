@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/event.schema.json",
+  "title": "Narrative Event",
+  "description": "Canonical envelope for JSONL records in .narrative/events/YYYY-MM.jsonl. REQ-EVT-001..005.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "eventType", "occurredAt", "projectId", "payload"],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "narrative-event/v1",
+      "description": "Schema discriminator; future-proofs the envelope."
+    },
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "run.started",
+        "run.completed",
+        "cost.recorded",
+        "candidate.accepted",
+        "candidate.rejected",
+        "asset.generated",
+        "approval.granted",
+        "publish.completed"
+      ],
+      "description": "Discriminator. Exactly 8 event types in scope of AC-10."
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 with timezone, e.g. 2026-08-28T12:00:00Z."
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Opaque project identifier — typically the project directory name."
+    },
+    "actor": {
+      "type": "string",
+      "description": "Actor identifier (agent, user, or 'system')."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Type-discriminated by eventType. See $defs for shape per event type.",
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "RunStarted": {
+      "title": "RunStarted payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "command"],
+      "properties": {
+        "runId": {"type": "string"},
+        "command": {"type": "string"}
+      }
+    },
+    "RunCompleted": {
+      "title": "RunCompleted payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "exitCode"],
+      "properties": {
+        "runId": {"type": "string"},
+        "exitCode": {"type": "integer"},
+        "durationMs": {"type": "integer", "minimum": 0}
+      }
+    },
+    "CostRecorded": {
+      "title": "CostRecorded payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "currency", "category"],
+      "properties": {
+        "amount": {"type": "number", "minimum": 0},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "category": {"type": "string", "enum": ["image", "text", "compute", "storage"]}
+      }
+    },
+    "CandidateAccepted": {
+      "title": "CandidateAccepted payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateId", "kind"],
+      "properties": {
+        "candidateId": {"type": "string"},
+        "kind": {"type": "string"}
+      }
+    },
+    "CandidateRejected": {
+      "title": "CandidateRejected payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateId", "reason"],
+      "properties": {
+        "candidateId": {"type": "string"},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "AssetGenerated": {
+      "title": "AssetGenerated payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetHash", "shotRef"],
+      "properties": {
+        "assetHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "shotRef": {"type": "string"}
+      }
+    },
+    "ApprovalGranted": {
+      "title": "ApprovalGranted payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decisionId", "by", "verdict"],
+      "properties": {
+        "decisionId": {"type": "string"},
+        "by": {"type": "string"},
+        "verdict": {"type": "string", "enum": ["approve", "reject", "request-changes"]}
+      }
+    },
+    "PublishCompleted": {
+      "title": "PublishCompleted payload",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target"],
+      "properties": {
+        "target": {"type": "string", "enum": ["typst", "epub", "pdf", "web"]},
+        "artifactPath": {"type": "string"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "description": "RE-EVT-S04: forbid inline image bytes anywhere in payload",
+      "if": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "propertyNames": {"pattern": "image"}
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "not": {
+              "required": ["image"],
+              "properties": {
+                "image": {
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "minLength": 1024
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

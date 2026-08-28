@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/provider-capability.schema.json",
+  "title": "Provider Capability",
+  "description": "Provider-neutral capability descriptor. The pack never binds to provider-specific shape (RE-IMG-7, ADR-011).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provider", "capabilities"],
+  "properties": {
+    "provider": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Provider identifier — local alias like 'comfyui', 'sdxl', 'midjourney', etc."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["local", "saas", "hybrid"]
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["imageGeneration"],
+      "properties": {
+        "imageGeneration": {"$ref": "#/$defs/ImageGenerationCapability"},
+        "textCompletion": {"$ref": "#/$defs/TextCompletionCapability"},
+        "vectorSearch": {"$ref": "#/$defs/VectorSearchCapability"}
+      }
+    }
+  },
+  "$defs": {
+    "ImageGenerationCapability": {
+      "title": "Image Generation Capability",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supported"],
+      "properties": {
+        "supported": {"type": "boolean", "const": true},
+        "maxResolution": {"type": "string", "pattern": "^[0-9]+x[0-9]+$"},
+        "modalities": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["text-to-image", "image-to-image", "inpainting", "controlnet"]}
+        },
+        "safetyFilter": {"type": "string", "enum": ["strict", "moderate", "off"]}
+      }
+    },
+    "TextCompletionCapability": {
+      "title": "Text Completion Capability",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supported"],
+      "properties": {
+        "supported": {"type": "boolean", "const": true},
+        "maxTokens": {"type": "integer", "minimum": 0},
+        "languages": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?$"}
+        }
+      }
+    },
+    "VectorSearchCapability": {
+      "title": "Vector Search Capability",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supported"],
+      "properties": {
+        "supported": {"type": "boolean", "const": true},
+        "embeddingDims": {"type": "integer", "minimum": 1},
+        "engine": {"type": "string", "enum": ["orama", "lancedb", "qdrant", "none"]}
+      }
+    }
+  }
+}

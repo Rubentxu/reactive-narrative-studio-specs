@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/visual-spec.schema.json",
+  "title": "Visual Spec",
+  "description": "Visual bible specification for a project: style tokens, palette, lighting, and per-shot guidance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "projectId", "style", "palette", "lighting"],
+  "properties": {
+    "schema": {"const": "visual-spec/v1"},
+    "projectId": {"type": "string", "minLength": 1},
+    "style": {"$ref": "#/$defs/Style"},
+    "palette": {"$ref": "#/$defs/Palette"},
+    "lighting": {"$ref": "#/$defs/Lighting"},
+    "continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "characterRefs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 0,
+          "description": "Anchored character reference images (content-addressed)."
+        },
+        "locationRefs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 0
+        }
+      }
+    }
+  },
+  "$defs": {
+    "Style": {
+      "title": "Style",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "movement": {"type": "string", "enum": ["studio-ghibli", "watercolor", "ink", "cartoon", "comic", "manga", "flat", "painterly"]},
+        "lineWeight": {"type": "string", "enum": ["thin", "medium", "bold", "variable"]},
+        "renderEngine": {"type": "string", "enum": ["comfyui-sdxl", "comfyui-sd3", "midjourney", "dalle", "custom"]}
+      }
+    },
+    "Palette": {
+      "title": "Palette",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tokens"],
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "hex"],
+            "properties": {
+              "name": {"type": "string"},
+              "hex": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"}
+            }
+          }
+        }
+      }
+    },
+    "Lighting": {
+      "title": "Lighting",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "key": {"type": "string", "enum": ["natural", "studio", "candlelight", "moonlight", "neon", "mixed"]},
+        "mood": {"type": "string", "enum": ["warm", "cool", "neutral", "high-contrast", "low-contrast"]}
+      }
+    }
+  }
+}

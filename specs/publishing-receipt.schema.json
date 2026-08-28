@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/publishing-receipt.schema.json",
+  "title": "Publishing Receipt",
+  "description": "Immutable record of a published artifact. The receipt is the canonical proof that an artifact was rendered, validated, and persisted to its target.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "receiptId", "projectId", "target", "artifactHash", "renderedAt", "verifierChain"],
+  "properties": {
+    "schema": {"const": "publishing-receipt/v1"},
+    "receiptId": {"type": "string", "pattern": "^rct-[a-z0-9-]+$"},
+    "projectId": {"type": "string", "minLength": 1},
+    "target": {"type": "string", "enum": ["typst", "epub", "pdf", "web"]},
+    "artifactHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifactPath": {"type": "string"},
+    "renderedAt": {"type": "string", "format": "date-time"},
+    "verifierChain": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/Verifier"}
+    },
+    "inputHashes": {
+      "type": "object",
+      "description": "Hashes of inputs that contributed to the rendered artifact.",
+      "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Pointer(s) to JSONL events that justify the publish.",
+      "items": {"type": "string"}
+    }
+  },
+  "$defs": {
+    "Verifier": {
+      "title": "Verifier",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "verdict"],
+      "properties": {
+        "name": {"type": "string"},
+        "verdict": {"type": "string", "enum": ["pass", "warning", "blocked", "pending", "unknown"]},
+        "details": {"type": "string"}
+      }
+    }
+  }
+}
