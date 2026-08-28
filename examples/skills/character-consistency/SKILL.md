@@ -8,7 +8,7 @@ The `character-consistency` skill provides a multi-layered validation framework 
 
 Invoke `character-consistency` when any of the following is true:
 
-- A new character is being introduced to the project and no character profile exists in `docs/04`.
+- A new character is being introduced to the project and no character profile exists in `docs/08-PROFILES.md`.
 - A character's dialogue in a new scene differs noticeably in voice, vocabulary, or syntactic pattern from their established dialogue in earlier scenes.
 - A character undergoes a significant belief or behavioral change and there is no documented intermediate arc beat to justify it.
 - A multi-POV story shows inconsistent rendering of the same character across different POVs.
@@ -19,8 +19,8 @@ Do not invoke `character-consistency` for plot-level structural decisions (those
 
 ## Inputs
 
-- **Character name**: The canonical character identifier as declared in `docs/04-PROFILES.md`.
-- **Character profile** (from `docs/04`): The character's established voice parameters — idiolect markers, vocabulary range, syntactic preferences, emotional register, and background traits.
+- **Character name**: The canonical character identifier as declared in `docs/08-PROFILES.md`.
+- **Character profile** (from `docs/08-PROFILES.md`): The character's established voice parameters — idiolect markers, vocabulary range, syntactic preferences, emotional register, and background traits.
 - **Scene text or scene list**: The scenes in which this character appears. For pre-draft validation, a scene outline; for post-draft validation, the complete scene text.
 - **Arc position**: The character's current arc position (setup/recognition/change) as determined by the active `narrative-arc` decision.
 - **POV status**: Whether this character is the POV character for the scenes under review, a secondary character within a POV scene, or a character in a non-POV scene.
@@ -29,7 +29,7 @@ Do not invoke `character-consistency` for plot-level structural decisions (those
 ## Outputs
 
 - **Idiolect compliance report**: For each dialogue beat in the reviewed scenes, a pass/fail against the character's established idiolect markers (vocabulary tier, syntactic signature, filled-pause frequency, question-vs-statement ratio). Failures are tagged with the specific marker that violated the profile.
-- **Profile cross-reference audit**: Confirmation that all references to this character's physical description, backstory facts, and behavioral traits in the reviewed scenes are consistent with the profile in `docs/04`. Inconsistencies are flagged with the specific profile entry that was violated.
+- **Profile cross-reference audit**: Confirmation that all references to this character's physical description, backstory facts, and behavioral traits in the reviewed scenes are consistent with the profile in `docs/08-PROFILES.md`. Inconsistencies are flagged with the specific profile entry that was violated.
 - **Dialogue tag audit**: A count of dialogue attribution tags (he said / she whispered / etc.) with a determination of whether the tag's emotional register matches the dialogue content. Mismatches are flagged as `tag_tone_drift`.
 - **POV consistency report** (for POV characters): Confirmation that all internal thoughts, sensory descriptions, and reactions in the POV scenes are filtered through this character's perceptual and cognitive lens. Cross-POV contamination is flagged as `pov_bleed`.
 - **Voice drift score**: A longitudinal comparison of the character's voice across the reviewed scenes vs. their earlier scenes. A score above the drift threshold (configurable, default 0.3) triggers a `voice_drift` warning with the specific markers that have shifted.
@@ -71,7 +71,7 @@ The character's baseline emotional state and range. Emotional register affects w
 
 ### Step 1 — Load character profile
 
-Retrieve the character's profile from `docs/04-PROFILES.md`. The profile should contain:
+Retrieve the character's profile from `docs/08-PROFILES.md`. The profile should contain:
 
 - **Idiolect signature**: Vocabulary tier (formal/informal/technical/slang), syntactic preferences (simple sentences / complex subordination / fragments), filled-pause frequency, question-to-statement ratio.
 - **Emotional register**: Baseline emotional state, typical emotional range, and trigger conditions for significant emotional states.
@@ -79,7 +79,7 @@ Retrieve the character's profile from `docs/04-PROFILES.md`. The profile should 
 - **Backstory invariants**: Facts about the character's history that must not contradict across scenes.
 - **Behavioral signatures**: Consistent behavioral patterns (e.g., "always checks exits first," "nervous habit of adjusting glasses").
 
-If no profile exists for the character in `docs/04`, the skill flags `profile_missing` and halts — do not proceed without a profile.
+If no profile exists for the character in `docs/08-PROFILES.md`, the skill flags `profile_missing` and halts — do not proceed without a profile.
 
 ### Step 2 — Dialogue corpus assembly
 
@@ -100,7 +100,7 @@ Mark each beat: `idiolect_pass` or `idiolect_fail` with the specific violated ma
 
 For each factual claim about the character in the reviewed scenes:
 
-1. Compare against the `docs/04` profile's backstory invariants and physical anchors.
+1. Compare against the `docs/08-PROFILES.md` profile's backstory invariants and physical anchors.
 2. Flag any contradiction: `profile_contradiction`.
 3. Flag any physical descriptor that is absent from the profile: `profile_orphan_detail`.
 4. Flag any profile detail that is referenced in the profile but never manifested in any scene: `profile_latent`.
@@ -158,7 +158,7 @@ For any significant belief or behavioral change in the reviewed scenes:
 ### Example 2 — Profile contradiction flagged
 
 **Character**: Irene
-**Profile in `docs/04`**: "Irene is left-handed."
+**Profile in `docs/08-PROFILES.md`**: "Irene is left-handed."
 **Reviewed scene**: Irene is described as "her right hand" in a scene-level physical description.
 
 **Result**: `profile_contradiction` — the physical description in the scene contradicts the profile entry. The contradiction is not which hand she uses, but that the profile and scene description diverge. Remediation: align the scene description with the profile OR update the profile if the handedness was intentionally changed.
@@ -176,11 +176,11 @@ For any significant belief or behavioral change in the reviewed scenes:
 
 ### First appearance with no prior corpus
 
-When a character appears for the first time and there is no prior dialogue corpus, the idiolect validation uses the `docs/04` profile's declared idiolect signature as the baseline. The first scene sets the voice; subsequent scenes are compared against it. Flag the first scene explicitly as `voice_baseline_set` so subsequent reviews know this scene established the baseline.
+When a character appears for the first time and there is no prior dialogue corpus, the idiolect validation uses the `docs/08-PROFILES.md` profile's declared idiolect signature as the baseline. The first scene sets the voice; subsequent scenes are compared against it. Flag the first scene explicitly as `voice_baseline_set` so subsequent reviews know this scene established the baseline.
 
 ### Characters who code-switch
 
-Some characters intentionally shift their speech patterns depending on context (speaking formally to authority figures, informally to friends). The profile in `docs/04` should declare the code-switching matrix. When validating, apply the correct idiolect tier based on the scene's social context. If the profile doesn't declare the code-switching matrix and a code-switch is detected, flag `code_switch_undeclared`.
+Some characters intentionally shift their speech patterns depending on context (speaking formally to authority figures, informally to friends). The profile in `docs/08-PROFILES.md` should declare the code-switching matrix. When validating, apply the correct idiolect tier based on the scene's social context. If the profile doesn't declare the code-switching matrix and a code-switch is detected, flag `code_switch_undeclared`.
 
 ### Ensemble casts with overlapping voices
 
@@ -193,18 +193,18 @@ In short fiction (under 7,500 words), character arc beats may be compressed to a
 ## Acceptance criteria
 
 - [ ] The skill produces an idiolect compliance report for every dialogue beat in the reviewed scenes.
-- [ ] The profile cross-reference audit identifies all contradictions between scene-level character facts and the `docs/04` profile.
+- [ ] The profile cross-reference audit identifies all contradictions between scene-level character facts and the `docs/08-PROFILES.md` profile.
 - [ ] The dialogue tag audit flags any tag whose emotional register conflicts with the dialogue content.
 - [ ] For POV characters, the POV consistency report identifies any instance of `pov_bleed`.
 - [ ] The voice drift score is computed when a prior dialogue corpus exists; the first-scene baseline is flagged for future reference.
 - [ ] Arc beat alignment is checked for all significant belief or behavioral changes.
-- [ ] The skill does not produce false-positive idiolect failures for characters who intentionally code-switch, provided the `docs/04` profile declares the code-switching matrix.
+- [ ] The skill does not produce false-positive idiolect failures for characters who intentionally code-switch, provided the `docs/08-PROFILES.md` profile declares the code-switching matrix.
 
 ## Failure modes
 
 ### Profile missing
 
-A character without a `docs/04` profile cannot be validated. The skill halts with `profile_missing`. Mitigation: create the profile before running validation. A minimal profile (idiolect signature + one physical anchor + one backstory invariant) is sufficient for initial validation.
+A character without a `docs/08-PROFILES.md` profile cannot be validated. The skill halts with `profile_missing`. Mitigation: create the profile before running validation. A minimal profile (idiolect signature + one physical anchor + one backstory invariant) is sufficient for initial validation.
 
 ### Idiolect baseline drift without detection
 
@@ -212,7 +212,7 @@ If the first scene's dialogue was written with an inconsistent voice and set a w
 
 ### Profile-staleness gap
 
-The `docs/04` profile may become stale as the character evolves across the narrative. The validator checks against the profile as written, not the author's current understanding of the character. Mitigation: update the profile whenever a significant arc beat changes the character's voice or behavioral signature.
+The `docs/08-PROFILES.md` profile may become stale as the character evolves across the narrative. The validator checks against the profile as written, not the author's current understanding of the character. Mitigation: update the profile whenever a significant arc beat changes the character's voice or behavioral signature.
 
 ### Tag audit creates false confidence
 
@@ -222,14 +222,14 @@ The dialogue tag audit is a mechanical tone check; it cannot detect when a dialo
 
 - **narrative-arc** (`examples/skills/narrative-arc/SKILL.md`): Arc provides the macro-level character transformation beats that arc beat alignment is checked against.
 - **scene-validator** (`examples/skills/scene-validator/SKILL.md`): Scene-validator's `pov_breach` flag triggers a character-consistency POV check as a downstream validation.
-- **docs/04-PROFILES.md**: The canonical source of character profiles; all profile cross-reference checks are validated against this file.
-- **docs/10-VISUAL-IR.md**: Character visual DNA (physical anchors) in `docs/10` must remain consistent with the physical anchors declared in `docs/04`.
+- **docs/08-PROFILES.md**: The canonical source of character profiles; all profile cross-reference checks are validated against this file.
+- **docs/10-VISUAL-IR.md**: Character visual DNA (physical anchors) in `docs/10` must remain consistent with the physical anchors declared in `docs/08-PROFILES.md`.
 
 ## Evaluation cases
 
 ### Case 1 — New character first-appearance validation
 
-**Input**: New character "Mira" is appearing for the first time. Profile exists in `docs/04`. No prior dialogue corpus. Scene contains 12 dialogue beats.
+**Input**: New character "Mira" is appearing for the first time. Profile exists in `docs/08-PROFILES.md`. No prior dialogue corpus. Scene contains 12 dialogue beats.
 
 **Evaluation**: Does the skill correctly flag the first scene as `voice_baseline_set`? Does it validate each of the 12 dialogue beats against the profile's declared idiolect signature? Does it identify which idiolect markers are present in the first scene (setting the baseline)?
 
