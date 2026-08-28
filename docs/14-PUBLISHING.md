@@ -87,3 +87,5 @@ Where possible:
 - hash inputs;
 - record source commit;
 - provide offline-ready fonts/assets subject to licenses.
+
+Projection schema: `specs/cp-approvals.schema.json` records approvals and `specs/cp-assets.schema.json` tracks asset inventory.

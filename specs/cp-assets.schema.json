@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/cp-assets.schema.json",
+  "title": "Control Plane Assets Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "generatedAt", "sourceRevision", "assets"],
+  "properties": {
+    "schema": {
+      "const": "control-plane/assets/v1"
+    },
+    "generatedAt": {
+      "$ref": "#/$defs/isoTimestamp"
+    },
+    "sourceRevision": {
+      "$ref": "#/$defs/sourceRevision"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "kind"],
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" },
+          "kind": { "type": "string" },
+          "size": { "type": "integer", "minimum": 0 },
+          "status": {
+            "enum": ["pass", "warning", "blocked", "pending", "unknown"]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "isoTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

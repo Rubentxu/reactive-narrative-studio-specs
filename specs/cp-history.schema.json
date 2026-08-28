@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/cp-history.schema.json",
+  "title": "Control Plane History Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "generatedAt", "sourceRevision", "history"],
+  "properties": {
+    "schema": {
+      "const": "control-plane/history/v1"
+    },
+    "generatedAt": {
+      "$ref": "#/$defs/isoTimestamp"
+    },
+    "sourceRevision": {
+      "$ref": "#/$defs/sourceRevision"
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "event"],
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "event": { "type": "string" },
+          "actor": { "type": "string" },
+          "details": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "isoTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

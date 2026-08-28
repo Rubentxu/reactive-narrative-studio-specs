@@ -130,10 +130,10 @@ Entity pages query feature projection stores using entity references.
 
 Example `Character:Nora` aggregates:
 - canonical metadata;
-- runtime state projection;
-- visual assets projection;
-- UAT projection;
-- Git history projection.
+- runtime state projection (see `specs/cp-project.schema.json`);
+- visual assets projection (`specs/cp-assets.schema.json`);
+- UAT projection (`specs/cp-uat.schema.json`);
+- Git history projection (`specs/cp-history.schema.json`).
 
 The entity is a navigation/join point.
 

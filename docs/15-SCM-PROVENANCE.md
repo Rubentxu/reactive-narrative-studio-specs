@@ -81,6 +81,8 @@ Git tags/checkpoints + ActiveGraph fork/replay SHOULD support:
 - compare visual bible versions;
 - inspect UAT state at a release candidate.
 
+Projection schemas: `specs/cp-history.schema.json` (run history) and `specs/cp-scm.schema.json` (source control state).
+
 ## KDP/marketplace disclosure
 
 Publishing adapters SHOULD produce an AI-content provenance summary so the author can complete platform disclosure requirements with recorded evidence instead of memory.

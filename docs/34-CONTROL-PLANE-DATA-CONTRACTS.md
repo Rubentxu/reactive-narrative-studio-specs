@@ -20,6 +20,13 @@ Make the Control Plane replaceable and independently evolvable.
 ### Catalog entity
 `catalog-entity/v1alpha1`
 
+### Control Plane projections
+
+The 13 projection schemas are defined in `specs/cp-*.schema.json` and referenced
+from `specs/control-plane.schema.json $defs`. Projection schemas use the
+envelope shape with `schema`, `generatedAt`, `sourceRevision` and a
+projection-specific payload field.
+
 ### Search document
 `search-document/v1`
 

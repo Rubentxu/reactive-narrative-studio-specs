@@ -23,7 +23,7 @@ Primary questions:
 Widgets:
 
 ### Continue Working
-Last active project/entity.
+Last active project/entity (projection `specs/cp-progress.schema.json`).
 
 ### Recent Projects
 Local recent-project metadata.
@@ -32,7 +32,7 @@ Local recent-project metadata.
 Projects/entities starred by the user.
 
 ### Pending Approvals
-Counts/summaries from projections.
+Counts/summaries from projections (see `specs/cp-approvals.schema.json`).
 
 ### Blocking Findings
 Top deterministic blockers.
@@ -80,7 +80,7 @@ Recent Decisions
 ## Next Action
 
 Must consume deterministic `next` projection/CLI state, not ask an LLM to
-invent project progress.
+invent project progress. See `specs/cp-workflow.schema.json` and `specs/cp-graph.schema.json` for the workflow and graph projections.
 
 ## Deep links
 

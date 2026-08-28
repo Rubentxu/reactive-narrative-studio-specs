@@ -51,3 +51,5 @@ Local diagnostics panel may show:
 
 Cross-project Home must not accidentally surface raw private manuscript text.
 Home cards should use bounded summaries/projection fields.
+
+Projection schemas: `specs/cp-costs.schema.json` for resource usage and `specs/cp-uat.schema.json` for test run summaries.

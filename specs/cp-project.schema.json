@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/cp-project.schema.json",
+  "title": "Control Plane Project Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "generatedAt", "sourceRevision", "project"],
+  "properties": {
+    "schema": {
+      "const": "control-plane/project/v1"
+    },
+    "generatedAt": {
+      "$ref": "#/$defs/isoTimestamp"
+    },
+    "sourceRevision": {
+      "$ref": "#/$defs/sourceRevision"
+    },
+    "project": {
+      "type": "object",
+      "required": ["id", "title"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "language": { "type": "string" },
+        "format": { "type": "string" },
+        "audienceProfile": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "isoTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

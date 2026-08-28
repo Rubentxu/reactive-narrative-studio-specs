@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/cp-characters.schema.json",
+  "title": "Control Plane Characters Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "generatedAt", "sourceRevision", "characters"],
+  "properties": {
+    "schema": {
+      "const": "control-plane/characters/v1"
+    },
+    "generatedAt": {
+      "$ref": "#/$defs/isoTimestamp"
+    },
+    "sourceRevision": {
+      "$ref": "#/$defs/sourceRevision"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "visualDNA": { "type": "string" },
+          "status": {
+            "enum": ["pass", "warning", "blocked", "pending", "unknown"]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "isoTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

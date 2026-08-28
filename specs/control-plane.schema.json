@@ -96,5 +96,46 @@
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "cp-project": {
+      "$ref": "https://narrative.dev/schemas/cp-project.schema.json"
+    },
+    "cp-progress": {
+      "$ref": "https://narrative.dev/schemas/cp-progress.schema.json"
+    },
+    "cp-graph": {
+      "$ref": "https://narrative.dev/schemas/cp-graph.schema.json"
+    },
+    "cp-workflow": {
+      "$ref": "https://narrative.dev/schemas/cp-workflow.schema.json"
+    },
+    "cp-chapters": {
+      "$ref": "https://narrative.dev/schemas/cp-chapters.schema.json"
+    },
+    "cp-characters": {
+      "$ref": "https://narrative.dev/schemas/cp-characters.schema.json"
+    },
+    "cp-assets": {
+      "$ref": "https://narrative.dev/schemas/cp-assets.schema.json"
+    },
+    "cp-visual-quality": {
+      "$ref": "https://narrative.dev/schemas/cp-visual-quality.schema.json"
+    },
+    "cp-uat": {
+      "$ref": "https://narrative.dev/schemas/cp-uat.schema.json"
+    },
+    "cp-approvals": {
+      "$ref": "https://narrative.dev/schemas/cp-approvals.schema.json"
+    },
+    "cp-costs": {
+      "$ref": "https://narrative.dev/schemas/cp-costs.schema.json"
+    },
+    "cp-history": {
+      "$ref": "https://narrative.dev/schemas/cp-history.schema.json"
+    },
+    "cp-scm": {
+      "$ref": "https://narrative.dev/schemas/cp-scm.schema.json"
+    }
+  }
 }

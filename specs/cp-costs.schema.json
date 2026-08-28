@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/cp-costs.schema.json",
+  "title": "Control Plane Costs Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "generatedAt", "sourceRevision", "costs"],
+  "properties": {
+    "schema": {
+      "const": "control-plane/costs/v1"
+    },
+    "generatedAt": {
+      "$ref": "#/$defs/isoTimestamp"
+    },
+    "sourceRevision": {
+      "$ref": "#/$defs/sourceRevision"
+    },
+    "costs": {
+      "type": "object",
+      "properties": {
+        "totalTokens": { "type": "integer", "minimum": 0 },
+        "totalCostUSD": { "type": "number", "minimum": 0 },
+        "breakdown": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["category", "amount"],
+            "properties": {
+              "category": { "type": "string" },
+              "amount": { "type": "number", "minimum": 0 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "isoTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

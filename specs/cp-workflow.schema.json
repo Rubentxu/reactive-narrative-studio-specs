@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/cp-workflow.schema.json",
+  "title": "Control Plane Workflow Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "generatedAt", "sourceRevision", "workflow"],
+  "properties": {
+    "schema": {
+      "const": "control-plane/workflow/v1"
+    },
+    "generatedAt": {
+      "$ref": "#/$defs/isoTimestamp"
+    },
+    "sourceRevision": {
+      "$ref": "#/$defs/sourceRevision"
+    },
+    "workflow": {
+      "type": "object",
+      "properties": {
+        "currentPhase": { "type": "string" },
+        "nextActions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "blocking": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "enum": ["pass", "warning", "blocked", "pending", "unknown"]
+    }
+  },
+  "$defs": {
+    "isoTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

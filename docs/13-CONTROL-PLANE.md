@@ -126,6 +126,10 @@ A page is an aggregation point.
 - Usage
 - History
 
+Each entity page is backed by one or more projection schemas defined in
+`specs/cp-*.schema.json` (project, chapters, characters, assets, visual-quality,
+uat, approvals, history, scm, costs).
+
 ## Studio Home
 
 Cross-project.
