@@ -26,7 +26,7 @@ parameters:
       enum:
         - middle-grade-8-9
         - middle-grade-9-10
-        - middle-grade-10-11
+        - profile-middle-grade-10-11
         - middle-grade-11-12
     imagePolicy:
       type: string
