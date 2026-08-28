@@ -88,7 +88,7 @@ status:
 
 relations:
   - type: usesProfile
-    targetRef: Profile:middle-grade-10-11
+    targetRef: Profile:profile-middle-grade-10-11
 ```
 
 ## Entity pages

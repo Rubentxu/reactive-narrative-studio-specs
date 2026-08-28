@@ -18,7 +18,7 @@ spec:
   language: es-ES
   lifecycle: visual-production
   format: illustrated-novel
-  audienceProfile: middle-grade-10-11
+  audienceProfile: profile-middle-grade-10-11
 
 status:
   checks:
@@ -29,4 +29,4 @@ status:
 
 relations:
   - type: usesProfile
-    targetRef: Profile:default/middle-grade-10-11
+    targetRef: Profile:default/profile-middle-grade-10-11

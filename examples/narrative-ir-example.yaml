@@ -1,0 +1,7 @@
+schema: narrative-ir/v1
+version: "1.0"
+root:
+  id: scene-test-001
+  promiseRef: setup-test
+  facts: []
+  narrativeObjects: []
