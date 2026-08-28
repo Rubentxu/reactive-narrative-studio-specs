@@ -13,6 +13,8 @@ Strengths:
 
 Typst HTML export is upstream-experimental and MUST NOT be relied on for the V1 Control Plane.
 
+M9 Typst print-layout bridge is implemented as reference templates under `templates/typst/`. These templates are not invoked by any current in-repo CLI; future cycles will wire them to the publish pipeline. The `asset:sha256:` URI scheme enforced by `visual-ir.schema.json` is preserved across the Typst translation boundary.
+
 ## V1 target
 
 `print-pdf`
