@@ -1,4 +1,4 @@
-// Reference template; not invoked by any in-repo CLI.
+// Canonical Typst book-root template; entry point: `typst compile book.typ`. Include cover.typ + chapter.typ from here.
 // Book-level layout for Typst print output.
 // Sets page geometry, text defaults, heading styles, and root-level includes.
 
