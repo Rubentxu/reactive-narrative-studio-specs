@@ -69,6 +69,7 @@
     "./examples/catalog-project.yaml",
     "./examples/creation-recipe-middle-grade.yaml",
     "./examples/middle-grade-profile.yaml",
+    "./examples/narrative-ir-example.yaml",
     "./examples/visual-spec.yaml",
     "./.gitignore",
     "./README.md",
@@ -134,6 +135,7 @@
       "applied_date": "2026-08-28",
       "merge_semantics": "extract over previous package root; same-path files replace prior versions"
     },
-    "regenerated_at": "2026-08-28T16:22:00.000000+00:00"
+    "regenerated_at": "2026-08-28T17:59:52.485808+00:00",
+    "regeneration_reason": "m6-6C: added canonical test fixture examples/narrative-ir-example.yaml for SystemExit discriminator oracle; count 121 → 122"
   }
 }
