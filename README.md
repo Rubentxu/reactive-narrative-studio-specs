@@ -9,6 +9,65 @@ graphic novels, comics, manga and future sequential/narrative media.
 The initial dogfooding profile is Spanish-language readers aged 8–12, while
 the architecture remains audience-neutral through composable profiles.
 
+## What this repository is
+
+This repository is the **specification pack** — the canonical source of
+truth for the system's architecture, schemas, decision records, examples,
+and acceptance tests. It contains **no runnable application code yet**.
+Implementation repositories will consume the schemas, ADRs and UAT
+scenarios defined here.
+
+A runnable reference implementation is expected to land as a separate
+repository, following the constraints documented in
+[`docs/25-IMPLEMENTATION-STARTER.md`](docs/25-IMPLEMENTATION-STARTER.md).
+
+## Quick links
+
+| You want to… | Read |
+|---|---|
+| Understand the vision | [`docs/01-VISION.md`](docs/01-VISION.md) |
+| Read the product requirements | [`docs/02-PRD.md`](docs/02-PRD.md) |
+| See the architecture | [`docs/03-ARCHITECTURE.md`](docs/03-ARCHITECTURE.md) |
+| Browse the domain model | [`docs/04-DOMAIN-MODEL.md`](docs/04-DOMAIN-MODEL.md) |
+| See the decision history | [`docs/adrs/`](docs/adrs/) (25 ADRs) |
+| Validate against a JSON Schema | [`specs/`](specs/) (20 schemas) |
+| See a worked example | [`examples/`](examples/) |
+| Run an acceptance test | [`uat/`](uat/) (17 UATs) |
+| Check the glossary | [`docs/27-GLOSSARY.md`](docs/27-GLOSSARY.md) |
+| See the risks | [`docs/26-RISKS.md`](docs/26-RISKS.md) |
+
+## Repository layout
+
+```text
+.
+├── README.md                 — this file
+├── LICENSE                   — MIT
+├── MANIFEST.json             — canonical file inventory + schema version
+├── OVERLAY-MANIFEST.json     — Backstage-inspired Control Plane overlay provenance
+├── docs/                     — 35 narrative documents + 25 ADRs
+├── specs/                    — 20 JSON Schemas (catalog, projections, CLI contracts)
+├── examples/                 — 5 worked YAML examples
+├── uat/                      — 17 acceptance-test scenarios
+├── control-plane/            — Control Plane assets (recipes, providers)
+└── changes/                  — SDDK change records (proposal/spec/design/tasks)
+```
+
+## Release status
+
+- **Current release**: `v0.1.0` — annotated tag, peeled to commit `42147d91`.
+- **Wave 1–3 landed**: catalog vocabulary normalization (lowercase status,
+  lifecycle enum of 10, capability kinds enum of 11), inspect/next CLI
+  contracts, and 13 control-plane projection schemas (cp-approvals,
+  cp-assets, cp-chapters, cp-characters, cp-costs, cp-graph, cp-progress,
+  cp-project, cp-scm, cp-uat, cp-visual-quality, cp-workflow, cp-history).
+- **Wave 4 deferred** to the next cycle (`spec-completion-ir`): narrative-IR,
+  visual-IR, sequential-IR, event, provider-capability, publishing-receipt,
+  profile, visual-spec schemas and the first ComfyUI workflow bundle.
+- **Acceptance criteria**: 6 of 13 ACs implemented in this release; the
+  remaining 7 are deferred or not in scope for the spec pack.
+- **Verification verdict**: PASS_WITH_WARNINGS. See
+  [`docs/26-RISKS.md`](docs/26-RISKS.md) for the open risks.
+
 ## Core thesis
 
 1. **Skills are knowledge.**
@@ -170,3 +229,41 @@ Git project
 ```
 
 Only then does M10 build the richer serverless Control Plane.
+
+## Specification methodology
+
+This pack is maintained under the **Spec-Driven Kit (SDDK)** workflow:
+
+1. Every change starts as a proposal in `changes/<change-name>/proposal.md`.
+2. Specs are written as `specs/<capability>/spec.md` deltas.
+3. Design and tasks split the change into review-sized work units.
+4. Each task is applied as an atomic conventional commit on `main`.
+5. Each cycle closes with a verify + debt-verify gate, a local annotated
+   semver tag, and a durable archive manifest in the external SDDK vault.
+
+The current change in flight is `spec-completion`; its artifacts are
+preserved under [`changes/spec-completion/`](changes/spec-completion/) and
+its full ledger trace lives in the SDDK vault.
+
+## Contributing
+
+This is an early-stage specification pack. Until the implementation
+repositories land, contributions are best submitted as:
+
+1. An issue that frames the problem and references existing ADRs.
+2. A change record (`changes/<name>/`) with proposal + spec + design +
+   tasks following the SDDK conventions.
+3. Atomic conventional commits on a feature branch, with the SDDK gate
+   pipeline green on `main` before merge.
+
+For trivial documentation fixes, a direct pull request is fine.
+
+## Project status
+
+Active. Pre-implementation. The architecture, control-plane overlay and
+acceptance-test scaffolding are stable; the runnable reference
+implementation is the next milestone.
+
+## License
+
+Released under the [MIT License](LICENSE). Copyright © 2026 Rubentxu.
