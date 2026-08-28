@@ -1,84 +1,16 @@
----
 schema: profile/v1
-profileId: middle-grade-10-11
----
-
+profileId: profile-middle-grade-10-11
 audience:
   ageBand: middle-grade
-  language: es-ES
   readingLevel: fluent
-
 format:
   medium: illustrated-book
   pageTarget: 96
   printBackend: typst
-
 voice:
   register: playful
   person: third-limited
   tense: past
-
 guardrails:
   - graphic-violence
   - explicit-romance
-
-# Backwards-compatible keys (pre-wave-4 schema).
-# Producers MAY keep these populated for tools that have not yet migrated
-# to the audience/format/voice structure. They MUST stay in sync if both
-# are present.
-id: middle-grade-10-11
-locale: es-ES
-
-reader:
-  age_min: 10
-  age_max: 11
-  independence: independent
-
-narrative:
-  pov_complexity: moderate
-  subplot_complexity: moderate
-  timeline_complexity: moderate
-  chapter_words:
-    preferred_min: 1200
-    preferred_max: 2500
-
-language:
-  sentence_complexity: moderate
-  contextualize_rare_words: true
-
-intensity:
-  peril: medium
-  graphic_violence: none
-  horror: configurable
-
-evaluation:
-  readability:
-    - fernandez-huerta
-    - szigriszt-pazos
-
-reader:
-  age_min: 10
-  age_max: 11
-  independence: independent
-
-narrative:
-  pov_complexity: moderate
-  subplot_complexity: moderate
-  timeline_complexity: moderate
-  chapter_words:
-    preferred_min: 1200
-    preferred_max: 2500
-
-language:
-  sentence_complexity: moderate
-  contextualize_rare_words: true
-
-intensity:
-  peril: medium
-  graphic_violence: none
-  horror: configurable
-
-evaluation:
-  readability:
-    - fernandez-huerta
-    - szigriszt-pazos

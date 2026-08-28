@@ -1,0 +1,27 @@
+# Reactive Narrative Studio — gitattributes template
+# Adopted into every project under version control so line endings and
+# language stats stay predictable across clones.
+
+# Normalize all text to LF on commit
+* text=auto eol=lf
+
+# Force LF for canonical text formats
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+
+# Mark generated/derived files so GitHub linguist skips them
+*.lock linguist-generated
+package-lock.json linguist-generated
+narrative.lock linguist-generated
+control-plane/workflows/comfyui/*.json linguist-generated
+
+# Treat asset artifacts as binary
+assets/generated/** binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
