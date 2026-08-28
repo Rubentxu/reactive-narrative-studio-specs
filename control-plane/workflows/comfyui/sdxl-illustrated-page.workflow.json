@@ -1,0 +1,46 @@
+{
+  "schema": "workflow/v1",
+  "workflowId": "comfyui.sdxl.illustrated-page",
+  "provider": "comfyui",
+  "model": "sdxl-1.0",
+  "description": "Reference ComfyUI workflow for an illustrated-book page. One shot in, one asset out, one cp-visual-quality verdict emitted.",
+  "inputs": {
+    "shotRef": {
+      "type": "string",
+      "pattern": "^shot-[a-z0-9-]+$",
+      "description": "Reference to a shot in the Visual IR."
+    },
+    "styleRefs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 0,
+      "description": "Content-addressed style/character/location references."
+    }
+  },
+  "outputs": {
+    "assetHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "verdict": {
+      "type": "string",
+      "enum": ["pass", "warning", "blocked", "pending", "unknown"]
+    }
+  },
+  "nodes": [
+    {"id": "load-checkpoint", "kind": "CheckpointLoaderSimple", "params": {"ckpt_name": "sdxl_base_1.0.safetensors"}},
+    {"id": "clip-encode",     "kind": "CLIPTextEncode",        "params": {"text": "{{shotRef.prompt}}"}},
+    {"id": "vae-decode",      "kind": "VAEDecode",             "params": {}},
+    {"id": "save-image",      "kind": "SaveImage",             "params": {"filename_prefix": "{{shotRef.id}}"}}
+  ],
+  "links": [
+    {"from": "load-checkpoint.MODEL", "to": "clip-encode"},
+    {"from": "clip-encode.CONDITIONING", "to": "vae-decode"},
+    {"from": "vae-decode.IMAGE", "to": "save-image"}
+  ],
+  "metadata": {
+    "author": "spec-pack",
+    "version": "1.0.0",
+    "evidence": [
+      "specs/event.schema.json#/asset.generated",
+      "specs/cp-visual-quality.schema.json"
+    ]
+  }
+}

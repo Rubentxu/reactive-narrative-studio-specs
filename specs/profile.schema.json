@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/profile.schema.json",
+  "title": "Audience Profile",
+  "description": "Audience-and-format profile (per ADR-009). Profiles are the bridge between audience knowledge and creative decisions; they are declared up-front and consumed by every downstream artifact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "profileId", "audience", "format", "voice"],
+  "properties": {
+    "schema": {"const": "profile/v1"},
+    "profileId": {"type": "string", "pattern": "^profile-[a-z0-9-]+$"},
+    "audience": {"$ref": "#/$defs/Audience"},
+    "format": {"$ref": "#/$defs/Format"},
+    "voice": {"$ref": "#/$defs/Voice"},
+    "guardrails": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 0,
+      "description": "Topics or imagery that the profile forbids (e.g. graphic-violence)."
+    }
+  },
+  "$defs": {
+    "Audience": {
+      "title": "Audience",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ageBand"],
+      "properties": {
+        "ageBand": {"type": "string", "enum": ["early", "middle-grade", "young-adult", "adult", "all-ages"]},
+        "language": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?$"},
+        "readingLevel": {"type": "string", "enum": ["emergent", "early", "fluent", "advanced"]}
+      }
+    },
+    "Format": {
+      "title": "Format",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["medium"],
+      "properties": {
+        "medium": {"type": "string", "enum": ["prose", "illustrated-book", "graphic-novel", "comic", "manga"]},
+        "pageTarget": {"type": "integer", "minimum": 1},
+        "printBackend": {"type": "string", "enum": ["typst", "latex", "weasyprint"]}
+      }
+    },
+    "Voice": {
+      "title": "Voice",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["register"],
+      "properties": {
+        "register": {"type": "string", "enum": ["neutral", "lyrical", "playful", "tense", "documentary"]},
+        "person": {"type": "string", "enum": ["first", "second", "third-limited", "third-omniscient"]},
+        "tense": {"type": "string", "enum": ["past", "present", "mixed"]}
+      }
+    }
+  }
+}

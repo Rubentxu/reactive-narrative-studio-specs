@@ -1,5 +1,55 @@
-id: visual-scene-024
+---
+schema: visual-spec/v1
+projectId: example-project
 scene: scene-024
+---
+
+style:
+  movement: watercolor
+  lineWeight: medium
+  renderEngine: comfyui-sdxl
+
+palette:
+  tokens:
+    - name: paper
+      hex: "#F4E9D8"
+    - name: ink
+      hex: "#2B2A28"
+    - name: ochre
+      hex: "#C49A6C"
+
+lighting:
+  key: natural
+  mood: warm
+
+# Pre-wave-4 keys, preserved for backwards compatibility.
+required_visible:
+  - nora
+  - irene
+  - silver-key
+  - lantern
+
+relations:
+  - subject: nora
+    action: holds
+    object: silver-key
+  - subject: irene
+    action: holds
+    object: lantern
+
+composition:
+  shot: medium-wide
+  emphasis: silver-key
+
+references:
+  nora: asset:sha256:CHARACTER_REF
+  irene: asset:sha256:CHARACTER_REF
+  location: asset:sha256:LOCATION_REF
+  style: asset:sha256:STYLE_REF
+
+policy:
+  privacy: local_preferred
+  quality: final
 
 required_visible:
   - nora

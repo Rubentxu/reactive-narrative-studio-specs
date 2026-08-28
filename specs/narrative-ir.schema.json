@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/narrative-ir.schema.json",
+  "title": "Narrative IR",
+  "type": "object",
+  "description": "Composite schema for narrative intermediate representation. Each node type is individually addressable via $ref.",
+  "additionalProperties": false,
+  "required": ["schema", "version", "root"],
+  "properties": {
+    "schema": {
+      "const": "narrative-ir/v1"
+    },
+    "version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "root": {
+      "$ref": "#/$defs/Scene"
+    }
+  },
+  "$defs": {
+    "Scene": {
+      "title": "Scene",
+      "type": "object",
+      "description": "A narrative scene — the fundamental unit of storytelling.",
+      "additionalProperties": false,
+      "required": ["id", "promiseRef", "facts", "narrativeObjects"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^scene-[a-z0-9-]+$"
+        },
+        "promiseRef": {
+          "type": "string",
+          "description": "Reference to the promise this scene fulfils."
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "minItems": 0
+        },
+        "narrativeObjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Promise"
+          },
+          "minItems": 0
+        },
+        "lifecycle": {
+          "$ref": "catalog-entity.schema.json#/properties/spec/properties/lifecycle"
+        }
+      }
+    },
+    "Promise": {
+      "title": "Promise",
+      "type": "object",
+      "description": "A narrative promise — a story commitment made to the reader.",
+      "additionalProperties": false,
+      "required": ["id", "type", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^promise-[a-z0-9-]+$"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["setup", "development", "climax", "resolution"]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "fulfilled", "abandoned"]
+        }
+      }
+    },
+    "Fact": {
+      "title": "Fact",
+      "type": "object",
+      "description": "A canonical story fact that must remain consistent across scenes.",
+      "additionalProperties": false,
+      "required": ["id", "content"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^fact-[a-z0-9-]+$"
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1
+        },
+        "establishedAt": {
+          "type": "string",
+          "description": "Scene id where this fact was first established."
+        }
+      }
+    },
+    "NarrativeObject": {
+      "title": "Narrative Object",
+      "type": "object",
+      "description": "A character, location, or prop that participates in the narrative.",
+      "additionalProperties": false,
+      "required": ["id", "kind", "name"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["character", "location", "prop"]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

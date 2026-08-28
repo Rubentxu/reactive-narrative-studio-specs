@@ -133,7 +133,14 @@ Example `Character:Nora` aggregates:
 - runtime state projection (see `specs/cp-project.schema.json`);
 - visual assets projection (`specs/cp-assets.schema.json`);
 - UAT projection (`specs/cp-uat.schema.json`);
-- Git history projection (`specs/cp-history.schema.json`).
+- Git history projection (`specs/cp-history.schema.json`);
+- chapter-level projection (`specs/cp-chapters.schema.json`);
+- character-level projection (`specs/cp-characters.schema.json`).
+
+The chapter and character projections are first-class entity pages that
+follow the same shape as `cp-project`: they carry a `kind`, an `entityRef`
+back into the runtime graph, and a stable `lifecycle` token drawn from
+the same enum used by `catalog-entity.schema.json`.
 
 The entity is a navigation/join point.
 
