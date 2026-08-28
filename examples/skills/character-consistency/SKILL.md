@@ -37,6 +37,13 @@ Do not invoke `character-consistency` for plot-level structural decisions (those
 
 ## Workflow
 
+1. **Load character profile** from `docs/08-PROFILES.md` (halt if missing).
+2. **Assemble dialogue corpus** from existing project scenes; use profile baseline for first-appearance.
+3. **Validate idiolect compliance** — vocabulary tier, syntactic signature, filled-pause frequency, question-to-statement ratio.
+4. **Audit profile cross-references** for physical descriptors and backstory invariants.
+5. **Check dialogue tags**, POV consistency (for POV characters), and voice drift score.
+6. **Verify arc beat alignment** for any belief or behavioral change.
+
 ## Voice markers reference
 
 The following markers define a character's voice profile and are used for idiolect compliance checking:
