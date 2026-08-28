@@ -230,10 +230,10 @@ archived
 Status is orthogonal:
 
 ```text
-continuity: PASS
-visual: WARNING
-uat: PENDING
-publishing: BLOCKED
+continuity: pass
+visual: warning
+uat: pending
+publishing: blocked
 ```
 
 ## M10 scope

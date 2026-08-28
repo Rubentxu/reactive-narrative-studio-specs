@@ -56,3 +56,7 @@ serverless Control Plane loading.
 **Scene Visual Contract** — required visual evidence for an illustration.
 
 **Synthetic Reader** — advisory model simulation, never human UAT.
+
+**Status (canonical vocabulary)** — Control Plane check-status values are
+lowercase: `pass | warning | blocked | pending | unknown`. Source of truth:
+specs/control-plane.schema.json checks enum. Any other casing is rejected.

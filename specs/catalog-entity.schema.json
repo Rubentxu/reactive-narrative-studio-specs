@@ -14,7 +14,19 @@
     },
     "kind": {
       "type": "string",
-      "minLength": 1
+      "enum": [
+        "NarrativeProject",
+        "Character",
+        "Chapter",
+        "Build",
+        "UATRun",
+        "Skill",
+        "Pack",
+        "Profile",
+        "Recipe",
+        "Workflow",
+        "Provider"
+      ]
     },
     "metadata": {
       "type": "object",
@@ -59,7 +71,24 @@
       "additionalProperties": false
     },
     "spec": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "lifecycle": {
+          "type": "string",
+          "enum": [
+            "idea",
+            "development",
+            "drafting",
+            "editorial",
+            "visual-production",
+            "proof",
+            "uat",
+            "ready",
+            "published",
+            "archived"
+          ]
+        }
+      }
     },
     "status": {
       "type": "object"
