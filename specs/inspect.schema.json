@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/inspect.schema.json",
+  "title": "Narrative Inspect Output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "profile", "runtimePath"],
+      "properties": {
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "namespace"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "namespace": {
+              "type": "string",
+              "default": "default"
+            }
+          }
+        },
+        "profile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtimePath": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

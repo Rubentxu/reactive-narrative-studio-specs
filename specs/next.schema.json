@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/next.schema.json",
+  "title": "Narrative Next Output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["goal", "recommended_skills"],
+  "properties": {
+    "goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blocking": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "recommended_skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

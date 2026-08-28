@@ -4,6 +4,8 @@
 
 Do M1–M9 before investing heavily in the portal.
 
+Schema reference: specs/inspect.schema.json
+
 ## Control Plane implementation begins after projection contract proves stable
 
 Suggested repository strategy:

@@ -52,6 +52,9 @@ narrative inspect --json
 
 Stable structured output is preferred to agents parsing tables.
 
+Canonical contracts: `specs/inspect.schema.json` for `inspect --json` output,
+`specs/next.schema.json` for `next --json` output.
+
 ## `next`
 
 High-value agent command:
@@ -81,6 +84,16 @@ Output SHOULD include:
 - warnings;
 - evidence IDs;
 - remediation hints.
+
+### Exit codes for `narrative check`
+
+| Code | Condition |
+|---:|:---|
+| 0 | All checks pass |
+| 1 | One or more blocking checks failed |
+| 2 | Warnings only, no blockers |
+| 3 | Project not initialised or no `narrative.yaml` found |
+| 4 | Internal error |
 
 ## CLI implementation
 
