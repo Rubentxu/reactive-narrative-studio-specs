@@ -1,0 +1,11 @@
+# Profile alias registry — forward-looking scaffolding for round-5+ refactor.
+# Per ADR-001 + ADR-005, profiles are knowledge artifacts referenced by name.
+# This registry DECLARES canonical aliases; consumption (replacing hard-coded
+# references in 5 pack files) is deferred to a future cycle to keep m7
+# pack-only and minimize blast radius.
+aliases:
+  - id: profile-middle-grade-10-11
+    canonical_name: "Middle Grade (10-11)"
+    audience_band: "10-11"
+    references_count: 9
+    first_introduced: m4

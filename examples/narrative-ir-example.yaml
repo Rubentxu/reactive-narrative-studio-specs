@@ -3,5 +3,7 @@ version: "1.0"
 root:
   id: scene-test-001
   promiseRef: setup-test
+  # intentionally dangling promiseRef (DEBT-SMELLS-003 documented in m6 debt-report.md;
+  # 6C test fixture is minimal; resolution wiring is out-of-scope for spec-pack-only cycles)
   facts: []
   narrativeObjects: []

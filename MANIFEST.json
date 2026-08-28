@@ -95,6 +95,7 @@
     "./specs/inspect.schema.json",
     "./specs/narrative-ir.schema.json",
     "./specs/next.schema.json",
+    "./specs/profile-aliases.yaml",
     "./specs/profile.schema.json",
     "./specs/project.schema.json",
     "./specs/provider-capability.schema.json",
