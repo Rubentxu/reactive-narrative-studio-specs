@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # tools/check-skill-crossrefs.sh
-# Verifies docs/NN-*.md cross-references in the two SKILL.md files touched by wave-8A.
-# The script scans all examples/skills/*/SKILL.md but only validates refs that appear
-# in character-consistency and narrative-arc (the 8A scope). Future cycles that close
-# DEBT-COUPLING-NEW-002 (scene-validator) can extend this list.
+# Verifies docs/NN-*.md cross-references in SKILL.md files under examples/skills/.
+# The script scans character-consistency, narrative-arc, and scene-validator
+# SKILL.md files and validates that all cross-references to docs/NN-*.md exist.
 set -euo pipefail
 
 root="."
@@ -20,11 +19,20 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# Files in scope for m8 wave-8A
+# Files in scope for m8–m11 (character-consistency, narrative-arc, scene-validator)
 scope_files=(
   "$root/examples/skills/character-consistency/SKILL.md"
   "$root/examples/skills/narrative-arc/SKILL.md"
+  "$root/examples/skills/scene-validator/SKILL.md"
 )
+
+# Verify all scope files exist before scanning
+for f in "${scope_files[@]}"; do
+  if ! test -f "$f"; then
+    echo "ERROR: scope file not found: $f" >&2
+    exit 2
+  fi
+done
 
 # Extract doc refs matching NN-*.md pattern (backtick or bold form) from scoped files
 tmp=$(mktemp)
@@ -34,7 +42,7 @@ grep -hoE '(`docs/[0-9]{2}-[^`]+`|\*\*docs/[0-9]{2}-[^\*]+\*\*)' \
   | sort > "$tmp" || true
 
 total=$(wc -l < "$tmp")
-skill_files=2  # scope is fixed: 2 files from wave-8A
+skill_files=3  # scope is fixed: character-consistency + narrative-arc + scene-validator
 
 broken=0
 while IFS= read -r ref; do

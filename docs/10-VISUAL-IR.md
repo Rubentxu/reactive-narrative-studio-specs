@@ -6,6 +6,11 @@ Treat illustration as a structured production domain, not `prompt -> image`.
 
 ## Character Visual DNA
 
+The `asset:sha256:<64-hex>` notation is enforced by `specs/visual-ir.schema.json`
+(see `$defs.Reference.properties.target.pattern`) and `specs/visual-spec.schema.json`
+(see `properties.continuity.properties.characterRefs.items.pattern` and
+`properties.continuity.properties.locationRefs.items.pattern`).
+
 ```yaml
 id: visual-nora-v1
 character: nora
@@ -32,8 +37,7 @@ references:
   front: asset:sha256:0000000000000000000000000000000000000000000000000000000000000000
   side: asset:sha256:1111111111111111111111111111111111111111111111111111111111111111
   expressions: asset:sha256:2222222222222222222222222222222222222222222222222222222222222222
-  closeup: asset:sha256:9f86d0818848268b4a3e876ac0e48959b6f0f6be7e9d1d9a9b7e5b5e5e5e5e5
-<!-- asset:sha256:<64-hex> matches the regex [a-f0-9]{64} enforced by visual-ir.schema.json -->
+  closeup: asset:sha256:9f86d0818848268b4a3e876ac0e48959b6f0f6be7e9d1d9a9b7e5b5e5e5e5e5e5
 ```
 
 ## Location DNA

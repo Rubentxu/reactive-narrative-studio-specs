@@ -215,7 +215,6 @@ A scene-ending hook that poses an ambiguous question ("and then everything chang
 - **narrative-arc** (`examples/skills/narrative-arc/SKILL.md`): Arc provides the macro-structure within which scenes are placed; scene-validator validates micro-structure within each arc beat.
 - **character-consistency** (`examples/skills/character-consistency/SKILL.md`): Scene-validator checks that character reactions are proportionate and consistent with the character's established psychology; character-consistency checks the broader voice and idiolect consistency across scenes.
 - **docs/10-VISUAL-IR.md**: Scene-level decisions about action vs. reaction inform visual contract density; action scenes require more visual description per beat than reaction scenes.
-- **docs/12-SCENE-STRUCTURE.md** (if present): Provides the canonical reference for scene taxonomy and beat expectations.
 
 ## Evaluation cases
 

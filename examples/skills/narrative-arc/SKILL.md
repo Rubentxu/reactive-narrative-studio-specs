@@ -62,9 +62,9 @@ For the top two candidate models, write a one-paragraph rationale for each. The 
 
 For the selected model, produce a beat sheet in this format:
 
-```
 ## [Model name] Beat Sheet — [Genre] — [Target length]
 
+```
 | Beat | Position | Narrative function | Typical word-count window |
 |------|----------|-------------------|--------------------------|
 | 1-Setup | 0–10% | Establish status quo and protagonist | 400–1,200 words |
