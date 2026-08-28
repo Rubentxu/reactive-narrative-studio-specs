@@ -1,4 +1,4 @@
-// Reference template; not invoked by any in-repo CLI.
+// Canonical Typst cover component; not standalone-renderable. Include via `#include "cover.typ"` at the top of the root Typst document.
 // Cover page layout with cover_dimensions reference.
 // Apply via: #include "cover.typ" at the top of the root Typst document.
 

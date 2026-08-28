@@ -1,4 +1,4 @@
-// Reference template; not invoked by any in-repo CLI.
+// Canonical Typst chapter component; not standalone-renderable. Include via `#include "chapter.typ"` from book.typ.
 // Chapter-level layout: num, title, body.
 // Designed for use within book.typ as a component; not standalone-renderable.
 
