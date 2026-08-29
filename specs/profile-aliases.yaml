@@ -3,9 +3,18 @@
 # This registry DECLARES canonical aliases; consumption (replacing hard-coded
 # references in 5 pack files) is deferred to a future cycle to keep m7
 # pack-only and minimize blast radius.
+#
+# Alias dereferencing: consumers use the quoted placeholder form
+#   "{{ profiles.<alias-id> }}"
+# e.g. "{{ profiles.profile-middle-grade-10-11 }}"
+# following the {{ audience }} precedent at
+# examples/creation-recipe-middle-grade.yaml:42.
+# The placeholder is opaque text to non-CLI consumers; CLI/schema consumer
+# (M13+) resolves it at runtime.
 aliases:
   - id: profile-middle-grade-10-11
     canonical_name: "Middle Grade (10-11)"
     audience_band: "10-11"
     references_count: 9
     first_introduced: m4
+    consumers_introduced: m12

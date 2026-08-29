@@ -9,7 +9,7 @@ format:
   type: illustrated-novel
 
 audience:
-  profile: profile-middle-grade-10-11
+  profile: "{{ profiles.profile-middle-grade-10-11 }}"
 
 genre:
   - fantasy

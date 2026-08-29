@@ -4,6 +4,7 @@ root:
   id: scene-test-001
   promiseRef: setup-test
   # intentionally dangling promiseRef (DEBT-SMELLS-003 documented in m6 debt-report.md;
-  # 6C test fixture is minimal; resolution wiring is out-of-scope for spec-pack-only cycles)
+  # 6C test fixture is minimal; resolution wiring is out-of-scope for spec-pack-only cycles;
+  # residual of m12 alias-registry cluster; not a cluster member — cluster = DEBT-COUPLING-001 / DEBT-COUPLING-NEW-003 / DEBT-SMELLS-002)
   facts: []
   narrativeObjects: []
