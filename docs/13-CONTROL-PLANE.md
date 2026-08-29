@@ -88,7 +88,7 @@ status:
 
 relations:
   - type: usesProfile
-    targetRef: Profile:profile-middle-grade-10-11
+    targetRef: Profile:profile-middle-grade-10-11  # entity-reference, not a profile consumer; alias deref does not apply per specs/profile-aliases.yaml resolution rule
 ```
 
 ## Entity pages

@@ -27,6 +27,7 @@ Initial dogfood set:
 - `middle-grade-8-9`
 - `middle-grade-9-10`
 - `profile-middle-grade-10-11`
+> See also: specs/profile-aliases.yaml (canonical alias registry)
 - `middle-grade-11-12`
 - `middle-grade-flex-8-12`
 
@@ -35,7 +36,7 @@ The profiles SHOULD tune signals, not censor content.
 ## Example
 
 ```yaml
-audience: profile-middle-grade-10-11
+audience: "{{ profiles.profile-middle-grade-10-11 }}"
 locale: es-ES
 format: illustrated-novel
 genre:
@@ -92,7 +93,7 @@ over `kids_safe=true`.
 Profiles MUST be extensible:
 
 ```yaml
-extends: profile-middle-grade-10-11
+extends: "{{ profiles.profile-middle-grade-10-11 }}"
 
 override:
   fear.intensity: high
