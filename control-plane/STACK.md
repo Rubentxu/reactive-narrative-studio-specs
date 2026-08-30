@@ -26,3 +26,7 @@ The implementation must pin exact compatible releases when M10 starts.
 ## T1 Deviations (resolved at m14 apply)
 
 - **vite**: docs/28 baseline 8.1 → resolved 8.2.2 (minor drift)
+
+## T1 Deviations (resolved at m15 apply)
+
+- **@radix-ui/react-tabs**: resolved at m15 apply — exact pin `1.1.21` confirmed via T0 ladder per M14 D3 (patch drift from baseline; compatible with React 19.2.8)

@@ -98,6 +98,13 @@ Do not create an internal component framework prematurely.
 but the architecture MUST not depend on a remote component registry at
 runtime.
 
+### Radix Tabs pin (m15 slice 2)
+
+The `@radix-ui/react-tabs` package is pinned at **exactly `1.1.21`** (no `^` or `~`).
+This is the baseline executable via `@radix-ui/react-tabs` accessible primitives for
+the entity-page tab composition. Compatible with React 19.2.8 per peer dependency
+range `^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc`.
+
 ## State strategy
 
 ### Zustand

@@ -196,3 +196,25 @@ Current hash
 
 This enables the Control Plane to explain not only books, but the tooling
 available to create them.
+
+## Catalog as implemented (m15 slice 2)
+
+The `CatalogEntity` slot is a `readonly CatalogEntity[]` in the projection store.
+It is populated by `SnapshotProjectSource.loadCatalogEntities()` which reads all
+`.yaml` and `.json` files in the catalog directory that carry the
+`narrative.dev/schemas/catalog-entity-v1alpha1` schema identifier.
+
+The `/catalog` page renders entities grouped by `kind` (NarrativeProject,
+Character, Build, UATRun) using `catalogSelectors.byKind` and
+`catalogSelectors.count`. Each row links to `/entity/$kind/$namespace/$name`.
+
+The `/entity/$kind/$namespace/$name` page composes feature tabs and cards via
+the internal Extension Registry (`extensionRegistry.resolveEntityTabs` /
+`resolveEntityCards`). Feature folders (`story/character`, `visual/character`,
+`catalog/entity`, `continuity/character`) register at module-init. Tab/card
+priority ordering is ascending; predicate filtering uses `kindIs` and combinators.
+Radix Tabs 1.1.21 provides the accessible tab primitive.
+
+The Extension Registry is a module singleton backed by a `ControlPlaneFeature[]`
+array literal. No cross-folder imports exist between feature source directories
+— isolation is enforced by `extension-isolation.spec.ts` grep oracle.

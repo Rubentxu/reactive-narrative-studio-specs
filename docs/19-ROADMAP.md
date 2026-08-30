@@ -46,6 +46,13 @@ M9 remains the architectural proof before building the portal.
 No mandatory network/backend calls; invalid projection fixture produces
 diagnostic rather than application crash.
 
+### Slice 2 — done (m15)
+
+**UAT-M10-02** satisfied: catalog/entity composition with Extension Registry,
+feature tabs (Story Overview/Arc/Scenes, Visual DNA, Continuity Status),
+Entity Cards (Visual, Metadata, Relations), and Radix Tabs orchestration.
+See `docs/29-NARRATIVE-CATALOG.md` §"Catalog as implemented (m15 slice 2)".
+
 ## M10.1 — Creation Recipes
 
 ### Deliver

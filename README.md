@@ -167,6 +167,13 @@ No mandatory:
 - organization IAM model;
 - dynamic remote plugins.
 
+## Control Plane — Catalog + Entity Pages
+
+The catalog and entity page system is built in `control-plane/` as a serverless
+React/Vite PWA. See [`docs/29-NARRATIVE-CATALOG.md`](docs/29-NARRATIVE-CATALOG.md)
+for the implemented design and [`docs/30-CONTROL-PLANE-EXTENSIONS.md`](docs/30-CONTROL-PLANE-EXTENSIONS.md) for the Extension Registry architecture.
+UAT-M10-02 validates catalog/entity composition with four feature tabs per entity.
+
 ## Control Plane stack baseline
 
 Current implementation baseline:
