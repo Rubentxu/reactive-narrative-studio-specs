@@ -437,9 +437,9 @@ glob.glob('examples/*.yaml')+glob.glob('templates/*.yaml')];print('YAML sweep PA
 grep -nE "^## Evaluation cases$" templates/skill-template.md \
   && test "$(grep -cE '^## ' templates/skill-template.md)" -eq 12 && echo "AC-08 PASS"
 python3 -c "import json;s=json.load(open('specs/event.schema.json'));\
-d=set(s.get('\$defs',{}));req={'run.started','run.completed','cost.recorded',\
+e=s['properties']['eventType']['enum'];req={'run.started','run.completed','cost.recorded',\
 'candidate.accepted','candidate.rejected','asset.generated','approval.granted',\
-'publish.completed'};assert not req-d,req-d;print('AC-10 PASS')"
+'publish.completed'};assert len(e)==8 and set(e)>=req,(set(e)^req);print('AC-13.5 PASS')"
 test "$(ls control-plane/workflows/comfyui/*.json | wc -l)" -eq 9 \
   && python3 -c "import json,glob;[json.load(open(p)) for p in \
 glob.glob('control-plane/workflows/comfyui/*.json')];print('fixtures PASS')"
