@@ -12,6 +12,7 @@ import './features/catalog/entity/index.tsx';
 import './features/story/character/index.tsx';
 import './features/visual/character/index.tsx';
 import './features/continuity/character/index.tsx';
+import './features/docs/character/index.tsx';
 
 const root = document.getElementById('root');
 if (!root) throw new Error('Root element not found');

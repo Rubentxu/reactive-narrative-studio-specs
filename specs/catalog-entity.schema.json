@@ -25,7 +25,8 @@
         "Profile",
         "Recipe",
         "Workflow",
-        "Provider"
+        "Provider",
+        "Decision"
       ]
     },
     "metadata": {

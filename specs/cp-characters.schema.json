@@ -27,7 +27,8 @@
           "visualDNA": { "type": "string" },
           "status": {
             "enum": ["pass", "warning", "blocked", "pending", "unknown"]
-          }
+          },
+          "docRef": { "type": "string" }
         },
         "additionalProperties": false
       }

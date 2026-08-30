@@ -10,7 +10,7 @@ const GOLDEN_ROOT = resolve(process.cwd(), '../golden/control-plane');
 function newFileListFromDirWithYaml(relativeDir: string): File[] {
   const fullDir = join(GOLDEN_ROOT, relativeDir);
   const entries = readdirSync(fullDir, { recursive: true });
-  const files = entries.filter((f): f is string => typeof f === 'string' && (f.endsWith('.json') || f.endsWith('.yaml') || f.endsWith('.yml')));
+  const files = entries.filter((f): f is string => typeof f === 'string' && (f.endsWith('.json') || f.endsWith('.yaml') || f.endsWith('.yml') || f.endsWith('.md')));
   return files.map((f: string) => {
     const fullPath = join(fullDir, f);
     const { readFileSync } = require('node:fs');

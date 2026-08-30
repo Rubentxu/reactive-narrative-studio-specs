@@ -1,5 +1,5 @@
 {
-  "schema": "control-plane/decisions/v1-stub",
+  "schema": "control-plane/decisions/v1",
   "generatedAt": "2026-01-01T00:00:00Z",
   "sourceRevision": "abc123",
   "decisions": [

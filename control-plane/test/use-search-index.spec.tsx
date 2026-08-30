@@ -16,7 +16,7 @@ function newFileListFromDirWithYaml(relativeDir: string): File[] {
   const files = entries.filter(
     (f): f is string =>
       typeof f === 'string' &&
-      (f.endsWith('.json') || f.endsWith('.yaml') || f.endsWith('.yml'))
+      (f.endsWith('.json') || f.endsWith('.yaml') || f.endsWith('.yml') || f.endsWith('.md'))
   );
   return files.map((f: string) => {
     const fullPath = join(fullDir, f);
