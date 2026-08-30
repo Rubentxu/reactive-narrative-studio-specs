@@ -56,12 +56,26 @@ describe('extension-isolation', () => {
 
   it('no cross-folder imports exist in feature source tree', () => {
     const featuresDir = 'src/features';
-    // Match any import referencing another feature folder (cross-folder or relative-escape)
+    // Match any import referencing another feature folder (cross-folder)
     const grepResult = execSync(
       `grep -rE 'from.*features/story/|from.*features/visual/|from.*features/catalog/|from.*features/continuity/' ${featuresDir}/ 2>/dev/null || true`,
       { encoding: 'utf8' }
     );
     const matches = grepResult.trim().split('\n').filter((line) => line.length > 0);
     expect(matches, `Cross-folder imports found:\n${matches.join('\n')}`).toHaveLength(0);
+  });
+
+  // INC-008: relative-escape oracle — catches imports that use ../.. to reach feature folders
+  // This closes atomically with Block PF pre-flight; features/docs/ land in Block 3
+  it('no relative-escape imports bypass feature isolation (INC-008)', () => {
+    // Pattern: from\s+['"]\.\.\/\.\.\/(story|visual|catalog|continuity|docs)\/
+    const pattern = String.raw`from\s+['"]` + String.raw`\.\.\/` + String.raw`\.\.\/` +
+      '(story|visual|catalog|continuity|docs)' + '/';
+    const grepResult = execSync(
+      'grep -rE -- ' + JSON.stringify(pattern) + ' src/ 2>/dev/null || true',
+      { encoding: 'utf8' }
+    );
+    const matches = grepResult.trim().split('\n').filter((line) => line.length > 0);
+    expect(matches, `Relative-escape imports found (INC-008):\n${matches.join('\n')}`).toHaveLength(0);
   });
 });
