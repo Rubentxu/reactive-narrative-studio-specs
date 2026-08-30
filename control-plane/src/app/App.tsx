@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { RouterProvider } from '@tanstack/react-router';
 import { ErrorBoundary } from './ErrorBoundary';
 import { DiagnosticPanel } from '../diagnostics/DiagnosticPanel';
@@ -19,12 +19,7 @@ function DiagnosticBanner({ errors }: { errors: AjvError[] }): React.ReactElemen
 }
 
 function App(): React.ReactElement {
-  const [routerReady, setRouterReady] = useState(false);
   const errors = useProjectionStore((s) => s.diagnostics);
-
-  useEffect(() => { setRouterReady(true); }, []);
-
-  if (!routerReady) return <div>Loading...</div>;
 
   return (
     <ErrorBoundary>

@@ -6,6 +6,7 @@ import { SnapshotProjectSource } from '../loader/SnapshotProjectSource';
 export function SourcePicker(): React.ReactElement {
   const loadFrom = useProjectionStore((s) => s.loadFrom);
   const status = useProjectionStore((s) => s.status);
+  const sourceLabel = useProjectionStore((s) => s.sourceLabel);
   const dirSource = new DirectoryProjectSource();
 
   async function handleFileInput(e: React.ChangeEvent<HTMLInputElement>) {
@@ -22,6 +23,11 @@ export function SourcePicker(): React.ReactElement {
   return (
     <div className="source-picker">
       <h2>Load Project</h2>
+      {sourceLabel !== null ? (
+        <p>Source: {sourceLabel}</p>
+      ) : (
+        <p>No source loaded</p>
+      )}
       <p>Current status: {status}</p>
       <input type="file" multiple accept=".json" onChange={handleFileInput} aria-label="Load snapshot" />
       <button onClick={handleDirectoryPick} type="button">Open Directory (Chromium)</button>

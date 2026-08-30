@@ -25,9 +25,15 @@ export const useProjectionStore = create<ProjectionState>((set) => ({
     set({ status: 'loading' });
     const result = await source.load(projectId);
     if (result.ok) {
-      set({ status: 'loaded', bundle: result.data, diagnostics: [], sourceLabel: projectId });
+      set({
+        status: 'loaded',
+        bundle: result.data.bundle,
+        catalogEntities: result.data.catalogEntities,
+        diagnostics: [],
+        sourceLabel: projectId,
+      });
     } else {
-      set({ status: 'failed', bundle: null, diagnostics: result.errors, sourceLabel: projectId });
+      set({ status: 'failed', bundle: null, catalogEntities: [], diagnostics: result.errors, sourceLabel: projectId });
     }
   },
 

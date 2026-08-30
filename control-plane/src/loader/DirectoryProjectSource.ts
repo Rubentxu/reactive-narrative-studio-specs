@@ -1,5 +1,5 @@
 import type { Diagnostic } from '../diagnostics/types';
-import type { ProjectSource, ProjectionBundle } from './ProjectSource';
+import type { ProjectSource, ProjectionBundle, CatalogEntity } from './ProjectSource';
 import { SnapshotProjectSource } from './SnapshotProjectSource';
 
 export class DirectoryProjectSource implements ProjectSource {
@@ -13,7 +13,7 @@ export class DirectoryProjectSource implements ProjectSource {
     return this.snapshotSource.discover();
   }
 
-  async load(projectId: string): Promise<Diagnostic<ProjectionBundle>> {
+  async load(projectId: string): Promise<Diagnostic<{ bundle: ProjectionBundle; catalogEntities: CatalogEntity[] }>> {
     if (typeof window !== 'undefined' && 'showDirectoryPicker' in window) {
       return this.loadFromDir(projectId);
     }
@@ -39,7 +39,7 @@ export class DirectoryProjectSource implements ProjectSource {
     }
   }
 
-  private async loadFromDir(projectId: string): Promise<Diagnostic<ProjectionBundle>> {
+  private async loadFromDir(projectId: string): Promise<Diagnostic<{ bundle: ProjectionBundle; catalogEntities: CatalogEntity[] }>> {
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const dirHandle = await (window as any).showDirectoryPicker();

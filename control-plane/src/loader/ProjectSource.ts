@@ -19,6 +19,5 @@ export interface CatalogEntity {
 
 export interface ProjectSource {
   discover(): Promise<Diagnostic<readonly string[]>>;
-  load(projectId: string): Promise<Diagnostic<ProjectionBundle>>;
-  refresh?(): Promise<Diagnostic<ProjectionBundle>>;
+  load(projectId: string): Promise<Diagnostic<{ bundle: ProjectionBundle; catalogEntities: CatalogEntity[] }>>;
 }

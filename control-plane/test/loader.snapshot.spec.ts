@@ -9,7 +9,7 @@ describe('SnapshotProjectSource', () => {
     const result = await source.load('snapshot-valid');
     expect(result.ok).toBe(true);
     if (!result.ok) return;
-    const bundle = result.data;
+    const bundle = result.data.bundle;
     expect(bundle).toHaveProperty('project');
     expect(bundle).toHaveProperty('chapters');
     expect(bundle).toHaveProperty('characters');
@@ -25,7 +25,7 @@ describe('SnapshotProjectSource', () => {
     const result = await source.load('snapshot-valid');
     expect(result.ok).toBe(true);
     if (!result.ok) return;
-    const data = result.data as any;
-    expect(data.project.schema).toBe('control-plane/project/v1');
+    const bundle = result.data.bundle as any;
+    expect(bundle.project.schema).toBe('control-plane/project/v1');
   });
 });
