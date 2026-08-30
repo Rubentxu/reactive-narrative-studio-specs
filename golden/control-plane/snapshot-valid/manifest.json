@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "projectId": "demo-snapshot",
+  "projections": [
+    "cp-project.json",
+    "cp-chapters.json",
+    "cp-characters.json",
+    "cp-assets.json",
+    "cp-uat.json",
+    "cp-visual-quality.json",
+    "cp-history.json"
+  ]
+}

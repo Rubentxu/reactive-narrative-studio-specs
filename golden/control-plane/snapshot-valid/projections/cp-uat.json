@@ -1,0 +1,10 @@
+{
+  "schema": "control-plane/uat/v1",
+  "generatedAt": "2026-01-01T00:00:00Z",
+  "sourceRevision": "abc123",
+  "uat": {
+    "runs": [
+      { "id": "run-01", "status": "pass" }
+    ]
+  }
+}

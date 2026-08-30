@@ -1,0 +1,11 @@
+apiVersion: narrative.dev/v1alpha1
+kind: Character
+metadata:
+  name: protagonist
+  title: The Protagonist
+  namespace: default
+spec:
+  role: protagonist
+  traits:
+    - brave
+    - curious
