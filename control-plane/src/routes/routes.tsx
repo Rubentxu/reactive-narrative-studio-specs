@@ -7,4 +7,5 @@ export const routePaths = [
   "path: '/visual'",
   "path: '/qa'",
   "path: '/history'",
+  "path: '/search'",
 ] as const;
