@@ -1,0 +1,2 @@
+{"argv":"tools/sddk-pack-audit\n--root\n.\n","exit_code":0,"command":"taxonomy","timestamp":"2026-08-30T08:00:15Z"}
+{"argv":"tools/sddk-pack-audit\n{{ profiles.profile-middle-grade-10-11 }}\n--root\n.\n","exit_code":0,"command":"resolve","timestamp":"2026-08-30T08:00:15Z"}
