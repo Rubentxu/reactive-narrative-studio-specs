@@ -1,0 +1,5 @@
+apiVersion: narrative.dev/v1alpha1
+kind: Build
+metadata:
+  name: build-001
+  namespace: demo
