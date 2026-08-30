@@ -8,6 +8,8 @@ export interface ProjectionBundle {
   uat: unknown;
   visualQuality: unknown;
   history: unknown;
+  decisions: unknown;
+  docs: unknown;
 }
 
 export interface CatalogEntity {

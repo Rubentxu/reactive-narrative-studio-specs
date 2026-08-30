@@ -45,7 +45,26 @@ export class SnapshotProjectSource implements ProjectSource {
       return { ok: false, errors: catDiag.errors };
     }
 
-    const bundle = assembleBundle(projDiag.data);
+    // Load decisions and docs using new helpers
+    const decisionsDiag = await parseDecisions(fileArray, m.data);
+    const docsDiag = await loadDocs(fileArray, m.data);
+
+    // Collect errors from decisions and docs helpers only
+    // (projDiag and catDiag already validated ok above)
+    const allErrors: ReturnType<typeof synthetic>[] = [
+      ...(decisionsDiag.ok ? [] : decisionsDiag.errors),
+      ...(docsDiag.ok ? [] : docsDiag.errors),
+    ];
+
+    if (allErrors.length > 0) {
+      return { ok: false, errors: allErrors };
+    }
+
+    const bundle = assembleBundle(
+      projDiag.data,
+      decisionsDiag.ok ? decisionsDiag.data.decisions : undefined,
+      docsDiag.ok ? docsDiag.data.docs : undefined
+    );
 
     return { ok: true, data: { bundle, catalogEntities: catDiag.data } };
   }
@@ -166,7 +185,11 @@ export function loadCatalogEntities(
   })();
 }
 
-export function assembleBundle(projections: Record<string, unknown>): ProjectionBundle {
+export function assembleBundle(
+  projections: Record<string, unknown>,
+  decisions?: unknown,
+  docs?: string[]
+): ProjectionBundle {
   // Seven known bundle keys - unknown projNames surface synthetic('unknown-schema')
   return {
     project: projections['cp-project.json'] ?? projections['project'],
@@ -176,5 +199,86 @@ export function assembleBundle(projections: Record<string, unknown>): Projection
     uat: projections['cp-uat.json'] ?? projections['uat'],
     visualQuality: projections['cp-visual-quality.json'] ?? projections['visualQuality'],
     history: projections['cp-history.json'] ?? projections['history'],
+    decisions: decisions ?? projections['cp-decisions.json'] ?? projections['decisions'],
+    docs: docs,
   };
+}
+
+/**
+ * Parse and validate a decisions projection from the given manifest.
+ * Uses the same path-traversal guard as other projection loaders.
+ */
+export function parseDecisions(
+  files: ReadonlyArray<File>,
+  manifest: { version?: string; projections: string[] }
+): Promise<Diagnostic<{ decisions: unknown }>> {
+  return (async () => {
+    const decisionsProjection = manifest.projections.find(
+      (p) => p === 'cp-decisions.json' || p === 'decisions'
+    );
+    if (!decisionsProjection) {
+      // No decisions projection in manifest - return empty
+      return { ok: true, data: { decisions: undefined } };
+    }
+
+    if (!isSafeRelativePath(decisionsProjection)) {
+      return {
+        ok: false,
+        errors: [synthetic('path-traversal', `projections/${decisionsProjection}`, `Unsafe path: ${decisionsProjection}`)],
+      };
+    }
+
+    const decisionsFile = files.find(
+      (f) => f.name === `projections/${decisionsProjection}` || f.name === decisionsProjection
+    );
+    if (!decisionsFile) {
+      return {
+        ok: false,
+        errors: [synthetic('missing-entry', `projections/${decisionsProjection}`, `File not found: ${decisionsProjection}`)],
+      };
+    }
+
+    try {
+      const text = await decisionsFile.text();
+      const data = JSON.parse(text);
+      return { ok: true, data: { decisions: data } };
+    } catch (err) {
+      return { ok: false, errors: [synthetic('parse-error', `projections/${decisionsProjection}`, String(err))] };
+    }
+  })();
+}
+
+/**
+ * Load docs entries from the docs/ directory referenced in manifest.
+ * Each doc is a file in the docs/ folder - this returns the list of filenames.
+ * The actual doc content is loaded lazily by consumers.
+ */
+export function loadDocs(
+  files: ReadonlyArray<File>,
+  manifest: { version?: string; projections: string[]; docs?: string[] }
+): Promise<Diagnostic<{ docs: string[] }>> {
+  return (async () => {
+    const docsPaths = manifest.docs ?? [];
+    const validDocs: string[] = [];
+
+    for (const docPath of docsPaths) {
+      if (!isSafeRelativePath(docPath)) {
+        return {
+          ok: false,
+          errors: [synthetic('path-traversal', `docs/${docPath}`, `Unsafe path: ${docPath}`)],
+        };
+      }
+
+      const docFile = files.find((f) => f.name === `docs/${docPath}` || f.name === docPath);
+      if (!docFile) {
+        return {
+          ok: false,
+          errors: [synthetic('missing-entry', `docs/${docPath}`, `File not found: ${docPath}`)],
+        };
+      }
+      validDocs.push(docPath);
+    }
+
+    return { ok: true, data: { docs: validDocs } };
+  })();
 }

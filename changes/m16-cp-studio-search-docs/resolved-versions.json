@@ -1,0 +1,70 @@
+{
+  "markdown_pipeline": {
+    "react-markdown": {
+      "exact_pin": "9.1.0",
+      "design_estimate": "9.0.3",
+      "drift": "patch",
+      "tier": "T0",
+      "pnpm_view_invocation": "pnpm view react-markdown@9 version",
+      "result": "9.1.0",
+      "stop_triggered": false
+    },
+    "rehype-sanitize": {
+      "exact_pin": "6.0.0",
+      "design_estimate": "6.0.0",
+      "drift": "none",
+      "tier": "T1",
+      "pnpm_view_invocation": "pnpm view rehype-sanitize@6 version",
+      "result": "6.0.0",
+      "stop_triggered": false
+    },
+    "remark-gfm": {
+      "exact_pin": "4.0.1",
+      "design_estimate": "4.0.0",
+      "drift": "patch",
+      "tier": "T1",
+      "pnpm_view_invocation": "pnpm view remark-gfm@4 version",
+      "result": "4.0.1",
+      "stop_triggered": false
+    },
+    "unist-util-visit": {
+      "exact_pin": "5.1.0",
+      "design_estimate": "5.0.0",
+      "drift": "patch",
+      "tier": "T2-advisory",
+      "pnpm_view_invocation": "pnpm view unist-util-visit@5 version",
+      "result": "5.1.0",
+      "stop_triggered": false,
+      "note": "T2 advisory drift recorded; no STOP per design Appendix A"
+    }
+  },
+  "stop_conditions": {
+    "T1-hast-util-sanitize-major-drift": {
+      "description": "hast-util-sanitize major-version drift >= 2 from rehype-sanitize@6 peer",
+      "check": "pnpm view hast-util-sanitize version",
+      "result": "5.0.2",
+      "peer_of_rehype_sanitize": "^5.0.0",
+      "triggered": false,
+      "outcome": "PASS — hast-util-sanitize@5.0.2 within ^5.0.0 peer range"
+    },
+    "T1-mdast-util-gfm-major-drift": {
+      "description": "any mdast-util-gfm-* peer major-version drift >= 2",
+      "check": "pnpm view mdast-util-gfm version",
+      "result": "3.1.0",
+      "peer_of_remark_gfm": "^3.0.0",
+      "triggered": false,
+      "outcome": "PASS — mdast-util-gfm@3.1.0 within ^3.0.0 peer range"
+    },
+    "T2-unist-util-visit-advisory": {
+      "description": "unist-util-visit peer-drift beyond 5.0.0 (advisory, non-blocking)",
+      "result": "5.1.0",
+      "triggered": false,
+      "outcome": "ADVISORY-DRIFT — recorded in STACK.md; no STOP"
+    }
+  },
+  "transitive_count": {
+    "note": "pf install added 100 new packages (well within m15 cap of 50 new entries per pin-cycle)"
+  },
+  "block": "PF",
+  "commit": "7ec0c4ac13fd2ea23fc7c0de43788c0721314427"
+}

@@ -23,6 +23,8 @@ export const CP_WORKFLOW_ID = 'https://narrative.dev/schemas/cp-workflow.schema.
 export const CP_SCM_ID = 'https://narrative.dev/schemas/cp-scm.schema.json';
 export const CP_COSTS_ID = 'https://narrative.dev/schemas/cp-costs.schema.json';
 export const CP_APPROVALS_ID = 'https://narrative.dev/schemas/cp-approvals.schema.json';
+// NOTE: CP_DECISIONS_ID stub only — full schema file (cp-decisions.schema.json) is created in Block 3
+export const CP_DECISIONS_ID = 'https://narrative.dev/schemas/cp-decisions.schema.json';
 export const CATALOG_ENTITY_ID = 'https://narrative.dev/schemas/catalog-entity-v1alpha1.json';
 export const CONTROL_PLANE_ID = 'https://narrative.dev/schemas/control-plane-project-v1.json';
 export const CONTROL_PLANE_EXT_ID = 'https://narrative.dev/schemas/control-plane-extension-v1.json';
@@ -41,6 +43,7 @@ const BY_SCHEMA_CONST: Readonly<Record<string, string>> = {
   'control-plane/scm/v1': CP_SCM_ID,
   'control-plane/costs/v1': CP_COSTS_ID,
   'control-plane/approvals/v1': CP_APPROVALS_ID,
+  'control-plane/decisions/v1': CP_DECISIONS_ID, // stub — full schema in Block 3
   'control-plane-extension-config/v1': CONTROL_PLANE_EXT_ID,
 };
 
