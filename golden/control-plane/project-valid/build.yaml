@@ -1,0 +1,14 @@
+apiVersion: narrative.dev/v1alpha1
+kind: Build
+metadata:
+  name: v0.6.0
+  namespace: demo
+  annotations:
+    latestBuild: "true"
+spec:
+  version: v0.6.0
+  status: released
+  project:
+    name: demo-project
+    namespace: default
+  releasedAt: "2026-08-15"

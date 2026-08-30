@@ -1,0 +1,24 @@
+apiVersion: narrative.dev/v1alpha1
+kind: Character
+metadata:
+  name: nora
+  title: Nora
+  namespace: demo
+  relations:
+    - kind: Build
+      namespace: demo
+      name: v0.6.0
+spec:
+  role: supporting
+  traits:
+    - analytical
+    - persistent
+  visualDNA:
+    hue: 210
+    palette:
+      - "#1e3a5f"
+      - "#4a90d9"
+      - "#7bb3f0"
+    motifTags:
+      - structured
+      - methodical
