@@ -60,3 +60,5 @@ serverless Control Plane loading.
 **Status (canonical vocabulary)** — Control Plane check-status values are
 lowercase: `pass | warning | blocked | pending | unknown`. Source of truth:
 specs/control-plane.schema.json checks enum. Any other casing is rejected.
+
+**debt carry-over** — LOW/P3 finding deferred from one cycle to a future cycle's backlog, tracked via vault findings_closed entries referencing the closing requirement and scenario.

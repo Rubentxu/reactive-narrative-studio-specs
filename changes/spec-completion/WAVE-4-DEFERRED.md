@@ -82,9 +82,9 @@ python3 -c "import yaml,glob;[yaml.safe_load(open(p)) for p in \
 grep -nE "^## Evaluation cases$" templates/skill-template.md \
   && test "$(grep -cE '^## ' templates/skill-template.md)" -eq 12 && echo "AC-08 PASS"
 python3 -c "import json;s=json.load(open('specs/event.schema.json'));\
-  d=set(s.get('\$defs',{}));req={'run.started','run.completed','cost.recorded',\
-  'candidate.accepted','candidate.rejected','asset.generated',\
-  'approval.granted','publish.completed'};assert not req-d,req-d;print('AC-10 PASS')"
+e=s['properties']['eventType']['enum'];req={'run.started','run.completed','cost.recorded',\
+'candidate.accepted','candidate.rejected','asset.generated','approval.granted',\
+'publish.completed'};assert len(e)==8 and set(e)>=req,(set(e)^req);print('AC-13.5 PASS')"
 test "$(ls control-plane/workflows/comfyui/*.json | wc -l)" -eq 9 \
   && python3 -c "import json,glob;[json.load(open(p)) for p in \
   glob.glob('control-plane/workflows/comfyui/*.json')];print('fixtures PASS')"
