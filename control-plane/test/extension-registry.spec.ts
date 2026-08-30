@@ -21,8 +21,13 @@ describe('extensionRegistry', () => {
         render: makeDiv,
       } as unknown as EntityTabExtension);
 
-      // Registration succeeds if no throw
-      expect(true).toBe(true);
+      const seededEntity = {
+        apiVersion: 'narrative.dev/v1alpha1',
+        kind: 'Character',
+        metadata: { name: 'nora', namespace: 'demo', relations: [] },
+      } as const;
+      const tabs = extensionRegistry.resolveEntityTabs(seededEntity);
+      expect(tabs.some((t) => t.id === id)).toBe(true);
     });
 
     it('accepts a valid EntityCardExtension', () => {
@@ -37,7 +42,13 @@ describe('extensionRegistry', () => {
         render: makeDiv,
       } as unknown as EntityCardExtension);
 
-      expect(true).toBe(true);
+      const seededEntity = {
+        apiVersion: 'narrative.dev/v1alpha1',
+        kind: 'Character',
+        metadata: { name: 'nora', namespace: 'demo', relations: [] },
+      } as const;
+      const cards = extensionRegistry.resolveEntityCards(seededEntity);
+      expect(cards.some((c) => c.id === id)).toBe(true);
     });
 
     it('does not throw on duplicate id (succeeds silently)', () => {
@@ -53,7 +64,7 @@ describe('extensionRegistry', () => {
         render: makeDiv,
       } as unknown as EntityTabExtension);
 
-      // Second registration with same id also succeeds (silent)
+      // Second registration with same id also succeeds (silent — array keeps both)
       extensionRegistry.register({
         apiVersion: EXTENSIONS_API_VERSION,
         id,
@@ -65,7 +76,15 @@ describe('extensionRegistry', () => {
         render: makeDiv,
       } as unknown as EntityTabExtension);
 
-      expect(true).toBe(true);
+      const seededEntity = {
+        apiVersion: 'narrative.dev/v1alpha1',
+        kind: 'Character',
+        metadata: { name: 'nora', namespace: 'demo', relations: [] },
+      } as const;
+      const tabs = extensionRegistry.resolveEntityTabs(seededEntity);
+      // Both registrations are kept; silent success means no throw, not overwrite
+      const matches = tabs.filter((t) => t.id === id);
+      expect(matches).toHaveLength(2);
     });
   });
 

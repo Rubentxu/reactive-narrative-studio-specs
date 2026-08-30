@@ -31,8 +31,4 @@ export const extensionRegistry: ExtensionRegistry = {
   },
 };
 
-// Module-level literals carrying apiVersion const (EVT-EXR-01 oracle ≥ 4)
-const _registryEntry: { apiVersion: 'control-plane.extensions/v1' } = { apiVersion: 'control-plane.extensions/v1' };
-const _apiVersionMarker: { apiVersion: 'control-plane.extensions/v1' } = { apiVersion: 'control-plane.extensions/v1' };
-void _registryEntry;
-void _apiVersionMarker;
+

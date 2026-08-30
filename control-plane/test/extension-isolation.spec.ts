@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { extensionRegistry, kindIs } from '../src/extensions';
+import { execSync } from 'child_process';
 
 describe('extension-isolation', () => {
   it('extensions targeting Character do not leak to Build entities', () => {
@@ -51,5 +52,16 @@ describe('extension-isolation', () => {
     const pred = kindIs('Character');
     expect(pred({ kind: 'Character', metadata: {} } as any)).toBe(true);
     expect(pred({ kind: 'Build', metadata: {} } as any)).toBe(false);
+  });
+
+  it('no cross-folder imports exist in feature source tree', () => {
+    const featuresDir = 'src/features';
+    // Match any import referencing another feature folder (cross-folder or relative-escape)
+    const grepResult = execSync(
+      `grep -rE 'from.*features/story/|from.*features/visual/|from.*features/catalog/|from.*features/continuity/' ${featuresDir}/ 2>/dev/null || true`,
+      { encoding: 'utf8' }
+    );
+    const matches = grepResult.trim().split('\n').filter((line) => line.length > 0);
+    expect(matches, `Cross-folder imports found:\n${matches.join('\n')}`).toHaveLength(0);
   });
 });

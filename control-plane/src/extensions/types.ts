@@ -37,8 +37,3 @@ export interface EntityCardExtension {
 
 export type ControlPlaneFeature = EntityTabExtension | EntityCardExtension;
 
-// Additional apiVersion literals for EVT-EXR-01 oracle (≥4 total across extensions/*.ts)
-const _tabApiVersion: 'control-plane.extensions/v1' = 'control-plane.extensions/v1';
-const _cardApiVersion: 'control-plane.extensions/v1' = 'control-plane.extensions/v1';
-void _tabApiVersion;
-void _cardApiVersion;
