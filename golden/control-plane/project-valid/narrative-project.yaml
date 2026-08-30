@@ -1,0 +1,13 @@
+apiVersion: narrative.dev/v1alpha1
+kind: NarrativeProject
+metadata:
+  name: demo-project
+  title: Demo Narrative Project
+  description: A demo project for testing
+  namespace: default
+spec:
+  lifecycle: active
+  checks:
+    - id: draft-quality
+      status: passing
+      description: Draft quality check

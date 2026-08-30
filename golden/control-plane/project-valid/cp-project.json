@@ -1,0 +1,12 @@
+{
+  "schema": "control-plane/project/v1",
+  "generatedAt": "2026-01-01T00:00:00Z",
+  "sourceRevision": "abc123",
+  "project": {
+    "id": "demo-project",
+    "title": "Demo Project",
+    "language": "en",
+    "format": "novel",
+    "audienceProfile": "general"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "control-plane/characters/v1",
+  "generatedAt": "2026-01-01T00:00:00Z",
+  "sourceRevision": "abc123",
+  "characters": [
+    { "id": "char-01", "name": "Protagonist", "status": "pass" }
+  ]
+}

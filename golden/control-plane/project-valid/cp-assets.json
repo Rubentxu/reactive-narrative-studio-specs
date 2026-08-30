@@ -1,0 +1,8 @@
+{
+  "schema": "control-plane/assets/v1",
+  "generatedAt": "2026-01-01T00:00:00Z",
+  "sourceRevision": "abc123",
+  "assets": [
+    { "id": "asset-01", "path": "assets/demo.png", "kind": "image" }
+  ]
+}
