@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import { catalogSelectors } from '../src/store/catalogSelectors';
-import { useProjectionStore } from '../src/store/projectionStore';
 
 describe('catalogSelectors', () => {
   describe('byEntityRef', () => {

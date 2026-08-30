@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extensionRegistry, EXTENSIONS_API_VERSION, kindIs } from '../src/extensions';
-import type { EntityTabExtension } from '../src/extensions';
+import { extensionRegistry, kindIs } from '../src/extensions';
 
 describe('extension-isolation', () => {
   it('extensions targeting Character do not leak to Build entities', () => {

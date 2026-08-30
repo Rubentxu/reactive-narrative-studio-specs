@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extensionRegistry, EXTENSIONS_API_VERSION } from '../src/extensions';
-import type { EntityTabExtension } from '../src/extensions';
+import { extensionRegistry } from '../src/extensions';
 
 describe('entity-page-composition', () => {
   it('extensionRegistry returns extensions sorted by priority for Character kind', () => {
@@ -15,7 +14,7 @@ describe('entity-page-composition', () => {
 
     // Verify strictly ascending
     for (let i = 1; i < priorities.length; i++) {
-      expect(priorities[i]).toBeGreaterThanOrEqual(priorities[i - 1]);
+      expect(priorities[i]!).toBeGreaterThanOrEqual(priorities[i - 1]!);
     }
   });
 

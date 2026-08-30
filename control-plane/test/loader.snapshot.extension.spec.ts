@@ -53,6 +53,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
       (e: any) => e.metadata?.name === 'nora' && e.kind === 'Character'
     );
     expect(nora).toBeDefined();
+    if (!nora) return;
     expect(nora.apiVersion).toBe('narrative.dev/v1alpha1');
   });
 
@@ -77,6 +78,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
       (e: any) => e.metadata?.name === 'build-001' && e.kind === 'Build'
     );
     expect(build).toBeDefined();
+    if (!build) return;
     expect(build.apiVersion).toBe('narrative.dev/v1alpha1');
   });
 
