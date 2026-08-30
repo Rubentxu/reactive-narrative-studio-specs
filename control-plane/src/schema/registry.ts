@@ -90,6 +90,16 @@ export function validate<T>(
 ): { valid: true; data: T } | { valid: false; schemaId: string; errors: object[] } {
   const dispatch = schemaIdFor(doc);
   if (!dispatch) {
+    // Try all registered schemas - return first validation error found
+    const allSchemaIds = Array.from(schemaById.keys());
+    for (const id of allSchemaIds) {
+      const validator = ajv.getSchema(id);
+      if (!validator) continue;
+      const valid = validator(doc);
+      if (!valid && validator.errors) {
+        return { valid: false, schemaId: id, errors: validator.errors };
+      }
+    }
     return { valid: false, schemaId: '', errors: [] };
   }
   const validator = get(dispatch.id);

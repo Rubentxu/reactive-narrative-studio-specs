@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useProjectionStore } from '../store/projectionStore';
 import { DirectoryProjectSource } from '../loader/DirectoryProjectSource';
 import { SnapshotProjectSource } from '../loader/SnapshotProjectSource';
