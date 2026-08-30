@@ -22,3 +22,7 @@ Vitest + Testing Library + Playwright
 
 This is a design baseline, not a generated `package.json`.
 The implementation must pin exact compatible releases when M10 starts.
+
+## T1 Deviations (resolved at m14 apply)
+
+- **vite**: docs/28 baseline 8.1 → resolved 8.2.2 (minor drift)
