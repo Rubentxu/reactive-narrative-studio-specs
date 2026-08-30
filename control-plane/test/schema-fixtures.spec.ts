@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { schemaIdFor, get, validate } from '../src/schema/registry';
+import { schemaIdFor, validate } from '../src/schema/registry';
 import { loadFixtureText, parseYaml } from './support/fixtures';
-import { resolve } from 'node:path';
 
 describe('schema registry', () => {
   const PROJECT_FIXTURE_VALID = 'project-valid/cp-project.json';

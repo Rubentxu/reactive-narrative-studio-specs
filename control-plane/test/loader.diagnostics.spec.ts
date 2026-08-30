@@ -1,6 +1,5 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from 'vitest';
-import { SnapshotProjectSource } from '../src/loader/SnapshotProjectSource';
 import { validate } from '../src/schema/registry';
 import { loadFixtureText } from './support/fixtures';
 import { isSafeRelativePath, isAbsolutePath } from '../src/loader/SnapshotProjectSource';

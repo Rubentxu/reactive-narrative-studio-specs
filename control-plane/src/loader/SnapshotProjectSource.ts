@@ -77,7 +77,17 @@ export class SnapshotProjectSource implements ProjectSource {
           errors.push(...fromAjv(validator.errors ?? []));
           continue;
         }
-        const key = projName.replace(/\.json$/, '').replace(/^cp-/, '').replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+        // Explicit key assembly per EVT-PLP-01 structural intent — seven known bundle keys
+        const KNOWN_KEYS: Record<string, string> = {
+          'cp-project.json': 'project',
+          'cp-chapters.json': 'chapters',
+          'cp-characters.json': 'characters',
+          'cp-assets.json': 'assets',
+          'cp-uat.json': 'uat',
+          'cp-visual-quality.json': 'visualQuality',
+          'cp-history.json': 'history',
+        };
+        const key = KNOWN_KEYS[projName] ?? projName.replace(/\.json$/, '').replace(/^cp-/, '').replace(/-([a-z])/g, (_, c) => c.toUpperCase());
         projections[key] = data;
       } catch (err) {
         errors.push(synthetic('parse-error', `projections/${projName}`, String(err)));

@@ -8,6 +8,13 @@ const ajv = new Ajv({
 
 addFormats(ajv, ['date-time']);
 
+// Each schema const pattern must resolve through ajv.addSchema before compile.
+ajv.addSchema({
+  $id: 'https://narrative.dev/schemas/control-plane/project/v1',
+  $schema: 'https://json-schema.org/draft/2020-12/schema',
+  type: 'object',
+});
+
 export { ajv };
 
 export function validate<T>(

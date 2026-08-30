@@ -23,15 +23,16 @@ export function parseYaml<T>(text: string): T {
 export function newFileFromFixture(relativePath: string, fileName?: string): File {
   const bytes = loadFixtureBytes(relativePath);
   const name = fileName ?? relativePath;
-  return new File([bytes], name);
+  return new File([bytes as BlobPart], name);
 }
 
 export function newFileListFromDir(relativeDir: string, ext = '.json'): File[] {
   const fullDir = join(GOLDEN_ROOT, relativeDir);
-  const files = readdirSync(fullDir, { recursive: true }).filter((f) => typeof f === 'string' && f.endsWith(ext));
-  return (files as string[]).map((f) => {
+  const entries = readdirSync(fullDir, { recursive: true });
+  const files = entries.filter((f): f is string => typeof f === 'string' && f.endsWith(ext));
+  return files.map((f: string) => {
     const fullPath = join(fullDir, f);
     const bytes = readFileSync(fullPath);
-    return new File([bytes], f);
+    return new File([bytes as BlobPart], f);
   });
 }
