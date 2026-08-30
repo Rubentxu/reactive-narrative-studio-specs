@@ -6,8 +6,14 @@
     "cp-chapters.json",
     "cp-characters.json",
     "cp-assets.json",
+    "cp-decisions.json",
     "cp-uat.json",
     "cp-visual-quality.json",
     "cp-history.json"
+  ],
+  "docs": [
+    "docs/narrative.md",
+    "docs/nora.md",
+    "docs/scene-silver-key.md"
   ]
 }

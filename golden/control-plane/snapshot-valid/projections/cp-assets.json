@@ -3,6 +3,7 @@
   "generatedAt": "2026-01-01T00:00:00Z",
   "sourceRevision": "abc123",
   "assets": [
-    { "id": "asset-01", "path": "assets/demo.png", "kind": "image" }
+    { "id": "asset-01", "path": "assets/demo.png", "kind": "image" },
+    { "id": "asset-silver-key-doc", "path": "docs/scene-silver-key.md", "kind": "document" }
   ]
 }

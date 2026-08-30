@@ -3,6 +3,7 @@
   "generatedAt": "2026-01-01T00:00:00Z",
   "sourceRevision": "abc123",
   "chapters": [
-    { "id": "ch-01", "title": "Chapter 1", "status": "pass" }
+    { "id": "ch-01", "title": "Chapter 1", "status": "pass" },
+    { "id": "ch-silver-key", "title": "The Silver Key", "status": "pass", "docRef": "docs/scene-silver-key.md" }
   ]
 }
