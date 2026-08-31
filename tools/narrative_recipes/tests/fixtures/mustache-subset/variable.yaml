@@ -1,0 +1,9 @@
+# Variable substitution fixture
+# Template: {{title}}
+# Params: {title: "The Great Adventure"}
+# Expected output: "The Great Adventure"
+
+template: "{{title}}"
+params:
+  title: "The Great Adventure"
+expected_output: "The Great Adventure"

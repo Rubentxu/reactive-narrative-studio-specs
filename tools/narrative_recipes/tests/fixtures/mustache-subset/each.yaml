@@ -1,0 +1,12 @@
+# Each block fixture
+# Template: {{#each items}}{{.}}{{/each}}
+# Items: ["alpha", "beta", "gamma"]
+# Output: items concatenated with no separator
+
+template: "{{#each items}}{{.}}{{/each}}"
+params:
+  items:
+    - alpha
+    - beta
+    - gamma
+expected_output: "alphabetagamma"

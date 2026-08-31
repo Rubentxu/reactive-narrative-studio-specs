@@ -1,0 +1,17 @@
+# If block fixture — conditional truthy parameter
+# Template: {{#if flag}}TRUE{{/if}}
+# Params: {flag: true} → expected: TRUE
+# Params: {flag: false} → expected: (empty)
+
+template: "{{#if flag}}TRUE{{/if}}"
+
+cases:
+  - name: "truthy"
+    params:
+      flag: true
+    expected_output: "TRUE"
+
+  - name: "falsy"
+    params:
+      flag: false
+    expected_output: ""

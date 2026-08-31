@@ -1,0 +1,8 @@
+# Comment fixture
+# Template: Hello {{! this is a comment }}World
+# Comment {{! comment text }} is stripped from output
+# Expected output: "Hello World"
+
+template: "Hello {{! comment }}World"
+params: {}
+expected_output: "Hello World"

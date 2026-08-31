@@ -1,0 +1,8 @@
+# Error/forbidden-pattern fixture
+# Template: {{>partial}} (forbidden partial — rejected at parse time)
+# Expected: TemplateError with code 'forbidden-partial'
+
+template: "{{>partial}}"
+params: {}
+expected_error:
+  code: "forbidden-partial"
