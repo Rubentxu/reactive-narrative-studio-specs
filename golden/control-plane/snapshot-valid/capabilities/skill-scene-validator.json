@@ -1,0 +1,9 @@
+{
+  "kind": "skill",
+  "id": "skill-scene-validator",
+  "namespace": "default",
+  "name": "scene-validator",
+  "purpose": "The `scene-validator` skill provides a structured validation framework for individual scenes within a narrative. It audits scenes for structural integrity against canonical scene models — goal/conflict/outcome/disaster, Dwight Swain's scene-sequel, and motivation-reaction units (MRU) — and surfaces common failure patterns before they compound into structural problems at the act level.",
+  "path": "/examples/skills/scene-validator/SKILL.md",
+  "origin": "global"
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "profile",
+  "id": "profile-middle-grade-10-11",
+  "namespace": "recipe:middle-grade-illustrated",
+  "name": "profile-middle-grade-10-11",
+  "audience": "unknown",
+  "format": "unknown",
+  "voice": "unknown",
+  "guardrails": [],
+  "path": "/recipes/middle-grade-illustrated/skeleton/profiles/profile-middle-grade-10-11.yaml"
+}

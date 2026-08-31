@@ -1,0 +1,9 @@
+{
+  "kind": "pack",
+  "id": "pack-story_intake",
+  "namespace": "recipe:middle-grade-illustrated",
+  "name": "Story Core Pack — Intake Template",
+  "description": "What is the central dramatic question of this narrative?",
+  "path": "/recipes/middle-grade-illustrated/skeleton/packs/story_core/story_intake.md",
+  "origin": "recipe:middle-grade-illustrated"
+}

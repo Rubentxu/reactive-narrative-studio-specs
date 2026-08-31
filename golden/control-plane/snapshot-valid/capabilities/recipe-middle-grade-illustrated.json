@@ -1,0 +1,9 @@
+{
+  "kind": "recipe",
+  "id": "recipe-middle-grade-illustrated",
+  "namespace": "default",
+  "name": "middle-grade-illustrated",
+  "title": "Middle Grade Illustrated Novel",
+  "description": "Starter for an illustrated 8–12 narrative project.",
+  "path": "/recipes/middle-grade-illustrated/recipe.yaml"
+}

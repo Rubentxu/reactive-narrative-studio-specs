@@ -1,0 +1,9 @@
+{
+  "kind": "pack",
+  "id": "pack-visual_bible_seed",
+  "namespace": "recipe:middle-grade-illustrated",
+  "name": "Visual Bible Seed",
+  "description": "Art Direction: Style: Graphic novel panels, age-appropriate for 10-11 years, Color palette: TBD, Visual tone: TBD.",
+  "path": "/recipes/middle-grade-illustrated/skeleton/packs/visual_core/visual_bible_seed.md",
+  "origin": "recipe:middle-grade-illustrated"
+}
