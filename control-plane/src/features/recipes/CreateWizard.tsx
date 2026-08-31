@@ -49,7 +49,7 @@ function renderSkeletons(
   const engine = new TemplateEngine();
   const manifest: Record<string, unknown> = {};
 
-  for (const [path, content] of Object.entries(skeletonContents)) {
+  for (const [_path, content] of Object.entries(skeletonContents)) {
     engine.render(content, params); // throws TemplateError on forbidden patterns
   }
 

@@ -1,0 +1,16 @@
+# Negative fixture 2: wrong type for 'parameters' (should be object, given as array)
+schema: creation-recipe/v1
+
+metadata:
+  id: middle-grade-illustrated
+  title: Middle Grade Illustrated Novel
+
+parameters:
+  - type: string
+    name: title
+
+project:
+  profiles:
+    - "{{ audience }}"
+  packs:
+    - story_core

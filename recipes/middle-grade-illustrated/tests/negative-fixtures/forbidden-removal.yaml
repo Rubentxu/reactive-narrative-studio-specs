@@ -1,0 +1,15 @@
+# Negative fixture 3: forbidden removal of required metadata.id
+schema: creation-recipe/v1
+
+metadata:
+  title: Middle Grade Illustrated Novel
+  # missing required 'id' field
+
+parameters:
+  $ref: "../parameters.schema.json"
+
+project:
+  profiles:
+    - "{{ audience }}"
+  packs:
+    - story_core

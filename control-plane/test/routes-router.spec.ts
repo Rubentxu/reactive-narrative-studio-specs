@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { routePaths } from '../src/routes/routes';
 
 describe('F-004 oracle — routePaths coverage', () => {
-  it('routePaths has exactly 7 entries', () => {
-    expect(routePaths.length).toBe(7);
+  it('routePaths has exactly 8 entries (m10 adds /create)', () => {
+    expect(routePaths.length).toBe(8);
   });
 
   it('includes the /search route entry', () => {
@@ -11,7 +11,12 @@ describe('F-004 oracle — routePaths coverage', () => {
     expect(hasSearch).toBe(true);
   });
 
-  it('preserves all 6 existing entries from m15 baseline', () => {
+  it('includes the /create wizard route entry', () => {
+    const hasCreate = routePaths.some((p) => p === "path: '/create'");
+    expect(hasCreate).toBe(true);
+  });
+
+  it('preserves all 7 existing entries from m15 baseline', () => {
     const existingRoutes = [
       "path: '/'",
       "path: '/overview'",

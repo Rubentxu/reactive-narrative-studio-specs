@@ -196,6 +196,26 @@ def check_layout(recipe_dir: Path) -> list[Diagnostic]:
     return errors
 
 
+def validate_recipe_file(recipe_file: Path) -> list[Diagnostic]:
+    """
+    Validate a single recipe YAML file against the schema.
+    Used for negative fixtures where the file is passed directly (not a full recipe dir).
+    """
+    all_diags: list[Diagnostic] = []
+    try:
+        recipe_data = load_yaml(recipe_file)
+        all_diags.extend(validate_recipe_schema(recipe_data, recipe_file))
+    except Exception as e:
+        d = Diagnostic(
+            code="recipe-load-error",
+            message=f"recipe.yaml: failed to load: {e}",
+            severity="error",
+            path=str(recipe_file),
+        )
+        all_diags.append(d)
+    return all_diags
+
+
 # ---------------------------------------------------------------------------
 # Lock fingerprinting
 # ---------------------------------------------------------------------------
@@ -372,6 +392,11 @@ def main() -> int:
         help="Regenerate recipe.lock.json (instead of checking drift)",
     )
     parser.add_argument(
+        "--negative-fixtures",
+        action="store_true",
+        help="Check negative fixtures and assert they fail validation",
+    )
+    parser.add_argument(
         "path",
         nargs="?",
         default="recipes",
@@ -381,6 +406,32 @@ def main() -> int:
 
     repo_root = REPO_ROOT
     target = (repo_root / args.path).resolve()
+
+    # Negative fixture mode: check that each invalid recipe fails with expected errors
+    if args.negative_fixtures:
+        negative_fixtures = list((target / "tests" / "negative-fixtures").glob("*.yaml"))
+        if not negative_fixtures:
+            print(f"No negative fixtures found under {target}/tests/negative-fixtures/", file=sys.stderr)
+            return 2
+
+        failures = 0
+        for neg_fixture in sorted(negative_fixtures):
+            # Validate the fixture file directly (not as a full recipe directory)
+            diags = validate_recipe_file(neg_fixture)
+            errors = [d for d in diags if d.severity == "error"]
+            if errors:
+                print(f"NEGATIVE FIXTURE {neg_fixture.name}: correctly fails with {len(errors)} error(s)")
+                for d in errors:
+                    print(f"  -> {d.code}: {d.message}")
+            else:
+                print(f"NEGATIVE FIXTURE {neg_fixture.name}: FAIL — expected error but passed validation", file=sys.stderr)
+                failures += 1
+
+        if failures:
+            print(f"\n{failures} negative fixture(s) did NOT fail as expected", file=sys.stderr)
+            return 1
+        print(f"\nAll {len(negative_fixtures)} negative fixture(s) correctly fail validation.")
+        return 0
 
     diagnostics: list[Diagnostic] = []
 

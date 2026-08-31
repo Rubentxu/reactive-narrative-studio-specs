@@ -1,0 +1,15 @@
+# Negative fixture 1: missing required field 'metadata.title'
+schema: creation-recipe/v1
+
+metadata:
+  id: middle-grade-illustrated
+  # missing title
+
+parameters:
+  $ref: "../parameters.schema.json"
+
+project:
+  profiles:
+    - "{{ audience }}"
+  packs:
+    - story_core
