@@ -9,7 +9,12 @@ from narrative_recipes.recipe_loader import RecipeLoader, RecipeLayoutError
 from narrative_recipes.template_engine import TemplateEngine, TemplateError
 from narrative_recipes.parameter_validator import ParameterValidator
 from narrative_recipes.project_renderer import ProjectRenderer
-from narrative_recipes.equivalence_oracle import EquivalenceOracle
+from narrative_recipes.equivalence_oracle import (
+    EquivalenceOracle,
+    canonical_json,
+    canonical_json_equal,
+    strip_recipe_owned,
+)
 
 __all__ = [
     "RecipeLoader",
@@ -19,4 +24,7 @@ __all__ = [
     "ParameterValidator",
     "ProjectRenderer",
     "EquivalenceOracle",
+    "canonical_json",
+    "canonical_json_equal",
+    "strip_recipe_owned",
 ]
