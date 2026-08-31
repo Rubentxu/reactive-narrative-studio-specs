@@ -2,6 +2,15 @@
   "package": "reactive-narrative-studio-specs",
   "generated_for": "implementation bootstrap",
   "working_name": "Reactive Narrative Studio / Narrative Foundry",
+  "cycles": [
+    {
+      "id": "m10-1-creation-recipes",
+      "applied_at": "2026-08-31T12:58:00+02:00",
+      "status": "done",
+      "blocks": "PF + 0 + 1 + 2 + 3 + 4 + F",
+      "scope": "creation-recipe system: schema, Python core, TS mirror, CLI, bundled recipe, wizard"
+    }
+  ],
   "documents": [
     "./.gitignore",
     "./README.md",
@@ -328,7 +337,7 @@
       "applied_date": "2026-08-28",
       "merge_semantics": "extract over previous package root; same-path files replace prior versions"
     },
-    "regenerated_at": "2026-08-31T09:55:00+02:00",
-    "regeneration_reason": "m16: added cp-decisions schema + local search index + docs feature + search route + 3 NEW specs (search-index, docs-sanitization, decision-projection-schema-fixtures) + 3 extended specs + INC-008 + INC-009 closure + Amendment 1 scene-chapter derivation"
+    "regenerated_at": "2026-08-31T12:58:00+02:00",
+    "regeneration_reason": "m10-1: added creation-recipe schema + narrative-recipes Python core + TS mirror + mustache-subset template engine + 5-fixture corpus + narrative-cli (init + plan) + middle-grade-illustrated recipe bundle + recipe.lock.json + validate-recipes script + FileSystemAccessSink + DownloadPlanSink + CreateWizard + RecipeWidgetExtension + /create route + 19 vitest specs + 41 pytest tests"
   }
 }

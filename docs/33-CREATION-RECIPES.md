@@ -79,6 +79,19 @@ and parameters.
 - **Image policy default**: `local_preferred`
 - **Publishing target default**: `print-pdf`
 
+## Browser wizard (`/create`)
+
+The wizard is registered as a `RecipeWidgetExtension` (kind: `'wizard'`) against the Control Plane Extension Registry. It renders the `CreateWizard` component at the `/create` route. The wizard:
+
+1. Loads the recipe bundle via `useRecipeLoader` (import.meta.glob, async, Map-cached)
+2. Renders a form from `recipe.parameters` + `recipe.uiHints` schema
+3. Emits a `create-plan.json` via `RecipePlanEmitter` (canonical JSON, SHA-256 fingerprints)
+4. Writes to disk via one of two sinks:
+   - **FileSystemAccessSink** — uses `window.showDirectoryPicker()` (Chromium only); writes skeleton files + `.narrative/create-plan.json`
+   - **DownloadPlanSink** — `URL.createObjectURL` fallback for Firefox/Safari; downloads `create-plan.json` which can then be fed to `narrative init --plan`
+
+The wizard NEVER calls `useProjectionStore` — it cannot mutate Control Plane state (m10 no-write invariant).
+
 ## CI guards (Decision 7)
 
 Every commit is gated on:
