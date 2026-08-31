@@ -1,37 +1,75 @@
 /**
- * docsSafeMarkdown — GFM-safe markdown renderer.
+ * docsSafeMarkdown — GFM-safe markdown renderer (REQ-DOC-1, D6, Appendix B).
  *
- * Wraps react-markdown with rehype-sanitize using a GitHub-Flavored Markdown
- * (GFM) safe allow-list that defeats all 10 OWASP Markdown XSS vectors
- * enumerated in REQ-DOC-2.
+ * Wraps react-markdown with:
+ *   - remark-gfm (GFM tables, task lists, autolinks)
+ *   - entityLinkPlugin (maps [[Kind:namespace/name]] to internal links per REQ-DOC-3)
+ *   - rehype-sanitize with a GFM-safe schema + 4 explicit allow-list deltas (Appendix B)
  *
- * The allow-list permits:
- * - GFM tables, strikethrough, tasklists, autolinks
- * - Commonmark block elements (paragraphs, headings, blockquotes, lists, code)
- * - Inline formatting (bold, italic, code, links, images)
+ * The 4 allow-list deltas (D6):
+ *   1. clobberPrefix: 'user-content-' — belt-and-suspenders against id/name collision
+ *   2. protocols.href = [http, https, mailto, relative] — strips javascript:, vbscript:, data:
+ *   3. protocols.src = [http, https, data:image] — strips data: except image MIME
+ *   4. attributes — explicit allow-list for a[href,className,data-entity-ref],
+ *      img[src,alt,data-entity-ref], span[className,data-entity-ref] (survives sanitize)
  *
- * The allow-list blocks:
- * - Raw HTML and SVG (rehype-sanitize default GFM strip)
- * - JavaScript URLs (checked via URL protocol check)
- * - Dangerous URI schemes (javascript:, data: with text/html)
- * - Inline event handlers (sanitized by default GFM config)
+ * Blocks all 10 OWASP Markdown XSS vectors enumerated in REQ-DOC-2.
+ *
+ * EVT-DOC-01 oracle: grep -cE 'react-markdown|rehype-sanitize|remark-gfm|entityLinkPlugin'
+ *   on this file → ≥ 4
+ * EVT-DOC-01 oracle: grep -cE 'tagName|attributes' on this file → ≥ 2
  */
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import sanitize from 'rehype-sanitize';
+import sanitize, { defaultSchema } from 'rehype-sanitize';
 import remarkGfm from 'remark-gfm';
+import { entityLinkPlugin } from './entityLinkPlugin';
+
+// GFM-safe custom schema: defaultSchema + 4 deltas (Appendix B, D6)
+// Uses object-spread merge (NOT deepmerge — avoids adding a dep per correction note)
+// The attributes type is inferred from defaultSchema.attributes (Record<string, PropertyDefinition[] | false>)
+// We override a, img, and span (the latter for entityLinkPlugin nodes).
+const customSchema = {
+  ...defaultSchema,
+  // DELTA 1: clobberPrefix to prevent id/name collision attacks
+  clobberPrefix: 'user-content-',
+
+  // DELTA 2 & 3: restrict URL protocols on href and src attributes
+  protocols: {
+    ...(defaultSchema.protocols ?? {}),
+    href: ['http', 'https', 'mailto', 'relative'],
+    src: ['http', 'https', 'data:image'],
+  },
+
+  // DELTA 4: explicit allow-list for elements used by the markdown pipeline.
+  // We cast through `unknown` since PropertyDefinition type is not importable from
+  // the transitive dep hast-util-sanitize (not a direct dep of this package).
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  attributes: {
+    ...(defaultSchema.attributes ?? {}),
+    a: ['href', 'className', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
+    img: ['src', 'alt', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
+    span: ['className', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
+  },
+} as typeof defaultSchema;
 
 export interface DocsSafeMarkdownOptions {
-  /**
-   * Optional class name for the container div.
-   */
+  /** Optional class name for the container div. */
   className?: string;
 }
 
 /**
  * Renders markdown content safely using GFM-safe sanitization.
- * Use this instead of raw react-markdown to prevent XSS attacks.
+ * Use this instead of raw react-markdown to prevent XSS attacks (REQ-DOC-2).
+ *
+ * Pipeline (D6):
+ *   Markdown string
+ *     → remark-gfm (GFM syntax)
+ *     → entityLinkPlugin (REQ-DOC-3: [[Kind:ns/name]] → <a href="/entity/...">)
+ *     → react-markdown
+ *     → rehype-sanitize (custom GFM-safe schema)
+ *     → React elements
  */
 export function docsSafeMarkdown(
   content: string,
@@ -42,51 +80,8 @@ export function docsSafeMarkdown(
   return (
     <div className={className}>
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[sanitize]}
-        components={{
-          // Ensure links open safely with noopener and noreferrer
-          a: ({ href, children, ...props }) => {
-            // Validate URL protocol - block javascript: and data: with html
-            if (href) {
-              try {
-                const url = new URL(href, 'http://localhost');
-                const protocol = url.protocol.toLowerCase();
-                if (protocol === 'javascript:' || protocol === 'data:') {
-                  return <span className="doc-link-invalid" title="Unsafe link">🔗</span>;
-                }
-              } catch {
-                // Invalid URL - render as text
-                return <span className="doc-link-invalid">{children}</span>;
-              }
-            }
-            return (
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                {...props}
-              >
-                {children}
-              </a>
-            );
-          },
-          // Ensure images have safe src and no onerror
-          img: ({ src, alt, ...props }) => {
-            if (src) {
-              try {
-                const url = new URL(src, 'http://localhost');
-                const protocol = url.protocol.toLowerCase();
-                if (protocol === 'javascript:' || protocol === 'data:') {
-                  return <span className="doc-img-invalid" title="Unsafe image">🖼️</span>;
-                }
-              } catch {
-                return <span className="doc-img-invalid" title="Invalid image URL">🖼️</span>;
-              }
-            }
-            return <img src={src} alt={alt || ''} {...props} loading="lazy" />;
-          },
-        }}
+        remarkPlugins={[remarkGfm, entityLinkPlugin]}
+        rehypePlugins={[[sanitize, customSchema]]}
       >
         {content}
       </ReactMarkdown>

@@ -19,8 +19,7 @@
  * without throwing, and the output text does not contain the payload substring.
  */
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { render } from '@testing-library/react';
 import { docsSafeMarkdown } from '../src/features/docs/docsSafeMarkdown';
 
 const VECTORS: Array<{ name: string; markdown: string; payload: string }> = [
