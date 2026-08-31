@@ -19,23 +19,25 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "sceneRef", "status", "rationale"],
+        "required": ["id", "action", "targetRef", "date", "status"],
         "properties": {
           "id": {
             "type": "string",
             "minLength": 1
           },
-          "sceneRef": {
+          "action": {
             "type": "string",
             "minLength": 1
+          },
+          "targetRef": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Za-z]+:[a-z0-9-]+/[a-z0-9-]+$"
+          },
+          "date": {
+            "$ref": "#/$defs/isoTimestamp"
           },
           "status": {
-            "type": "string",
-            "enum": ["pending", "accepted", "rejected", "superseded"]
-          },
-          "rationale": {
-            "type": "string",
-            "minLength": 1
+            "enum": ["accepted", "rejected", "pending", "superseded"]
           },
           "replaces": {
             "type": ["string", "null"]

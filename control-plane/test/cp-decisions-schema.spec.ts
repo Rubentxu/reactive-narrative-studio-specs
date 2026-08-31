@@ -45,9 +45,10 @@ describe('cp-decisions schema — boundary tests', () => {
       decisions: [
         {
           id: 'dec-minimal',
-          sceneRef: 'scene-001',
+          action: 'Take initial action',
+          targetRef: 'Scene:demo/scene-001',
+          date: '2026-01-01T00:00:00Z',
           status: 'pending',
-          rationale: 'Initial decision.',
         },
       ],
     };
@@ -63,9 +64,10 @@ describe('cp-decisions schema — boundary tests', () => {
       decisions: [
         {
           id: 'dec-status',
-          sceneRef: 'scene-001',
+          action: 'Test action',
+          targetRef: 'Scene:demo/scene-001',
+          date: '2026-01-01T00:00:00Z',
           status: 'maybe-accepted',
-          rationale: 'Bad status.',
         },
       ],
     };
@@ -94,9 +96,10 @@ describe('cp-decisions schema — boundary tests', () => {
       decisions: [
         {
           id: 'dec-extra',
-          sceneRef: 'scene-001',
+          action: 'Valid action',
+          targetRef: 'Scene:demo/scene-001',
+          date: '2026-01-01T00:00:00Z',
           status: 'accepted',
-          rationale: 'Valid.',
           unauthorized: 'not allowed',
         },
       ],
@@ -113,9 +116,10 @@ describe('cp-decisions schema — boundary tests', () => {
       decisions: [
         {
           id: 'dec-null-replaces',
-          sceneRef: 'scene-001',
+          action: 'First action',
+          targetRef: 'Scene:demo/scene-001',
+          date: '2026-01-01T00:00:00Z',
           status: 'accepted',
-          rationale: 'First decision.',
           replaces: null,
         },
       ],
@@ -132,9 +136,10 @@ describe('cp-decisions schema — boundary tests', () => {
       decisions: [
         {
           id: 'dec-string-replaces',
-          sceneRef: 'scene-002',
+          action: 'Superseded action',
+          targetRef: 'Scene:demo/scene-002',
+          date: '2026-01-01T00:00:00Z',
           status: 'superseded',
-          rationale: 'Superseded by later decision.',
           replaces: 'dec-001',
         },
       ],
@@ -151,9 +156,10 @@ describe('cp-decisions schema — boundary tests', () => {
       decisions: [
         {
           id: 'dec-bad-replaces',
-          sceneRef: 'scene-001',
+          action: 'Bad action',
+          targetRef: 'Scene:demo/scene-001',
+          date: '2026-01-01T00:00:00Z',
           status: 'accepted',
-          rationale: 'Bad replaces.',
           replaces: 42 as unknown as string | null,
         },
       ],

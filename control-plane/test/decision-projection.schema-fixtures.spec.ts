@@ -43,21 +43,21 @@ describe('cp-decisions schema — fixture validation', () => {
       sourceRevision: string;
       decisions: Array<{
         id: string;
-        sceneRef: string;
+        action: string;
+        targetRef: string;
+        date: string;
         status: string;
-        rationale: string;
-        replaces: string | null;
+        replaces?: string | null;
       }>;
     };
     const result = validate(doc);
     expect(result.valid).toBe(true);
 
-    const decision = doc.decisions[0];
-    expect(decision.id).toBe('dec-silver-key');
-    expect(decision.sceneRef).toBe('scene-silver-key');
+    const decision = doc.decisions[0]!;
+    expect(decision.id).toBe('silver-key');
+    expect(decision.action).toContain('llave plateada');
+    expect(decision.targetRef).toBe('Scene:demo/scene-silver-key');
     expect(decision.status).toBe('accepted');
-    expect(decision.rationale).toContain('Llave plateada');
-    expect(decision.replaces).toBeNull();
   });
 
   it('rejects invalid status enum value', () => {
@@ -92,6 +92,18 @@ describe('cp-decisions schema — fixture validation', () => {
     expect(result.valid).toBe(true);
   });
 
+  it('rejects invalid targetRef regex pattern (EVT-DEC-01 negative oracle)', () => {
+    const doc = JSON.parse(loadFixtureText(FIXTURE_JSON));
+    // Mutate targetRef to an invalid format (missing kind colon, invalid namespace chars)
+    (doc.decisions as Array<Record<string, unknown>>)[0]!.targetRef = 'not-a-valid-ref';
+    const result = validate(doc);
+    expect(result.valid).toBe(false);
+    if (!result.valid) {
+      const errors = result.errors ?? [];
+      expect(errors.some((e) => (e as { keyword?: string }).keyword === 'pattern')).toBe(true);
+    }
+  });
+
   it('rejects missing required fields', () => {
     const doc = {
       schema: 'control-plane/decisions/v1',
@@ -99,7 +111,7 @@ describe('cp-decisions schema — fixture validation', () => {
       sourceRevision: 'abc123',
       decisions: [
         {
-          // missing: id, sceneRef, status, rationale
+          // missing: id, action, targetRef, date, status
           id: 'dec-test',
           // missing others
         },

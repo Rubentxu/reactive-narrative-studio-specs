@@ -18,8 +18,9 @@ export const extensionRegistry: ExtensionRegistry = {
     features.push(feature);
   },
   resolveEntityTabs(entity: CatalogEntity): readonly EntityTabExtension[] {
+    // Include both 'tab' (m15 tabs: overview, arc, scenes, etc.) and 'docs' (DocTab per REQ-EXT-2)
     const tabs = features.filter(
-      (f): f is EntityTabExtension => f.kind === 'tab' && f.predicate(entity)
+      (f): f is EntityTabExtension => (f.kind === 'tab' || f.kind === 'docs') && f.predicate(entity)
     );
     return sortByPriority(tabs);
   },

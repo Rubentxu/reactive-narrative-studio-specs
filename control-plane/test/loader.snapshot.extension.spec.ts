@@ -9,6 +9,7 @@ function newFileFromText(text: string, fileName: string): File {
 describe('SnapshotProjectSource - catalog entities', () => {
   it('loads yaml catalog entities from snapshot-valid/catalog/', async () => {
     const jsonFiles = newFileListFromDir('snapshot-valid', '.json');
+    const mdFiles = newFileListFromDir('snapshot-valid', '.md');
     const noraYaml = loadFixtureText('snapshot-valid/catalog/nora.yaml');
     const buildYaml = loadFixtureText('snapshot-valid/catalog/build.yaml');
 
@@ -17,7 +18,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
       newFileFromText(buildYaml, 'catalog/build.yaml'),
     ];
 
-    const allFiles = [...jsonFiles, ...yamlFiles];
+    const allFiles = [...jsonFiles, ...mdFiles, ...yamlFiles];
     const source = new SnapshotProjectSource(allFiles);
     const result = await source.load('snapshot-valid');
 
@@ -34,6 +35,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
 
   it('catalogEntities contains Character kind from nora.yaml', async () => {
     const jsonFiles = newFileListFromDir('snapshot-valid', '.json');
+    const mdFiles = newFileListFromDir('snapshot-valid', '.md');
     const noraYaml = loadFixtureText('snapshot-valid/catalog/nora.yaml');
     const buildYaml = loadFixtureText('snapshot-valid/catalog/build.yaml');
 
@@ -42,7 +44,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
       newFileFromText(buildYaml, 'catalog/build.yaml'),
     ];
 
-    const allFiles = [...jsonFiles, ...yamlFiles];
+    const allFiles = [...jsonFiles, ...mdFiles, ...yamlFiles];
     const source = new SnapshotProjectSource(allFiles);
     const result = await source.load('snapshot-valid');
 
@@ -59,6 +61,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
 
   it('catalogEntities contains Build kind from build.yaml', async () => {
     const jsonFiles = newFileListFromDir('snapshot-valid', '.json');
+    const mdFiles = newFileListFromDir('snapshot-valid', '.md');
     const noraYaml = loadFixtureText('snapshot-valid/catalog/nora.yaml');
     const buildYaml = loadFixtureText('snapshot-valid/catalog/build.yaml');
 
@@ -67,7 +70,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
       newFileFromText(buildYaml, 'catalog/build.yaml'),
     ];
 
-    const allFiles = [...jsonFiles, ...yamlFiles];
+    const allFiles = [...jsonFiles, ...mdFiles, ...yamlFiles];
     const source = new SnapshotProjectSource(allFiles);
     const result = await source.load('snapshot-valid');
 
@@ -84,6 +87,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
 
   it('catalogEntities are returned alongside bundle (not inside it)', async () => {
     const jsonFiles = newFileListFromDir('snapshot-valid', '.json');
+    const mdFiles = newFileListFromDir('snapshot-valid', '.md');
     const noraYaml = loadFixtureText('snapshot-valid/catalog/nora.yaml');
     const buildYaml = loadFixtureText('snapshot-valid/catalog/build.yaml');
 
@@ -92,7 +96,7 @@ describe('SnapshotProjectSource - catalog entities', () => {
       newFileFromText(buildYaml, 'catalog/build.yaml'),
     ];
 
-    const allFiles = [...jsonFiles, ...yamlFiles];
+    const allFiles = [...jsonFiles, ...mdFiles, ...yamlFiles];
     const source = new SnapshotProjectSource(allFiles);
     const result = await source.load('snapshot-valid');
 
