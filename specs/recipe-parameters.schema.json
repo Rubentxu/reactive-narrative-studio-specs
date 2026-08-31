@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/recipe-parameters-v1.json",
+  "title": "Recipe Parameters Schema",
+  "description": "Meta-schema for a recipe's parameters.schema.json file. Must be a valid JSON Schema 2020-12 object describing user-supplied parameters.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "https://json-schema.org/draft/2020-12/schema"
+    },
+    "type": {
+      "const": "object"
+    },
+    "properties": {
+      "type": "object"
+    },
+    "required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": {
+      "type": "boolean"
+    }
+  },
+  "required": ["type", "properties"],
+  "additionalProperties": false
+}

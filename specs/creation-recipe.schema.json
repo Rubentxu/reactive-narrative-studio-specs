@@ -77,6 +77,39 @@
       "items": {
         "type": "string"
       }
+    },
+    "uiHints": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "publishing": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "defaultTarget": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recipeProfileAliasResolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "aliasesFile": {
+          "type": "string",
+          "default": "specs/profile-aliases.yaml"
+        }
+      }
     }
   },
   "additionalProperties": false
