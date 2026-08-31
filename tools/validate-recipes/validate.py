@@ -55,7 +55,22 @@ class Diagnostic:
 
 REPO_ROOT = Path(__file__).parent.parent.parent
 CREATION_SCHEMA_PATH = REPO_ROOT / "specs" / "creation-recipe.schema.json"
-PARAM_META_SCHEMA_PATH = REPO_ROOT / "specs" / "recipe-parameters.schema.json"
+
+# Inline meta-schema for parameters.schema.json (self-test; no separate spec file per REQ-CR-2)
+# This is the 2020-12 JSON Schema that a recipe's parameters.schema.json must satisfy.
+PARAM_META_SCHEMA: dict = {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "$schema": {"const": "https://json-schema.org/draft/2020-12/schema"},
+        "type": {"const": "object"},
+        "properties": {"type": "object"},
+        "required": {"type": "array", "items": {"type": "string"}},
+        "additionalProperties": {"type": "boolean"},
+    },
+    "required": ["type", "properties"],
+    "additionalProperties": False,
+}
 
 
 # ---------------------------------------------------------------------------
@@ -130,12 +145,11 @@ def validate_recipe_schema(recipe_data: dict, recipe_path: Path) -> list[Diagnos
 
 
 def validate_parameters_schema(params_schema_data: dict, recipe_path: Path) -> list[Diagnostic]:
-    """Validate parameters.schema.json against recipe-parameters meta-schema."""
+    """Validate parameters.schema.json against the inline meta-schema (self-test)."""
     try:
-        meta_schema = load_json_schema(PARAM_META_SCHEMA_PATH)
         jsonschema.validate(
             instance=params_schema_data,
-            schema=meta_schema,
+            schema=PARAM_META_SCHEMA,
             format_checker=jsonschema.FormatChecker(),
         )
         return []
