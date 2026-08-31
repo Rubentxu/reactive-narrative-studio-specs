@@ -158,4 +158,5 @@ A persistent backend remains optional, not assumed.
 
 ```text
 M10.1 Creation Recipes               Status: done          Cycle: m10-1-creation-recipes
+M10.2 Capability Catalog             Status: in_progress   Cycle: m10-2-capability-catalog
 ```
