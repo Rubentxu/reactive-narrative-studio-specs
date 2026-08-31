@@ -158,5 +158,21 @@ A persistent backend remains optional, not assumed.
 
 ```text
 M10.1 Creation Recipes               Status: done          Cycle: m10-1-creation-recipes
-M10.2 Capability Catalog             Status: in_progress   Cycle: m10-2-capability-catalog
+M10.2 Capability Catalog             Status: done          Cycle: m10-2-capability-catalog (v0.10.0)
 ```
+
+## M10.2 — Capability Catalog — CLOSED (v0.10.0, 2026-08-31)
+
+**UAT-M10-06** satisfied: skill/pack/profile/workflow/provider/recipe catalog pages.
+
+- 6 new routes (`/capabilities`, `/skills`, `/packs`, `/profiles`, `/workflows`, `/providers`, `/recipes`, `/$kind/$namespace/$name`)
+- Detail page reuses m16 `EntityHeader`/`MetadataCard`/`RelationsList` via `extensionRegistry` (capabilityEntryToCatalogEntity bridge)
+- 5 cross-reference kinds via entityLinkPlugin (`[[Skill:default/x]]` → `/capabilities/skills/default/x`)
+- Profile validator (`tools/validate-profiles/validate.py`) with exact-pinned deps
+- Round-trip no-op proof: `useProjectionStore.getState()` deep-equal pre/post route mount
+- m10 invariants enforced: no fetch, no Dexie/IndexedDB/Orama, no useProjectionStore
+
+**Carry-forward INCs (m10.1 → M11)**:
+- INC-015 (medium): `validate.py --negative-fixtures` default arg
+- INC-016 (low): `CreateWizard.renderSkeletons` discards output
+- INC-008 (low): m16 extension-isolation grep oracle gap (only-extension-imports of m16 catalog-entity, not the reverse)
