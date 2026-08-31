@@ -1,4 +1,12 @@
 // @vitest-environment jsdom
+/**
+ * use-search-index.spec.tsx — hook integration test for useSearchIndex.
+ *
+ * Hook signature: useSearchIndex(query: string): SearchResult[]
+ * Memoization: build is called once per (query, catalogEntities, bundle, docs).
+ *
+ * EVT-SID-04 oracle: hook consumed only from views/Search.tsx + features/docs/.
+ */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { render, screen, cleanup } from '@testing-library/react';
 import React from 'react';
@@ -20,16 +28,19 @@ function newFileListFromDirWithYaml(relativeDir: string): File[] {
   );
   return files.map((f: string) => {
     const fullPath = join(fullDir, f);
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { readFileSync } = require('node:fs');
     const bytes = readFileSync(fullPath);
     return new File([bytes as BlobPart], f);
   });
 }
 
-// Test component that calls the hook and exposes results via data attributes
+/**
+ * Test component that calls useSearchIndex(query) directly.
+ * The new API: useSearchIndex(query: string) → SearchResult[]
+ */
 function SearchIndexTester({ query, testId }: { query: string; testId: string }): React.ReactElement {
-  const searchFn = useSearchIndex();
-  const results = searchFn(query);
+  const results = useSearchIndex(query);
   return (
     <div data-testid={testId}>
       <span data-testid={`${testId}-count`}>{results.length}</span>

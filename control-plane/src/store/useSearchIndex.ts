@@ -1,49 +1,49 @@
+/**
+ * useSearchIndex — memoized search hook per REQ-SID-4 (D2/D5).
+ *
+ * Signature: useSearchIndex(query: string): SearchResult[]
+ *
+ * Subscribes to (catalogEntities, bundle, docs) via useProjectionStore.
+ * Calls build(...) once on mount + on every change to subscribed slots.
+ * Memoizes by shallow equality on (query, catalogEntities, bundle, docs).
+ *
+ * EVT-SID-04 oracle: grep -rE "useSearchIndex" src/ ≤ 3 hits
+ *   (declaration + views/Search.tsx + features/docs/)
+ * AC-INV-no-write: features cannot mutate Zustand.
+ * AC-INV-extension-isolation: hook consumed only from allowed paths.
+ */
+
 import { useMemo } from 'react';
 import { useProjectionStore } from './projectionStore';
-import { buildIndex, search, type SearchResult } from './searchIndex';
+import { build, type SearchResult } from './searchIndex';
+import type { DocEntry } from '../loader/SnapshotProjectSource';
 
-/**
- * Memoized hook that builds a search index from the loaded catalog bundle
- * and exposes a search function.
- *
- * Returns an empty-search-result array when no bundle is loaded (AC-INV-no-write).
- * The hook re-computes only when catalogEntities change.
- */
-export function useSearchIndex() {
-  const catalogEntities = useProjectionStore((s) => s.catalogEntities);
-  const status = useProjectionStore((s) => s.status);
-
-  const index = useMemo(() => {
-    if (status !== 'loaded' || catalogEntities.length === 0) {
-      return null;
-    }
-    return buildIndex(catalogEntities);
-  }, [catalogEntities, status]);
-
-  const searchFn = (query: string): SearchResult[] => {
-    if (!index) return [];
-    return search(index, query);
-  };
-
-  return searchFn;
+// Private guard narrowing bundle.docs to DocEntry[]
+function assertDocs(docs: unknown): ReadonlyArray<DocEntry> {
+  if (!Array.isArray(docs)) return [];
+  return docs as ReadonlyArray<DocEntry>;
 }
 
 /**
- * Convenience: returns all entities as SearchResult[] when query is empty,
- * using the same memoized index.
+ * useSearchIndex — the sole exported symbol from this module.
+ * Returns SearchResult[] for the given query, memoized by
+ * (query, catalogEntities, bundle, docs) shallow equality.
  */
-export function useAllEntities(): SearchResult[] {
+export function useSearchIndex(query: string): SearchResult[] {
   const catalogEntities = useProjectionStore((s) => s.catalogEntities);
+  const bundle = useProjectionStore((s) => s.bundle);
   const status = useProjectionStore((s) => s.status);
 
-  return useMemo(() => {
-    if (status !== 'loaded' || catalogEntities.length === 0) {
-      return [];
-    }
-    return catalogEntities.map((entity) => ({
-      entity,
-      score: 0,
-      matchField: 'name' as const,
-    }));
-  }, [catalogEntities, status]);
+  const index = useMemo(() => {
+    if (status !== 'loaded' || !bundle) return null;
+    const docs = assertDocs(bundle.docs);
+    return build(catalogEntities, bundle, docs);
+  }, [catalogEntities, bundle, status]);
+
+  const results = useMemo(() => {
+    if (!index) return [];
+    return index.search(query);
+  }, [index, query]);
+
+  return results;
 }

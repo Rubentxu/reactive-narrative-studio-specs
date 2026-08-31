@@ -72,14 +72,14 @@ export class SnapshotProjectSource implements ProjectSource {
 
 export function parseManifest(
   files: ReadonlyArray<File>
-): Promise<Diagnostic<{ version?: string; projections: string[] }>> {
+): Promise<Diagnostic<{ version?: string; projections: string[]; docs?: string[] }>> {
   return (async () => {
     const manifestFile = files.find((f) => f.name === 'manifest.json');
     if (!manifestFile) {
       return { ok: false, errors: [synthetic('missing-entry', '', 'manifest.json not found')] };
     }
 
-    let manifest: { version?: string; projections?: string[] };
+    let manifest: { version?: string; projections?: string[]; docs?: string[]; snapshot?: { docs?: string[] } };
     try {
       const text = await manifestFile.text();
       manifest = JSON.parse(text);
@@ -88,7 +88,12 @@ export function parseManifest(
     }
 
     const projectionNames = manifest.projections ?? [];
-    const result: { version?: string; projections: string[] } = { projections: projectionNames };
+    // docs may be at manifest.docs or manifest.snapshot.docs (两种fixture格式都兼容)
+    const docs = manifest.docs ?? manifest.snapshot?.docs ?? [];
+    const result: { version?: string; projections: string[]; docs: string[] } = {
+      projections: projectionNames,
+      docs,
+    };
     if (manifest.version !== undefined) result.version = manifest.version;
     return { ok: true, data: result };
   })();
@@ -188,7 +193,7 @@ export function loadCatalogEntities(
 export function assembleBundle(
   projections: Record<string, unknown>,
   decisions?: unknown,
-  docs?: string[]
+  docs?: DocEntry[]
 ): ProjectionBundle {
   // Seven known bundle keys - unknown projNames surface synthetic('unknown-schema')
   return {
@@ -249,17 +254,26 @@ export function parseDecisions(
 }
 
 /**
+ * A loaded document with its relative path and markdown body.
+ * Shape matches REQ-LOA-2: { path: string, body: string }[].
+ */
+export interface DocEntry {
+  readonly path: string;
+  readonly body: string;
+}
+
+/**
  * Load docs entries from the docs/ directory referenced in manifest.
- * Each doc is a file in the docs/ folder - this returns the list of filenames.
- * The actual doc content is loaded lazily by consumers.
+ * Returns { path, body }[] with the markdown body content loaded.
+ * Uses the existing isSafeRelativePath guard (REQ-LOA-2).
  */
 export function loadDocs(
   files: ReadonlyArray<File>,
   manifest: { version?: string; projections: string[]; docs?: string[] }
-): Promise<Diagnostic<{ docs: string[] }>> {
+): Promise<Diagnostic<{ docs: DocEntry[] }>> {
   return (async () => {
     const docsPaths = manifest.docs ?? [];
-    const validDocs: string[] = [];
+    const validDocs: DocEntry[] = [];
 
     for (const docPath of docsPaths) {
       if (!isSafeRelativePath(docPath)) {
@@ -276,7 +290,16 @@ export function loadDocs(
           errors: [synthetic('missing-entry', `docs/${docPath}`, `File not found: ${docPath}`)],
         };
       }
-      validDocs.push(docPath);
+
+      try {
+        const body = await docFile.text();
+        validDocs.push({ path: docPath, body });
+      } catch {
+        return {
+          ok: false,
+          errors: [synthetic('parse-error', `docs/${docPath}`, 'Could not read doc body')],
+        };
+      }
     }
 
     return { ok: true, data: { docs: validDocs } };

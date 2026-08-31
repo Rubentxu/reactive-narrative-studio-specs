@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { tokenize, buildIndex, search } from '../src/store/searchIndex';
+import { tokenize, build } from '../src/store/searchIndex';
 import type { CatalogEntity } from '../src/loader/ProjectSource';
+import type { ProjectionBundle } from '../src/loader/ProjectSource';
+import type { DocEntry } from '../src/loader/SnapshotProjectSource';
 
 function makeEntity(kind: string, namespace: string, name: string, description = ''): CatalogEntity {
   return {
@@ -11,19 +13,50 @@ function makeEntity(kind: string, namespace: string, name: string, description =
 }
 
 const CHARACTERS: CatalogEntity[] = [
-  makeEntity('Character', 'demo', 'nora', 'The protagonist of the story'),
+  makeEntity('Character', 'demo', 'nora', 'The protagonist of the story who discovers the llave plateada'),
   makeEntity('Character', 'demo', 'nora-build', 'A build variant of Nora'),
   makeEntity('Character', 'demo', 'runner', 'Fast runner character'),
   makeEntity('Character', 'studio', 'architect', 'The system architect'),
 ];
 
-const BUILDS: CatalogEntity[] = [
-  makeEntity('Build', 'demo', 'build-001', 'Primary build'),
-  makeEntity('Build', 'studio', 'ci-build', 'CI pipeline build'),
+const BUNDLE_WITH_DECISIONS: ProjectionBundle = {
+  project: null,
+  chapters: {
+    chapters: [
+      { id: 'ch-silver-key', title: 'La Llave Plateada — The Silver Key', status: 'pass', docRef: 'docs/scene-silver-key.md' },
+    ],
+  },
+  characters: {
+    characters: [
+      { id: 'char-nora-bundle', name: 'Nora', summary: 'Bundle-only notes: carries the silver key in chapter 3', notes: 'Bundle variant' },
+    ],
+  },
+  assets: {
+    assets: [
+      { id: 'asset-silver-key-doc', name: 'silver-key-doc', path: 'docs/scene-silver-key.md', kind: 'llave-plateada-document' },
+    ],
+  },
+  uat: null,
+  visualQuality: null,
+  history: null,
+  decisions: {
+    decisions: [
+      { id: 'silver-key', action: 'Accept the silver key — the llave plateada that anchors the narrative', targetRef: 'Scene:demo/scene-silver-key', date: '2026-01-01T00:00:00Z', status: 'accepted' },
+      { id: 'nora-arc', action: 'Pursue Nora character arc through the archive', targetRef: 'Character:demo/nora', date: '2026-01-02T00:00:00Z', status: 'pending' },
+      { id: 'iron-door', action: 'Open the iron door for protagonist progression', targetRef: 'Asset:demo/iron-door', date: '2026-01-03T00:00:00Z', status: 'rejected' },
+    ],
+  },
+  docs: [],
+};
+
+const DOCS: DocEntry[] = [
+  { path: 'docs/narrative.md', body: 'Nora found the silver key in the archive. The archive contains many secrets.' },
+  { path: 'docs/nora.md', body: 'Character:demo/nora is the main protagonist. She carries the silver key and encounters the llave plateada.' },
+  { path: 'docs/scene-silver-key.md', body: 'The silver key scene shows Nora finding the llave plateada (silver key) in the archive.' },
 ];
 
-describe('searchIndex — tokenize', () => {
-  it('returns lowercase tokens split by whitespace, dash, underscore, slash', () => {
+describe('searchIndex — tokenize (D3)', () => {
+  it('returns lowercase tokens split by non-alphanumeric', () => {
     const tokens = tokenize('Nora-BUILD runner');
     expect(tokens).toEqual(['nora', 'build', 'runner']);
   });
@@ -43,126 +76,200 @@ describe('searchIndex — tokenize', () => {
   it('handles single word', () => {
     expect(tokenize('nora')).toEqual(['nora']);
   });
-});
 
-describe('searchIndex — buildIndex', () => {
-  it('builds an index with entities and a lookup map', () => {
-    const index = buildIndex(CHARACTERS);
-    expect(index.entities).toHaveLength(4);
-    expect(index.lookup instanceof Map).toBe(true);
+  // EVT-SID-02: ASCII-folded case-insensitive tokenization
+  it('ASCII-folds accented characters: LLAVE → llave', () => {
+    expect(tokenize('LLAVÉ')).toEqual(['llave']);
   });
 
-  it('indexes entity name tokens', () => {
-    const index = buildIndex(CHARACTERS);
-    const noraResults = index.lookup.get('nora');
-    expect(noraResults).toBeDefined();
-    expect(noraResults!.length).toBeGreaterThan(0);
-    expect(noraResults!.some((e) => String(e.metadata?.name ?? '') === 'nora')).toBe(true);
+  it('ASCII-folds combining marks: PLÁTEÁDA → plateada', () => {
+    expect(tokenize('PLÁTEÁDA')).toEqual(['plateada']);
   });
 
-  it('indexes entity kind tokens', () => {
-    const index = buildIndex(CHARACTERS);
-    const charResults = index.lookup.get('character');
-    expect(charResults).toBeDefined();
-    expect(charResults!.length).toBe(4);
+  it('tokenize(LLAVÉ PLÁTEÁDA) deep-equals tokenize(llave plateada)', () => {
+    expect(tokenize('LLAVÉ PLÁTEÁDA')).toEqual(tokenize('llave plateada'));
   });
 
-  it('does not duplicate entity for same token', () => {
-    const index = buildIndex([makeEntity('Character', 'demo', 'nora')]);
-    const noraResults = index.lookup.get('nora');
-    expect(noraResults!.length).toBe(1);
+  it('tokenize(Llàvé Pláteádà) deep-equals tokenize(llave plateada)', () => {
+    expect(tokenize('Llàvé Pláteádà')).toEqual(tokenize('llave plateada'));
   });
 
-  it('indexes full namespace/name reference', () => {
-    const index = buildIndex(CHARACTERS);
-    const fullRef = index.lookup.get('demo/nora');
-    expect(fullRef).toBeDefined();
-    expect(fullRef!.length).toBe(1);
-    expect(String(fullRef![0]!.metadata?.name ?? '')).toBe('nora');
+  it('tokenize(llave-plateada) deep-equals tokenize(llave plateada)', () => {
+    expect(tokenize('llave-plateada')).toEqual(['llave', 'plateada']);
   });
 });
 
-describe('searchIndex — search', () => {
+describe('searchIndex — build (D1/D3)', () => {
+  it('builds an index with entries and a search method', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, []);
+    expect(Array.isArray(index.entries)).toBe(true);
+    expect(typeof index.search).toBe('function');
+  });
+
+  it('indexes catalog entities as character/asset type', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, []);
+    const noraEntry = index.entries.find((e) => e.id === 'character:demo/nora');
+    expect(noraEntry).toBeDefined();
+    expect(noraEntry!.type).toBe('character');
+    expect(noraEntry!.title).toBe('nora');
+  });
+
+  it('indexes decisions from bundle.decisions', () => {
+    const index = build([], BUNDLE_WITH_DECISIONS, []);
+    const decisionEntries = index.entries.filter((e) => e.type === 'decision');
+    expect(decisionEntries.length).toBe(3);
+    const silverKey = decisionEntries.find((e) => e.id === 'decision:silver-key');
+    expect(silverKey).toBeDefined();
+    expect(silverKey!.title).toBe('Accept the silver key — the llave plateada that anchors the narrative');
+  });
+
+  it('indexes docs from the docs array', () => {
+    const index = build([], BUNDLE_WITH_DECISIONS, DOCS);
+    const docEntries = index.entries.filter((e) => e.type === 'docs');
+    expect(docEntries.length).toBe(3);
+    const narrative = docEntries.find((e) => e.id === 'docs:narrative');
+    expect(narrative).toBeDefined();
+    expect(narrative!.title).toBe('narrative');
+    expect(narrative!.tokens).toContain('nora');
+    expect(narrative!.tokens).toContain('silver');
+    expect(narrative!.tokens).toContain('key');
+  });
+
+  it('does not duplicate entries for the same id', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, []);
+    const ids = index.entries.map((e) => e.id);
+    const uniqueIds = new Set(ids);
+    expect(ids.length).toBe(uniqueIds.size);
+  });
+});
+
+describe('searchIndex — search (D4 ranker)', () => {
   it('returns empty array for empty query', () => {
-    const index = buildIndex(CHARACTERS);
-    expect(search(index, '')).toEqual([]);
-    expect(search(index, '   ')).toEqual([]);
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    expect(index.search('')).toEqual([]);
+    expect(index.search('   ')).toEqual([]);
   });
 
-  it('returns empty array when no entities exist', () => {
-    const index = buildIndex([]);
-    expect(search(index, 'nora')).toEqual([]);
+  it('returns empty array when no entries exist', () => {
+    const index = build([], { ...BUNDLE_WITH_DECISIONS, decisions: undefined, characters: null, assets: null, chapters: null }, []);
+    expect(index.search('nora')).toEqual([]);
   });
 
-  it('returns level-4 exact name match before level-3 prefix', () => {
-    const index = buildIndex(CHARACTERS);
-    const results = search(index, 'nora');
+  // D4-100: exact id match outranks all other scores
+  it('exact id match (silver-key) returns score 100', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const results = index.search('silver-key');
     expect(results.length).toBeGreaterThan(0);
-    expect(results[0]!.score).toBe(4);
-    expect(String(results[0]!.entity.metadata?.name ?? '')).toBe('nora');
+    expect(results[0]!.id).toBe('decision:silver-key');
+    expect(results[0]!.score).toBe(100);
   });
 
-  it('returns level-3 prefix match for non-exact name', () => {
-    const index = buildIndex(CHARACTERS);
-    const results = search(index, 'nor');
+  it('D4-80: exact Kind:namespace/name match returns score 80', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const results = index.search('Character:demo/nora');
     expect(results.length).toBeGreaterThan(0);
-    expect(results[0]!.score).toBe(3);
+    expect(results[0]!.score).toBe(80);
   });
 
-  it('returns level-2 substring match', () => {
-    const index = buildIndex(CHARACTERS);
-    const results = search(index, 'ora');
+  it('D4-60: multi-token full hit across multiple fields returns score 60', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const results = index.search('llave plateada');
     expect(results.length).toBeGreaterThan(0);
-    expect(results[0]!.score).toBe(2);
+    // silver-key decision mentions "llave plateada" in its action text
+    const silverKeyResult = results.find((r) => r.id === 'decision:silver-key');
+    expect(silverKeyResult).toBeDefined();
+    expect(silverKeyResult!.score).toBeGreaterThanOrEqual(40);
   });
 
-  it('returns results sorted by score descending', () => {
-    const index = buildIndex(CHARACTERS);
-    const results = search(index, 'nora');
+  it('D4-40: single-token substring hit returns score 40', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const results = index.search('nora');
+    expect(results.length).toBeGreaterThan(0);
+    const noraResults = results.filter((r) => r.type === 'character');
+    expect(noraResults.length).toBeGreaterThan(0);
+    // exact id match > name match > token hit
+    expect(results[0]!.score).toBeGreaterThanOrEqual(40);
+  });
+
+  it('D4-20: snippet-only hit returns score 20', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    // "archive" appears in narrative.md body but not as an indexed token
+    const results = index.search('archive');
+    const narrativeResult = results.find((r) => r.id === 'docs:narrative');
+    expect(narrativeResult).toBeDefined();
+    expect(narrativeResult!.score).toBeGreaterThanOrEqual(20);
+  });
+
+  it('results are sorted by score descending', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const results = index.search('nora');
     for (let i = 1; i < results.length; i++) {
       expect(results[i - 1]!.score).toBeGreaterThanOrEqual(results[i]!.score);
     }
   });
 
-  it('deduplicates entities across multiple token matches', () => {
-    const index = buildIndex(CHARACTERS);
-    const results = search(index, 'nora build');
-    const keys = results.map((r) => `${r.entity.kind}:${String(r.entity.metadata?.namespace ?? '')}/${String(r.entity.metadata?.name ?? '')}`);
-    const uniqueKeys = new Set(keys);
-    expect(keys.length).toBe(uniqueKeys.size);
-  });
-
-  it('finds entities by kind token', () => {
-    const index = buildIndex(BUILDS);
-    const results = search(index, 'build');
-    expect(results.length).toBeGreaterThan(0);
-    expect(results.some((r) => r.entity.kind === 'Build')).toBe(true);
-  });
-
-  it('returns empty for query with no matches', () => {
-    const index = buildIndex(CHARACTERS);
-    const results = search(index, 'xyznonexistent');
-    expect(results).toEqual([]);
-  });
-
   it('search is case-insensitive', () => {
-    const index = buildIndex(CHARACTERS);
-    const lower = search(index, 'nora');
-    const upper = search(index, 'NORA');
-    const mixed = search(index, 'NoRa');
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const lower = index.search('nora');
+    const upper = index.search('NORA');
+    const mixed = index.search('NoRa');
     expect(lower.length).toBe(upper.length);
     expect(lower.length).toBe(mixed.length);
   });
 
-  it('whitespace-only query returns empty', () => {
-    const index = buildIndex(CHARACTERS);
-    expect(search(index, '  \n\t  ')).toEqual([]);
+  it('deterministic: two calls return identical order', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const first = index.search('llave plateada');
+    const second = index.search('llave plateada');
+    expect(first.map((r) => r.id)).toEqual(second.map((r) => r.id));
+    expect(first.map((r) => r.score)).toEqual(second.map((r) => r.score));
   });
 
-  it('result includes matchField field', () => {
-    const index = buildIndex(CHARACTERS);
-    const results = search(index, 'nora');
-    expect(results[0]).toHaveProperty('matchField');
-    expect(['name', 'namespace', 'kind', 'description'] as const).toContain(results[0]!.matchField);
+  it('result includes all required fields', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const results = index.search('nora');
+    expect(results.length).toBeGreaterThan(0);
+    const r = results[0]!;
+    expect(r).toHaveProperty('id');
+    expect(r).toHaveProperty('type');
+    expect(r).toHaveProperty('title');
+    expect(r).toHaveProperty('snippet');
+    expect(r).toHaveProperty('score');
+    expect(typeof r.score).toBe('number');
+  });
+
+  it('returns at least one result per type for "llave plateada" query (EVT-SID-01)', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    const results = index.search('llave plateada');
+    const types = new Set(results.map((r) => r.type));
+
+    // Amendment 1: EVT-SID-01 at FULL STRENGTH — all 5 types required.
+    // scene-chapter: ONE entry per chapter (id scene-chapter:<chapter-id>,
+    // entityRef Chapter:cp/<chapter-id>, sourcePath from ch.docRef).
+    expect(types.has('character')).toBe(true);
+    expect(types.has('scene-chapter')).toBe(true);
+    expect(types.has('asset')).toBe(true);
+    expect(types.has('decision')).toBe(true);
+    expect(types.has('docs')).toBe(true);
+
+    // Non-empty field assertions (Amendment 1 §entityRef convention):
+    for (const r of results) {
+      expect(r.title.length).toBeGreaterThan(0);
+      expect(r.snippet.length).toBeGreaterThan(0);
+      expect(r.entityRef.length).toBeGreaterThan(0);
+      expect(r.score).toBeGreaterThan(0);
+    }
+
+    // scene-chapter entry shape per Amendment 1:
+    const sceneChapter = results.find((r) => r.type === 'scene-chapter');
+    expect(sceneChapter).toBeDefined();
+    expect(sceneChapter!.id).toBe('scene-chapter:ch-silver-key');
+    expect(sceneChapter!.entityRef).toBe('Chapter:cp/ch-silver-key');
+    expect(sceneChapter!.sourcePath).toBe('docs/scene-silver-key.md');
+  });
+
+  it('whitespace-only query returns empty', () => {
+    const index = build(CHARACTERS, BUNDLE_WITH_DECISIONS, DOCS);
+    expect(index.search('  \n\t  ')).toEqual([]);
   });
 });
