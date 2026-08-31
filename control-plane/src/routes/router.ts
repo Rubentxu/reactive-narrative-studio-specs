@@ -8,6 +8,7 @@ import { History } from '../views/History';
 import { Search } from '../views/Search';
 import { Catalog } from '../views/Catalog';
 import { EntityPage } from '../views/EntityPage';
+import { Create } from '../views/Create';
 
 const rootRoute = createRootRoute({ component: SourcePicker });
 const overviewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/overview', component: Overview });
@@ -22,6 +23,7 @@ const entityRoute = createRoute({
   path: '/entity/$kind/$namespace/$name',
   component: EntityPage,
 });
+const createWizardRoute = createRoute({ getParentRoute: () => rootRoute, path: '/create', component: Create });
 
 const routeTree = rootRoute.addChildren([
   overviewRoute,
@@ -32,6 +34,7 @@ const routeTree = rootRoute.addChildren([
   searchRoute,
   catalogRoute,
   entityRoute,
+  createWizardRoute,
 ]);
 export const router = createRouter({ routeTree });
 

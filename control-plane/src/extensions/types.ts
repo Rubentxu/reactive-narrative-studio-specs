@@ -45,7 +45,7 @@ export type ControlPlaneFeature = EntityTabExtension | EntityCardExtension;
 export interface RecipeWidgetExtension {
   readonly apiVersion: 'control-plane.extensions/v1';
   readonly id: string;
-  readonly kind: 'wizard';
+  readonly kind: 'recipe-wizard';
   readonly priority: number;
   render(): React.ReactElement;
 }

@@ -12,7 +12,7 @@ import { CreateWizard } from './CreateWizard';
 registerRecipeWizard({
   apiVersion: 'control-plane.extensions/v1',
   id: 'create-wizard',
-  kind: 'wizard',
+  kind: 'recipe-wizard',
   priority: 100,
   render: () => <CreateWizard />,
 });

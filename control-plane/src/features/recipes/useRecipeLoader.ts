@@ -14,6 +14,7 @@
  */
 
 import { useMemo } from 'react';
+import { parse as parseYaml } from 'yaml';
 import type { RecipeBundle } from '@recipes/recipeLoader';
 import type { Result } from '@recipes/result';
 
@@ -89,23 +90,6 @@ export async function loadRecipeBundle(recipeId: string): Promise<Result<RecipeB
       message: `Failed to load recipe '${recipeId}': ${e instanceof Error ? e.message : String(e)}`,
     };
   }
-}
-
-/** Simple YAML parser (subset: top-level keys → values). */
-function parseYaml(text: string): Record<string, unknown> {
-  const result: Record<string, unknown> = {};
-  for (const line of text.split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#') || !trimmed.includes(':')) continue;
-    const colonIdx = trimmed.indexOf(':');
-    const key = trimmed.slice(0, colonIdx).trim();
-    const value = trimmed.slice(colonIdx + 1).trim();
-    if (key) {
-      // Strip quotes
-      result[key] = value.replace(/^['"]|['"]$/g, '');
-    }
-  }
-  return result;
 }
 
 /** React hook wrapper around loadRecipeBundle. */
