@@ -1,7 +1,7 @@
 /**
  * recipes feature — registers the RecipeWidgetExtension against the Extension Registry.
  *
- * Extension kind: 'wizard' — app-level wizard at /create route.
+ * Extension kind: 'recipe-wizard' — app-level wizard at /create route.
  * Not bound to any entity (no predicate needed).
  */
 
