@@ -1,0 +1,19 @@
+{
+  "generatorVersion": "1.0",
+  "parametersSchemaSha256": "06ee48abe1cfcc2027e30a82a828b9756864a7e235cdb746d7ef72ee96def418",
+  "recipeYamlSha256": "fac8dd49c3c936f5bbd40a4204643123a5c85bf37ed386aa9a65e598563e7f92",
+  "skeletonFileShas256": {
+    "canon/chapters/01-opening.md": "96c5553a15b07e8a1005ed230f4be046849208bbe3a745c4a8418fa4c548c296",
+    "canon/chapters/02-incident.md": "3d3faee82b7f5966a29b0196defe036b993d6e1a58175b328095b1705463ddee",
+    "canon/chapters/03-resolution.md": "837fc7cfcd1169cc70bcbeb286898e5b9e9352fd329ca8570ad8b9cf3de4af2f",
+    "canon/characters/deuteragonist.yaml": "0af6f9f7dcee86c116ac2243c9a89f0f91e7ac56bbc6d845d11bfcfac2ed26e4",
+    "canon/characters/protagonist.yaml": "377fdfb243de0f79ddf6f1e0f3e91d00388730b1fa891e9b584a20a4427ac807",
+    "goals.yaml": "33d94cfc15c165fbae628359ddce8dd9c4dd2ce2379e9140e3645b5f97f36653",
+    "narrative.yaml": "cb7b2c45d5842d1c17fcfb227221f22cc0816f1a157c9d3b930a4a1698341fb6",
+    "packs/characters/character_design.md": "14abae4ce8f3a92b1923019b6ed07195c80636813f1293b2800b8a0e0b2ea877",
+    "packs/editorial/editorial_pass.md": "44c7f62157536ed11ce6170b86c7713397c7bd0c0b69ee53ad2678b36b77a13b",
+    "packs/story_core/story_intake.md": "1e266883e3f01e7951997cfbe342ef6cb6e8db91832ccc2fe5de039702cf9afc",
+    "packs/visual_core/visual_bible_seed.md": "d98ad8c93cfb8730f7b69f91e320f5050bbebcad70d465cf8155391567ce09ab",
+    "profiles/profile-middle-grade-10-11.yaml": "63c7d7a113d0586e1cff9a1a11635a3cfac1a9824fa0161678fc3493341c6d21"
+  }
+}

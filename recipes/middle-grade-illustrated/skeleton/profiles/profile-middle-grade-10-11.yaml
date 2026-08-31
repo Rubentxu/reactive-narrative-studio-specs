@@ -1,0 +1,26 @@
+# Middle Grade 10-11 profile
+# Resolved from specs/profile-aliases.yaml
+
+audience:
+  ageRange: "10-11"
+  gradeRange: "5th-6th grade"
+  readingLevel: "independent reader"
+  interests:
+    - friendship
+    - adventure
+    - humor
+    - mystery
+  contentGuidelines:
+    violence: low
+    romance: none
+    language: clean
+
+narrative:
+  preferredPOV: third-person-limited
+  preferredTense: present
+  chapterLengthTarget: 1500-3000 words
+
+illustrations:
+  style: graphic-novel-panels
+  frequency: every-chapter
+  panelCountTarget: 4-8 per chapter

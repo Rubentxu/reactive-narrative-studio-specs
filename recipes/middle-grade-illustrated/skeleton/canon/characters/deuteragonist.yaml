@@ -1,0 +1,22 @@
+# Deuteragonist character sheet
+# Fill in during character-design pack
+
+name: DEUTERAGONIST_NAME
+description: TBD — fill in during story-intake pack
+status: draft
+
+archetype: TBD
+role: deuteragonist
+
+traits:
+  internal:
+    flaw: TBD
+    want: TBD
+    need: TBD
+  external:
+    appearance: TBD
+    skill: TBD
+
+relationships:
+  protagonist: PROTAGONIST_NAME
+  antagonist: ANTAGONIST_NAME

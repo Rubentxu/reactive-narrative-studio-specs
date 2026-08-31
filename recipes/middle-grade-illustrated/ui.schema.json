@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "ui:widget": "TextWidget"
+    },
+    "projectId": {
+      "ui:widget": "TextWidget"
+    },
+    "audience": {
+      "ui:widget": "RadioWidget",
+      "ui:options": {
+        "inline": true
+      }
+    },
+    "imagePolicy": {
+      "ui:widget": "SelectWidget"
+    },
+    "genre": {
+      "ui:widget": "CheckboxesWidget",
+      "ui:options": {
+        "inline": false
+      }
+    },
+    "outputLanguage": {
+      "ui:widget": "SelectWidget"
+    }
+  }
+}

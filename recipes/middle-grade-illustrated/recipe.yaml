@@ -1,0 +1,45 @@
+schema: creation-recipe/v1
+
+metadata:
+  id: middle-grade-illustrated
+  title: Middle Grade Illustrated Novel
+  description: Starter for an illustrated 8–12 narrative project.
+  tags:
+    - middle-grade
+    - illustrated
+
+parameters:
+  $ref: "./parameters.schema.json"
+
+project:
+  profiles:
+    - "{{ audience }}"
+  packs:
+    - story_core
+    - characters
+    - editorial
+    - visual_core
+  skills:
+    - story-intake
+    - character-design
+    - story-architecture
+  publishingTargets:
+    - print-pdf
+
+initialGoals:
+  - establish-story-bible
+  - establish-main-cast
+  - outline-story
+
+# --- Additive optional keys per REQ-CR-2 ---
+
+publishing:
+  defaultTarget: print-pdf
+  options:
+    - print-pdf
+
+recipeProfileAliasResolution:
+  enabled: true
+  aliasesFile: specs/profile-aliases.yaml
+
+uiHints: {}

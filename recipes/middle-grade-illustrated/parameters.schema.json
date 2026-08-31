@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["title", "projectId", "audience"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Book title"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$",
+      "title": "Project ID"
+    },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "middle-grade-8-9",
+        "middle-grade-9-10",
+        "profile-middle-grade-10-11",
+        "middle-grade-11-12"
+      ],
+      "default": "profile-middle-grade-10-11",
+      "title": "Target audience"
+    },
+    "imagePolicy": {
+      "type": "string",
+      "enum": [
+        "local_only",
+        "local_preferred",
+        "hybrid",
+        "saas_allowed"
+      ],
+      "default": "local_preferred",
+      "title": "Image policy"
+    },
+    "genre": {
+      "type": "string",
+      "enum": [
+        "fantasy",
+        "mystery",
+        "adventure",
+        "realistic"
+      ],
+      "default": "fantasy",
+      "title": "Primary genre"
+    },
+    "outputLanguage": {
+      "type": "string",
+      "default": "es-ES",
+      "title": "Output language"
+    }
+  },
+  "additionalProperties": false
+}
