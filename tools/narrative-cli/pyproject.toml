@@ -9,10 +9,10 @@ description = "Narrative studio creation recipe CLI — narrative init + plan"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-  "click>=8.1.0,<9.0.0",
-  "pydantic>=2.0.0,<3.0.0",
-  "pyyaml>=6.0.0,<7.0.0",
-  "jsonschema>=4.23.0,<5.0.0",
+  "click==8.3.3",
+  "pydantic==2.12.5",
+  "pyyaml==6.0.3",
+  "jsonschema==4.23.0",
 ]
 
 [project.scripts]

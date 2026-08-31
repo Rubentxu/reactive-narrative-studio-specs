@@ -24,6 +24,8 @@ from narrative_cli.recipe_loader import load_recipe
 from narrative_cli.output import format_output
 from narrative_recipes import ProjectRenderer
 from narrative_recipes.template_engine import TemplateError
+from narrative_cli import exit_codes
+import unicodedata
 
 
 def compute_sha256(content: str) -> str:
@@ -156,6 +158,92 @@ def init(
     return 0
 
 
+def do_init_from_plan(
+    plan_path: Path,
+    output_dir: Path,
+    dry_run: bool = False,
+    force: bool = False,
+    as_json: bool = False,
+) -> int:
+    """
+    Consume a create-plan.json artifact and write the project skeleton.
+
+    Skips recipe lookup and parameter validation — the plan is already
+    validated and rendered.  This path is used by --plan mode.
+
+    Returns exit code.
+    """
+    # Load plan
+    try:
+        with open(plan_path) as f:
+            plan_data = json.load(f)
+    except Exception as e:
+        print(f"Error: failed to load plan: {e}", file=sys.stderr)
+        return exit_codes.EXIT_VALIDATION_ERROR
+
+    # Validate required plan fields
+    required_fields = ["recipe", "manifest", "skeleton"]
+    for field in required_fields:
+        if field not in plan_data:
+            print(f"Error: plan is missing required field: {field}", file=sys.stderr)
+            return exit_codes.EXIT_VALIDATION_ERROR
+
+    skeleton = plan_data["skeleton"]
+    manifest = plan_data["manifest"]
+
+    # Validate output directory
+    if not dry_run and not force and output_dir.exists() and any(output_dir.iterdir()):
+        print(f"Error: output directory {output_dir} is not empty. Use --force to overwrite.", file=sys.stderr)
+        return exit_codes.EXIT_CONFLICT
+
+    # Create output directory
+    if not dry_run:
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Check for conflicts
+    if not dry_run and not force:
+        conflicts = []
+        for entry in skeleton:
+            target = output_dir / entry["path"]
+            if target.exists():
+                conflicts.append(entry["path"])
+        if conflicts:
+            print(f"Error: conflicting files exist in {output_dir}: {', '.join(conflicts)}", file=sys.stderr)
+            print("Use --force to overwrite.", file=sys.stderr)
+            return exit_codes.EXIT_CONFLICT
+
+    # Write skeleton files
+    if not dry_run:
+        for entry in skeleton:
+            target = output_dir / entry["path"]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            content = entry.get("content", "")
+            target.write_text(content, encoding="utf-8")
+
+    # Write .narrative/create-plan.json (copy of the plan we consumed)
+    if not dry_run:
+        plan_dir = output_dir / ".narrative"
+        plan_dir.mkdir(exist_ok=True)
+        plan_copy = plan_dir / "create-plan.json"
+        plan_json = json.dumps(plan_data, sort_keys=True, indent=2, ensure_ascii=False)
+        plan_copy.write_text(plan_json, encoding="utf-8")
+
+    # Output
+    if as_json:
+        print(format_output(plan_data, as_json=True))
+    else:
+        if dry_run:
+            print(f"Dry run: would create project at {output_dir}", file=sys.stderr)
+            for entry in skeleton:
+                print(f"  {entry['path']}", file=sys.stderr)
+        else:
+            print(f"Project created at {output_dir}", file=sys.stderr)
+            for entry in skeleton:
+                print(f"  {entry['path']}", file=sys.stderr)
+
+    return 0
+
+
 def _build_plan_artifact(recipe_id, bundle, rendered, params) -> dict:
     """Build the create-plan.json artifact."""
     # Compute lock SHA
@@ -164,7 +252,7 @@ def _build_plan_artifact(recipe_id, bundle, rendered, params) -> dict:
         lock_json = json.dumps(bundle.lock_data, sort_keys=True)
         lock_sha = compute_sha256(lock_json)
 
-    # Skeleton list
+    # Skeleton list — includes content for --plan replay
     skeleton_list = []
     for sf in rendered.skeleton:
         sha = compute_sha256(sf.content)
@@ -172,6 +260,7 @@ def _build_plan_artifact(recipe_id, bundle, rendered, params) -> dict:
             "path": sf.path,
             "sha256": sha,
             "bytes": len(sf.content.encode()),
+            "content": sf.content,
         })
 
     plan_artifact = {

@@ -65,7 +65,7 @@ def plan(
         print(f"Template error: {e}", file=sys.stderr)
         return 1
 
-    # Build skeleton file list with SHA-256
+    # Build skeleton file list with SHA-256 — includes content for --plan replay
     skeleton_list = []
     for sf in rendered.skeleton:
         sha = compute_sha256(sf.content)
@@ -73,6 +73,7 @@ def plan(
             "path": sf.path,
             "sha256": sha,
             "bytes": len(sf.content.encode()),
+            "content": sf.content,
         })
 
     # Compute recipe lock SHA-256
