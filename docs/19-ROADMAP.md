@@ -153,3 +153,9 @@ Architecture:
 filesystem decision/command records or explicit local runner bridge.
 
 A persistent backend remains optional, not assumed.
+
+## Active Milestones
+
+```text
+M10.1 Creation Recipes               Status: in_progress   Cycle: m10-1-creation-recipes
+```
