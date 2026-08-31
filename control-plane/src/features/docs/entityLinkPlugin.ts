@@ -1,11 +1,18 @@
 /**
- * entityLinkPlugin — remark plugin that detects [[entityId]] text.
+ * entityLinkPlugin — remark plugin that detects [[entityId]] text AND capability references.
  *
  * Transforms [[entityId]] syntax into custom `entityLink` mdast nodes
  * that the rehype renderer can transform into proper links.
  *
- * Uses the existing parseEntityRef utility from the store module
- * to validate and parse entity references.
+ * Also handles capability references:
+ * - [[Skill:default/character-consistency]] → /capabilities/skills/default/character-consistency
+ * - [[Pack:editorial/story_core]] → /capabilities/packs/editorial/story_core
+ * - [[Profile:default/middle-grade-10-11]] → /capabilities/profiles/default/middle-grade-10-11
+ * - [[Workflow:default/sdxl-illustrated-page]] → /capabilities/workflows/default/sdxl-illustrated-page
+ * - [[Recipe:default/middle-grade-illustrated]] → /capabilities/recipes/default/middle-grade-illustrated
+ * - Provider pattern omitted (no instances today)
+ *
+ * m16 entity refs (Character, Chapter, etc.) continue to work.
  */
 
 import { parseEntityRef } from '../../store/entityRef';
@@ -24,19 +31,69 @@ export interface EntityLinkNode {
   };
 }
 
+// Capability link node for capability cross-references
+export interface CapabilityLinkNode {
+  type: 'capabilityLink';
+  capabilityRef: string;
+  kind: string;
+  namespace: string;
+  name: string;
+  children: [{ type: 'text'; value: string }];
+  data: {
+    hName: 'span';
+    hProperties: {
+      className: string[];
+      'data-capability-ref': string;
+    };
+  };
+}
+
+// Capability kinds that map to capability catalog routes
+const CAPABILITY_KINDS = ['Skill', 'Pack', 'Profile', 'Workflow', 'Recipe'] as const;
+
+// Map capability kind to route path segment
+function capabilityKindToRoute(kind: string): string {
+  switch (kind) {
+    case 'Skill': return 'skills';
+    case 'Pack': return 'packs';
+    case 'Profile': return 'profiles';
+    case 'Workflow': return 'workflows';
+    case 'Recipe': return 'recipes';
+    default: return 'unknown';
+  }
+}
+
+// Try to parse a capability reference
+// Returns the parsed parts if valid, null if not a capability ref
+function tryParseCapabilityRef(ref: string): { kind: string; namespace: string; name: string } | null {
+  // Pattern: Kind:namespace/name
+  const match = ref.match(/^([A-Za-z]+):([^/]+)\/(.+)$/);
+  if (!match) return null;
+
+  const kind = match[1] ?? '';
+  const namespace = match[2] ?? '';
+  const name = match[3] ?? '';
+
+  if (!CAPABILITY_KINDS.includes(kind as typeof CAPABILITY_KINDS[number])) {
+    return null;
+  }
+
+  return { kind, namespace, name };
+}
+
 /**
  * Remark plugin that transforms [[entityId]] text into entityLink nodes.
+ * Also handles capability references like [[Skill:default/character-consistency]].
  *
  * @example
  * ```markdown
  * See [[Character:demo/nora]] for details.
+ * Use [[Skill:default/character-consistency]] for validation.
  * ```
- * Becomes an entityLink node with entityId "Character:demo/nora".
+ * Becomes entityLink and capabilityLink nodes respectively.
  */
 export function entityLinkPlugin(): (tree: unknown) => void {
   return (tree: unknown) => {
-    // Use unist-util-visit to traverse the tree
-    // The tree is actually an mdast Root, but we use unknown to avoid type issues
     const visitTree = tree as { type: string; children?: unknown[] };
 
     if (!visitTree.children) return;
@@ -56,7 +113,7 @@ export function entityLinkPlugin(): (tree: unknown) => void {
         while ((match = ENTITY_REF_PATTERN.exec(text)) !== null) {
           hasMatch = true;
           const fullMatch = match[0];
-          const entityId = match[1];
+          const ref = match[1];
           const matchStart = match.index;
 
           // Add text before the match
@@ -67,31 +124,55 @@ export function entityLinkPlugin(): (tree: unknown) => void {
             });
           }
 
-          // Try to parse the entity reference
-          if (entityId) {
-            try {
-              parseEntityRef(entityId);
-
-              // Valid entity reference - create custom node
-              const entityLinkNode: EntityLinkNode = {
-                type: 'entityLink',
-                entityId,
-                children: [{ type: 'text', value: entityId }],
+          if (ref) {
+            // First, try to parse as capability reference
+            const capabilityParsed = tryParseCapabilityRef(ref);
+            if (capabilityParsed) {
+              // Create capability link node
+              // Note: routeSegment could be used for building actual links later
+              void capabilityKindToRoute(capabilityParsed.kind);
+              const capabilityLinkNode: CapabilityLinkNode = {
+                type: 'capabilityLink',
+                capabilityRef: ref,
+                kind: capabilityParsed.kind,
+                namespace: capabilityParsed.namespace,
+                name: capabilityParsed.name,
+                children: [{ type: 'text', value: ref }],
                 data: {
                   hName: 'span',
                   hProperties: {
-                    className: ['doc-entity-link'],
-                    'data-entity-ref': entityId,
+                    className: ['doc-capability-link'],
+                    'data-capability-ref': ref,
                   },
                 },
               };
-              segments.push(entityLinkNode);
-            } catch {
-              // Invalid entity reference - keep as plain text
-              segments.push({
-                type: 'text',
-                value: fullMatch,
-              });
+              segments.push(capabilityLinkNode);
+            } else {
+              // Try to parse as entity reference (m16 pattern)
+              try {
+                parseEntityRef(ref);
+
+                // Valid entity reference - create custom node
+                const entityLinkNode: EntityLinkNode = {
+                  type: 'entityLink',
+                  entityId: ref,
+                  children: [{ type: 'text', value: ref }],
+                  data: {
+                    hName: 'span',
+                    hProperties: {
+                      className: ['doc-entity-link'],
+                      'data-entity-ref': ref,
+                    },
+                  },
+                };
+                segments.push(entityLinkNode);
+              } catch {
+                // Invalid entity reference - keep as plain text
+                segments.push({
+                  type: 'text',
+                  value: fullMatch,
+                });
+              }
             }
           } else {
             segments.push({
