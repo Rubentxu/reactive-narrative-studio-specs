@@ -51,6 +51,14 @@ serverless Control Plane loading.
 
 **Decision/Receipt** — acceptance/action evidence.
 
+**V1 substring index** — pure in-memory substring full-text search over catalog entities, cp-* projections, and Markdown docs. No IndexedDB, no Orama, no network calls. 5-level ranker: exact-id=100 > Kind:ns/name=80 > multi-token-hit=60 > single-token-hit=40 > snippet-only=20. Per-[Amendment 1](changes/m16-cp-studio-search-docs/spec.md#amendment-1).
+
+**Safe Narrative Docs** — Git-controlled Markdown rendered inside entity/project context via `react-markdown` + `rehype-sanitize` + `remark-gfm` + `entityLinkPlugin`. GFM-safe allow-list strips OWASP XSS vectors (script tags, javascript:/data:/vbscript: URLs, iframe, object/embed, style, inline event handlers). Entity-link syntax `[[Kind:namespace/name]]` maps to internal links via `parseEntityRef`.
+
+**Decision projection** — `cp-decisions.json` envelope (`schema: "control-plane/decisions/v1"`) with `Decision[]` entries `{ id, action, targetRef (Kind:namespace/name), date (isoTimestamp), status ∈ {accepted,rejected,pending,superseded} }`. New file per REQ-DEC-1 (AC-INV-schema binding).
+
+**scene-chapter** — search result type; ONE entry per chapter from `bundle.chapters[]` (Amendment 1). id `scene-chapter:<chapter-id>`; entityRef `Chapter:cp/<chapter-id>`; title from `ch.title`; sourcePath from `ch.docRef` when present. Scene granularity is future-extensible via a separate cycle + ADR.
+
 **Visual DNA** — stable visual identity contract.
 
 **Scene Visual Contract** — required visual evidence for an illustration.

@@ -194,9 +194,10 @@ Layout:
 ## Docs pipeline
 
 Use:
-- `react-markdown` or unified;
-- `remark-gfm`;
-- sanitizing rehype layer;
+- `react-markdown@9.1.0` or unified;
+- `remark-gfm@4.0.1`;
+- `rehype-sanitize@6.0.0` (GFM-safe allow-list);
+- `unist-util-visit@5.1.0`;
 - Shiki for code only.
 
 Do not execute MDX from project files.

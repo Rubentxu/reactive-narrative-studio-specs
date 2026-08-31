@@ -174,6 +174,46 @@ React/Vite PWA. See [`docs/29-NARRATIVE-CATALOG.md`](docs/29-NARRATIVE-CATALOG.m
 for the implemented design and [`docs/30-CONTROL-PLANE-EXTENSIONS.md`](docs/30-CONTROL-PLANE-EXTENSIONS.md) for the Extension Registry architecture.
 UAT-M10-02 validates catalog/entity composition with four feature tabs per entity.
 
+## Control Plane — Local Search + Narrative Docs (M10.3)
+
+Slice 3a (m16) ships **Local Search + Safe Narrative Docs + Decision projection**:
+
+### Local Search
+
+In-memory substring full-text index over catalog entities, `cp-*` projections, and Markdown docs.
+Five result types: `character`, `scene-chapter`, `asset`, `decision`, `docs`.
+Tokenizer: Unicode NFD → strip combining marks → lowercase → split on non-alphanumeric.
+Ranker: exact-id=100 > Kind:ns/name=80 > multi-token-hit=60 > single-token-hit=40 > snippet-only=20.
+No IndexedDB, no Orama, no network requests.
+
+**UAT-M10-03** validates end-to-end: search `llave plateada` returns ≥1 result per type;
+opening docs renders safe Markdown; entity navigation works.
+
+### Safe Narrative Docs
+
+`react-markdown` + `rehype-sanitize` + `remark-gfm` + `entityLinkPlugin` pipeline.
+GFM-safe allow-list strips OWASP XSS vectors (script, javascript:/data:/vbscript:, iframe, object/embed, style, inline event handlers).
+`[[Kind:namespace/name]]` entity-link syntax → internal `/entity/Kind/namespace/name` links via `parseEntityRef`.
+
+### Decision projection
+
+`specs/cp-decisions.schema.json` (NEW) validates `{ id, action, targetRef, date, status }` entries.
+Decision entity kind registered against existing `catalog-entity.schema.json`.
+
+### References
+
+- [`docs/32-NARRATIVE-DOCS-SEARCH.md`](docs/32-NARRATIVE-DOCS-SEARCH.md) — V1 substring index contract, GFM-safe allow-list, 5-level ranker, scene-chapter derivation, Orama V2 migration path
+- [`docs/27-GLOSSARY.md`](docs/27-GLOSSARY.md) — glossary entries for search index, safe docs, decision projection, scene-chapter
+- [`docs/28-CONTROL-PLANE-STACK.md`](docs/28-CONTROL-PLANE-STACK.md) — version-locked Markdown dependency table
+- [`uat/UAT-M10-03-local-search-docs.md`](uat/UAT-M10-03-local-search-docs.md) — binding UAT scenario
+
+### vite preview smoke
+
+```bash
+cd control-plane && pnpm build && pnpm preview &
+# curl http://localhost:4173/search → HTTP 200
+```
+
 ## Control Plane stack baseline
 
 Current implementation baseline:

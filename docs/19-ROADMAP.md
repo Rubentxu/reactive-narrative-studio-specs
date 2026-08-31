@@ -46,6 +46,15 @@ M9 remains the architectural proof before building the portal.
 No mandatory network/backend calls; invalid projection fixture produces
 diagnostic rather than application crash.
 
+### Slice 3a — done (m16)
+
+**UAT-M10-03** satisfied: Local Search + Safe Narrative Docs + Decision projection.
+In-memory substring index (5 result types: character, scene-chapter, asset, decision, docs),
+ASCII-fold tokenizer, 5-level D4 ranker. GFM-safe Markdown rendering via react-markdown
++ rehype-sanitize + remark-gfm + entityLinkPlugin (OWASP XSS vectors stripped).
+`[[Kind:namespace/name]]` entity links via `parseEntityRef`. cp-decisions schema
+(new file, REQ-DEC-1). See `docs/32-NARRATIVE-DOCS-SEARCH.md` §V1 substring index.
+
 ### Slice 2 — done (m15)
 
 **UAT-M10-02** satisfied: catalog/entity composition with Extension Registry,
