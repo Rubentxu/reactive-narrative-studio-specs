@@ -10,7 +10,35 @@ import type { CapabilityEntry } from './parser';
 
 /**
  * Query capabilities by kind.
+ *
+ * Generic overloads narrow the return type to the specific parsed variant
+ * (ParsedSkill | ParsedPack | ...) so consumers get full type-safety without
+ * runtime narrowing.
  */
+export function selectByKind<K extends 'skill'>(
+  manifest: CapabilityManifest,
+  kind: K
+): Extract<CapabilityEntry, { kind: K }>[];
+export function selectByKind<K extends 'pack'>(
+  manifest: CapabilityManifest,
+  kind: K
+): Extract<CapabilityEntry, { kind: K }>[];
+export function selectByKind<K extends 'profile'>(
+  manifest: CapabilityManifest,
+  kind: K
+): Extract<CapabilityEntry, { kind: K }>[];
+export function selectByKind<K extends 'workflow'>(
+  manifest: CapabilityManifest,
+  kind: K
+): Extract<CapabilityEntry, { kind: K }>[];
+export function selectByKind<K extends 'provider'>(
+  manifest: CapabilityManifest,
+  kind: K
+): Extract<CapabilityEntry, { kind: K }>[];
+export function selectByKind<K extends 'recipe'>(
+  manifest: CapabilityManifest,
+  kind: K
+): Extract<CapabilityEntry, { kind: K }>[];
 export function selectByKind(
   manifest: CapabilityManifest,
   kind: CapabilityEntry['kind']
@@ -42,7 +70,15 @@ export function selectByEntityRef(
   namespace: string,
   name: string
 ): CapabilityEntry | undefined {
-  const entries = selectByKind(manifest, kind);
+  // Implementation signature accepts the union kind; overloads above narrow the
+  // return type for callers.
+  const entries: CapabilityEntry[] =
+    kind === 'skill' ? manifest.skills :
+    kind === 'pack' ? manifest.packs :
+    kind === 'profile' ? manifest.profiles :
+    kind === 'workflow' ? manifest.workflows :
+    kind === 'provider' ? manifest.providers :
+    manifest.recipes;
   return entries.find(e => e.namespace === namespace && e.name === name);
 }
 

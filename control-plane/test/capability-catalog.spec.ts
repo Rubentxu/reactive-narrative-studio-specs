@@ -52,25 +52,25 @@ describe('selectByKind', () => {
   it('returns skills array', () => {
     const skills = selectByKind(capabilityManifest, 'skill');
     expect(skills).toHaveLength(3);
-    expect(skills[0].kind).toBe('skill');
+    expect(skills[0]?.kind).toBe('skill');
   });
 
   it('returns packs array', () => {
     const packs = selectByKind(capabilityManifest, 'pack');
     expect(packs).toHaveLength(4);
-    expect(packs[0].kind).toBe('pack');
+    expect(packs[0]?.kind).toBe('pack');
   });
 
   it('returns profiles array', () => {
     const profiles = selectByKind(capabilityManifest, 'profile');
     expect(profiles).toHaveLength(2);
-    expect(profiles[0].kind).toBe('profile');
+    expect(profiles[0]?.kind).toBe('profile');
   });
 
   it('returns workflows array', () => {
     const workflows = selectByKind(capabilityManifest, 'workflow');
     expect(workflows).toHaveLength(1);
-    expect(workflows[0].kind).toBe('workflow');
+    expect(workflows[0]?.kind).toBe('workflow');
   });
 
   it('returns providers array (empty)', () => {
@@ -81,7 +81,7 @@ describe('selectByKind', () => {
   it('returns recipes array', () => {
     const recipes = selectByKind(capabilityManifest, 'recipe');
     expect(recipes).toHaveLength(1);
-    expect(recipes[0].kind).toBe('recipe');
+    expect(recipes[0]?.kind).toBe('recipe');
   });
 });
 
@@ -131,8 +131,8 @@ describe('workflow entries', () => {
   it('have correct properties', () => {
     const workflows = selectByKind(capabilityManifest, 'workflow');
     expect(workflows).toHaveLength(1);
-    expect(workflows[0].provider).toBe('comfyui');
-    expect(workflows[0].model).toBe('sdxl-1.0');
+    expect(workflows[0]?.provider).toBe('comfyui');
+    expect(workflows[0]?.model).toBe('sdxl-1.0');
   });
 });
 
@@ -140,6 +140,6 @@ describe('recipe entries', () => {
   it('have correct properties', () => {
     const recipes = selectByKind(capabilityManifest, 'recipe');
     expect(recipes).toHaveLength(1);
-    expect(recipes[0].title).toBe('Middle Grade Illustrated Novel');
+    expect(recipes[0]?.title).toBe('Middle Grade Illustrated Novel');
   });
 });
