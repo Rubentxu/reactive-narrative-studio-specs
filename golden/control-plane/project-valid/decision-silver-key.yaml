@@ -2,8 +2,9 @@ schema: control-plane/decisions/v1
 generatedAt: '2026-01-01T00:00:00Z'
 sourceRevision: abc123
 decisions:
-  - id: dec-silver-key
-    sceneRef: scene-silver-key
+  - id: silver-key
+    action: Accept the silver key — the llave plateada that anchors the narrative
+    targetRef: Scene:demo/scene-silver-key
+    date: '2026-01-01T00:00:00Z'
     status: accepted
-    rationale: Llave plateada phrase anchors the artifact in the target language corpus.
     replaces: null

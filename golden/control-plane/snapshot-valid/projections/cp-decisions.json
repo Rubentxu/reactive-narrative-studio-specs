@@ -4,22 +4,25 @@
   "sourceRevision": "abc123",
   "decisions": [
     {
-      "id": "dec-001",
-      "sceneRef": "scene-silver-key",
-      "status": "accepted",
-      "rationale": "Silver key narrative establishes the transformation archetype for the protagonist."
+      "id": "silver-key",
+      "action": "Accept the silver key — the llave plateada that anchors the narrative",
+      "targetRef": "Scene:demo/scene-silver-key",
+      "date": "2026-01-01T00:00:00Z",
+      "status": "accepted"
     },
     {
-      "id": "dec-002",
-      "sceneRef": "scene-silver-key",
-      "status": "accepted",
-      "rationale": "Cold-touch mechanic signals non-harmful intent without explicit exposition."
+      "id": "nora-arc",
+      "action": "Pursue Nora character arc through the archive",
+      "targetRef": "Character:demo/nora",
+      "date": "2026-01-02T00:00:00Z",
+      "status": "pending"
     },
     {
-      "id": "dec-silver-key",
-      "sceneRef": "scene-silver-key",
-      "status": "accepted",
-      "rationale": "Llave plateada phrase anchors the artifact in the target language corpus for search oracle validation."
+      "id": "iron-door",
+      "action": "Open the iron door for protagonist progression",
+      "targetRef": "Asset:demo/iron-door",
+      "date": "2026-01-03T00:00:00Z",
+      "status": "rejected"
     }
   ]
 }

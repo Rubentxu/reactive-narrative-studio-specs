@@ -4,6 +4,6 @@
   "sourceRevision": "abc123",
   "assets": [
     { "id": "asset-01", "path": "assets/demo.png", "kind": "image" },
-    { "id": "asset-silver-key-doc", "path": "docs/scene-silver-key.md", "kind": "document" }
+    { "id": "asset-silver-key-doc", "path": "docs/scene-silver-key.md", "kind": "llave-plateada-document" }
   ]
 }

@@ -3,7 +3,7 @@
   "generatedAt": "2026-01-01T00:00:00Z",
   "sourceRevision": "abc123",
   "characters": [
-    { "id": "char-01", "name": "Protagonist", "status": "pass" },
-    { "id": "char-nora", "name": "Nora", "status": "pass", "docRef": "docs/nora.md" }
+    { "id": "char-01", "name": "Protagonist", "role": "The main protagonist", "status": "pass" },
+    { "id": "char-nora", "name": "Nora", "role": "The protagonist who discovers the llave plateada during the archive survey", "visualDNA": "archivist-attire", "status": "pass", "docRef": "docs/nora.md" }
   ]
 }
