@@ -58,10 +58,12 @@ All 24 REQs land in a decision and a file. No decision extends the requirement s
 
 ### D1 — V1 substring index is **pure** + **in-memory** + **deterministic** (no Dexie, no Orama, no fetch)
 
-**Choice**: `searchIndex.build(catalogEntities, bundle, docs)` is a pure function in `control-plane/src/store/searchIndex.ts`. It builds an in-memory `Map<SearchResultId, SearchResult>` keyed by stable ids (`character:<namespace>:<name>`, `scene-chapter:<chapter-id>:<scene-id>`, `asset:<namespace>:<name>`, `decision:<decision-id>`, `docs:<doc-basename>`). `searchIndex.build` is called from `useSearchIndex` on mount + on every change to the subscribed slots, memoized by shallow equality on `(catalogEntities, bundle, docs)` references (the projection store returns new objects only on `loadFrom`, so a referential change is a meaningful invalidation).
+**Choice**: `searchIndex.build(catalogEntities, bundle, docs)` is a pure function in `control-plane/src/store/searchIndex.ts`. It builds an in-memory `Map<SearchResultId, SearchResult>` keyed by stable ids (`character:<namespace>:<name>`, `scene-chapter:<chapter-id>`, `asset:<namespace>:<name>`, `decision:<decision-id>`, `docs:<doc-basename>`). **Scene-chapter entries are sourced one entry per `bundle.chapters[]` chapter** (id `scene-chapter:<chapter-id>`; title from `title`; sourcePath from `docRef` when present) — Amendment 1 to the original `chapters[].scenes[]` extraction, which was unreachable against `specs/cp-chapters.schema.json` `additionalProperties: false`. `searchIndex.build` is called from `useSearchIndex` on mount + on every change to the subscribed slots, memoized by shallow equality on `(catalogEntities, bundle, docs)` references (the projection store returns new objects only on `loadFrom`, so a referential change is a meaningful invalidation).
 **Alternatives considered**: (i) **Orama collator framework** — rejected for V1 (R-001): brings 4 further pinned deps + a collator pipeline that requires design work orthogonal to UAT-M10-03 acceptance. The Orama migration is documented as a future ADR; (ii) **IndexedDB-cached `Object` index** — rejected (M10.3-only per launch packet; AC-INV-no-Dexie); (iii) **TanStack Router loader** — rejected per m14 D7 bottleneck rule (route loaders must not touch the port).
 **Rationale**: REQ-SID-1 is a hard "no IndexedDB, no Orama, no network". The proposal ratifies this as "V1 = documented temporary primitive, V2 = Orama deferred". The exact-pin ladder (Appendix A) confirms `react-markdown` + `rehype-sanitize` + `remark-gfm` + `unist-util-visit` fit the M14 D3 ladder budget; the V1 index itself introduces ZERO new runtime deps (it is pure TypeScript over the existing bundle). UAT-M10-03 Given clause is bounded (1 project, ~5-10 entities), so the in-memory complexity cost is bounded by the UAT scale.
 **Consequences**: (a) `search.spec.ts` MUST `expect(searchIndex.build(...).search('llave plateada'))` to return at least 1 result per `type ∈ {character, scene-chapter, asset, decision, docs}` for the snapshot-valid fixtures; (b) `pnpm test --run control-plane/test/search.spec.ts` MUST exit 0; (c) `grep -cE 'indexeddb|Dexie|orama|fetch\\(' control-plane/src/store/searchIndex.ts` MUST be 0 (REQ-SID-1 oracle). Orama migration, when it lands, becomes a separate cycle with its own proposal + spec + design + ADR.
+
+**Amendment 1 (correction round 1, apply-discovered)**: the original scene-chapter sourcing described `chapters[].scenes[]` extraction. `specs/cp-chapters.schema.json` (m14, `additionalProperties: false` over `{id, title, wordCount, status, docRef}`) forbids a `scenes` field, so the original was unreachable. Resolution: scene-chapter entries are enumerated ONE PER CHAPTER from `bundle.chapters[]`; the UAT-M10-03 binding clause "scene/chapter" is satisfied by chapter units (golden fixture `ch-silver-key` title "The Silver Key — La Llave Plateada"). REQ-SID-1 + Appendix pseudocode block 3 updated accordingly. The `scene-chapter` type remains future-extensible for projected scenes via a separate cycle + ADR.
 
 ### D2 — Pure builder + React hook split (testable in isolation; consumer surface is one symbol)
 
@@ -871,18 +873,16 @@ export function build(
     });
   }
 
-  // 3. bundle.chapters → scene-chapter entries
+  // 3. bundle.chapters → scene-chapter entries (one per chapter; Amendment 1)
   for (const ch of bundle.chapters ?? []) {
-    for (const sc of ch.scenes ?? []) {
-      const id = `scene-chapter:${ch.id}/${sc.id}`;
-      entries.push({
-        id,
-        type: 'scene-chapter',
-        title: sc.title,
-        tokens: tokenize([sc.title, sc.summary, ch.title].join(' ')),
-        snippetSource: sc.summary,
-      });
-    }
+    const id = `scene-chapter:${ch.id}`;
+    entries.push({
+      id,
+      type: 'scene-chapter',
+      title: ch.title,
+      tokens: tokenize([ch.title, ch.id].join(' ')),
+      snippetSource: ch.title,
+    });
   }
 
   // 4. bundle.assets → asset entries
