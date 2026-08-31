@@ -51,13 +51,48 @@ serverless Control Plane loading.
 
 **Decision/Receipt** — acceptance/action evidence.
 
-**V1 substring index** — pure in-memory substring full-text search over catalog entities, cp-* projections, and Markdown docs. No IndexedDB, no Orama, no network calls. 5-level ranker: exact-id=100 > Kind:ns/name=80 > multi-token-hit=60 > single-token-hit=40 > snippet-only=20. Per-[Amendment 1](changes/m16-cp-studio-search-docs/spec.md#amendment-1).
+### V1 substring index
 
-**Safe Narrative Docs** — Git-controlled Markdown rendered inside entity/project context via `react-markdown` + `rehype-sanitize` + `remark-gfm` + `entityLinkPlugin`. GFM-safe allow-list strips OWASP XSS vectors (script tags, javascript:/data:/vbscript: URLs, iframe, object/embed, style, inline event handlers). Entity-link syntax `[[Kind:namespace/name]]` maps to internal links via `parseEntityRef`.
+Pure in-memory substring full-text search over catalog entities, cp-\* projections, and
+Markdown docs. No IndexedDB, no Orama, no network calls. 5-level ranker: exact-id=100
+> Kind:ns/name=80 > multi-token-hit=60 > single-token-hit=40 > snippet-only=20.
+See [`docs/32-NARRATIVE-DOCS-SEARCH.md`](docs/32-NARRATIVE-DOCS-SEARCH.md). Per
+[Amendment 1](changes/m16-cp-studio-search-docs/spec.md#amendment-1).
 
-**Decision projection** — `cp-decisions.json` envelope (`schema: "control-plane/decisions/v1"`) with `Decision[]` entries `{ id, action, targetRef (Kind:namespace/name), date (isoTimestamp), status ∈ {accepted,rejected,pending,superseded} }`. New file per REQ-DEC-1 (AC-INV-schema binding).
+### kind: 'docs'
 
-**scene-chapter** — search result type; ONE entry per chapter from `bundle.chapters[]` (Amendment 1). id `scene-chapter:<chapter-id>`; entityRef `Chapter:cp/<chapter-id>`; title from `ch.title`; sourcePath from `ch.docRef` when present. Scene granularity is future-extensible via a separate cycle + ADR.
+Additive discriminator field on `EntityTabExtension` (`kind?: 'docs'`), introduced in
+Amendment 1. Marks a tab as a docs tab; required on `DocTab`, optional on all other
+m15 tabs (overview, arc, scenes, metadata, continuity-status, visual-dna, etc.). The
+field is metadata only — `apiVersion: 'control-plane.extensions/v1'` is preserved verbatim.
+See [`docs/30-CONTROL-PANE-EXTENSIONS.md`](docs/30-CONTROL-PLANE-EXTENSIONS.md) §REQ-EXR-1.
+
+### Safe Narrative Docs
+
+Git-controlled Markdown rendered inside entity/project context via `react-markdown` +
+`rehype-sanitize` + `remark-gfm` + `entityLinkPlugin`. GFM-safe allow-list strips
+OWASP XSS vectors (script tags, javascript:/data:/vbscript: URLs, iframe, object/embed,
+style, inline event handlers). Entity-link syntax `[[Kind:namespace/name]]` maps to
+internal links via `parseEntityRef`. See
+[`docs/32-NARRATIVE-DOCS-SEARCH.md`](docs/32-NARRATIVE-DOCS-SEARCH.md).
+
+### Decision projection
+
+`cp-decisions.json` envelope (`schema: "control-plane/decisions/v1"`) with
+`Decision[]` entries `{ id, action, targetRef (Kind:namespace/name), date (isoTimestamp),
+status ∈ {accepted,rejected,pending,superseded} }`. New file per REQ-DEC-1
+(AC-INV-schema binding — `specs/cp-decisions.schema.json` is NEW, not a modification
+of any existing schema). See [`docs/32-NARRATIVE-DOCS-SEARCH.md`](docs/32-NARRATIVE-DOCS-SEARCH.md)
+§Decision projection.
+
+### scene-chapter
+
+Search result type; ONE entry per chapter from `bundle.chapters[]` (Amendment 1).
+id `scene-chapter:<chapter-id>`; entityRef `Chapter:cp/<chapter-id>`; title from
+`ch.title`; sourcePath from `ch.docRef` when present. Scene granularity is
+future-extensible via a separate cycle + ADR; the chapter IS the projected
+narrative unit in the Control Plane. Per
+[Amendment 1](changes/m16-cp-studio-search-docs/spec.md#amendment-1).
 
 **Visual DNA** — stable visual identity contract.
 
