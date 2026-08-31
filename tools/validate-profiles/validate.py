@@ -133,6 +133,13 @@ def validate_profile_file(profile_file: Path) -> list[Diagnostic]:
     try:
         profile_data = load_yaml(profile_file)
 
+        # Recipe-skeleton profiles (under <recipe>/skeleton/profiles/) are
+        # resolved-from-aliases OUTPUTS, not editable sources. They carry a
+        # different shape (resolved from specs/profile-aliases.yaml) and are
+        # not validated against profile/v1 schema here.
+        if "/skeleton/profiles/" in str(profile_file):
+            return []
+
         # Check schema const
         if profile_data.get("schema") != "profile/v1":
             d = Diagnostic(
@@ -191,12 +198,27 @@ def main() -> int:
         print(f"No profile files found under {target}", file=sys.stderr)
         return 2
 
+    validated_profiles: list[Path] = []
     for profile_file in sorted(profile_files):
-        # Skip non-profile files
+        # Skip files known not to be profiles
         if profile_file.name in ["recipe.yaml", "parameters.schema.json", "ui.schema.json"]:
+            continue
+        # Skip files under tests/negative-fixtures (intentionally invalid profiles)
+        if "tests/negative-fixtures" in str(profile_file):
+            continue
+        # Skip files that don't start with `schema: profile/v1` — they aren't profiles.
+        # Recipe-skeleton profiles under <recipe>/skeleton/profiles/ are also
+        # skipped (they are resolved-from-aliases outputs, not editable sources).
+        try:
+            with open(profile_file) as f:
+                head = f.read(512)
+        except OSError:
+            continue
+        if "schema: profile/v1" not in head:
             continue
         diags = validate_profile_file(profile_file)
         diagnostics.extend(diags)
+        validated_profiles.append(profile_file)
 
     errors = [d for d in diagnostics if d.severity == "error"]
     warnings = [d for d in diagnostics if d.severity == "warning"]
@@ -215,12 +237,12 @@ def main() -> int:
         error_count = len(errors)
         warn_count = len(warnings)
         print(
-            f"\n{len(profile_files)} profile(s) checked: "
+            f"\n{len(validated_profiles)} profile(s) checked: "
             f"{error_count} error(s), {warn_count} warning(s)",
             file=sys.stderr,
         )
     else:
-        print(f"All checks passed for {len(profile_files)} profile(s)", file=sys.stderr)
+        print(f"All checks passed for {len(validated_profiles)} profile(s)", file=sys.stderr)
 
     return 1 if errors else 0
 
