@@ -40,3 +40,15 @@ export interface EntityCardExtension {
 
 export type ControlPlaneFeature = EntityTabExtension | EntityCardExtension;
 
+// RecipeWidgetExtension — app-level wizard registered at /create, not bound to any entity.
+// Registered separately from entity-bound extensions; rendered directly by the Create view.
+export interface RecipeWidgetExtension {
+  readonly apiVersion: 'control-plane.extensions/v1';
+  readonly id: string;
+  readonly kind: 'wizard';
+  readonly priority: number;
+  render(): React.ReactElement;
+}
+
+export type ControlPlaneExtension = ControlPlaneFeature | RecipeWidgetExtension;
+

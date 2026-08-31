@@ -1,13 +1,15 @@
 import type { CatalogEntity } from '../loader/ProjectSource';
-import type { ControlPlaneFeature, EntityTabExtension, EntityCardExtension } from './types';
+import type { ControlPlaneFeature, EntityTabExtension, EntityCardExtension, RecipeWidgetExtension } from './types';
 
 export interface ExtensionRegistry {
   register(feature: ControlPlaneFeature): void;
   resolveEntityTabs(entity: CatalogEntity): readonly EntityTabExtension[];
   resolveEntityCards(entity: CatalogEntity): readonly EntityCardExtension[];
+  resolveRecipeWizard(): RecipeWidgetExtension | undefined;
 }
 
 const features: ControlPlaneFeature[] = [];
+const wizards: RecipeWidgetExtension[] = [];
 
 function sortByPriority<T extends { priority: number }>(items: T[]): T[] {
   return [...items].sort((a, b) => a.priority - b.priority);
@@ -30,6 +32,15 @@ export const extensionRegistry: ExtensionRegistry = {
     );
     return sortByPriority(cards);
   },
+  resolveRecipeWizard(): RecipeWidgetExtension | undefined {
+    return sortByPriority(wizards)[0];
+  },
 };
+
+// Register a recipe wizard extension (app-level, not entity-bound)
+// Called directly by the feature index.tsx
+export function registerRecipeWizard(wizard: RecipeWidgetExtension): void {
+  wizards.push(wizard);
+}
 
 
