@@ -8,4 +8,13 @@ export const routePaths = [
   "path: '/history'",
   "path: '/search'",
   "path: '/create'",
+  // Capability catalog routes (m10.2)
+  "path: '/capabilities'",
+  "path: '/capabilities/skills'",
+  "path: '/capabilities/packs'",
+  "path: '/capabilities/profiles'",
+  "path: '/capabilities/workflows'",
+  "path: '/capabilities/providers'",
+  "path: '/capabilities/recipes'",
+  "path: '/capabilities/$kind/$namespace/$name'",
 ] as const;
