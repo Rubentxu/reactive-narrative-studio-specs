@@ -45,3 +45,16 @@ The implementation must pin exact compatible releases when M10 starts.
 - `mdast-util-gfm@3.1.0` within `^3.0.0` peer of `remark-gfm@4` → no major drift
 
 **T2 advisory (non-blocking):** `unist-util-visit@5.1.0` drifted from `5.0.0` estimate — recorded but does not STOP per design Appendix A.
+
+## M10.1 Creation Recipes — resolved pins
+
+| Dep / Tool | Exact pin | Notes |
+|---|---|---|
+| `@rjsf/core` | `6.8.0` | Peer-compatible with React 19.2.8; verified at Block PF |
+| `@rjsf/validator-ajv8` | `6.8.0` | Same release train as @rjsf/core |
+| `ajv-cli` (Node) | `ajv-cli@6.x` | CI gate for schema validation; Python ajv-py used in validate script |
+| `narrative-cli` | `tools/narrative-cli/` | In-pack CLI; editable install or `python -m narrative_cli` |
+| `narrative-recipes` | `tools/narrative_recipes/` | In-pack Python core; `pip install -e tools/narrative_recipes` |
+| `validate-recipes` | `tools/validate-recipes/validate.py` | Lock fingerprint validator; Python ajv-py |
+| `mustache-subset engine` | Python `tools/narrative_recipes/template_engine.py` + TS `src/recipes/templateEngine.ts` | Identical grammar; round-trip equivalence oracle |
+

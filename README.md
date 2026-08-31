@@ -36,6 +36,34 @@ repository, following the constraints documented in
 | Check the glossary | [`docs/27-GLOSSARY.md`](docs/27-GLOSSARY.md) |
 | See the risks | [`docs/26-RISKS.md`](docs/26-RISKS.md) |
 
+## Create a project
+
+Two paths share the same recipe source:
+
+**Browser wizard** — `cd control-plane && pnpm preview`, then navigate to `/create`.
+Select a recipe, fill in the parameters, and download `create-plan.json` or save directly
+to a directory (Chromium only via File System Access API; Firefox/Safari use the download fallback).
+
+**CLI** — `pip install -e tools/narrative-cli` (or `python -m narrative_cli`), then:
+
+```bash
+narrative init --recipe middle-grade-illustrated \
+  --param title="My Novel" \
+  --param projectId="my-novel" \
+  --param audience="profile-middle-grade-10-11" \
+  --out ./output
+```
+
+Both paths produce a canonical `create-plan.json`; the CLI accepts one as `--plan`:
+
+```bash
+narrative init --plan create-plan.json --out ./output
+```
+
+Recipes live in `recipes/<id>/`. Currently bundled: `middle-grade-illustrated`
+(middle-grade illustrated novel, 10–11 age group). See
+[`docs/33-CREATION-RECIPES.md`](docs/33-CREATION-RECIPES.md) for the full closeout doc.
+
 ## Repository layout
 
 ```text

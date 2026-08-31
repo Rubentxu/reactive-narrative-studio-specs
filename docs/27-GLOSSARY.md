@@ -49,6 +49,30 @@ serverless Control Plane loading.
 
 **Candidate** — proposal not yet accepted as canon.
 
+**Recipe Skeleton** — directory tree of templated starter files under `recipes/<id>/skeleton/`;
+rendered by the mustache-subset engine with user-supplied parameters to produce a new project.
+
+**Round-trip Equivalence Oracle** — canonical-JSON equality check asserting that
+`canonicalJson(stripRecipeOwned(manifest_python)) === canonicalJson(stripRecipeOwned(manifest_ts))`
+holds for the same recipe and parameters across the Python and TypeScript implementations.
+
+**Canonical-JSON Equality** — JSON serialization per RFC 8785 (JCS): sorted keys, no
+insignificant whitespace, UTF-8, NFC normalization. Used to compare manifests produced by
+independent implementations without formatting differences.
+
+**Mustache-subset Template Engine** — restricted template grammar supporting `{{var}}`,
+`{{#each items}}...{{/each}}`, `{{#if flag}}...{{/if}}`, `{{! comment }}`, and `{{.}}`
+(current item). All forbidden patterns (partials, raw HTML, dotted paths, nested variables,
+function calls) are rejected at parse time with `TemplateError`.
+
+**File System Access Sink** — browser sink for `create-plan.json` output using the
+File System Access API (`showDirectoryPicker` + `getFileHandle` + `createWritable`).
+Writes skeleton files to a user-selected directory; only available in Chromium-based browsers.
+
+**Recipe Plan** — canonical JSON artifact (`create-plan.json`) produced by the wizard or CLI
+containing `{ recipe, recipeLockSha256, manifest, skeleton: [{path, sha256, bytes}], createPlanSha256 }`.
+Emitted by `RecipePlanEmitter` in both wizard and CLI paths.
+
 **Decision/Receipt** — acceptance/action evidence.
 
 ### V1 substring index
