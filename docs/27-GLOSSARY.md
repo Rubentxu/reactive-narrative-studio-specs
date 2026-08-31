@@ -170,3 +170,37 @@ used to locate a catalog entity. `parseEntityRef` parses `Kind:namespace/name`
 strings; `formatEntityRef` serialises back. `toEntityRef` derives an
 `EntityRef` from a `CatalogEntity`'s metadata. See
 [`docs/34-CONTROL-PLANE-DATA-CONTRACTS.md`](docs/34-CONTROL-PLANE-DATA-CONTRACTS.md).
+
+### Capability Manifest
+
+A static JSON snapshot of every discoverable studio capability (skills, packs,
+profiles, workflows, providers, recipes) computed at build time and stored as
+`control-plane/src/features/capability-catalog/data/manifest-data.json`. Each
+entry carries `kind`, `id`, `namespace`, `name`, `path`, `origin`, and `sha256`
+(the latter enables EVT-CAP-12b fixture round-trip tests). M10.2 deliverable;
+see [`changes/m10-2-capability-catalog/spec.md`](changes/m10-2-capability-catalog/spec.md).
+
+### Capability Detail Route
+
+The `/capabilities/$kind/$namespace/$name` route pattern rendering one
+specific capability via `CapabilityDetail.tsx`. Composes `EntityHeader`,
+`MetadataCard`, and `RelationsList` from the m16 catalog entity Extension
+Registry, with cross-references resolved via the `entityLinkPlugin`. M10.2
+deliverable.
+
+### Empty-State UX
+
+The explicit no-data state rendered when a capability kind has zero
+instances (e.g., `providers` today). Per design decision DD-4, the empty
+state surfaces a header, a link to the relevant schema, and a CTA button
+for future authoring — not a hidden section. M10.2 design choice; see
+[`changes/m10-2-capability-catalog/design.md`](changes/m10-2-capability-catalog/design.md).
+
+### `import.meta.glob`
+
+Vite's first-party build-time glob importer. In M10.2 it is used with
+`{ eager: true, query: '?raw', import: 'default' }` to enumerate capability
+files (skills, packs, profiles, workflows, recipes) at module init,
+preserving the m10 serverless invariant (no runtime `fetch()`). The
+runtime never makes network calls; the manifest is pre-computed. M10.2
+design choice DD-1.

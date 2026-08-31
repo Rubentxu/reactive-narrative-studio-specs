@@ -325,6 +325,22 @@ its full ledger trace lives in the SDDK vault.
 This is an early-stage specification pack. Until the implementation
 repositories land, contributions are best submitted as:
 
+## Capability Catalog (M10.2)
+
+The `control-plane/src/features/capability-catalog/` feature module
+provides a read-only Control Plane view of every discoverable studio
+capability. Routes:
+
+- `/capabilities` — overview with kind-section counts
+- `/capabilities/skills`, `/packs`, `/profiles`, `/workflows`, `/providers`, `/recipes` — per-kind lists
+- `/capabilities/$kind/$namespace/$name` — detail page (composes m16 `EntityHeader` + `MetadataCard` + `RelationsList`)
+
+Manifest is pre-computed at build time via `import.meta.glob` (no runtime
+network calls; m10 serverless invariant preserved). Cross-references in
+markdown resolve via the extended `entityLinkPlugin`. See
+[`docs/29-NARRATIVE-CATALOG.md`](docs/29-NARRATIVE-CATALOG.md) §Capability
+Catalog as implemented for the full reference.
+
 1. An issue that frames the problem and references existing ADRs.
 2. A change record (`changes/<name>/`) with proposal + spec + design +
    tasks following the SDDK conventions.

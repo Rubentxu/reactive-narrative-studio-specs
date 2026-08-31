@@ -264,3 +264,24 @@ Frontend dependencies MUST follow:
 - major upgrades via ADR or migration note when architectural;
 - avoid packages used by a single trivial helper;
 - bundle-size budget after M10 first usable build.
+
+## `import.meta.glob` usage (M10.2+)
+
+The M10.2 Capability Catalog relies on Vite's `import.meta.glob` for build-time
+file discovery:
+
+```typescript
+const skillFiles = import.meta.glob(
+  '/examples/skills/*/SKILL.md',
+  { eager: true, query: '?raw', import: 'default' }
+);
+```
+
+- `eager: true` is required so the manifest is available synchronously at module init
+  (preserves m16's "extension registry loads synchronously" pattern).
+- `query: '?raw'` returns raw string content for markdown/YAML files.
+- All paths are repo-rooted; Vite's project root is `control-plane/` so the
+  manifest data is pre-computed into `manifest-data.json` to bridge the gap.
+
+The runtime never makes network calls; the manifest is computed at build time
+and bundled. This preserves the m10 serverless invariant.
