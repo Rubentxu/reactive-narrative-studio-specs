@@ -111,8 +111,18 @@ compares the emitted create-plans with explicit cross-language oracles.
 - **H8 done** (same cycle): baseline M0–M10.2 (`verification/traceability/baseline-m0-m10-2.md`)
   with per-milestone coverage, gaps/backlog and accepted gaps under `waivers.json`
   (`PASS_WITH_WAIVER` mechanics — never turns FAIL into PASS).
-- Pending in this milestone: H9 (CI Audit Gate), H10 (hardening).
-  Spec: `docs/reactive-narrative-studio-openspec-evolutives/changes/m10-2-1-verification-audit-harness/`.
+- **H9 done** (cycle `m10-2-1-audit-gate-hardening`): Audit Gate Git-native
+  (`audit milestone|range|flakiness|retention`) derived from traceability + evidence +
+  waivers, declared verification levels, JUnit reports and a CI workflow
+  (`.github/workflows/verification.yml`). `audit milestone M10.2.1` → PASS_WITH_WAIVER;
+  `audit milestone M10.1` → FAIL with its UNMAPPED backlog — reported, not hidden.
+- **H10 done** (same cycle): hardening negative tests (tamper detection, dirty tree,
+  process-level redaction, parallel isolation, flakiness). The tests found and fixed a
+  real integrity bug in the harness itself (`finalize()` hashed events.jsonl before the
+  last append); retained bundles were reindexed with a provenance note.
+- Milestone complete: H0→H10 delivered across three cycles
+  (v0.11.0, v0.12.0, v0.13.0). Spec:
+  `docs/reactive-narrative-studio-openspec-evolutives/changes/m10-2-1-verification-audit-harness/`.
 
 ## M10.3 — Multi-Project Local Studio
 

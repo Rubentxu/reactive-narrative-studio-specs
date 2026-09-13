@@ -1,0 +1,86 @@
+name: verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python deps
+        run: pip install pytest pyyaml jsonschema click pydantic
+
+      - name: Python tests + recipe/profile validators
+        run: |
+          PYTHONPATH=tools:tools/narrative-cli pytest tools/narrative_recipes/tests tools/narrative-cli/tests -q
+          python3 tools/validate-recipes/validate.py
+          python3 tools/validate-profiles/validate.py
+
+      - name: Control plane gates
+        working-directory: control-plane
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm exec tsc --noEmit
+          pnpm test
+
+      - name: Harness gates
+        working-directory: verification
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm exec tsc --noEmit
+          pnpm test
+
+      - name: Install chromium (Playwright)
+        working-directory: verification
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Canonical verify (all UAT scenarios)
+        working-directory: verification
+        run: pnpm verify
+
+      - name: Audit gate — current milestone (blocking)
+        working-directory: verification
+        run: pnpm exec node src/index.ts audit milestone M10.2.1
+
+      - name: Audit gate — M10.1..M10.2 (informational; backlog reported, not blocking)
+        working-directory: verification
+        continue-on-error: true
+        run: pnpm exec node src/index.ts audit range M10.1..M10.2
+
+      - name: Integrity of retained release evidence
+        working-directory: verification
+        run: pnpm exec node src/index.ts audit retention
+
+      - name: Flakiness classification
+        working-directory: verification
+        continue-on-error: true
+        run: pnpm exec node src/index.ts audit flakiness
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-artifacts
+          path: |
+            verification/evidence
+            verification/traceability
+            verification/audit
+          retention-days: 30

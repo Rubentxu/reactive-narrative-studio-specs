@@ -1,0 +1,50 @@
+{
+  "REQ-VAH-BOOTSTRAP": {
+    "level": "functional",
+    "rationale": "El bootstrap del harness debe demostrarse ejecutando un scenario real que emita bundle y verdict."
+  },
+  "REQ-VAH-BROWSER-AUDIT": {
+    "level": "functional",
+    "rationale": "La auditoría browser exige navegación real con DOM capturado; solo un scenario puede probarlo."
+  },
+  "REQ-VAH-CROSSREF-RENDER": {
+    "level": "functional",
+    "rationale": "El render positivo de cross-links es funcional; hoy aceptado como gap con waiver WVR-M10-2-1-001."
+  },
+  "REQ-VAH-STORE-IMMUTABILITY": {
+    "level": "fitness",
+    "rationale": "Invariante arquitectónica de solo-lectura: se verifica a nivel componente (round-trip no-op) por diseño, no requiere scenario."
+  },
+  "REQ-VAH-BASELINE": {
+    "level": "fitness",
+    "rationale": "La corrección del baseline (inventario, gaps, waivers) es una propiedad del generador de trazabilidad, verificable con tests de componente."
+  },
+  "REQ-VAH-FITNESS-SEPARATION": {
+    "level": "fitness",
+    "rationale": "La separación fitness/UAT es una regla de modelado del registry y de los claims; se verifica por tests estructurales."
+  },
+  "REQ-VAH-WAIVER": {
+    "level": "fitness",
+    "rationale": "La semántica de waivers (validación y PASS_WITH_WAIVER) es lógica pura verificable con tests unitarios."
+  },
+  "REQ-VAH-AUDIT-GATE": {
+    "level": "fitness",
+    "rationale": "El gate deriva de trazabilidad + evidence; su corrección es una función determinista verificable con tests de componente y su aplicación real con audit sobre milestones existentes."
+  },
+  "REQ-VAH-VERIFICATION-LEVEL": {
+    "level": "fitness",
+    "rationale": "La validación de niveles declarados es lógica de configuración verificable con tests unitarios."
+  },
+  "REQ-VAH-CI-ARTIFACTS": {
+    "level": "fitness",
+    "rationale": "La emisión de JUnit/JSON/markdown y la existencia del workflow se verifican por tests de reporter y validación de fichero CI."
+  },
+  "REQ-VAH-EVIDENCE-INTEGRITY": {
+    "level": "fitness",
+    "rationale": "La detección de tamper es una función de hash verificable con bundles sintéticos corruptos."
+  },
+  "REQ-VAH-HARDENING": {
+    "level": "fitness",
+    "rationale": "Los tests negativos de hardening son, por definición, tests de componente/negativos."
+  }
+}

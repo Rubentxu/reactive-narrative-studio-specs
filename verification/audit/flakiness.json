@@ -1,0 +1,32 @@
+[
+  {
+    "scenarioId": "SCN-HARNESS-BOOTSTRAP-001",
+    "classification": "STABLE_PASS",
+    "runs": 1,
+    "passed": 1,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-13T17-49-34-285Z-aa1ee8f0",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M10-02-001",
+    "classification": "STABLE_PASS",
+    "runs": 1,
+    "passed": 1,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-13T17-49-35-512Z-4764590a",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M10-04-001",
+    "classification": "STABLE_PASS",
+    "runs": 1,
+    "passed": 1,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-13T17-49-45-123Z-c93b365a",
+    "lastOverall": "PASS"
+  }
+]

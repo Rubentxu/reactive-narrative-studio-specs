@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-13T14:56:47.116Z",
-  "gitSha": "0a5de69e5c8f5ee9582adce2fdf0a04b5b8829d0",
+  "generatedAt": "2026-09-13T17:50:23.872Z",
+  "gitSha": "49fe7f845ac8d0ceee5e4663a78174b2516de252",
   "milestones": [
     {
       "id": "M0",
@@ -323,6 +323,7 @@
         {
           "id": "REQ-CR",
           "sources": [
+            "m10-2-1-audit-gate-hardening/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
@@ -367,8 +368,10 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "verification/test/harness.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-2",
@@ -674,14 +677,30 @@
       "uats": [],
       "requirements": [
         {
+          "id": "REQ-VAH-AUDIT-GATE",
+          "sources": [
+            "m10-2-1-audit-gate-hardening/spec.md",
+            "m10-2-1-audit-gate-hardening/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/audit-gate.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
           "id": "REQ-VAH-BASELINE",
           "sources": [
             "m10-2-1-baseline-audit/spec.md",
-            "m10-2-1-baseline-audit/tasks.md"
+            "m10-2-1-baseline-audit/tasks.md",
+            "m10-2-1-audit-gate-hardening/design.md",
+            "m10-2-1-audit-gate-hardening/tasks.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "verification/test/baseline-audit.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-VAH-BOOTSTRAP",
@@ -691,7 +710,9 @@
           "scenarios": [
             "scn-harness-bootstrap.yaml"
           ],
-          "testRefs": [],
+          "testRefs": [
+            "verification/test/scenarios.spec.ts"
+          ],
           "status": "MAPPED"
         },
         {
@@ -705,7 +726,21 @@
           "scenarios": [
             "scn-m10-02-001.yaml"
           ],
-          "testRefs": [],
+          "testRefs": [
+            "verification/test/audit-gate.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-VAH-CI-ARTIFACTS",
+          "sources": [
+            "m10-2-1-audit-gate-hardening/spec.md",
+            "m10-2-1-audit-gate-hardening/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/hardening.spec.ts"
+          ],
           "status": "MAPPED"
         },
         {
@@ -720,14 +755,40 @@
           "status": "MAPPED"
         },
         {
+          "id": "REQ-VAH-EVIDENCE-INTEGRITY",
+          "sources": [
+            "m10-2-1-audit-gate-hardening/spec.md",
+            "m10-2-1-audit-gate-hardening/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/hardening.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
           "id": "REQ-VAH-FITNESS-SEPARATION",
           "sources": [
             "m10-2-1-baseline-audit/spec.md",
             "m10-2-1-baseline-audit/tasks.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "verification/test/baseline-audit.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-VAH-HARDENING",
+          "sources": [
+            "m10-2-1-audit-gate-hardening/spec.md",
+            "m10-2-1-audit-gate-hardening/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/hardening.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-VAH-STORE-IMMUTABILITY",
@@ -741,14 +802,28 @@
           "status": "MAPPED"
         },
         {
+          "id": "REQ-VAH-VERIFICATION-LEVEL",
+          "sources": [
+            "m10-2-1-audit-gate-hardening/spec.md",
+            "m10-2-1-audit-gate-hardening/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/audit-gate.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
           "id": "REQ-VAH-WAIVER",
           "sources": [
             "m10-2-1-baseline-audit/spec.md",
             "m10-2-1-baseline-audit/tasks.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "verification/test/baseline-audit.spec.ts"
+          ],
+          "status": "MAPPED"
         }
       ]
     }
@@ -1005,13 +1080,6 @@
     },
     {
       "kind": "requirement-unmapped",
-      "ref": "REQ-CR-12",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
       "ref": "REQ-CR-2",
       "milestone": "M10.1",
       "severity": "MEDIUM",
@@ -1100,33 +1168,12 @@
       "milestone": "M10.2",
       "severity": "MEDIUM",
       "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-VAH-BASELINE",
-      "milestone": "M10.2.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-VAH-FITNESS-SEPARATION",
-      "milestone": "M10.2.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-VAH-WAIVER",
-      "milestone": "M10.2.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
     }
   ],
   "coverage": {
-    "requirements": 51,
-    "mapped": 16,
-    "unmapped": 35,
+    "requirements": 56,
+    "mapped": 25,
+    "unmapped": 31,
     "uats": 16,
     "executable": 2,
     "waived": 2

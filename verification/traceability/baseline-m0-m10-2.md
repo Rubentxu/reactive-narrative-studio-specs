@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-13T14:56:47.116Z
-- git: 0a5de69e5c8f5ee9582adce2fdf0a04b5b8829d0
-- coverage: 16/51 requirements MAPPED (scenario or test) · 35 UNMAPPED · 2/16 UATs executable · 2 waiver(s)
+- generated: 2026-09-13T17:50:23.872Z
+- git: 49fe7f845ac8d0ceee5e4663a78174b2516de252
+- coverage: 25/56 requirements MAPPED (scenario or test) · 31 UNMAPPED · 2/16 UATs executable · 2 waiver(s)
 
 ## Per-milestone status
 
@@ -46,8 +46,8 @@
 
 ### M10.1 — Creation Recipes
 - 🟢 UAT-M10-04-creation-recipe — EXECUTABLE (scn-m10-04-001.yaml)
-- requirements MAPPED (1): REQ-RECIPE-EQUIVALENCE
-- requirements UNMAPPED (13): REQ-CR, REQ-CR-1, REQ-CR-10, REQ-CR-11, REQ-CR-12, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-CR-7, REQ-CR-8, REQ-CR-9
+- requirements MAPPED (2): REQ-CR-12, REQ-RECIPE-EQUIVALENCE
+- requirements UNMAPPED (12): REQ-CR, REQ-CR-1, REQ-CR-10, REQ-CR-11, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-CR-7, REQ-CR-8, REQ-CR-9
 
 ### M10.2 — Capability Catalog
 - 🟢 UAT-M10-06-capability-catalog — EXECUTABLE (scn-m10-02-001.yaml)
@@ -55,8 +55,7 @@
 - requirements UNMAPPED (5): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-11
 
 ### M10.2.1 — Verification & Audit Harness
-- requirements MAPPED (4): REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CROSSREF-RENDER, REQ-VAH-STORE-IMMUTABILITY
-- requirements UNMAPPED (3): REQ-VAH-BASELINE, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-WAIVER
+- requirements MAPPED (12): REQ-VAH-AUDIT-GATE, REQ-VAH-BASELINE, REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CI-ARTIFACTS, REQ-VAH-CROSSREF-RENDER, REQ-VAH-EVIDENCE-INTEGRITY, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-HARDENING, REQ-VAH-STORE-IMMUTABILITY, REQ-VAH-VERIFICATION-LEVEL, REQ-VAH-WAIVER
 
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet
@@ -91,7 +90,6 @@
 - [MEDIUM] requirement-unmapped: REQ-CR-1 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-10 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-11 (M10.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-CR-12 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-2 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-3 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-4 (M10.1) — no scenario or test references this requirement
@@ -105,9 +103,6 @@
 - [MEDIUM] requirement-unmapped: REQ-CEP-3 (M10.2) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CEP-4 (M10.2) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-CAP-11 (M10.2) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-VAH-BASELINE (M10.2.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-VAH-FITNESS-SEPARATION (M10.2.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-VAH-WAIVER (M10.2.1) — no scenario or test references this requirement
 
 ## Waivers
 - WVR-M10-2-1-001 — requirement REQ-VAH-CROSSREF-RENDER — No real capability content contains [[Kind:namespace/name]] cross-references, so positive cross-link rendering cannot be demonstrated as a functional browser UAT. The plugin semantics are covered at component level; functional coverage is deferred until the first real cross-reference lands in content. (scope: M10.2 capability catalog cross-links (SCN-M10-02-001 doesNotProve); owner: m10.2.1-baseline-audit cycle)

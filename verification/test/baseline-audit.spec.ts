@@ -9,6 +9,8 @@ import { EvidenceStore } from '../src/evidence/store.ts';
 
 const REPO_ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..');
 
+// Requirements: REQ-VAH-WAIVER (waiver model + PASS_WITH_WAIVER semantics; levels declared in
+// traceability/requirement-levels.json)
 describe('waivers (VAH: PASS_WITH_WAIVER, never PASS)', () => {
   it('rejects waivers missing required fields', () => {
     expect(() => validateWaiver({ id: 'W1', requirement: 'R' }, 'test')).toThrow(WaiverValidationError);
@@ -95,6 +97,8 @@ describe('browser-content oracle', () => {
   });
 });
 
+// Requirements: REQ-VAH-BASELINE (baseline generator), REQ-VAH-FITNESS-SEPARATION
+// (requirement -> test refs kept separate from functional UAT).
 describe('baseline M0-M10.2 (H8)', () => {
   it('registry includes testRefs, waivers and gaps for M0-M10.2', async () => {
     const { buildRegistry, renderBaseline } = await import('../src/traceability/build.ts');

@@ -103,13 +103,16 @@ export class RunContext {
 
   /** Finalize the bundle: write hashes.sha256 covering every file in the run dir. */
   async finalize(): Promise<void> {
+    // The final event MUST be appended before hashing: hashing first and then
+    // emitting left events.jsonl with a stale hash in every bundle (caught by
+    // the H10 hardening integrity tests).
+    await this.emitEvent('run.finalized', {});
     const lines: string[] = [];
     const walk = async (dir: string): Promise<void> => {
       const { readdir } = await import('node:fs/promises');
       for (const entry of await readdir(dir, { withFileTypes: true })) {
         const full = join(dir, entry.name);
         if (entry.isDirectory()) {
-          if (entry.name === 'browser-traces') continue; // handled below as binary dirs
           await walk(full);
         } else {
           const rel = relative(this.dir, full);
@@ -121,6 +124,5 @@ export class RunContext {
     };
     await walk(this.dir);
     await writeFile(join(this.dir, 'hashes.sha256'), `${lines.join('\n')}\n`, 'utf8');
-    await this.emitEvent('run.finalized', { files: lines.length });
   }
 }

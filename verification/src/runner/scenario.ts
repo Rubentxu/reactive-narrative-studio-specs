@@ -15,6 +15,7 @@ import { GitDriver } from '../drivers/git.ts';
 import { ProcessDriver } from '../drivers/process.ts';
 import { BrowserDriver, PreviewServer } from '../drivers/browser.ts';
 import { ORACLES } from '../oracles/index.ts';
+import { renderJUnit } from '../report/junit.ts';
 
 export interface RunnerConfig {
   repoRoot: string;
@@ -195,6 +196,7 @@ export class ScenarioRunner {
     });
     const report = renderMarkdownReport(verdict);
     await run.writeArtifact('report.md', report);
+    await run.writeArtifact('junit.xml', renderJUnit(verdict));
     await run.finalize();
     await run.emitEvent('run.finished', { overall: verdict.overall });
 
