@@ -21,6 +21,8 @@ export interface RunnerConfig {
   repoRoot: string;
   verificationRoot: string;
   headless?: boolean;
+  /** Run provenance tags (e.g. 'canonical' for `verify`/`uat all` runs). */
+  tags?: string[];
 }
 
 export interface RunOutcome {
@@ -192,13 +194,17 @@ export class ScenarioRunner {
       overall: verdict.overall,
       startedAt,
       finishedAt: verdict.finishedAt,
+      tags: this.config.tags ?? [],
       evidenceDir: run.dir,
     });
     const report = renderMarkdownReport(verdict);
     await run.writeArtifact('report.md', report);
     await run.writeArtifact('junit.xml', renderJUnit(verdict));
-    await run.finalize();
+    // The bundle must be frozen before hashing: every event (including
+    // run.finished) is appended BEFORE finalize(), otherwise events.jsonl grows
+    // after hashes.sha256 is written and the bundle fails integrity checks.
     await run.emitEvent('run.finished', { overall: verdict.overall });
+    await run.finalize();
 
     return { verdict, runDir: run.dir };
   }

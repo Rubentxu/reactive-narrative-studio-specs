@@ -17,7 +17,12 @@ export interface FlakinessRecord {
  * Historical classification per scenario, scanned from evidence bundles.
  * FLAKY = the same scenario produced both PASS and FAIL across runs.
  */
-export async function classifyFlakiness(verificationRoot: string): Promise<FlakinessRecord[]> {
+export interface FlakinessOptions {
+  /** Restrict to runs carrying ALL of these tags (canonical history filter). */
+  onlyTags?: string[];
+}
+
+export async function classifyFlakiness(verificationRoot: string, options: FlakinessOptions = {}): Promise<FlakinessRecord[]> {
   const evidenceDir = join(verificationRoot, 'evidence');
   const byScenario = new Map<string, { runIds: string[]; verdicts: string[] }>();
   if (!existsSync(evidenceDir)) return [];
@@ -28,6 +33,16 @@ export async function classifyFlakiness(verificationRoot: string): Promise<Flaki
     if (!existsSync(verdictPath)) continue;
     try {
       const verdict = JSON.parse(await readFile(verdictPath, 'utf8')) as { runId: string; scenarioId: string; overall: string };
+      if (options.onlyTags && options.onlyTags.length > 0) {
+        const runJsonPath = join(evidenceDir, entry.name, 'artifacts', 'run.json');
+        let tags: string[] = [];
+        try {
+          tags = ((JSON.parse(await readFile(runJsonPath, 'utf8')) as { tags?: string[] }).tags) ?? [];
+        } catch {
+          tags = [];
+        }
+        if (!options.onlyTags.every((tag) => tags.includes(tag))) continue;
+      }
       const record = byScenario.get(verdict.scenarioId) ?? { runIds: [], verdicts: [] };
       record.runIds.push(verdict.runId);
       record.verdicts.push(verdict.overall);

@@ -172,12 +172,14 @@ interface RunOneResult {
   summary: JUnitRunSummary;
 }
 
-async function runOne(file: string, args: CliArgs): Promise<RunOneResult> {
+async function runOne(file: string, args: CliArgs, tags: string[] = []): Promise<RunOneResult> {
   const scenario = await loadScenario(file);
+  const extraTag = args.flags.get('tag');
   const runner = new ScenarioRunner({
     repoRoot: REPO_ROOT,
     verificationRoot: VERIFICATION_ROOT,
     headless: !args.flags.has('headed'),
+    tags: extraTag ? [...tags, extraTag] : tags,
   });
   const { verdict, runDir } = await runner.run(scenario);
   console.log(`[${verdict.overall}] ${verdict.scenarioId} — evidence: ${runDir}`);
@@ -197,7 +199,7 @@ async function runAll(args: CliArgs): Promise<number> {
   const suites: string[] = [];
   const summaries: JUnitRunSummary[] = [];
   for (const file of files) {
-    const result = await runOne(join(dir, file), args);
+    const result = await runOne(join(dir, file), args, ['canonical']);
     if (result.code !== 0) failures += 1;
     suites.push(result.junit);
     summaries.push(result.summary);

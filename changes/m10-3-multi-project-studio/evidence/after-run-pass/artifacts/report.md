@@ -1,29 +1,29 @@
 # Verification Report — SCN-M10-05-001
 
-- **Run**: `run-2026-09-13T18-09-58-962Z-291407d0`
+- **Run**: `run-2026-09-13T20-30-06-214Z-dc1536bb`
 - **UAT**: UAT-M10-05
 - **Requirements**: REQ-MP-1, REQ-MP-3, REQ-MP-4, REQ-MP-5
 - **Overall**: **PASS**
-- **Git**: 400a7ab3b44f8bb026e324b960a3ad840d6ec0bd (feat/m10-3-multi-project-studio) — DIRTY
+- **Git**: c99fae0b327a47fbee6aa54433e605c941e16cb8 (feat/m11-human-reader-uat) — DIRTY
 - **Environment**: linux x64, node v25.9.0, python Python 3.14.7
 
 ## Steps
-- ✅ `ui.build` (process.run, 1546ms)
-- ✅ `ui.start-preview` (browser.start-preview, 30ms)
-- ✅ `ui.home-initial` (browser.navigate, 822ms)
-- ✅ `ui.load-a` (browser.set-input-files, 214ms)
+- ✅ `ui.build` (process.run, 1567ms)
+- ✅ `ui.start-preview` (browser.start-preview, 8ms)
+- ✅ `ui.home-initial` (browser.navigate, 780ms)
+- ✅ `ui.load-a` (browser.set-input-files, 198ms)
 - ✅ `ui.load-b` (browser.set-input-files, 154ms)
-- ✅ `ui.home-verify` (browser.click, 95ms)
-- ✅ `ui.catalog` (browser.click, 96ms)
+- ✅ `ui.home-verify` (browser.click, 101ms)
+- ✅ `ui.catalog` (browser.click, 90ms)
 - ✅ `ui.filter-a` (browser.click, 84ms)
 - ✅ `ui.active-a` (browser.evaluate, 60ms)
-- ✅ `ui.filter-b` (browser.click, 91ms)
-- ✅ `ui.active-b` (browser.evaluate, 57ms)
-- ✅ `ui.idb-inspect` (browser.evaluate, 52ms)
-- ✅ `ui.delete-idb` (browser.evaluate, 51ms)
-- ✅ `ui.home-after-delete` (browser.navigate, 775ms)
-- ✅ `ui.reload-a` (browser.set-input-files, 183ms)
-- ✅ `ui.state-after-reload` (browser.evaluate, 63ms)
+- ✅ `ui.filter-b` (browser.click, 90ms)
+- ✅ `ui.active-b` (browser.evaluate, 46ms)
+- ✅ `ui.idb-inspect` (browser.evaluate, 49ms)
+- ✅ `ui.delete-idb` (browser.evaluate, 49ms)
+- ✅ `ui.home-after-delete` (browser.navigate, 780ms)
+- ✅ `ui.reload-a` (browser.set-input-files, 179ms)
+- ✅ `ui.state-after-reload` (browser.evaluate, 62ms)
 
 ## Oracles
 - ✅ `home.lists-both-projects` [browser-content/functional] DOM assertions hold on http://localhost:4173/home
@@ -54,9 +54,9 @@
 
 ## Evidence index
 - `environment.json` — artifacts/environment.json (sha256:5e60cd1f18fd…, 125B)
-- `git.observation.json` — artifacts/git.observation.json (sha256:6d7309efcc14…, 1136B)
-- `git.dirty-files.json` — artifacts/git.dirty-files.json (sha256:95dfce3c3992…, 1014B)
-- `process.ui.build.stdout.txt` — artifacts/process.ui.build.stdout.txt (sha256:4c142c9734d2…, 413B)
+- `git.observation.json` — artifacts/git.observation.json (sha256:2c8946cb6bc8…, 540B)
+- `git.dirty-files.json` — artifacts/git.dirty-files.json (sha256:2dfd3fec5550…, 424B)
+- `process.ui.build.stdout.txt` — artifacts/process.ui.build.stdout.txt (sha256:c4d7a61daab9…, 413B)
 - `process.ui.build.stderr.txt` — artifacts/process.ui.build.stderr.txt (sha256:269c223a4320…, 416B)
 - `browser/ui.home-initial.png` — artifacts/browser/ui.home-initial.png (sha256:736065f68ffa…, 36889B)
 - `browser.ui.home-initial.console.json` — artifacts/browser.ui.home-initial.console.json (sha256:4e768728e3a6…, 46B)
@@ -64,12 +64,12 @@
 - `browser/ui.load-a.png` — artifacts/browser/ui.load-a.png (sha256:4b7e656108e6…, 41607B)
 - `browser.ui.load-a.console.json` — artifacts/browser.ui.load-a.console.json (sha256:4e768728e3a6…, 46B)
 - `browser.ui.load-a.dom.json` — artifacts/browser.ui.load-a.dom.json (sha256:b307d4eb9ab9…, 675B)
-- `browser/ui.load-b.png` — artifacts/browser/ui.load-b.png (sha256:4d774f52dfb3…, 47083B)
+- `browser/ui.load-b.png` — artifacts/browser/ui.load-b.png (sha256:528db54863a7…, 47280B)
 - `browser.ui.load-b.console.json` — artifacts/browser.ui.load-b.console.json (sha256:4e768728e3a6…, 46B)
-- `browser.ui.load-b.dom.json` — artifacts/browser.ui.load-b.dom.json (sha256:27caa212957e…, 733B)
-- `browser/ui.home-verify.png` — artifacts/browser/ui.home-verify.png (sha256:4d774f52dfb3…, 47083B)
+- `browser.ui.load-b.dom.json` — artifacts/browser.ui.load-b.dom.json (sha256:5de3255f0a85…, 733B)
+- `browser/ui.home-verify.png` — artifacts/browser/ui.home-verify.png (sha256:528db54863a7…, 47280B)
 - `browser.ui.home-verify.console.json` — artifacts/browser.ui.home-verify.console.json (sha256:4e768728e3a6…, 46B)
-- `browser.ui.home-verify.dom.json` — artifacts/browser.ui.home-verify.dom.json (sha256:27caa212957e…, 733B)
+- `browser.ui.home-verify.dom.json` — artifacts/browser.ui.home-verify.dom.json (sha256:5de3255f0a85…, 733B)
 - `browser/ui.catalog.png` — artifacts/browser/ui.catalog.png (sha256:bccf0d32c303…, 29399B)
 - `browser.ui.catalog.console.json` — artifacts/browser.ui.catalog.console.json (sha256:4e768728e3a6…, 46B)
 - `browser.ui.catalog.dom.json` — artifacts/browser.ui.catalog.dom.json (sha256:999b086132fb…, 539B)

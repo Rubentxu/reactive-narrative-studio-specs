@@ -4,19 +4,19 @@
     {
       "path": "[0].roundId",
       "expected": "null",
-      "actual": "\"86bcd2ea05d34272862d9a8c442b74a0\"",
+      "actual": "\"fcf8dc551fe34337b574252faf9a3328\"",
       "ignored": true
     },
     {
       "path": "[0].readerId",
       "expected": "null",
-      "actual": "\"a1e95e50cc1dd0ac\"",
+      "actual": "\"65427364d8ffa277\"",
       "ignored": true
     },
     {
       "path": "[0].submittedAt",
       "expected": "null",
-      "actual": "\"2026-09-13T20:27:21.658Z\"",
+      "actual": "\"2026-09-13T20:30:15.517Z\"",
       "ignored": true
     }
   ]
