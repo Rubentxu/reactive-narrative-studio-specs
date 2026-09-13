@@ -1,0 +1,105 @@
+# Verification Report — SCN-M10-05-001
+
+- **Run**: `run-2026-09-13T18-09-58-962Z-291407d0`
+- **UAT**: UAT-M10-05
+- **Requirements**: REQ-MP-1, REQ-MP-3, REQ-MP-4, REQ-MP-5
+- **Overall**: **PASS**
+- **Git**: 400a7ab3b44f8bb026e324b960a3ad840d6ec0bd (feat/m10-3-multi-project-studio) — DIRTY
+- **Environment**: linux x64, node v25.9.0, python Python 3.14.7
+
+## Steps
+- ✅ `ui.build` (process.run, 1546ms)
+- ✅ `ui.start-preview` (browser.start-preview, 30ms)
+- ✅ `ui.home-initial` (browser.navigate, 822ms)
+- ✅ `ui.load-a` (browser.set-input-files, 214ms)
+- ✅ `ui.load-b` (browser.set-input-files, 154ms)
+- ✅ `ui.home-verify` (browser.click, 95ms)
+- ✅ `ui.catalog` (browser.click, 96ms)
+- ✅ `ui.filter-a` (browser.click, 84ms)
+- ✅ `ui.active-a` (browser.evaluate, 60ms)
+- ✅ `ui.filter-b` (browser.click, 91ms)
+- ✅ `ui.active-b` (browser.evaluate, 57ms)
+- ✅ `ui.idb-inspect` (browser.evaluate, 52ms)
+- ✅ `ui.delete-idb` (browser.evaluate, 51ms)
+- ✅ `ui.home-after-delete` (browser.navigate, 775ms)
+- ✅ `ui.reload-a` (browser.set-input-files, 183ms)
+- ✅ `ui.state-after-reload` (browser.evaluate, 63ms)
+
+## Oracles
+- ✅ `home.lists-both-projects` [browser-content/functional] DOM assertions hold on http://localhost:4173/home
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `catalog.filter-project-a` [browser-evaluate/functional] evaluate result matches expectations (browser.ui.active-a.eval.json)
+  - proves: the declared in-page probe (DOM/storage/state) returns the expected observable result
+  - doesNotProve: anything outside the probe script; probe correctness is reviewer-audited
+  - diff: artifacts/catalog.filter-project-a.diff.json
+- ✅ `catalog.filter-project-b` [browser-evaluate/functional] evaluate result matches expectations (browser.ui.active-b.eval.json)
+  - proves: the declared in-page probe (DOM/storage/state) returns the expected observable result
+  - doesNotProve: anything outside the probe script; probe correctness is reviewer-audited
+  - diff: artifacts/catalog.filter-project-b.diff.json
+- ✅ `idb.preferences-schema-only` [browser-evaluate/functional] evaluate result matches expectations (browser.ui.idb-inspect.eval.json)
+  - proves: the declared in-page probe (DOM/storage/state) returns the expected observable result
+  - doesNotProve: anything outside the probe script; probe correctness is reviewer-audited
+  - diff: artifacts/idb.preferences-schema-only.diff.json
+- ✅ `idb.delete-preferences-safe` [browser-evaluate/functional] evaluate result matches expectations (browser.ui.state-after-reload.eval.json)
+  - proves: the declared in-page probe (DOM/storage/state) returns the expected observable result
+  - doesNotProve: anything outside the probe script; probe correctness is reviewer-audited
+  - diff: artifacts/idb.delete-preferences-safe.diff.json
+- ✅ `home.after-delete-empty` [browser-content/functional] DOM assertions hold on http://localhost:4173/home
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `browser.health` [browser/runtime-health] browser session healthy (0 page errors, 0 console errors)
+  - proves: the UI surface completed the flow without runtime errors
+  - doesNotProve: semantic equivalence of produced artifacts
+
+## Evidence index
+- `environment.json` — artifacts/environment.json (sha256:5e60cd1f18fd…, 125B)
+- `git.observation.json` — artifacts/git.observation.json (sha256:6d7309efcc14…, 1136B)
+- `git.dirty-files.json` — artifacts/git.dirty-files.json (sha256:95dfce3c3992…, 1014B)
+- `process.ui.build.stdout.txt` — artifacts/process.ui.build.stdout.txt (sha256:4c142c9734d2…, 413B)
+- `process.ui.build.stderr.txt` — artifacts/process.ui.build.stderr.txt (sha256:269c223a4320…, 416B)
+- `browser/ui.home-initial.png` — artifacts/browser/ui.home-initial.png (sha256:736065f68ffa…, 36889B)
+- `browser.ui.home-initial.console.json` — artifacts/browser.ui.home-initial.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.home-initial.dom.json` — artifacts/browser.ui.home-initial.dom.json (sha256:dca62d0c4711…, 610B)
+- `browser/ui.load-a.png` — artifacts/browser/ui.load-a.png (sha256:4b7e656108e6…, 41607B)
+- `browser.ui.load-a.console.json` — artifacts/browser.ui.load-a.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.load-a.dom.json` — artifacts/browser.ui.load-a.dom.json (sha256:b307d4eb9ab9…, 675B)
+- `browser/ui.load-b.png` — artifacts/browser/ui.load-b.png (sha256:4d774f52dfb3…, 47083B)
+- `browser.ui.load-b.console.json` — artifacts/browser.ui.load-b.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.load-b.dom.json` — artifacts/browser.ui.load-b.dom.json (sha256:27caa212957e…, 733B)
+- `browser/ui.home-verify.png` — artifacts/browser/ui.home-verify.png (sha256:4d774f52dfb3…, 47083B)
+- `browser.ui.home-verify.console.json` — artifacts/browser.ui.home-verify.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.home-verify.dom.json` — artifacts/browser.ui.home-verify.dom.json (sha256:27caa212957e…, 733B)
+- `browser/ui.catalog.png` — artifacts/browser/ui.catalog.png (sha256:bccf0d32c303…, 29399B)
+- `browser.ui.catalog.console.json` — artifacts/browser.ui.catalog.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.catalog.dom.json` — artifacts/browser.ui.catalog.dom.json (sha256:999b086132fb…, 539B)
+- `browser/ui.filter-a.png` — artifacts/browser/ui.filter-a.png (sha256:cb46b0600c91…, 28954B)
+- `browser.ui.filter-a.console.json` — artifacts/browser.ui.filter-a.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.filter-a.dom.json` — artifacts/browser.ui.filter-a.dom.json (sha256:12998b4c7605…, 533B)
+- `browser.ui.active-a.eval.json` — artifacts/browser.ui.active-a.eval.json (sha256:a7bd55415b96…, 79B)
+- `browser/ui.active-a.png` — artifacts/browser/ui.active-a.png (sha256:cb46b0600c91…, 28954B)
+- `browser/ui.filter-b.png` — artifacts/browser/ui.filter-b.png (sha256:305cb6837584…, 29295B)
+- `browser.ui.filter-b.console.json` — artifacts/browser.ui.filter-b.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.filter-b.dom.json` — artifacts/browser.ui.filter-b.dom.json (sha256:9921ee88edf3…, 539B)
+- `browser.ui.active-b.eval.json` — artifacts/browser.ui.active-b.eval.json (sha256:0b575adce811…, 83B)
+- `browser/ui.active-b.png` — artifacts/browser/ui.active-b.png (sha256:305cb6837584…, 29295B)
+- `browser.ui.idb-inspect.eval.json` — artifacts/browser.ui.idb-inspect.eval.json (sha256:f76f434530dc…, 270B)
+- `browser/ui.idb-inspect.png` — artifacts/browser/ui.idb-inspect.png (sha256:305cb6837584…, 29295B)
+- `browser.ui.delete-idb.eval.json` — artifacts/browser.ui.delete-idb.eval.json (sha256:b497ec840494…, 22B)
+- `browser/ui.delete-idb.png` — artifacts/browser/ui.delete-idb.png (sha256:305cb6837584…, 29295B)
+- `browser/ui.home-after-delete.png` — artifacts/browser/ui.home-after-delete.png (sha256:736065f68ffa…, 36889B)
+- `browser.ui.home-after-delete.console.json` — artifacts/browser.ui.home-after-delete.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.home-after-delete.dom.json` — artifacts/browser.ui.home-after-delete.dom.json (sha256:dca62d0c4711…, 610B)
+- `browser/ui.reload-a.png` — artifacts/browser/ui.reload-a.png (sha256:4b7e656108e6…, 41607B)
+- `browser.ui.reload-a.console.json` — artifacts/browser.ui.reload-a.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.reload-a.dom.json` — artifacts/browser.ui.reload-a.dom.json (sha256:b307d4eb9ab9…, 675B)
+- `browser.ui.state-after-reload.eval.json` — artifacts/browser.ui.state-after-reload.eval.json (sha256:891b6e841986…, 54B)
+- `browser/ui.state-after-reload.png` — artifacts/browser/ui.state-after-reload.png (sha256:4b7e656108e6…, 41607B)
+- `catalog.filter-project-a.actual.json` — artifacts/catalog.filter-project-a.actual.json (sha256:a7bd55415b96…, 79B)
+- `catalog.filter-project-a.diff.json` — artifacts/catalog.filter-project-a.diff.json (sha256:4c9c9c59cd38…, 41B)
+- `catalog.filter-project-b.actual.json` — artifacts/catalog.filter-project-b.actual.json (sha256:0b575adce811…, 83B)
+- `catalog.filter-project-b.diff.json` — artifacts/catalog.filter-project-b.diff.json (sha256:4c9c9c59cd38…, 41B)
+- `idb.preferences-schema-only.actual.json` — artifacts/idb.preferences-schema-only.actual.json (sha256:f76f434530dc…, 270B)
+- `idb.preferences-schema-only.diff.json` — artifacts/idb.preferences-schema-only.diff.json (sha256:4c9c9c59cd38…, 41B)
+- `idb.delete-preferences-safe.actual.json` — artifacts/idb.delete-preferences-safe.actual.json (sha256:891b6e841986…, 54B)
+- `idb.delete-preferences-safe.diff.json` — artifacts/idb.delete-preferences-safe.diff.json (sha256:4c9c9c59cd38…, 41B)

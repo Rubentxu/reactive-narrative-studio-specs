@@ -1,0 +1,28 @@
+{
+  "sha": "400a7ab3b44f8bb026e324b960a3ad840d6ec0bd",
+  "branch": "feat/m10-3-multi-project-studio",
+  "dirty": true,
+  "dirtyFiles": [
+    "M control-plane/src/app/SourcePicker.tsx",
+    "M control-plane/src/loader/SnapshotProjectSource.ts",
+    "M control-plane/src/routes/router.tsx",
+    "M control-plane/src/store/projectionStore.ts",
+    "M control-plane/src/views/Catalog.tsx",
+    "M verification/src/oracles/index.ts",
+    "M verification/src/runner/scenario.ts",
+    "M verification/src/scenario/loader.ts",
+    "M verification/src/types.ts",
+    "M verification/traceability/requirement-levels.json",
+    "M verification/tsconfig.json",
+    "?? changes/m10-3-multi-project-studio/",
+    "?? control-plane/src/studio/",
+    "?? control-plane/src/views/Home.tsx",
+    "?? control-plane/test/multi-project-studio.spec.ts",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/",
+    "?? golden/control-plane/snapshot-second/",
+    "?? verification/scenarios/scn-m10-05-001.yaml"
+  ]
+}

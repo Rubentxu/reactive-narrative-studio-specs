@@ -1,0 +1,19 @@
+{
+  "stores": [
+    "projects"
+  ],
+  "recordCount": 2,
+  "projectIds": [
+    "demo-project",
+    "demo-project-b"
+  ],
+  "recordKeys": [
+    "favorite",
+    "fileNames",
+    "lastOpenedAt",
+    "projectId",
+    "sourceKind",
+    "title"
+  ],
+  "forbiddenKeyHits": []
+}

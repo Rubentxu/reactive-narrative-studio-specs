@@ -46,5 +46,29 @@
   "REQ-VAH-HARDENING": {
     "level": "fitness",
     "rationale": "Los tests negativos de hardening son, por definición, tests de componente/negativos."
+  },
+  "REQ-MP-1": {
+    "level": "functional",
+    "rationale": "Dos identidades runtime independientes exigen un scenario real con dos snapshots cargados."
+  },
+  "REQ-MP-2": {
+    "level": "fitness",
+    "rationale": "El caracter solo-metadatos del registro es una propiedad estructural verificable con tests unitarios del record."
+  },
+  "REQ-MP-3": {
+    "level": "functional",
+    "rationale": "Studio Home mostrando ambos proyectos se demuestra funcionalmente en browser."
+  },
+  "REQ-MP-4": {
+    "level": "functional",
+    "rationale": "El filtro por proyecto del Catalog requiere interaccion real y cambio de proyecto activo observable."
+  },
+  "REQ-MP-5": {
+    "level": "functional",
+    "rationale": "Borrar preferencias y recargar los mismos proyectos es un flujo de usuario end-to-end."
+  },
+  "REQ-MP-6": {
+    "level": "fitness",
+    "rationale": "La ausencia de DB narrativa central se verifica enumerando object stores y claves (probe estructural)."
   }
 }

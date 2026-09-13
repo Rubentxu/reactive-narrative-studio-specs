@@ -1,0 +1,18 @@
+{
+  "url": "http://localhost:4173/catalog",
+  "title": "Control Plane",
+  "h1s": [
+    "Catalog — Demo Project B"
+  ],
+  "h2s": [
+    "Load Project",
+    "Character (1)",
+    "Build (1)"
+  ],
+  "links": [
+    "/home",
+    "/entity/Character/demo/nora",
+    "/entity/Build/demo/build-001"
+  ],
+  "bodyText": "Load Project Studio Home Source: Demo Project B Current status: loaded Open Directory (Chromium) Catalog — Demo Project B Project:demo-projectdemo-project-b Loaded 4 entities Character (1) demo/nora Build (1) demo/build-001"
+}

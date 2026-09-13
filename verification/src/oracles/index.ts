@@ -370,6 +370,32 @@ export const browserContentOracle: OracleImpl = async (oracle, ctx) => {
   });
 };
 
+/** BrowserEvaluateOracle — semantic comparison of a page.evaluate result vs declared expectations. */
+export const browserEvaluateOracle: OracleImpl = async (oracle, ctx) => {
+  const config = oracle.config ?? {};
+  const artifactName = config.artifact as string;
+  const expected = config.expected as unknown;
+  const ignored = ignoredFromConfig(config);
+  const actual = await readArtifactJson(ctx.run, artifactName);
+  const diff = semanticCompare(expected, actual, ignored);
+  const actualRef = await ctx.run.writeJson(`${oracle.id}.actual.json`, actual);
+  const diffRef = await ctx.run.writeJson(`${oracle.id}.diff.json`, diff);
+  const realDiffs = diff.differences.filter((d) => !d.ignored);
+  return result({
+    id: oracle.id,
+    type: 'browser-evaluate',
+    verdict: diff.equal ? 'passed' : 'failed',
+    message: diff.equal
+      ? `evaluate result matches expectations (${artifactName})`
+      : `evaluate result differs in ${realDiffs.length} path(s): ${realDiffs.slice(0, 8).map((d) => `${d.path} expected ${d.expected} got ${d.actual}`).join('; ')}`,
+    classification: 'functional',
+    proves: 'the declared in-page probe (DOM/storage/state) returns the expected observable result',
+    doesNotProve: 'anything outside the probe script; probe correctness is reviewer-audited',
+    actualRef: actualRef.path,
+    diffRef: diffRef.path,
+  });
+};
+
 export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   schema: schemaOracle,
   'semantic-json': semanticJsonOracle,
@@ -378,5 +404,6 @@ export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   golden: goldenOracle,
   browser: browserOracle,
   'browser-content': browserContentOracle,
+  'browser-evaluate': browserEvaluateOracle,
   'cross-language': crossLanguageOracle,
 };
