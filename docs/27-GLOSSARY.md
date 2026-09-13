@@ -235,3 +235,18 @@ A green test that does not demonstrate the acceptance criterion it claims to.
 Closed by M10.2.1 for Creation Recipes: the harness baseline run exposed that
 `/create` never mounted in the built app and that "round-trip" tests compared
 hand-written fixtures instead of executing both runtimes.
+
+### Audit Gate
+
+The Git-native gate (`verification/src/audit/`) that derives a milestone verdict from
+traceability + evidence + waivers — never from commit text or agent claims (VAH-020).
+Requirements are `PROVEN`/`WAIVED`/`PARTIALLY_VERIFIED`/`FAILED`/`UNMAPPED`; the last
+three block unless an applicable waiver exists. Declared verification levels
+(`requirement-levels.json`) distinguish `functional` (scenario verdict required) from
+`fitness` (component test refs sufficient).
+
+### Flakiness Classification
+
+Historical per-scenario classification from evidence bundles: a scenario with both PASS
+and FAIL runs is `FLAKY`; only FAIL is `STABLE_FAIL`; only PASS is `STABLE_PASS`.
+Produced by `audit flakiness` (H10).
