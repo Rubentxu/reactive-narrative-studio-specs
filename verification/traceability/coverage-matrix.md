@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-13T14:56:47.116Z
-- git: 0a5de69e5c8f5ee9582adce2fdf0a04b5b8829d0
-- coverage: 16/51 requirements MAPPED · 35 UNMAPPED · 2/16 UATs executable · 2 waivers
+- generated: 2026-09-13T17:50:23.872Z
+- git: 49fe7f845ac8d0ceee5e4663a78174b2516de252
+- coverage: 25/56 requirements MAPPED · 31 UNMAPPED · 2/16 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -44,11 +44,10 @@
 
 ## M10.1 — Creation Recipes
 - 🟢 UAT-M10-04-creation-recipe (EXECUTABLE) → scenarios: scn-m10-04-001.yaml
-- UNMAPPED requirements (13): REQ-CR, REQ-CR-1, REQ-CR-10, REQ-CR-11, REQ-CR-12, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-CR-7, REQ-CR-8, REQ-CR-9
+- UNMAPPED requirements (12): REQ-CR, REQ-CR-1, REQ-CR-10, REQ-CR-11, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-CR-7, REQ-CR-8, REQ-CR-9
 
 ## M10.2 — Capability Catalog
 - 🟢 UAT-M10-06-capability-catalog (EXECUTABLE) → scenarios: scn-m10-02-001.yaml
 - UNMAPPED requirements (5): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-11
 
 ## M10.2.1 — Verification & Audit Harness
-- UNMAPPED requirements (3): REQ-VAH-BASELINE, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-WAIVER

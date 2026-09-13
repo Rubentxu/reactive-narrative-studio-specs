@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "audit-report/v1",
+  "generatedAt": "2026-09-13T17:50:25.400Z",
+  "gitSha": "49fe7f845ac8d0ceee5e4663a78174b2516de252",
+  "target": "milestone M10.1",
+  "overall": "FAIL",
+  "blocking": [
+    {
+      "id": "REQ-CR",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-1",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-10",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-11",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-12",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/harness.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-2",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-3",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-4",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-5",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-6",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-7",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-8",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-9",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    }
+  ],
+  "waived": [],
+  "proven": [
+    {
+      "id": "REQ-RECIPE-EQUIVALENCE",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-04-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-04-001"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-CR",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-1",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-10",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-11",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-12",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/harness.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-2",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-3",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-4",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-5",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-6",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-7",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-8",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-9",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-RECIPE-EQUIVALENCE",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-04-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-04-001"
+    }
+  ]
+}
