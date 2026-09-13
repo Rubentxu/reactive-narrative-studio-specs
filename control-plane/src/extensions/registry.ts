@@ -1,15 +1,17 @@
 import type { CatalogEntity } from '../loader/ProjectSource';
-import type { ControlPlaneFeature, EntityTabExtension, EntityCardExtension, RecipeWidgetExtension } from './types';
+import type { ControlPlaneFeature, EntityTabExtension, EntityCardExtension, RecipeWidgetExtension, ReaderFeedbackExtension } from './types';
 
 export interface ExtensionRegistry {
   register(feature: ControlPlaneFeature): void;
   resolveEntityTabs(entity: CatalogEntity): readonly EntityTabExtension[];
   resolveEntityCards(entity: CatalogEntity): readonly EntityCardExtension[];
   resolveRecipeWizard(): RecipeWidgetExtension | undefined;
+  resolveReaderFeedback(): ReaderFeedbackExtension | undefined;
 }
 
 const features: ControlPlaneFeature[] = [];
 const wizards: RecipeWidgetExtension[] = [];
+const readerFeedback: ReaderFeedbackExtension[] = [];
 
 function sortByPriority<T extends { priority: number }>(items: T[]): T[] {
   return [...items].sort((a, b) => a.priority - b.priority);
@@ -35,6 +37,9 @@ export const extensionRegistry: ExtensionRegistry = {
   resolveRecipeWizard(): RecipeWidgetExtension | undefined {
     return sortByPriority(wizards)[0];
   },
+  resolveReaderFeedback(): ReaderFeedbackExtension | undefined {
+    return sortByPriority(readerFeedback)[0];
+  },
 };
 
 // Register a recipe wizard extension (app-level, not entity-bound)
@@ -44,3 +49,9 @@ export function registerRecipeWizard(wizard: RecipeWidgetExtension): void {
 }
 
 
+
+// Register an anonymized reader feedback form (app-level, not entity-bound).
+// M11: called by the human-reader feature index at module init.
+export function registerReaderFeedback(form: ReaderFeedbackExtension): void {
+  readerFeedback.push(form);
+}
