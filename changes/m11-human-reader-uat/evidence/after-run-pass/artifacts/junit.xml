@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SCN-M11-01-001" tests="18" failures="0" skipped="0" time="0">
+  <testcase classname="SCN-M11-01-001.steps" name="ui.build" time="1.676"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.start-preview" time="0.008"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.reader-uat" time="0.798"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.submit-empty" time="0.131"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.fill-context" time="0.013"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.fill-engagement" time="0.012"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.fill-impact" time="0.011"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.fill-revision" time="0.014"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.fill-highlights" time="0.012"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.likert-pacing" time="0.105"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.likert-clarity" time="0.100"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.submit-filled" time="0.097"/>
+  <testcase classname="SCN-M11-01-001.steps" name="ui.storage-probe" time="0.077"/>
+  <testcase classname="SCN-M11-01-001.oracles" name="page.anonymity-and-separation [browser-content]" time="0"/>
+  <testcase classname="SCN-M11-01-001.oracles" name="report.empty-form-valid [jsonl-entry]" time="0"/>
+  <testcase classname="SCN-M11-01-001.oracles" name="report.filled-fields [jsonl-entry]" time="0"/>
+  <testcase classname="SCN-M11-01-001.oracles" name="storage.no-databases-no-localstorage [browser-evaluate]" time="0"/>
+  <testcase classname="SCN-M11-01-001.oracles" name="browser.health [browser]" time="0"/>
+</testsuite>

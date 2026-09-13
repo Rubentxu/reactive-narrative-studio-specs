@@ -1,0 +1,1033 @@
+{
+  "runId": "run-2026-09-13T20-30-11-738Z-11a4a0a8",
+  "scenarioId": "SCN-M11-01-001",
+  "uat": "UAT-M11-01",
+  "requirements": [
+    "REQ-M11-1",
+    "REQ-M11-2",
+    "REQ-M11-3",
+    "REQ-M11-4"
+  ],
+  "overall": "PASS",
+  "startedAt": "2026-09-13T20:30:11.739Z",
+  "finishedAt": "2026-09-13T20:30:16.061Z",
+  "steps": [
+    {
+      "id": "ui.build",
+      "driver": "process",
+      "action": "run",
+      "status": "passed",
+      "observations": {
+        "exitCode": 0,
+        "timedOut": false
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "2c8946cb6bc8348a647d7b0e0518308e2226293530805326635122e85bcf17cc",
+          "bytes": 540
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "2dfd3fec555095041d6600690d32ee484d6a5f0df1fa178ac3f946ecb716febc",
+          "bytes": 424
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "a60caf53bb1a88454f28b85eee039689675c802f0e00049db80a944bc380fb73",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 1676
+    },
+    {
+      "id": "ui.start-preview",
+      "driver": "browser",
+      "action": "start-preview",
+      "status": "passed",
+      "observations": {
+        "preview": "running"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "2c8946cb6bc8348a647d7b0e0518308e2226293530805326635122e85bcf17cc",
+          "bytes": 540
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "2dfd3fec555095041d6600690d32ee484d6a5f0df1fa178ac3f946ecb716febc",
+          "bytes": 424
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "a60caf53bb1a88454f28b85eee039689675c802f0e00049db80a944bc380fb73",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 8
+    },
+    {
+      "id": "ui.reader-uat",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/reader-uat"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "2c8946cb6bc8348a647d7b0e0518308e2226293530805326635122e85bcf17cc",
+          "bytes": 540
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "2dfd3fec555095041d6600690d32ee484d6a5f0df1fa178ac3f946ecb716febc",
+          "bytes": 424
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "a60caf53bb1a88454f28b85eee039689675c802f0e00049db80a944bc380fb73",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        }
+      ],
+      "durationMs": 798
+    },
+    {
+      "id": "ui.submit-empty",
+      "driver": "browser",
+      "action": "submit",
+      "status": "passed",
+      "observations": {
+        "planArtifact": "browser.ui.submit-empty.round-report.jsonl",
+        "planPath": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-13T20-30-11-738Z-11a4a0a8/browser/ui.submit-empty-reader-uat-fcf8dc551fe34337b574252faf9a3328.jsonl",
+        "suggestedFilename": "reader-uat-fcf8dc551fe34337b574252faf9a3328.jsonl"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+          "bytes": 72584
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 131
+    },
+    {
+      "id": "ui.fill-context",
+      "driver": "browser",
+      "action": "select-option",
+      "status": "passed",
+      "observations": {
+        "selected": "middle_grade"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+          "bytes": 72584
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 13
+    },
+    {
+      "id": "ui.fill-engagement",
+      "driver": "browser",
+      "action": "select-option",
+      "status": "passed",
+      "observations": {
+        "selected": "cover_to_cover"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+          "bytes": 72584
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 12
+    },
+    {
+      "id": "ui.fill-impact",
+      "driver": "browser",
+      "action": "select-option",
+      "status": "passed",
+      "observations": {
+        "selected": "major"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+          "bytes": 72584
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 11
+    },
+    {
+      "id": "ui.fill-revision",
+      "driver": "browser",
+      "action": "fill-wizard",
+      "status": "passed",
+      "observations": {
+        "filled": [
+          "manuscriptRevision"
+        ]
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+          "bytes": 72584
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 14
+    },
+    {
+      "id": "ui.fill-highlights",
+      "driver": "browser",
+      "action": "fill-wizard",
+      "status": "passed",
+      "observations": {
+        "filled": [
+          "highlights"
+        ]
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+          "bytes": 72584
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 12
+    },
+    {
+      "id": "ui.likert-pacing",
+      "driver": "browser",
+      "action": "click",
+      "status": "passed",
+      "observations": {
+        "clicked": "label.reader-uat-likert:has-text(\"pacing\") button:has-text(\"5\")",
+        "url": "http://localhost:4173/reader-uat"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+          "bytes": 72584
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-pacing.png",
+          "path": "artifacts/browser/ui.likert-pacing.png",
+          "sha256": "0aa0bebd3737e08641b33508ad384df324c31ad3f588e8650050b4e9fb720bc2",
+          "bytes": 75726
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.console.json",
+          "path": "artifacts/browser.ui.likert-pacing.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.dom.json",
+          "path": "artifacts/browser.ui.likert-pacing.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 105
+    },
+    {
+      "id": "ui.likert-clarity",
+      "driver": "browser",
+      "action": "click",
+      "status": "passed",
+      "observations": {
+        "clicked": "label.reader-uat-likert:has-text(\"clarity\") button:has-text(\"4\")",
+        "url": "http://localhost:4173/reader-uat"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-pacing.png",
+          "path": "artifacts/browser/ui.likert-pacing.png",
+          "sha256": "0aa0bebd3737e08641b33508ad384df324c31ad3f588e8650050b4e9fb720bc2",
+          "bytes": 75726
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.console.json",
+          "path": "artifacts/browser.ui.likert-pacing.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.dom.json",
+          "path": "artifacts/browser.ui.likert-pacing.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-clarity.png",
+          "path": "artifacts/browser/ui.likert-clarity.png",
+          "sha256": "0aa0bebd3737e08641b33508ad384df324c31ad3f588e8650050b4e9fb720bc2",
+          "bytes": 75726
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.console.json",
+          "path": "artifacts/browser.ui.likert-clarity.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.dom.json",
+          "path": "artifacts/browser.ui.likert-clarity.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 100
+    },
+    {
+      "id": "ui.submit-filled",
+      "driver": "browser",
+      "action": "submit",
+      "status": "passed",
+      "observations": {
+        "planArtifact": "browser.ui.submit-filled.round-report.jsonl",
+        "planPath": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-13T20-30-11-738Z-11a4a0a8/browser/ui.submit-filled-reader-uat-58b09b6139894a988d01c0f9cf7b3ee4.jsonl",
+        "suggestedFilename": "reader-uat-58b09b6139894a988d01c0f9cf7b3ee4.jsonl"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.likert-pacing.dom.json",
+          "path": "artifacts/browser.ui.likert-pacing.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-clarity.png",
+          "path": "artifacts/browser/ui.likert-clarity.png",
+          "sha256": "0aa0bebd3737e08641b33508ad384df324c31ad3f588e8650050b4e9fb720bc2",
+          "bytes": 75726
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.console.json",
+          "path": "artifacts/browser.ui.likert-clarity.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.dom.json",
+          "path": "artifacts/browser.ui.likert-clarity.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-filled.round-report.jsonl",
+          "sha256": "9098da763d33fba0daacdd5f2b51ea024745a4d4674b119a326c39fe0bf80a5c",
+          "bytes": 403
+        },
+        {
+          "artifactId": "browser/ui.submit-filled.png",
+          "path": "artifacts/browser/ui.submit-filled.png",
+          "sha256": "98a88176e0fba87fc82f5ce0a37d9b78e83d31c0d4f49c30b6b05d64a32cc12b",
+          "bytes": 75602
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.console.json",
+          "path": "artifacts/browser.ui.submit-filled.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.dom.json",
+          "path": "artifacts/browser.ui.submit-filled.dom.json",
+          "sha256": "e6a9e1579e1a17b5ac9ec18e786a883ab34d7956932a70f13519672c9bd4a980",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 97
+    },
+    {
+      "id": "ui.storage-probe",
+      "driver": "browser",
+      "action": "evaluate",
+      "status": "passed",
+      "observations": {
+        "evaluated": true,
+        "resultSummary": "{\"databases\":[],\"hasReaderId\":true,\"readerIdAnonymous\":true,\"localStorageKeys\":[]}"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.likert-clarity.console.json",
+          "path": "artifacts/browser.ui.likert-clarity.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.dom.json",
+          "path": "artifacts/browser.ui.likert-clarity.dom.json",
+          "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-filled.round-report.jsonl",
+          "sha256": "9098da763d33fba0daacdd5f2b51ea024745a4d4674b119a326c39fe0bf80a5c",
+          "bytes": 403
+        },
+        {
+          "artifactId": "browser/ui.submit-filled.png",
+          "path": "artifacts/browser/ui.submit-filled.png",
+          "sha256": "98a88176e0fba87fc82f5ce0a37d9b78e83d31c0d4f49c30b6b05d64a32cc12b",
+          "bytes": 75602
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.console.json",
+          "path": "artifacts/browser.ui.submit-filled.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.dom.json",
+          "path": "artifacts/browser.ui.submit-filled.dom.json",
+          "sha256": "e6a9e1579e1a17b5ac9ec18e786a883ab34d7956932a70f13519672c9bd4a980",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser.ui.storage-probe.eval.json",
+          "path": "artifacts/browser.ui.storage-probe.eval.json",
+          "sha256": "6a603b5f1dc84901d5cc74fddccd9e80d3af964b32278dc3e355b21bfb021e0c",
+          "bytes": 100
+        },
+        {
+          "artifactId": "browser/ui.storage-probe.png",
+          "path": "artifacts/browser/ui.storage-probe.png",
+          "sha256": "98a88176e0fba87fc82f5ce0a37d9b78e83d31c0d4f49c30b6b05d64a32cc12b",
+          "bytes": 75602
+        }
+      ],
+      "durationMs": 77
+    }
+  ],
+  "oracles": [
+    {
+      "id": "page.anonymity-and-separation",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/reader-uat",
+      "actualRef": "browser.ui.reader-uat.dom.json"
+    },
+    {
+      "id": "report.empty-form-valid",
+      "type": "jsonl-entry",
+      "classification": "functional",
+      "proves": "the round-report artifact carries exactly the declared fields per entry",
+      "doesNotProve": "that the feedback content is meaningful or that ids are unique across rounds",
+      "verdict": "passed",
+      "message": "1 JSONL entry match expectations (browser.ui.submit-empty.round-report.jsonl)",
+      "actualRef": "artifacts/report.empty-form-valid.actual.json",
+      "diffRef": "artifacts/report.empty-form-valid.diff.json"
+    },
+    {
+      "id": "report.filled-fields",
+      "type": "jsonl-entry",
+      "classification": "functional",
+      "proves": "the round-report artifact carries exactly the declared fields per entry",
+      "doesNotProve": "that the feedback content is meaningful or that ids are unique across rounds",
+      "verdict": "passed",
+      "message": "1 JSONL entry match expectations (browser.ui.submit-filled.round-report.jsonl)",
+      "actualRef": "artifacts/report.filled-fields.actual.json",
+      "diffRef": "artifacts/report.filled-fields.diff.json"
+    },
+    {
+      "id": "storage.no-databases-no-localstorage",
+      "type": "browser-evaluate",
+      "classification": "functional",
+      "proves": "the declared in-page probe (DOM/storage/state) returns the expected observable result",
+      "doesNotProve": "anything outside the probe script; probe correctness is reviewer-audited",
+      "verdict": "passed",
+      "message": "evaluate result matches expectations (browser.ui.storage-probe.eval.json)",
+      "actualRef": "artifacts/storage.no-databases-no-localstorage.actual.json",
+      "diffRef": "artifacts/storage.no-databases-no-localstorage.diff.json"
+    },
+    {
+      "id": "browser.health",
+      "type": "browser",
+      "classification": "runtime-health",
+      "proves": "the UI surface completed the flow without runtime errors",
+      "doesNotProve": "semantic equivalence of produced artifacts",
+      "verdict": "passed",
+      "message": "browser session healthy (0 page errors, 0 console errors)"
+    }
+  ],
+  "unprovenRequirements": [],
+  "appliedWaivers": [],
+  "git": {
+    "sha": "c99fae0b327a47fbee6aa54433e605c941e16cb8",
+    "branch": "feat/m11-human-reader-uat",
+    "dirty": true,
+    "dirtyFiles": [
+      "M verification/src/audit/flakiness.ts",
+      "M verification/src/index.ts",
+      "M verification/src/runner/scenario.ts",
+      "M verification/test/hardening.spec.ts",
+      "M verification/tsconfig.json",
+      "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+      "?? docs/reactive-narrative-studio-openspec-evolutives/",
+      "?? docs/seedance-blocking.zip",
+      "?? docs/seedance-blocking/"
+    ]
+  },
+  "environment": {
+    "os": "linux x64",
+    "node": "v25.9.0",
+    "pnpm": "11.9.0",
+    "python": "Python 3.14.7",
+    "browser": "Version 1.63.0"
+  },
+  "evidenceIndex": [
+    {
+      "artifactId": "environment.json",
+      "path": "artifacts/environment.json",
+      "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+      "bytes": 125
+    },
+    {
+      "artifactId": "git.observation.json",
+      "path": "artifacts/git.observation.json",
+      "sha256": "2c8946cb6bc8348a647d7b0e0518308e2226293530805326635122e85bcf17cc",
+      "bytes": 540
+    },
+    {
+      "artifactId": "git.dirty-files.json",
+      "path": "artifacts/git.dirty-files.json",
+      "sha256": "2dfd3fec555095041d6600690d32ee484d6a5f0df1fa178ac3f946ecb716febc",
+      "bytes": 424
+    },
+    {
+      "artifactId": "process.ui.build.stdout.txt",
+      "path": "artifacts/process.ui.build.stdout.txt",
+      "sha256": "a60caf53bb1a88454f28b85eee039689675c802f0e00049db80a944bc380fb73",
+      "bytes": 413
+    },
+    {
+      "artifactId": "process.ui.build.stderr.txt",
+      "path": "artifacts/process.ui.build.stderr.txt",
+      "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+      "bytes": 416
+    },
+    {
+      "artifactId": "browser/ui.reader-uat.png",
+      "path": "artifacts/browser/ui.reader-uat.png",
+      "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+      "bytes": 64198
+    },
+    {
+      "artifactId": "browser.ui.reader-uat.console.json",
+      "path": "artifacts/browser.ui.reader-uat.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.reader-uat.dom.json",
+      "path": "artifacts/browser.ui.reader-uat.dom.json",
+      "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+      "bytes": 1035
+    },
+    {
+      "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+      "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+      "sha256": "fbe3c4a206b66e392c5e29424f09c7a0d92ea60d1380c631f5454b4c5069b001",
+      "bytes": 182
+    },
+    {
+      "artifactId": "browser/ui.submit-empty.png",
+      "path": "artifacts/browser/ui.submit-empty.png",
+      "sha256": "02fec01e97aa7ab95b3e926c932fa3ca12255b379540a40da82ae14eb5b6ff04",
+      "bytes": 72584
+    },
+    {
+      "artifactId": "browser.ui.submit-empty.console.json",
+      "path": "artifacts/browser.ui.submit-empty.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.submit-empty.dom.json",
+      "path": "artifacts/browser.ui.submit-empty.dom.json",
+      "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser/ui.likert-pacing.png",
+      "path": "artifacts/browser/ui.likert-pacing.png",
+      "sha256": "0aa0bebd3737e08641b33508ad384df324c31ad3f588e8650050b4e9fb720bc2",
+      "bytes": 75726
+    },
+    {
+      "artifactId": "browser.ui.likert-pacing.console.json",
+      "path": "artifacts/browser.ui.likert-pacing.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.likert-pacing.dom.json",
+      "path": "artifacts/browser.ui.likert-pacing.dom.json",
+      "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser/ui.likert-clarity.png",
+      "path": "artifacts/browser/ui.likert-clarity.png",
+      "sha256": "0aa0bebd3737e08641b33508ad384df324c31ad3f588e8650050b4e9fb720bc2",
+      "bytes": 75726
+    },
+    {
+      "artifactId": "browser.ui.likert-clarity.console.json",
+      "path": "artifacts/browser.ui.likert-clarity.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.likert-clarity.dom.json",
+      "path": "artifacts/browser.ui.likert-clarity.dom.json",
+      "sha256": "bda324aeba5ff1706839ea7515b5e79dad15a6f012b65c135a3476766e958b2f",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser.ui.submit-filled.round-report.jsonl",
+      "path": "artifacts/browser.ui.submit-filled.round-report.jsonl",
+      "sha256": "9098da763d33fba0daacdd5f2b51ea024745a4d4674b119a326c39fe0bf80a5c",
+      "bytes": 403
+    },
+    {
+      "artifactId": "browser/ui.submit-filled.png",
+      "path": "artifacts/browser/ui.submit-filled.png",
+      "sha256": "98a88176e0fba87fc82f5ce0a37d9b78e83d31c0d4f49c30b6b05d64a32cc12b",
+      "bytes": 75602
+    },
+    {
+      "artifactId": "browser.ui.submit-filled.console.json",
+      "path": "artifacts/browser.ui.submit-filled.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.submit-filled.dom.json",
+      "path": "artifacts/browser.ui.submit-filled.dom.json",
+      "sha256": "e6a9e1579e1a17b5ac9ec18e786a883ab34d7956932a70f13519672c9bd4a980",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser.ui.storage-probe.eval.json",
+      "path": "artifacts/browser.ui.storage-probe.eval.json",
+      "sha256": "6a603b5f1dc84901d5cc74fddccd9e80d3af964b32278dc3e355b21bfb021e0c",
+      "bytes": 100
+    },
+    {
+      "artifactId": "browser/ui.storage-probe.png",
+      "path": "artifacts/browser/ui.storage-probe.png",
+      "sha256": "98a88176e0fba87fc82f5ce0a37d9b78e83d31c0d4f49c30b6b05d64a32cc12b",
+      "bytes": 75602
+    },
+    {
+      "artifactId": "report.empty-form-valid.actual.json",
+      "path": "artifacts/report.empty-form-valid.actual.json",
+      "sha256": "2890afb8ed4f1ef0c4b0bfef1c1ff73d0ebe6bc7c241bc351f8a2e53a1aeed98",
+      "bytes": 221
+    },
+    {
+      "artifactId": "report.empty-form-valid.diff.json",
+      "path": "artifacts/report.empty-form-valid.diff.json",
+      "sha256": "a853ef4af240217d5f0bc1baf2bd02a3b0905a949498bd5dd9a4f206313dd388",
+      "bytes": 462
+    },
+    {
+      "artifactId": "report.filled-fields.actual.json",
+      "path": "artifacts/report.filled-fields.actual.json",
+      "sha256": "2763a10baa9206f021f4310a2002a404b35d90c5ad875e08f4f0eac9cd64c078",
+      "bytes": 518
+    },
+    {
+      "artifactId": "report.filled-fields.diff.json",
+      "path": "artifacts/report.filled-fields.diff.json",
+      "sha256": "0b2dbf05363d8ec631bd8a56b3415c0d27cd25e2b7cb361c521071d89223c167",
+      "bytes": 462
+    },
+    {
+      "artifactId": "storage.no-databases-no-localstorage.actual.json",
+      "path": "artifacts/storage.no-databases-no-localstorage.actual.json",
+      "sha256": "6a603b5f1dc84901d5cc74fddccd9e80d3af964b32278dc3e355b21bfb021e0c",
+      "bytes": 100
+    },
+    {
+      "artifactId": "storage.no-databases-no-localstorage.diff.json",
+      "path": "artifacts/storage.no-databases-no-localstorage.diff.json",
+      "sha256": "4c9c9c59cd3805a31ed3d4bae79e84485a10170e9a232a0cfa3ddf2d12c42e6a",
+      "bytes": 41
+    }
+  ]
+}

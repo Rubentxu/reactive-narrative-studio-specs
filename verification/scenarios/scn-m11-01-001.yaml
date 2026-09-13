@@ -1,0 +1,112 @@
+id: SCN-M11-01-001
+uat: UAT-M11-01
+requirements: [REQ-M11-1, REQ-M11-2, REQ-M11-3, REQ-M11-4]
+claims:
+  proves:
+    - Una ronda de UAT de lector humano se completa con el formulario anónimo de /reader-uat; ningún campo PII es requerido (un submit completamente vacío produce una entrada válida); el round-report JSONL descargado lleva ids anónimos, marcador human-reader (separado de paneles sintéticos, ADR-019) y el enlace a la decisión de revisión (revisionImpact + manuscriptRevision); no se crea ninguna base de datos.
+  doesNotProve:
+    - Calidad editorial del feedback ni agregación multi-ronda (una ronda = un export).
+    - Reutilización del readerId de sesión entre rondas (cubierta por tests unitarios de getOrCreateReaderId; el probe aquí solo verifica que el id de sesión existe y es anónimo).
+    - Accesibilidad completa del formulario.
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.reader-uat, driver: browser, action: navigate, params: { path: /reader-uat } }
+  # Round 1: completely empty form must be a valid submission (no PII required)
+  - id: ui.submit-empty
+    driver: browser
+    action: submit
+    params:
+      buttonSelector: "button.reader-uat-submit"
+      artifactName: browser.ui.submit-empty.round-report.jsonl
+  # Round 2: fill the optional context and editorial-impact fields
+  - { id: ui.fill-context, driver: browser, action: select-option, params: { selector: 'select[name="ageBracket"]', value: middle_grade } }
+  - { id: ui.fill-engagement, driver: browser, action: select-option, params: { selector: 'select[name="engagement"]', value: cover_to_cover } }
+  - { id: ui.fill-impact, driver: browser, action: select-option, params: { selector: 'select[name="revisionImpact"]', value: major } }
+  - id: ui.fill-revision
+    driver: browser
+    action: fill-wizard
+    params:
+      fields:
+        manuscriptRevision: draft-v3
+  - id: ui.fill-highlights
+    driver: browser
+    action: fill-wizard
+    params:
+      fields:
+        highlights: "the ending lands well\nchapter 3 pacing drags"
+  - { id: ui.likert-pacing, driver: browser, action: click, params: { selector: 'label.reader-uat-likert:has-text("pacing") button:has-text("5")', waitForUrlContains: "/reader-uat" } }
+  - { id: ui.likert-clarity, driver: browser, action: click, params: { selector: 'label.reader-uat-likert:has-text("clarity") button:has-text("4")', waitForUrlContains: "/reader-uat" } }
+  - id: ui.submit-filled
+    driver: browser
+    action: submit
+    params:
+      buttonSelector: "button.reader-uat-submit"
+      artifactName: browser.ui.submit-filled.round-report.jsonl
+  - id: ui.storage-probe
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (async () => {
+          const databases = (await indexedDB.databases()).map((d) => d.name);
+          const readerId = sessionStorage.getItem('human-reader-uat.readerId');
+          const localStorageKeys = Object.keys(localStorage);
+          return {
+            databases,
+            hasReaderId: readerId !== null,
+            readerIdAnonymous: readerId !== null && /^[0-9a-f]{16}$/.test(readerId),
+            localStorageKeys,
+          };
+        })()
+oracles:
+  - id: page.anonymity-and-separation
+    type: browser-content
+    config:
+      artifact: browser.ui.reader-uat.dom.json
+      h1Contains: ["Human Reader UAT"]
+      textContains:
+        - "No personal data is collected"
+        - "synthetic reader panels"
+        - "never uploaded"
+  - id: report.empty-form-valid
+    type: jsonl-entry
+    config:
+      artifact: browser.ui.submit-empty.round-report.jsonl
+      expected:
+        - schema: "human-reader-uat/feedback/v1"
+          source: human-reader
+      ignoredPaths:
+        - { path: "[0].roundId", reason: "generated per round (non-semantic id)" }
+        - { path: "[0].readerId", reason: "anonymous session id (asserted separately by the storage probe)" }
+        - { path: "[0].submittedAt", reason: "submission timestamp (non-semantic)" }
+  - id: report.filled-fields
+    type: jsonl-entry
+    config:
+      artifact: browser.ui.submit-filled.round-report.jsonl
+      expected:
+        - schema: "human-reader-uat/feedback/v1"
+          source: human-reader
+          ageBracket: middle_grade
+          engagement: cover_to_cover
+          likert: { pacing: 5, clarity: 4 }
+          freeTextHighlights: ["the ending lands well", "chapter 3 pacing drags"]
+          revisionImpact: major
+          manuscriptRevision: draft-v3
+      ignoredPaths:
+        - { path: "[0].roundId", reason: "generated per round (non-semantic id)" }
+        - { path: "[0].readerId", reason: "anonymous session id (asserted separately by the storage probe)" }
+        - { path: "[0].submittedAt", reason: "submission timestamp (non-semantic)" }
+  - id: storage.no-databases-no-localstorage
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.storage-probe.eval.json
+      expected:
+        databases: []
+        hasReaderId: true
+        readerIdAnonymous: true
+        localStorageKeys: []
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.submit-filled.console.json

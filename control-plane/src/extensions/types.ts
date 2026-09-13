@@ -50,5 +50,16 @@ export interface RecipeWidgetExtension {
   render(): React.ReactElement;
 }
 
-export type ControlPlaneExtension = ControlPlaneFeature | RecipeWidgetExtension;
+// ReaderFeedbackExtension — app-level anonymized human-reader UAT form registered at
+// /reader-uat (M11, UAT-M11-01). Additive kind: it does not change the extension
+// contract for existing tabs/cards/wizards.
+export interface ReaderFeedbackExtension {
+  readonly apiVersion: 'control-plane.extensions/v1';
+  readonly id: string;
+  readonly kind: 'reader-feedback';
+  readonly priority: number;
+  render(): React.ReactElement;
+}
+
+export type ControlPlaneExtension = ControlPlaneFeature | RecipeWidgetExtension | ReaderFeedbackExtension;
 

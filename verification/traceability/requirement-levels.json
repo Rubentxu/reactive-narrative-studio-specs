@@ -70,5 +70,29 @@
   "REQ-MP-6": {
     "level": "fitness",
     "rationale": "La ausencia de DB narrativa central se verifica enumerando object stores y claves (probe estructural)."
+  },
+  "REQ-M11-1": {
+    "level": "functional",
+    "rationale": "El submit anónimo sin campos requeridos se demuestra funcionalmente en browser (envío vacío válido)."
+  },
+  "REQ-M11-2": {
+    "level": "functional",
+    "rationale": "El round-report JSONL descargado se verifica sobre el artefacto real exportado por la UI."
+  },
+  "REQ-M11-3": {
+    "level": "functional",
+    "rationale": "La ausencia de bases/localStorage se prueba con un probe real de almacenamiento del navegador."
+  },
+  "REQ-M11-4": {
+    "level": "functional",
+    "rationale": "La separación humana/sintética se verifica en la página real y en el marcador del artefacto."
+  },
+  "REQ-M11-5": {
+    "level": "fitness",
+    "rationale": "Cierres de INC son correcciones puntuales verificadas por validadores y tests de componente/grep."
+  },
+  "REQ-M11-6": {
+    "level": "functional",
+    "rationale": "El propio requisito exige un scenario ejecutable; se prueba a sí mismo al ejecutarse."
   }
 }

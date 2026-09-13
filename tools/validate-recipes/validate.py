@@ -411,6 +411,23 @@ def main() -> int:
     if args.negative_fixtures:
         negative_fixtures = list((target / "tests" / "negative-fixtures").glob("*.yaml"))
         if not negative_fixtures:
+            # INC-015 fallback: the default path is the recipes root, but fixtures
+            # live under each recipe (e.g. recipes/<id>/tests/negative-fixtures/).
+            # Search recursively; a single match is unambiguous, several require
+            # an explicit recipe directory argument.
+            nested = sorted(target.rglob("negative-fixtures/*.yaml"))
+            fixture_dirs = sorted({p.parent for p in nested})
+            if len(fixture_dirs) == 1:
+                negative_fixtures = sorted(fixture_dirs[0].glob("*.yaml"))
+            elif len(fixture_dirs) > 1:
+                names = sorted({d.parent.parent.name for d in fixture_dirs})
+                print(
+                    f"Multiple negative-fixtures directories under {target}: {', '.join(names)}. "
+                    "Pass an explicit recipe directory argument.",
+                    file=sys.stderr,
+                )
+                return 2
+        if not negative_fixtures:
             print(f"No negative fixtures found under {target}/tests/negative-fixtures/", file=sys.stderr)
             return 2
 

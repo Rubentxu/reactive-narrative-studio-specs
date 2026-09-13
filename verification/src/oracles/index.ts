@@ -396,6 +396,56 @@ export const browserEvaluateOracle: OracleImpl = async (oracle, ctx) => {
   });
 };
 
+/**
+ * JsonlEntryOracle — parses a JSONL artifact (one JSON object per line) and
+ * compares the parsed array against declared expected entries, with declared
+ * ignoredPaths for volatile fields (ids, timestamps). Empty lines are skipped;
+ * a malformed line fails with its line number.
+ */
+export const jsonlEntryOracle: OracleImpl = async (oracle, ctx) => {
+  const config = oracle.config ?? {};
+  const artifactName = config.artifact as string;
+  const expected = config.expected as unknown;
+  const ignored = ignoredFromConfig(config);
+  const text = await readArtifactText(ctx.run, artifactName);
+
+  let actual: unknown[];
+  try {
+    actual = text
+      .split('\n')
+      .filter((line) => line.trim().length > 0)
+      .map((line) => JSON.parse(line) as unknown);
+  } catch (err) {
+    return result({
+      id: oracle.id,
+      type: 'jsonl-entry',
+      verdict: 'failed',
+      message: `malformed JSONL in ${artifactName}: ${err instanceof Error ? err.message : String(err)}`,
+      classification: 'functional',
+      proves: 'the exported round report parses as JSONL entries',
+      doesNotProve: 'editorial quality of the feedback',
+    });
+  }
+
+  const diff = semanticCompare(expected, actual, ignored);
+  const actualRef = await ctx.run.writeJson(`${oracle.id}.actual.json`, actual);
+  const diffRef = await ctx.run.writeJson(`${oracle.id}.diff.json`, diff);
+  const realDiffs = diff.differences.filter((d) => !d.ignored);
+  return result({
+    id: oracle.id,
+    type: 'jsonl-entry',
+    verdict: diff.equal ? 'passed' : 'failed',
+    message: diff.equal
+      ? `${actual.length} JSONL entr${actual.length === 1 ? 'y' : 'ies'} match expectations (${artifactName})`
+      : `JSONL entries differ in ${realDiffs.length} path(s): ${realDiffs.slice(0, 8).map((d) => `${d.path} expected ${d.expected} got ${d.actual}`).join('; ')}`,
+    classification: 'functional',
+    proves: 'the round-report artifact carries exactly the declared fields per entry',
+    doesNotProve: 'that the feedback content is meaningful or that ids are unique across rounds',
+    actualRef: actualRef.path,
+    diffRef: diffRef.path,
+  });
+};
+
 export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   schema: schemaOracle,
   'semantic-json': semanticJsonOracle,
@@ -405,5 +455,6 @@ export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   browser: browserOracle,
   'browser-content': browserContentOracle,
   'browser-evaluate': browserEvaluateOracle,
+  'jsonl-entry': jsonlEntryOracle,
   'cross-language': crossLanguageOracle,
 };

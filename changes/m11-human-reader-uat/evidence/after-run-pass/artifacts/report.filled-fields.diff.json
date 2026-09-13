@@ -1,0 +1,23 @@
+{
+  "equal": true,
+  "differences": [
+    {
+      "path": "[0].roundId",
+      "expected": "null",
+      "actual": "\"58b09b6139894a988d01c0f9cf7b3ee4\"",
+      "ignored": true
+    },
+    {
+      "path": "[0].readerId",
+      "expected": "null",
+      "actual": "\"65427364d8ffa277\"",
+      "ignored": true
+    },
+    {
+      "path": "[0].submittedAt",
+      "expected": "null",
+      "actual": "\"2026-09-13T20:30:15.896Z\"",
+      "ignored": true
+    }
+  ]
+}

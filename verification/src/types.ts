@@ -23,6 +23,7 @@ export type OracleType =
   | 'browser'
   | 'browser-content'
   | 'browser-evaluate'
+  | 'jsonl-entry'
   | 'cross-language';
 
 export interface ScenarioOracle {

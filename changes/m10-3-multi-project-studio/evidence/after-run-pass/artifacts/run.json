@@ -1,9 +1,12 @@
 {
-  "runId": "run-2026-09-13T18-09-58-962Z-291407d0",
+  "runId": "run-2026-09-13T20-30-06-214Z-dc1536bb",
   "scenarioId": "SCN-M10-05-001",
   "uat": "UAT-M10-05",
   "overall": "PASS",
-  "startedAt": "2026-09-13T18:09:58.964Z",
-  "finishedAt": "2026-09-13T18:10:04.523Z",
-  "evidenceDir": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-13T18-09-58-962Z-291407d0"
+  "startedAt": "2026-09-13T20:30:06.214Z",
+  "finishedAt": "2026-09-13T20:30:11.654Z",
+  "tags": [
+    "canonical"
+  ],
+  "evidenceDir": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-13T20-30-06-214Z-dc1536bb"
 }

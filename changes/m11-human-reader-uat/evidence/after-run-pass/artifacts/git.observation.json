@@ -1,0 +1,16 @@
+{
+  "sha": "c99fae0b327a47fbee6aa54433e605c941e16cb8",
+  "branch": "feat/m11-human-reader-uat",
+  "dirty": true,
+  "dirtyFiles": [
+    "M verification/src/audit/flakiness.ts",
+    "M verification/src/index.ts",
+    "M verification/src/runner/scenario.ts",
+    "M verification/test/hardening.spec.ts",
+    "M verification/tsconfig.json",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/"
+  ]
+}

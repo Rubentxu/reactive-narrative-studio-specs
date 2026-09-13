@@ -137,10 +137,12 @@ describe('hardening — flakiness classification (VAH-014)', () => {
     expect(b?.classification).toBe('STABLE_PASS');
   });
 
-  it('classifies the real repo evidence without STABLE_FAIL or FLAKY (empty working dir is valid)', async () => {
-    const records = await classifyFlakiness(join(REPO_ROOT, 'verification'));
-    // The working evidence dir may be empty (fresh checkout / cleaned working
-    // area); what matters is that no scenario is classified as unstable.
+  it('canonical run history is stable (development runs are excluded)', async () => {
+    // The working evidence dir accumulates development runs (deliberate local
+    // reverts, partial fixes); the meaningful signal is the canonical history
+    // produced by `verify`/`uat all` (tagged 'canonical'). An empty canonical
+    // history (fresh checkout) is valid.
+    const records = await classifyFlakiness(join(REPO_ROOT, 'verification'), { onlyTags: ['canonical'] });
     expect(records.some((r) => r.classification === 'STABLE_FAIL' || r.classification === 'FLAKY')).toBe(false);
   });
 });

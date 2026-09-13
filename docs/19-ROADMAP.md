@@ -146,9 +146,28 @@ No central catalog DB: the only local database is the preferences registry
   matching for real file inputs; Home stale registry list; Catalog heading
   identity; registry backend state loss.
 
-## M11 — Human Reader UAT
+## M11 — Human Reader UAT — DELIVERED (v0.15.0)
 
-As previously defined, with Control Plane projection/pages added.
+### Deliver
+- Anonymized reader feedback form at `/reader-uat` (8th feature folder
+  `features/human-reader/`, new additive `reader-feedback` extension kind);
+- JSONL round-report export (local download; no upload, no database);
+- explicit human/synthetic separation per ADR-019 in UI and artifact
+  (`source: 'human-reader'`);
+- carry-forward INC closures: INC-015 (recursive negative-fixtures fallback),
+  INC-008 (path-resolution isolation oracle + declared cross-feature exception),
+  INC-016 (already fixed by v0.11.0 — closed with evidence).
+
+### UAT
+`UAT-M11-01` — executable: `SCN-M11-01-001` (empty submission valid, filled
+round fields exact, no IndexedDB/localStorage created, separation labels).
+
+### Notes
+- No new dependencies; no fetch; no IndexedDB/Dexie/Orama; page-scoped state
+  (`useState`) + `sessionStorage` for the anonymous reader id only.
+- The isolation oracle exposed a pre-existing m10.2 cross-feature import
+  (capability-catalog → catalog components), now an audited exception tracked
+  as INC-M11-001.
 
 ## M12 — Sequential Art Core
 
@@ -215,7 +234,7 @@ M10.2 Capability Catalog             Status: done          Cycle: m10-2-capabili
 - Round-trip no-op proof: `useProjectionStore.getState()` deep-equal pre/post route mount
 - m10 invariants enforced: no fetch, no Dexie/IndexedDB/Orama, no useProjectionStore
 
-**Carry-forward INCs (m10.1 → M11)**:
-- INC-015 (medium): `validate.py --negative-fixtures` default arg
-- INC-016 (low): `CreateWizard.renderSkeletons` discards output
-- INC-008 (low): m16 extension-isolation grep oracle gap (only-extension-imports of m16 catalog-entity, not the reverse)
+**Carry-forward INCs (m10.1 → M11)** — all CLOSED in M11 (v0.15.0):
+- INC-015 (medium): `validate.py --negative-fixtures` default arg → recursive fallback
+- INC-016 (low): `CreateWizard.renderSkeletons` discards output → fixed in v0.11.0 (PR-1), closed with evidence
+- INC-008 (low): isolation grep oracle gap → replaced by a path-resolution oracle (M11)

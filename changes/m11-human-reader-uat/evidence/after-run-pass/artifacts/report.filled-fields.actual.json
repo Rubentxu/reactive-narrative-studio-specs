@@ -1,0 +1,21 @@
+[
+  {
+    "schema": "human-reader-uat/feedback/v1",
+    "source": "human-reader",
+    "roundId": "58b09b6139894a988d01c0f9cf7b3ee4",
+    "readerId": "65427364d8ffa277",
+    "submittedAt": "2026-09-13T20:30:15.896Z",
+    "ageBracket": "middle_grade",
+    "engagement": "cover_to_cover",
+    "likert": {
+      "pacing": 5,
+      "clarity": 4
+    },
+    "freeTextHighlights": [
+      "the ending lands well",
+      "chapter 3 pacing drags"
+    ],
+    "revisionImpact": "major",
+    "manuscriptRevision": "draft-v3"
+  }
+]
