@@ -1,0 +1,13 @@
+{
+  "sha": "3aa6b825756d5faa762dd5d1ac0770fb320649cb",
+  "branch": "feat/m10-2-1-verification-harness",
+  "dirty": true,
+  "dirtyFiles": [
+    "?? changes/m10-2-1-verification-audit-harness/",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/",
+    "?? verification/"
+  ]
+}

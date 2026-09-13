@@ -1,0 +1,599 @@
+{
+  "schemaVersion": "traceability-registry/v1",
+  "generatedAt": "2026-09-13T13:49:01.439Z",
+  "gitSha": "3aa6b825756d5faa762dd5d1ac0770fb320649cb",
+  "milestones": [
+    {
+      "id": "M0",
+      "uats": [
+        {
+          "id": "UAT-M0-01",
+          "file": "uat/UAT-M0-01.md",
+          "milestone": "M0",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M1",
+      "uats": [
+        {
+          "id": "UAT-M1-01",
+          "file": "uat/UAT-M1-01.md",
+          "milestone": "M1",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M2",
+      "uats": [
+        {
+          "id": "UAT-M2-01",
+          "file": "uat/UAT-M2-01.md",
+          "milestone": "M2",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M3",
+      "uats": [
+        {
+          "id": "UAT-M3-01",
+          "file": "uat/UAT-M3-01.md",
+          "milestone": "M3",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M4",
+      "uats": [
+        {
+          "id": "UAT-M4-01",
+          "file": "uat/UAT-M4-01.md",
+          "milestone": "M4",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M5",
+      "uats": [
+        {
+          "id": "UAT-M5-01",
+          "file": "uat/UAT-M5-01.md",
+          "milestone": "M5",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M6",
+      "uats": [
+        {
+          "id": "UAT-M6-01",
+          "file": "uat/UAT-M6-01.md",
+          "milestone": "M6",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M7",
+      "uats": [
+        {
+          "id": "UAT-M7-01",
+          "file": "uat/UAT-M7-01.md",
+          "milestone": "M7",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M8",
+      "uats": [
+        {
+          "id": "UAT-M8-01",
+          "file": "uat/UAT-M8-01.md",
+          "milestone": "M8",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M9",
+      "uats": [
+        {
+          "id": "UAT-M9-01",
+          "file": "uat/UAT-M9-01.md",
+          "milestone": "M9",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-CLI-001",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/narrative-init-cli/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CLI-002",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/narrative-init-cli/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CLI-003",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/narrative-init-cli/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CLI-004",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/narrative-init-cli/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CLI-005",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/narrative-init-cli/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CLI-006",
+          "sources": [
+            "spec-completion/specs/narrative-init-cli/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CLI-007",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/narrative-init-cli/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        }
+      ]
+    },
+    {
+      "id": "M10",
+      "uats": [
+        {
+          "id": "UAT-M10-01",
+          "file": "uat/UAT-M10-01.md",
+          "milestone": "M10",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        },
+        {
+          "id": "UAT-M10-02-catalog-entity-pages",
+          "file": "uat/UAT-M10-02-catalog-entity-pages.md",
+          "milestone": "M10",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        },
+        {
+          "id": "UAT-M10-03-local-search-docs",
+          "file": "uat/UAT-M10-03-local-search-docs.md",
+          "milestone": "M10",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        },
+        {
+          "id": "UAT-M10-05-multi-project-catalog",
+          "file": "uat/UAT-M10-05-multi-project-catalog.md",
+          "milestone": "M10",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-CP-001",
+          "sources": [
+            "spec-completion/design.md",
+            "spec-completion/specs/control-plane-projections/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CP-002",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/control-plane-projections/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CP-003",
+          "sources": [
+            "spec-completion/design.md",
+            "spec-completion/tasks.md",
+            "spec-completion/specs/control-plane-projections/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CP-004",
+          "sources": [
+            "spec-completion/specs/control-plane-projections/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CP-005",
+          "sources": [
+            "spec-completion/specs/control-plane-projections/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CP-006",
+          "sources": [
+            "spec-completion/specs/control-plane-projections/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CP-007",
+          "sources": [
+            "spec-completion/tasks.md",
+            "spec-completion/specs/control-plane-projections/spec.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        }
+      ]
+    },
+    {
+      "id": "M10.1",
+      "uats": [
+        {
+          "id": "UAT-M10-04-creation-recipe",
+          "file": "uat/UAT-M10-04-creation-recipe.md",
+          "milestone": "M10.1",
+          "scenarios": [
+            "scn-m10-04-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-CR",
+          "sources": [
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-1",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md",
+            "31-CREATION-RECIPES.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-10",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-11",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-12",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-2",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-3",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-4",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-5",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-6",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-7",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-8",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-9",
+          "sources": [
+            "m10-1-creation-recipes/spec.md",
+            "m10-1-creation-recipes/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        }
+      ]
+    },
+    {
+      "id": "M10.2",
+      "uats": [
+        {
+          "id": "UAT-M10-06-capability-catalog",
+          "file": "uat/UAT-M10-06-capability-catalog.md",
+          "milestone": "M10.2",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-CEP-1",
+          "sources": [
+            "cp-catalog-entities/design.md",
+            "cp-catalog-entities/spec.md",
+            "cp-catalog-entities/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CEP-2",
+          "sources": [
+            "cp-catalog-entities/spec.md",
+            "cp-catalog-entities/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CEP-3",
+          "sources": [
+            "cp-catalog-entities/design.md",
+            "cp-catalog-entities/spec.md",
+            "cp-catalog-entities/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CEP-4",
+          "sources": [
+            "cp-catalog-entities/design.md",
+            "cp-catalog-entities/spec.md",
+            "cp-catalog-entities/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-1",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-10",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-11",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-12",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-2",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-3",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-4",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-5",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-6",
+          "sources": [
+            "m10-2-capability-catalog/design.md",
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-7",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-8",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-CR-CAP-9",
+          "sources": [
+            "m10-2-capability-catalog/spec.md",
+            "m10-2-capability-catalog/tasks.md"
+          ],
+          "scenarios": [],
+          "status": "UNMAPPED"
+        }
+      ]
+    }
+  ],
+  "brokenReferences": [],
+  "coverage": {
+    "requirements": 43,
+    "mapped": 0,
+    "unmapped": 43,
+    "uats": 16,
+    "executable": 1
+  }
+}

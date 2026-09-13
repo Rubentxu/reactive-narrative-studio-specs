@@ -1,0 +1,13 @@
+{
+  "sha": "bb0f8b630f9fda5f61250028b7b84218d4a3a582",
+  "branch": "feat/m10-2-1-verification-harness",
+  "dirty": true,
+  "dirtyFiles": [
+    "M verification/src/drivers/cli.ts",
+    "M verification/src/runner/scenario.ts",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/"
+  ]
+}

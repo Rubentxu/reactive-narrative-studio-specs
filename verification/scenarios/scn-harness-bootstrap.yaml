@@ -1,0 +1,20 @@
+id: SCN-HARNESS-BOOTSTRAP-001
+uat: SELF-TEST
+requirements: [REQ-VAH-BOOTSTRAP]
+claims:
+  proves:
+    - El Harness ejecuta steps reales (workspace temporal, git probe) y emite un evidence bundle inmutable con verdict, events.jsonl y hashes SHA-256.
+  doesNotProve:
+    - Cualquier criterio funcional del producto.
+steps:
+  - { id: workspace.prepare, driver: filesystem, action: temp-workspace, params: { prefix: trivial } }
+  - { id: git.observe, driver: git, action: observe }
+oracles:
+  # Bootstrap smoke: the artifact round-trips through the bundle
+  # (registered -> hashed -> read back -> semantically equal to itself).
+  - id: artifact-roundtrip
+    type: semantic-json
+    config:
+      expectedArtifact: git.observation.json
+      actualArtifact: git.observation.json
+      ignoredPaths: []

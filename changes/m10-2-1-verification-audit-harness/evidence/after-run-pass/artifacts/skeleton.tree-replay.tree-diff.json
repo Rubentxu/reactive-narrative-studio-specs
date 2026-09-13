@@ -1,0 +1,13 @@
+{
+  "expectedRoot": "/tmp/rns-m10-04-tpeNTD/from-cli",
+  "actualRoot": "/tmp/rns-m10-04-tpeNTD/from-ui-plan",
+  "ignored": [],
+  "ignoredPathPatterns": [
+    {
+      "pattern": "^\\.narrative/create-plan\\.json$",
+      "reason": "plan copies differ by construction (CLI-generated vs UI-provided); equivalence asserted by plan.recipe-owned-equivalence"
+    }
+  ],
+  "ignoredMatches": 2,
+  "problems": []
+}

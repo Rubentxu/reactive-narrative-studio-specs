@@ -32,7 +32,8 @@ repository, following the constraints documented in
 | See the decision history | [`docs/adrs/`](docs/adrs/) (25 ADRs) |
 | Validate against a JSON Schema | [`specs/`](specs/) (20 schemas) |
 | See a worked example | [`examples/`](examples/) |
-| Run an acceptance test | [`uat/`](uat/) (17 UATs) |
+| Run an acceptance test | [`uat/`](uat/) (17 UATs) — executable via the [`verification/`](verification/) Harness |
+| Run the Verification Harness | `cd verification && pnpm install && pnpm verify` (M10.2.1) |
 | Check the glossary | [`docs/27-GLOSSARY.md`](docs/27-GLOSSARY.md) |
 | See the risks | [`docs/26-RISKS.md`](docs/26-RISKS.md) |
 
