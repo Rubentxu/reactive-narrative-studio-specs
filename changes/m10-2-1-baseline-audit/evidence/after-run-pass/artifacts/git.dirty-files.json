@@ -1,0 +1,26 @@
+{
+  "files": [
+    "M control-plane/src/features/capability-catalog/views/CapabilityDetail.tsx",
+    "M control-plane/src/routes/router.tsx",
+    "M control-plane/test/capability-catalog.spec.ts",
+    "M control-plane/test/capability-cross-ref.spec.ts",
+    "M control-plane/test/capability-isolation.spec.ts",
+    "M control-plane/test/capability-parsers.spec.ts",
+    "M verification/src/drivers/browser.ts",
+    "M verification/src/index.ts",
+    "M verification/src/oracles/index.ts",
+    "M verification/src/runner/scenario.ts",
+    "M verification/src/scenario/loader.ts",
+    "M verification/src/traceability/build.ts",
+    "M verification/src/types.ts",
+    "M verification/tsconfig.json",
+    "?? changes/m10-2-1-baseline-audit/",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/",
+    "?? verification/scenarios/scn-m10-02-001.yaml",
+    "?? verification/test/baseline-audit.spec.ts",
+    "?? verification/traceability/waivers.json"
+  ]
+}

@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-13T13:49:01.439Z
-- git: 3aa6b825756d5faa762dd5d1ac0770fb320649cb
-- coverage: 0/43 requirements MAPPED · 43 UNMAPPED · 1/16 UATs executable
+- generated: 2026-09-13T14:56:47.116Z
+- git: 0a5de69e5c8f5ee9582adce2fdf0a04b5b8829d0
+- coverage: 16/51 requirements MAPPED · 35 UNMAPPED · 2/16 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -47,5 +47,8 @@
 - UNMAPPED requirements (13): REQ-CR, REQ-CR-1, REQ-CR-10, REQ-CR-11, REQ-CR-12, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-CR-7, REQ-CR-8, REQ-CR-9
 
 ## M10.2 — Capability Catalog
-- ⚪ UAT-M10-06-capability-catalog (MANUAL_ONLY) → scenarios: —
-- UNMAPPED requirements (16): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-1, REQ-CR-CAP-10, REQ-CR-CAP-11, REQ-CR-CAP-12, REQ-CR-CAP-2, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-9
+- 🟢 UAT-M10-06-capability-catalog (EXECUTABLE) → scenarios: scn-m10-02-001.yaml
+- UNMAPPED requirements (5): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-11
+
+## M10.2.1 — Verification & Audit Harness
+- UNMAPPED requirements (3): REQ-VAH-BASELINE, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-WAIVER

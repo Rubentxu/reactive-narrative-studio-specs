@@ -5,6 +5,10 @@
  * F-T25 closure). Verifies the entityLinkPlugin emits a `capabilityLink`
  * node for every capability-kind reference, and that the emitted node carries
  * the kind/namespace/name triple needed to drill into the catalog detail page.
+ *
+ * Requirements: REQ-CR-CAP-6 (cross-references; component level — positive browser
+ * rendering deferred, see verification/traceability/waivers.json WVR-M10-2-1-001),
+ * REQ-VAH-CROSSREF-RENDER.
  */
 
 import { describe, it, expect } from 'vitest';

@@ -3,6 +3,10 @@
  *
  * Tests for the capability catalog overview, per-kind pages, and detail page.
  * Verifies that the manifest is built correctly and routes are wired.
+ *
+ * Requirements: REQ-CR-CAP-1 (manifest), REQ-CR-CAP-3 (overview), REQ-CR-CAP-4 (per-kind pages),
+ * REQ-CR-CAP-5 (detail), REQ-CR-CAP-7 (empty-state providers), REQ-CR-CAP-8 (profile scopes),
+ * REQ-CR-CAP-9 (routes), REQ-CR-CAP-12 (counts fixtures).
  */
 
 import { describe, it, expect } from 'vitest';

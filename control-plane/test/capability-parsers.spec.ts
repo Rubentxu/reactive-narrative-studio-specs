@@ -3,6 +3,9 @@
  *
  * Unit tests for individual parser functions.
  * Tests parseSkill, parsePack, parseProfile, parseWorkflow, parseProvider.
+ *
+ * Requirements: REQ-CR-CAP-2 (per-kind parsers), REQ-CR-CAP-7 (empty-state providers),
+ * REQ-CR-CAP-8 (profile scopes).
  */
 
 import { describe, it, expect } from 'vitest';

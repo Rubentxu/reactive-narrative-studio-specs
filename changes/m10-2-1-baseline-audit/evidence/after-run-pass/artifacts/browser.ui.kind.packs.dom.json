@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4173/capabilities/packs",
+  "title": "Control Plane",
+  "h1s": [
+    "Packs"
+  ],
+  "h2s": [
+    "Load Project"
+  ],
+  "links": [
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Character%20Design%20Pack",
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Editorial%20Pass%20Pack",
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Story%20Core%20Pack%20%E2%80%94%20Intake%20Template",
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Visual%20Bible%20Seed"
+  ],
+  "bodyText": "Load Project No source loaded Current status: empty Open Directory (Chromium) Packs 4 entries recipe:middle-grade-illustratedCharacter Design Pack pack recipe:middle-grade-illustratedEditorial Pass Pack pack recipe:middle-grade-illustratedStory Core Pack — Intake Template pack recipe:middle-grade-illustratedVisual Bible Seed pack"
+}

@@ -62,6 +62,26 @@ export class BrowserDriver {
     await this.run.writeJson(name, this.console);
   }
 
+  /**
+   * Capture the DOM state of the current page as an evidence artifact
+   * (`browser.<step>.dom.json`). Drivers collect, oracles decide (browser-content).
+   */
+  async captureDom(name: string): Promise<void> {
+    if (!this.page) return;
+    const dom = await this.page.evaluate(() => {
+      const text = (document.body?.innerText ?? '').replace(/\s+/g, ' ').trim();
+      return {
+        url: location.href,
+        title: document.title,
+        h1s: Array.from(document.querySelectorAll('h1')).map((el) => (el.textContent ?? '').trim()),
+        h2s: Array.from(document.querySelectorAll('h2')).map((el) => (el.textContent ?? '').trim()),
+        links: Array.from(document.querySelectorAll('a[href]')).map((el) => el.getAttribute('href') ?? ''),
+        bodyText: text.slice(0, 20000),
+      };
+    });
+    await this.run.writeJson(name, dom);
+  }
+
   /** Save trace + screenshot on failure (VAH-010). */
   async captureFailureEvidence(prefix: string): Promise<void> {
     if (!this.context) return;

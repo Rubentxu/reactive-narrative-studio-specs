@@ -8,6 +8,7 @@ import type {
 } from '../types.ts';
 import { EvidenceStore, type RunContext } from '../evidence/store.ts';
 import { probeEnvironment, probeGit } from '../evidence/probes.ts';
+import { findWaiver, loadWaivers, type Waiver } from '../evidence/waivers.ts';
 import { FilesystemDriver } from '../drivers/filesystem.ts';
 import { CliDriver } from '../drivers/cli.ts';
 import { GitDriver } from '../drivers/git.ts';
@@ -41,6 +42,7 @@ export class ScenarioRunner {
     const store = new EvidenceStore(join(this.config.verificationRoot, 'evidence'));
     const run = await store.createRun();
     const startedAt = new Date().toISOString();
+    const waivers: Waiver[] = await loadWaivers(this.config.verificationRoot);
 
     await run.emitEvent('scenario.loaded', {
       scenarioId: scenario.id,
@@ -134,7 +136,8 @@ export class ScenarioRunner {
       try {
         const impl = ORACLES[oracle.type];
         const interpolatedConfig = interpolateParams(oracle.config ?? {}, stepOutputs) as Record<string, unknown>;
-        oracles.push(await impl({ ...oracle, config: interpolatedConfig }, ctx));
+        const oracleResult = await impl({ ...oracle, config: interpolatedConfig }, ctx);
+        oracles.push(applyWaiver(oracleResult, interpolatedConfig, waivers));
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         oracles.push({
@@ -150,20 +153,30 @@ export class ScenarioRunner {
       }
     }
 
-    const ok = steps.every((s) => s.status === 'passed') && oracles.every((o) => o.verdict === 'passed');
-    const unproven = ok ? [] : scenario.requirements;
+    const failed = oracles.filter((o) => o.verdict === 'failed');
+    const unwaivedFailures = failed.filter((o) => !o.waived);
+    const stepsOk = steps.every((s) => s.status === 'passed');
+    const overall: Verdict['overall'] = !stepsOk || unwaivedFailures.length > 0
+      ? 'FAIL'
+      : failed.length > 0
+        ? 'PASS_WITH_WAIVER'
+        : 'PASS';
+    const ok = overall === 'PASS';
+    const appliedWaivers = [...new Set(failed.filter((o) => o.waived).map((o) => o.waiverId ?? ''))].filter(Boolean);
+    const unproven = overall === 'FAIL' ? scenario.requirements : [];
 
     const verdict: Verdict = {
       runId: run.runId,
       scenarioId: scenario.id,
       uat: scenario.uat,
       requirements: scenario.requirements,
-      overall: ok ? 'PASS' : 'FAIL',
+      overall,
       startedAt,
       finishedAt: new Date().toISOString(),
       steps,
       oracles,
       unprovenRequirements: unproven,
+      appliedWaivers,
       git,
       environment,
       evidenceIndex: [...run.artifactIds.values()],
@@ -270,7 +283,29 @@ export class ScenarioRunner {
         await deps.browser.launch();
         await deps.browser.goto(String(params.path ?? '/'));
         await deps.browser.screenshot(`${step.id}.png`);
+        await deps.browser.captureConsole(`browser.${step.id}.console.json`);
+        await deps.browser.captureDom(`browser.${step.id}.dom.json`);
         return { url: String(params.path ?? '/') };
+      }
+      case 'browser.click': {
+        const page = deps.browser.page;
+        if (!page) throw new Error('browser page not launched');
+        const selector = String(params.selector);
+        const expectedFragment = params.waitForUrlContains ? String(params.waitForUrlContains) : null;
+        // String patterns in Playwright are glob-matched against the full URL —
+        // wrap the fragment so it acts as "URL contains".
+        const navigation = expectedFragment
+          ? page.waitForURL(`**${expectedFragment}**`, { timeout: 30_000 }).catch(() => null)
+          : null;
+        await page.click(selector);
+        await navigation;
+        if (expectedFragment && !page.url().includes(expectedFragment)) {
+          throw new Error(`click on ${selector} did not navigate to a URL containing "${expectedFragment}" (url: ${page.url()})`);
+        }
+        await deps.browser.screenshot(`${step.id}.png`);
+        await deps.browser.captureConsole(`browser.${step.id}.console.json`);
+        await deps.browser.captureDom(`browser.${step.id}.dom.json`);
+        return { clicked: selector, url: page.url() };
       }
       case 'browser.fill-wizard': {
         const page = deps.browser.page;
@@ -287,8 +322,7 @@ export class ScenarioRunner {
         if (!page) throw new Error('browser page not launched');
         await page.selectOption(String(params.selector ?? 'select'), String(params.value));
         return { selected: String(params.value) };
-      }
-      case 'browser.submit': {
+      }      case 'browser.submit': {
         const page = deps.browser.page;
         if (!page) throw new Error('browser page not launched');
         const downloadPromise = page.waitForEvent('download', { timeout: 30_000 });
@@ -300,6 +334,7 @@ export class ScenarioRunner {
         const ref = await deps.run.registerFile(`browser.${step.id}.create-plan.json`, target);
         await deps.browser.screenshot(`${step.id}.png`);
         await deps.browser.captureConsole(`browser.${step.id}.console.json`);
+        await deps.browser.captureDom(`browser.${step.id}.dom.json`);
         return { planArtifact: ref.artifactId, planPath: target, suggestedFilename: download.suggestedFilename() };
       }
       default:
@@ -355,6 +390,34 @@ function resolvePath(path: string, repoRoot: string): string {
   return join(repoRoot, path);
 }
 
+/**
+ * A failing oracle covered by a VALID waiver becomes `PASS_WITH_WAIVER` at the
+ * verdict level — never PASS (design.md waivers). Invalid/missing waiver → the
+ * failure stands, with an explicit message.
+ */
+function applyWaiver(
+  oracleResult: OracleResult,
+  config: Record<string, unknown>,
+  waivers: Waiver[],
+): OracleResult {
+  if (oracleResult.verdict !== 'failed') return oracleResult;
+  const waiverId = config.waiver as string | undefined;
+  if (!waiverId) return oracleResult;
+  const waiver = findWaiver(waivers, waiverId);
+  if (!waiver) {
+    return {
+      ...oracleResult,
+      message: `${oracleResult.message} — waiver "${waiverId}" declared but not found/invalid in waivers.json`,
+    };
+  }
+  return {
+    ...oracleResult,
+    waived: true,
+    waiverId: waiver.id,
+    message: `${oracleResult.message} — WAIVED by ${waiver.id} (${waiver.reason}; owner ${waiver.owner})`,
+  };
+}
+
 export function renderMarkdownReport(verdict: Verdict): string {
   const lines: string[] = [];
   lines.push(`# Verification Report — ${verdict.scenarioId}`);
@@ -377,10 +440,17 @@ export function renderMarkdownReport(verdict: Verdict): string {
   lines.push('');
   lines.push('## Oracles');
   for (const oracle of verdict.oracles) {
-    lines.push(`- ${oracle.verdict === 'passed' ? '✅' : '❌'} \`${oracle.id}\` [${oracle.type}/${oracle.classification}] ${oracle.message}`);
+    const icon = oracle.verdict === 'passed' ? '✅' : oracle.waived ? '⚠️' : '❌';
+    lines.push(`- ${icon} \`${oracle.id}\` [${oracle.type}/${oracle.classification}] ${oracle.message}`);
     lines.push(`  - proves: ${oracle.proves}`);
     lines.push(`  - doesNotProve: ${oracle.doesNotProve}`);
+    if (oracle.waived) lines.push(`  - waived: ${oracle.waiverId}`);
     if (oracle.diffRef) lines.push(`  - diff: ${oracle.diffRef}`);
+  }
+  if (verdict.appliedWaivers.length > 0) {
+    lines.push('');
+    lines.push('## Applied waivers');
+    for (const waiverId of verdict.appliedWaivers) lines.push(`- ⚠️ ${waiverId} (never converts FAIL into PASS — verdict is PASS_WITH_WAIVER)`);
   }
   if (verdict.overall === 'FAIL') {
     lines.push('');

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-13T13:49:01.439Z",
-  "gitSha": "3aa6b825756d5faa762dd5d1ac0770fb320649cb",
+  "generatedAt": "2026-09-13T14:56:47.116Z",
+  "gitSha": "0a5de69e5c8f5ee9582adce2fdf0a04b5b8829d0",
   "milestones": [
     {
       "id": "M0",
@@ -139,6 +139,7 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -148,6 +149,7 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -157,6 +159,7 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -166,6 +169,7 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -175,6 +179,7 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -183,6 +188,7 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -192,6 +198,7 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         }
       ]
@@ -236,6 +243,7 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -245,6 +253,7 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -255,6 +264,7 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -263,6 +273,7 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -271,6 +282,7 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -279,6 +291,7 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -288,6 +301,7 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         }
       ]
@@ -312,6 +326,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -322,6 +337,7 @@
             "31-CREATION-RECIPES.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -331,6 +347,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -340,6 +357,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -349,6 +367,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -358,6 +377,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -367,6 +387,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -376,6 +397,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -385,6 +407,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -394,6 +417,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -403,6 +427,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -412,6 +437,7 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -421,7 +447,21 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-RECIPE-EQUIVALENCE",
+          "sources": [
+            "m10-2-1-verification-audit-harness/spec.md",
+            "m10-2-1-verification-audit-harness/evidence/before-run-fail-wizard-unreachable/artifacts/report.md",
+            "m10-2-1-verification-audit-harness/evidence/after-run-pass/artifacts/report.md"
+          ],
+          "scenarios": [
+            "scn-m10-04-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
         }
       ]
     },
@@ -432,8 +472,10 @@
           "id": "UAT-M10-06-capability-catalog",
           "file": "uat/UAT-M10-06-capability-catalog.md",
           "milestone": "M10.2",
-          "scenarios": [],
-          "status": "MANUAL_ONLY"
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
+          "status": "EXECUTABLE"
         }
       ],
       "requirements": [
@@ -445,6 +487,7 @@
             "cp-catalog-entities/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -454,6 +497,7 @@
             "cp-catalog-entities/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -464,6 +508,7 @@
             "cp-catalog-entities/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -474,6 +519,7 @@
             "cp-catalog-entities/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -483,7 +529,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-10",
@@ -492,7 +541,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-isolation.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-11",
@@ -501,6 +553,7 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         },
         {
@@ -510,7 +563,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-2",
@@ -519,7 +575,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-parsers.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-3",
@@ -528,7 +587,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-4",
@@ -537,7 +599,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-5",
@@ -546,7 +611,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-6",
@@ -556,7 +624,10 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-cross-ref.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-7",
@@ -565,7 +636,11 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts",
+            "control-plane/test/capability-parsers.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-8",
@@ -574,7 +649,11 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts",
+            "control-plane/test/capability-parsers.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-9",
@@ -583,17 +662,473 @@
             "m10-2-capability-catalog/tasks.md"
           ],
           "scenarios": [],
+          "testRefs": [
+            "control-plane/test/capability-catalog.spec.ts"
+          ],
+          "status": "MAPPED"
+        }
+      ]
+    },
+    {
+      "id": "M10.2.1",
+      "uats": [],
+      "requirements": [
+        {
+          "id": "REQ-VAH-BASELINE",
+          "sources": [
+            "m10-2-1-baseline-audit/spec.md",
+            "m10-2-1-baseline-audit/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-VAH-BOOTSTRAP",
+          "sources": [
+            "m10-2-1-verification-audit-harness/spec.md"
+          ],
+          "scenarios": [
+            "scn-harness-bootstrap.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-VAH-BROWSER-AUDIT",
+          "sources": [
+            "m10-2-1-baseline-audit/spec.md",
+            "m10-2-1-baseline-audit/tasks.md",
+            "m10-2-1-baseline-audit/evidence/before-run-catalog-unreachable/artifacts/report.md",
+            "m10-2-1-baseline-audit/evidence/after-run-pass/artifacts/report.md"
+          ],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-VAH-CROSSREF-RENDER",
+          "sources": [
+            "m10-2-1-baseline-audit/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/capability-cross-ref.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-VAH-FITNESS-SEPARATION",
+          "sources": [
+            "m10-2-1-baseline-audit/spec.md",
+            "m10-2-1-baseline-audit/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [],
+          "status": "UNMAPPED"
+        },
+        {
+          "id": "REQ-VAH-STORE-IMMUTABILITY",
+          "sources": [
+            "m10-2-1-baseline-audit/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/capability-isolation.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-VAH-WAIVER",
+          "sources": [
+            "m10-2-1-baseline-audit/spec.md",
+            "m10-2-1-baseline-audit/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [],
           "status": "UNMAPPED"
         }
       ]
     }
   ],
   "brokenReferences": [],
+  "waivers": [
+    {
+      "id": "WVR-M10-2-1-001",
+      "requirement": "REQ-VAH-CROSSREF-RENDER",
+      "reason": "No real capability content contains [[Kind:namespace/name]] cross-references, so positive cross-link rendering cannot be demonstrated as a functional browser UAT. The plugin semantics are covered at component level; functional coverage is deferred until the first real cross-reference lands in content.",
+      "scope": "M10.2 capability catalog cross-links (SCN-M10-02-001 doesNotProve)",
+      "owner": "m10.2.1-baseline-audit cycle",
+      "evidence": [
+        "control-plane/test/capability-cross-ref.spec.ts (component-level plugin coverage)",
+        "grep -rn '\\[\\[' examples/ recipes/ → 0 occurrences (2026-09-13)"
+      ]
+    },
+    {
+      "id": "WVR-M10-2-1-002",
+      "requirement": "REQ-VAH-STORE-IMMUTABILITY",
+      "reason": "Projection-store non-mutation is proven at component level (round-trip no-op deep-equal pre/post route mount). It is not reachable black-box in the browser without test hooks (TEST_MODE is prohibited by the change spec), so the functional scenario explicitly does not claim it.",
+      "scope": "M10.2 read-only catalog invariant (m10 no-write)",
+      "owner": "m10.2.1-baseline-audit cycle",
+      "evidence": [
+        "control-plane/test/capability-catalog.spec.ts (useProjectionStore.getState() deep-equal round-trip proof)",
+        "spec.md del slice: separación fitness/UAT (REQ-VAH-FITNESS-SEPARATION)"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M0-01",
+      "milestone": "M0",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M1-01",
+      "milestone": "M1",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M2-01",
+      "milestone": "M2",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M3-01",
+      "milestone": "M3",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M4-01",
+      "milestone": "M4",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M5-01",
+      "milestone": "M5",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M6-01",
+      "milestone": "M6",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M7-01",
+      "milestone": "M7",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M8-01",
+      "milestone": "M8",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M9-01",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CLI-001",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CLI-002",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CLI-003",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CLI-004",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CLI-005",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CLI-006",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CLI-007",
+      "milestone": "M9",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M10-01",
+      "milestone": "M10",
+      "severity": "HIGH",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M10-02-catalog-entity-pages",
+      "milestone": "M10",
+      "severity": "HIGH",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M10-03-local-search-docs",
+      "milestone": "M10",
+      "severity": "HIGH",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-M10-05-multi-project-catalog",
+      "milestone": "M10",
+      "severity": "HIGH",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CP-001",
+      "milestone": "M10",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CP-002",
+      "milestone": "M10",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CP-003",
+      "milestone": "M10",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CP-004",
+      "milestone": "M10",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CP-005",
+      "milestone": "M10",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CP-006",
+      "milestone": "M10",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CP-007",
+      "milestone": "M10",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-1",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-10",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-11",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-12",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-2",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-3",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-4",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-5",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-6",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-7",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-8",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-9",
+      "milestone": "M10.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CEP-1",
+      "milestone": "M10.2",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CEP-2",
+      "milestone": "M10.2",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CEP-3",
+      "milestone": "M10.2",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CEP-4",
+      "milestone": "M10.2",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-CR-CAP-11",
+      "milestone": "M10.2",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-VAH-BASELINE",
+      "milestone": "M10.2.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-VAH-FITNESS-SEPARATION",
+      "milestone": "M10.2.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    },
+    {
+      "kind": "requirement-unmapped",
+      "ref": "REQ-VAH-WAIVER",
+      "milestone": "M10.2.1",
+      "severity": "MEDIUM",
+      "detail": "no scenario or test references this requirement"
+    }
+  ],
   "coverage": {
-    "requirements": 43,
-    "mapped": 0,
-    "unmapped": 43,
+    "requirements": 51,
+    "mapped": 16,
+    "unmapped": 35,
     "uats": 16,
-    "executable": 1
+    "executable": 2,
+    "waived": 2
   }
 }

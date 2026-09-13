@@ -1,0 +1,24 @@
+[
+  {
+    "id": "WVR-M10-2-1-001",
+    "requirement": "REQ-VAH-CROSSREF-RENDER",
+    "reason": "No real capability content contains [[Kind:namespace/name]] cross-references, so positive cross-link rendering cannot be demonstrated as a functional browser UAT. The plugin semantics are covered at component level; functional coverage is deferred until the first real cross-reference lands in content.",
+    "scope": "M10.2 capability catalog cross-links (SCN-M10-02-001 doesNotProve)",
+    "owner": "m10.2.1-baseline-audit cycle",
+    "evidence": [
+      "control-plane/test/capability-cross-ref.spec.ts (component-level plugin coverage)",
+      "grep -rn '\\[\\[' examples/ recipes/ → 0 occurrences (2026-09-13)"
+    ]
+  },
+  {
+    "id": "WVR-M10-2-1-002",
+    "requirement": "REQ-VAH-STORE-IMMUTABILITY",
+    "reason": "Projection-store non-mutation is proven at component level (round-trip no-op deep-equal pre/post route mount). It is not reachable black-box in the browser without test hooks (TEST_MODE is prohibited by the change spec), so the functional scenario explicitly does not claim it.",
+    "scope": "M10.2 read-only catalog invariant (m10 no-write)",
+    "owner": "m10.2.1-baseline-audit cycle",
+    "evidence": [
+      "control-plane/test/capability-catalog.spec.ts (useProjectionStore.getState() deep-equal round-trip proof)",
+      "spec.md del slice: separación fitness/UAT (REQ-VAH-FITNESS-SEPARATION)"
+    ]
+  }
+]

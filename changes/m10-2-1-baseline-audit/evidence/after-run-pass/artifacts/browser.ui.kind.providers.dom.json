@@ -1,0 +1,15 @@
+{
+  "url": "http://localhost:4173/capabilities/providers",
+  "title": "Control Plane",
+  "h1s": [
+    "Image Providers"
+  ],
+  "h2s": [
+    "Load Project",
+    "No image providers configured"
+  ],
+  "links": [
+    "/docs/12-IMAGE-PIPELINE.md"
+  ],
+  "bodyText": "Load Project No source loaded Current status: empty Open Directory (Chromium) Image Providers No image providers configured Image provider capabilities are declared against specs/provider-capability.schema.json (provider-neutral descriptor, RE-IMG-7, ADR-011). Future authoring lands with the image-provider configuration cycle. View Image Pipeline Documentation"
+}

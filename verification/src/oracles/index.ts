@@ -319,6 +319,57 @@ export const crossLanguageOracle: OracleImpl = async (oracle, ctx) => {
   });
 };
 
+/** BrowserContentOracle — declarative assertions over captured DOM artifacts (functional). */
+export const browserContentOracle: OracleImpl = async (oracle, ctx) => {
+  const config = oracle.config ?? {};
+  const artifactName = (config.artifact as string) ?? '';
+  const dom = (await readArtifactJson(ctx.run, artifactName)) as {
+    url: string;
+    title: string;
+    h1s: string[];
+    h2s: string[];
+    links: string[];
+    bodyText: string;
+  };
+  const failures: string[] = [];
+
+  if (config.urlContains && !dom.url.includes(String(config.urlContains))) {
+    failures.push(`url "${dom.url}" does not contain "${String(config.urlContains)}"`);
+  }
+  if (config.titleContains && !dom.title.includes(String(config.titleContains))) {
+    failures.push(`title "${dom.title}" does not contain "${String(config.titleContains)}"`);
+  }
+  for (const expected of (config.h1Contains ?? []) as string[]) {
+    if (!dom.h1s.some((h) => h.includes(expected))) failures.push(`no <h1> contains "${expected}"`);
+  }
+  for (const expected of (config.h2Contains ?? []) as string[]) {
+    if (!dom.h2s.some((h) => h.includes(expected))) failures.push(`no <h2> contains "${expected}"`);
+  }
+  for (const expected of (config.linksContain ?? []) as string[]) {
+    if (!dom.links.some((href) => href.includes(expected))) failures.push(`no link href contains "${expected}"`);
+  }
+  for (const expected of (config.textContains ?? []) as string[]) {
+    if (!dom.bodyText.includes(expected)) failures.push(`body text does not contain "${expected}"`);
+  }
+  for (const forbidden of (config.noRawTextContains ?? []) as string[]) {
+    if (dom.bodyText.includes(forbidden)) failures.push(`body text contains forbidden raw text "${forbidden}"`);
+  }
+
+  return result({
+    id: oracle.id,
+    type: 'browser-content',
+    verdict: failures.length === 0 ? 'passed' : 'failed',
+    message:
+      failures.length === 0
+        ? `DOM assertions hold on ${dom.url}`
+        : `${failures.length} DOM assertion(s) failed: ${failures.slice(0, 6).join('; ')}`,
+    classification: 'functional',
+    proves: 'the rendered UI page satisfies the declared DOM expectations',
+    doesNotProve: 'internal app semantics (store mutation, data provenance) or content quality',
+    actualRef: artifactName || undefined,
+  });
+};
+
 export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   schema: schemaOracle,
   'semantic-json': semanticJsonOracle,
@@ -326,5 +377,6 @@ export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   'file-content': fileContentOracle,
   golden: goldenOracle,
   browser: browserOracle,
+  'browser-content': browserContentOracle,
   'cross-language': crossLanguageOracle,
 };

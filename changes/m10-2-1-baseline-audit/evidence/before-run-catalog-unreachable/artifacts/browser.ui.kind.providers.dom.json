@@ -1,0 +1,36 @@
+{
+  "url": "http://localhost:4173/capabilities/providers",
+  "title": "Control Plane",
+  "h1s": [
+    "Capability Catalog"
+  ],
+  "h2s": [
+    "Load Project",
+    "Skills (3)",
+    "Packs (4)",
+    "Profiles (2)",
+    "Comfy Workflows (1)",
+    "Image Providers (0)",
+    "Recipes (1)"
+  ],
+  "links": [
+    "/capabilities/skills",
+    "/capabilities/skills/default/character-consistency",
+    "/capabilities/skills/default/narrative-arc",
+    "/capabilities/skills/default/scene-validator",
+    "/capabilities/packs",
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Character%20Design%20Pack",
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Editorial%20Pass%20Pack",
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Story%20Core%20Pack%20%E2%80%94%20Intake%20Template",
+    "/capabilities/packs/recipe%3Amiddle-grade-illustrated/Visual%20Bible%20Seed",
+    "/capabilities/profiles",
+    "/capabilities/profiles/default/profile-middle-grade-10-11",
+    "/capabilities/profiles/recipe%3Amiddle-grade-illustrated",
+    "/capabilities/workflows",
+    "/capabilities/workflows/default/illustrated-page",
+    "/docs/specs/provider-capability.schema.json",
+    "/capabilities/recipes",
+    "/capabilities/recipes/default/middle-grade-illustrated"
+  ],
+  "bodyText": "Load Project No source loaded Current status: empty Open Directory (Chromium) Capability Catalog Creative toolchain capabilities — skills, packs, profiles, workflows, providers, and recipes Skills (3) View all skills character-consistency narrative-arc scene-validator Packs (4) View all packs recipe:middle-grade-illustratedCharacter Design Pack recipe:middle-grade-illustratedEditorial Pass Pack recipe:middle-grade-illustratedStory Core Pack — Intake Template recipe:middle-grade-illustratedVisual Bible Seed Profiles (2) View all profiles profile-middle-grade-10-11 recipe:middle-grade-illustrated Comfy Workflows (1) View all comfy workflows illustrated-page Image Providers (0) No image providers configured. See provider-capability.schema.json for configuration. Recipes (1) View all recipes middle-grade-illustrated"
+}
