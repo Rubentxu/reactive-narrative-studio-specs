@@ -33,7 +33,8 @@ repository, following the constraints documented in
 | Validate against a JSON Schema | [`specs/`](specs/) (20 schemas) |
 | See a worked example | [`examples/`](examples/) |
 | Run an acceptance test | [`uat/`](uat/) (17 UATs) — executable via the [`verification/`](verification/) Harness |
-| Run the Verification Harness | `cd verification && pnpm install && pnpm verify` (M10.2.1) |
+| Run the Verification Harness | `cd verification && pnpm install && pnpm verify` — runs all UAT scenarios (UAT-M10-04, UAT-M10-06) with evidence bundles (M10.2.1) |
+| See verification coverage | [`verification/traceability/baseline-m0-m10-2.md`](verification/traceability/baseline-m0-m10-2.md) — M0–M10.2 baseline with gaps and waivers |
 | Check the glossary | [`docs/27-GLOSSARY.md`](docs/27-GLOSSARY.md) |
 | See the risks | [`docs/26-RISKS.md`](docs/26-RISKS.md) |
 

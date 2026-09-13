@@ -103,8 +103,16 @@ compares the emitted create-plans with explicit cross-language oracles.
   evidence bundle (before/after in `changes/m10-2-1-verification-audit-harness/evidence/`).
 - Traceability Registry (H1) Git-native: `verification/traceability/registry.json` +
   coverage matrix M0–M10.2.
-- Pending in this milestone (H7→H10): M10.2 browser audit, M0–M10.2 baseline, CI Audit
-  Gate, hardening. Spec: `docs/reactive-narrative-studio-openspec-evolutives/changes/m10-2-1-verification-audit-harness/`.
+- **H7 done** (cycle `m10-2-1-baseline-audit`): M10.2 browser audit — `SCN-M10-02-001`
+  navigates the built app through the six kind routes and a real entity detail with DOM
+  oracles. The audit exposed two more production defects of the Outlet/route-param class
+  (capability pages unreachable; detail always NotFound), fixed in PR-7/PR-8 with
+  before/after evidence.
+- **H8 done** (same cycle): baseline M0–M10.2 (`verification/traceability/baseline-m0-m10-2.md`)
+  with per-milestone coverage, gaps/backlog and accepted gaps under `waivers.json`
+  (`PASS_WITH_WAIVER` mechanics — never turns FAIL into PASS).
+- Pending in this milestone: H9 (CI Audit Gate), H10 (hardening).
+  Spec: `docs/reactive-narrative-studio-openspec-evolutives/changes/m10-2-1-verification-audit-harness/`.
 
 ## M10.3 — Multi-Project Local Studio
 
