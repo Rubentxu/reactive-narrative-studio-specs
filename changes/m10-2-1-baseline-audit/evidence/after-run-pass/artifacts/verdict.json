@@ -1,0 +1,972 @@
+{
+  "runId": "run-2026-09-13T14-56-09-301Z-fb46e13a",
+  "scenarioId": "SCN-M10-02-001",
+  "uat": "UAT-M10-06",
+  "requirements": [
+    "REQ-VAH-BROWSER-AUDIT"
+  ],
+  "overall": "PASS",
+  "startedAt": "2026-09-13T14:56:09.303Z",
+  "finishedAt": "2026-09-13T14:56:19.136Z",
+  "steps": [
+    {
+      "id": "ui.build",
+      "driver": "process",
+      "action": "run",
+      "status": "passed",
+      "observations": {
+        "exitCode": 0,
+        "timedOut": false
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "a9e49d1a4f79916a398a53bd1ab4cad8c7d298f8ea9c6e77a29a3ecfa680b17d",
+          "bytes": 1214
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "ad4256209e6fc638782368aca340f9890dc03f27aab12e46326058988a196f0b",
+          "bytes": 1096
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "7371df63bb67100e51e40c5928da6fed5fc42b5d4ed7ced1381d914a9dce6c6d",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 1719
+    },
+    {
+      "id": "ui.start-preview",
+      "driver": "browser",
+      "action": "start-preview",
+      "status": "passed",
+      "observations": {
+        "preview": "running"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "a9e49d1a4f79916a398a53bd1ab4cad8c7d298f8ea9c6e77a29a3ecfa680b17d",
+          "bytes": 1214
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "ad4256209e6fc638782368aca340f9890dc03f27aab12e46326058988a196f0b",
+          "bytes": 1096
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "7371df63bb67100e51e40c5928da6fed5fc42b5d4ed7ced1381d914a9dce6c6d",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 31
+    },
+    {
+      "id": "ui.overview",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "a9e49d1a4f79916a398a53bd1ab4cad8c7d298f8ea9c6e77a29a3ecfa680b17d",
+          "bytes": 1214
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "ad4256209e6fc638782368aca340f9890dc03f27aab12e46326058988a196f0b",
+          "bytes": 1096
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "7371df63bb67100e51e40c5928da6fed5fc42b5d4ed7ced1381d914a9dce6c6d",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.overview.png",
+          "path": "artifacts/browser/ui.overview.png",
+          "sha256": "778a112d901b14e3854e4804910ef3eae6f2cc63f9928f3902b0cf623243fd7a",
+          "bytes": 75419
+        },
+        {
+          "artifactId": "browser.ui.overview.console.json",
+          "path": "artifacts/browser.ui.overview.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.overview.dom.json",
+          "path": "artifacts/browser.ui.overview.dom.json",
+          "sha256": "a7e5b3bbd1b7491738c65aad73ec3b655ff1f1ad0e5156dcb05ef1e0ce88a738",
+          "bytes": 2115
+        }
+      ],
+      "durationMs": 838
+    },
+    {
+      "id": "ui.kind.skills",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities/skills"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "7371df63bb67100e51e40c5928da6fed5fc42b5d4ed7ced1381d914a9dce6c6d",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.overview.png",
+          "path": "artifacts/browser/ui.overview.png",
+          "sha256": "778a112d901b14e3854e4804910ef3eae6f2cc63f9928f3902b0cf623243fd7a",
+          "bytes": 75419
+        },
+        {
+          "artifactId": "browser.ui.overview.console.json",
+          "path": "artifacts/browser.ui.overview.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.overview.dom.json",
+          "path": "artifacts/browser.ui.overview.dom.json",
+          "sha256": "a7e5b3bbd1b7491738c65aad73ec3b655ff1f1ad0e5156dcb05ef1e0ce88a738",
+          "bytes": 2115
+        },
+        {
+          "artifactId": "browser/ui.kind.skills.png",
+          "path": "artifacts/browser/ui.kind.skills.png",
+          "sha256": "571939cd64ad051296b9a4d070a5e465295d7b6e3829736234a62bf7bc7e55ad",
+          "bytes": 85073
+        },
+        {
+          "artifactId": "browser.ui.kind.skills.console.json",
+          "path": "artifacts/browser.ui.kind.skills.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.skills.dom.json",
+          "path": "artifacts/browser.ui.kind.skills.dom.json",
+          "sha256": "58c61fcb2a2f2186be621b22e78eeefaa50ad4f25bf5f62d07601ac74be5ceab",
+          "bytes": 1662
+        }
+      ],
+      "durationMs": 834
+    },
+    {
+      "id": "ui.kind.packs",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities/packs"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.overview.console.json",
+          "path": "artifacts/browser.ui.overview.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.overview.dom.json",
+          "path": "artifacts/browser.ui.overview.dom.json",
+          "sha256": "a7e5b3bbd1b7491738c65aad73ec3b655ff1f1ad0e5156dcb05ef1e0ce88a738",
+          "bytes": 2115
+        },
+        {
+          "artifactId": "browser/ui.kind.skills.png",
+          "path": "artifacts/browser/ui.kind.skills.png",
+          "sha256": "571939cd64ad051296b9a4d070a5e465295d7b6e3829736234a62bf7bc7e55ad",
+          "bytes": 85073
+        },
+        {
+          "artifactId": "browser.ui.kind.skills.console.json",
+          "path": "artifacts/browser.ui.kind.skills.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.skills.dom.json",
+          "path": "artifacts/browser.ui.kind.skills.dom.json",
+          "sha256": "58c61fcb2a2f2186be621b22e78eeefaa50ad4f25bf5f62d07601ac74be5ceab",
+          "bytes": 1662
+        },
+        {
+          "artifactId": "browser/ui.kind.packs.png",
+          "path": "artifacts/browser/ui.kind.packs.png",
+          "sha256": "5ee96f1b1047d304d6d4d808bb89b7baf1e637654dc77150b4154ed080a82119",
+          "bytes": 34829
+        },
+        {
+          "artifactId": "browser.ui.kind.packs.console.json",
+          "path": "artifacts/browser.ui.kind.packs.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.packs.dom.json",
+          "path": "artifacts/browser.ui.kind.packs.dom.json",
+          "sha256": "aef01b179f49c199c3461f0f2cdef15a0f2f882dbeb5400eb969132bbf230cc5",
+          "bytes": 883
+        }
+      ],
+      "durationMs": 796
+    },
+    {
+      "id": "ui.kind.profiles",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities/profiles"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.kind.skills.console.json",
+          "path": "artifacts/browser.ui.kind.skills.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.skills.dom.json",
+          "path": "artifacts/browser.ui.kind.skills.dom.json",
+          "sha256": "58c61fcb2a2f2186be621b22e78eeefaa50ad4f25bf5f62d07601ac74be5ceab",
+          "bytes": 1662
+        },
+        {
+          "artifactId": "browser/ui.kind.packs.png",
+          "path": "artifacts/browser/ui.kind.packs.png",
+          "sha256": "5ee96f1b1047d304d6d4d808bb89b7baf1e637654dc77150b4154ed080a82119",
+          "bytes": 34829
+        },
+        {
+          "artifactId": "browser.ui.kind.packs.console.json",
+          "path": "artifacts/browser.ui.kind.packs.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.packs.dom.json",
+          "path": "artifacts/browser.ui.kind.packs.dom.json",
+          "sha256": "aef01b179f49c199c3461f0f2cdef15a0f2f882dbeb5400eb969132bbf230cc5",
+          "bytes": 883
+        },
+        {
+          "artifactId": "browser/ui.kind.profiles.png",
+          "path": "artifacts/browser/ui.kind.profiles.png",
+          "sha256": "2898b9bdb9731947ce4057a1ebcb9709d2b272da69eddf95a6f4b96c1324b3c0",
+          "bytes": 34246
+        },
+        {
+          "artifactId": "browser.ui.kind.profiles.console.json",
+          "path": "artifacts/browser.ui.kind.profiles.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.profiles.dom.json",
+          "path": "artifacts/browser.ui.kind.profiles.dom.json",
+          "sha256": "3c326c996b8005141cbe056849a042508a0106b5a133a835efe1fd7dedcef7c1",
+          "bytes": 645
+        }
+      ],
+      "durationMs": 814
+    },
+    {
+      "id": "ui.kind.workflows",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities/workflows"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.kind.packs.console.json",
+          "path": "artifacts/browser.ui.kind.packs.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.packs.dom.json",
+          "path": "artifacts/browser.ui.kind.packs.dom.json",
+          "sha256": "aef01b179f49c199c3461f0f2cdef15a0f2f882dbeb5400eb969132bbf230cc5",
+          "bytes": 883
+        },
+        {
+          "artifactId": "browser/ui.kind.profiles.png",
+          "path": "artifacts/browser/ui.kind.profiles.png",
+          "sha256": "2898b9bdb9731947ce4057a1ebcb9709d2b272da69eddf95a6f4b96c1324b3c0",
+          "bytes": 34246
+        },
+        {
+          "artifactId": "browser.ui.kind.profiles.console.json",
+          "path": "artifacts/browser.ui.kind.profiles.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.profiles.dom.json",
+          "path": "artifacts/browser.ui.kind.profiles.dom.json",
+          "sha256": "3c326c996b8005141cbe056849a042508a0106b5a133a835efe1fd7dedcef7c1",
+          "bytes": 645
+        },
+        {
+          "artifactId": "browser/ui.kind.workflows.png",
+          "path": "artifacts/browser/ui.kind.workflows.png",
+          "sha256": "9c7914b1e8619a4d95f59ec6723461e4a178e94ad16055d7b612094e846ee5a7",
+          "bytes": 32101
+        },
+        {
+          "artifactId": "browser.ui.kind.workflows.console.json",
+          "path": "artifacts/browser.ui.kind.workflows.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.workflows.dom.json",
+          "path": "artifacts/browser.ui.kind.workflows.dom.json",
+          "sha256": "10d2467a3e4de494b6aa1fc5c2be70af6104827e9ec38ad63f4bdaef98bfba34",
+          "bytes": 535
+        }
+      ],
+      "durationMs": 796
+    },
+    {
+      "id": "ui.kind.providers",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities/providers"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.kind.profiles.console.json",
+          "path": "artifacts/browser.ui.kind.profiles.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.profiles.dom.json",
+          "path": "artifacts/browser.ui.kind.profiles.dom.json",
+          "sha256": "3c326c996b8005141cbe056849a042508a0106b5a133a835efe1fd7dedcef7c1",
+          "bytes": 645
+        },
+        {
+          "artifactId": "browser/ui.kind.workflows.png",
+          "path": "artifacts/browser/ui.kind.workflows.png",
+          "sha256": "9c7914b1e8619a4d95f59ec6723461e4a178e94ad16055d7b612094e846ee5a7",
+          "bytes": 32101
+        },
+        {
+          "artifactId": "browser.ui.kind.workflows.console.json",
+          "path": "artifacts/browser.ui.kind.workflows.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.workflows.dom.json",
+          "path": "artifacts/browser.ui.kind.workflows.dom.json",
+          "sha256": "10d2467a3e4de494b6aa1fc5c2be70af6104827e9ec38ad63f4bdaef98bfba34",
+          "bytes": 535
+        },
+        {
+          "artifactId": "browser/ui.kind.providers.png",
+          "path": "artifacts/browser/ui.kind.providers.png",
+          "sha256": "c2fa37f9221c15c9a833e4b6f97916af718fac62c67fef769df4e5638610a869",
+          "bytes": 37715
+        },
+        {
+          "artifactId": "browser.ui.kind.providers.console.json",
+          "path": "artifacts/browser.ui.kind.providers.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.providers.dom.json",
+          "path": "artifacts/browser.ui.kind.providers.dom.json",
+          "sha256": "599097a8c6aaba45a993f4377d2ef528d158700feb562f790848adcd47aa9f98",
+          "bytes": 629
+        }
+      ],
+      "durationMs": 797
+    },
+    {
+      "id": "ui.kind.recipes",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities/recipes"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.kind.workflows.console.json",
+          "path": "artifacts/browser.ui.kind.workflows.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.workflows.dom.json",
+          "path": "artifacts/browser.ui.kind.workflows.dom.json",
+          "sha256": "10d2467a3e4de494b6aa1fc5c2be70af6104827e9ec38ad63f4bdaef98bfba34",
+          "bytes": 535
+        },
+        {
+          "artifactId": "browser/ui.kind.providers.png",
+          "path": "artifacts/browser/ui.kind.providers.png",
+          "sha256": "c2fa37f9221c15c9a833e4b6f97916af718fac62c67fef769df4e5638610a869",
+          "bytes": 37715
+        },
+        {
+          "artifactId": "browser.ui.kind.providers.console.json",
+          "path": "artifacts/browser.ui.kind.providers.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.providers.dom.json",
+          "path": "artifacts/browser.ui.kind.providers.dom.json",
+          "sha256": "599097a8c6aaba45a993f4377d2ef528d158700feb562f790848adcd47aa9f98",
+          "bytes": 629
+        },
+        {
+          "artifactId": "browser/ui.kind.recipes.png",
+          "path": "artifacts/browser/ui.kind.recipes.png",
+          "sha256": "87660bed39a6fbb42244b7e43fa246d33f09b4bd085cdc86c1d184e4734e7311",
+          "bytes": 25654
+        },
+        {
+          "artifactId": "browser.ui.kind.recipes.console.json",
+          "path": "artifacts/browser.ui.kind.recipes.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.recipes.dom.json",
+          "path": "artifacts/browser.ui.kind.recipes.dom.json",
+          "sha256": "489bde5c5b477e6061042d3452203217103a22cce22224e785c83d96c661f909",
+          "bytes": 463
+        }
+      ],
+      "durationMs": 790
+    },
+    {
+      "id": "ui.detail.skills",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/capabilities/skills"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.kind.providers.console.json",
+          "path": "artifacts/browser.ui.kind.providers.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.providers.dom.json",
+          "path": "artifacts/browser.ui.kind.providers.dom.json",
+          "sha256": "599097a8c6aaba45a993f4377d2ef528d158700feb562f790848adcd47aa9f98",
+          "bytes": 629
+        },
+        {
+          "artifactId": "browser/ui.kind.recipes.png",
+          "path": "artifacts/browser/ui.kind.recipes.png",
+          "sha256": "87660bed39a6fbb42244b7e43fa246d33f09b4bd085cdc86c1d184e4734e7311",
+          "bytes": 25654
+        },
+        {
+          "artifactId": "browser.ui.kind.recipes.console.json",
+          "path": "artifacts/browser.ui.kind.recipes.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.recipes.dom.json",
+          "path": "artifacts/browser.ui.kind.recipes.dom.json",
+          "sha256": "489bde5c5b477e6061042d3452203217103a22cce22224e785c83d96c661f909",
+          "bytes": 463
+        },
+        {
+          "artifactId": "browser/ui.detail.skills.png",
+          "path": "artifacts/browser/ui.detail.skills.png",
+          "sha256": "571939cd64ad051296b9a4d070a5e465295d7b6e3829736234a62bf7bc7e55ad",
+          "bytes": 85073
+        },
+        {
+          "artifactId": "browser.ui.detail.skills.console.json",
+          "path": "artifacts/browser.ui.detail.skills.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.detail.skills.dom.json",
+          "path": "artifacts/browser.ui.detail.skills.dom.json",
+          "sha256": "58c61fcb2a2f2186be621b22e78eeefaa50ad4f25bf5f62d07601ac74be5ceab",
+          "bytes": 1662
+        }
+      ],
+      "durationMs": 823
+    },
+    {
+      "id": "ui.detail.click",
+      "driver": "browser",
+      "action": "click",
+      "status": "passed",
+      "observations": {
+        "clicked": "a.capability-name",
+        "url": "http://localhost:4173/capabilities/skills/default/character-consistency"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.kind.recipes.console.json",
+          "path": "artifacts/browser.ui.kind.recipes.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.kind.recipes.dom.json",
+          "path": "artifacts/browser.ui.kind.recipes.dom.json",
+          "sha256": "489bde5c5b477e6061042d3452203217103a22cce22224e785c83d96c661f909",
+          "bytes": 463
+        },
+        {
+          "artifactId": "browser/ui.detail.skills.png",
+          "path": "artifacts/browser/ui.detail.skills.png",
+          "sha256": "571939cd64ad051296b9a4d070a5e465295d7b6e3829736234a62bf7bc7e55ad",
+          "bytes": 85073
+        },
+        {
+          "artifactId": "browser.ui.detail.skills.console.json",
+          "path": "artifacts/browser.ui.detail.skills.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.detail.skills.dom.json",
+          "path": "artifacts/browser.ui.detail.skills.dom.json",
+          "sha256": "58c61fcb2a2f2186be621b22e78eeefaa50ad4f25bf5f62d07601ac74be5ceab",
+          "bytes": 1662
+        },
+        {
+          "artifactId": "browser/ui.detail.click.png",
+          "path": "artifacts/browser/ui.detail.click.png",
+          "sha256": "6946682db6ab5bd8d5272a10e6328a2b5666462ed7e2195f549dcf13bd3c6a2d",
+          "bytes": 334538
+        },
+        {
+          "artifactId": "browser.ui.detail.click.console.json",
+          "path": "artifacts/browser.ui.detail.click.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.detail.click.dom.json",
+          "path": "artifacts/browser.ui.detail.click.dom.json",
+          "sha256": "14728488b024c968389ea5437ab561a0f2128ee511a3a95efe02e1c651bb2733",
+          "bytes": 4719
+        }
+      ],
+      "durationMs": 333
+    }
+  ],
+  "oracles": [
+    {
+      "id": "overview.content",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities",
+      "actualRef": "browser.ui.overview.dom.json"
+    },
+    {
+      "id": "kinds.skills",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/skills",
+      "actualRef": "browser.ui.kind.skills.dom.json"
+    },
+    {
+      "id": "kinds.packs",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/packs",
+      "actualRef": "browser.ui.kind.packs.dom.json"
+    },
+    {
+      "id": "kinds.profiles",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/profiles",
+      "actualRef": "browser.ui.kind.profiles.dom.json"
+    },
+    {
+      "id": "kinds.workflows",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/workflows",
+      "actualRef": "browser.ui.kind.workflows.dom.json"
+    },
+    {
+      "id": "kinds.providers",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/providers",
+      "actualRef": "browser.ui.kind.providers.dom.json"
+    },
+    {
+      "id": "kinds.recipes",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/recipes",
+      "actualRef": "browser.ui.kind.recipes.dom.json"
+    },
+    {
+      "id": "detail.entity",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/skills/default/character-consistency",
+      "actualRef": "browser.ui.detail.click.dom.json"
+    },
+    {
+      "id": "detail.no-raw-crossref",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/capabilities/skills/default/character-consistency",
+      "actualRef": "browser.ui.detail.click.dom.json"
+    },
+    {
+      "id": "browser.health",
+      "type": "browser",
+      "classification": "runtime-health",
+      "proves": "the UI surface completed the flow without runtime errors",
+      "doesNotProve": "semantic equivalence of produced artifacts",
+      "verdict": "passed",
+      "message": "browser session healthy (0 page errors, 0 console errors)"
+    }
+  ],
+  "unprovenRequirements": [],
+  "appliedWaivers": [],
+  "git": {
+    "sha": "0a5de69e5c8f5ee9582adce2fdf0a04b5b8829d0",
+    "branch": "feat/m10-2-1-baseline-audit",
+    "dirty": true,
+    "dirtyFiles": [
+      "M control-plane/src/features/capability-catalog/views/CapabilityDetail.tsx",
+      "M control-plane/src/routes/router.tsx",
+      "M control-plane/test/capability-catalog.spec.ts",
+      "M control-plane/test/capability-cross-ref.spec.ts",
+      "M control-plane/test/capability-isolation.spec.ts",
+      "M control-plane/test/capability-parsers.spec.ts",
+      "M verification/src/drivers/browser.ts",
+      "M verification/src/index.ts",
+      "M verification/src/oracles/index.ts",
+      "M verification/src/runner/scenario.ts",
+      "M verification/src/scenario/loader.ts",
+      "M verification/src/traceability/build.ts",
+      "M verification/src/types.ts",
+      "M verification/tsconfig.json",
+      "?? changes/m10-2-1-baseline-audit/",
+      "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+      "?? docs/reactive-narrative-studio-openspec-evolutives/",
+      "?? docs/seedance-blocking.zip",
+      "?? docs/seedance-blocking/",
+      "?? verification/scenarios/scn-m10-02-001.yaml",
+      "?? verification/test/baseline-audit.spec.ts",
+      "?? verification/traceability/waivers.json"
+    ]
+  },
+  "environment": {
+    "os": "linux x64",
+    "node": "v25.9.0",
+    "pnpm": "11.9.0",
+    "python": "Python 3.14.7",
+    "browser": "Version 1.63.0"
+  },
+  "evidenceIndex": [
+    {
+      "artifactId": "environment.json",
+      "path": "artifacts/environment.json",
+      "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+      "bytes": 125
+    },
+    {
+      "artifactId": "git.observation.json",
+      "path": "artifacts/git.observation.json",
+      "sha256": "a9e49d1a4f79916a398a53bd1ab4cad8c7d298f8ea9c6e77a29a3ecfa680b17d",
+      "bytes": 1214
+    },
+    {
+      "artifactId": "git.dirty-files.json",
+      "path": "artifacts/git.dirty-files.json",
+      "sha256": "ad4256209e6fc638782368aca340f9890dc03f27aab12e46326058988a196f0b",
+      "bytes": 1096
+    },
+    {
+      "artifactId": "process.ui.build.stdout.txt",
+      "path": "artifacts/process.ui.build.stdout.txt",
+      "sha256": "7371df63bb67100e51e40c5928da6fed5fc42b5d4ed7ced1381d914a9dce6c6d",
+      "bytes": 413
+    },
+    {
+      "artifactId": "process.ui.build.stderr.txt",
+      "path": "artifacts/process.ui.build.stderr.txt",
+      "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+      "bytes": 416
+    },
+    {
+      "artifactId": "browser/ui.overview.png",
+      "path": "artifacts/browser/ui.overview.png",
+      "sha256": "778a112d901b14e3854e4804910ef3eae6f2cc63f9928f3902b0cf623243fd7a",
+      "bytes": 75419
+    },
+    {
+      "artifactId": "browser.ui.overview.console.json",
+      "path": "artifacts/browser.ui.overview.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.overview.dom.json",
+      "path": "artifacts/browser.ui.overview.dom.json",
+      "sha256": "a7e5b3bbd1b7491738c65aad73ec3b655ff1f1ad0e5156dcb05ef1e0ce88a738",
+      "bytes": 2115
+    },
+    {
+      "artifactId": "browser/ui.kind.skills.png",
+      "path": "artifacts/browser/ui.kind.skills.png",
+      "sha256": "571939cd64ad051296b9a4d070a5e465295d7b6e3829736234a62bf7bc7e55ad",
+      "bytes": 85073
+    },
+    {
+      "artifactId": "browser.ui.kind.skills.console.json",
+      "path": "artifacts/browser.ui.kind.skills.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.kind.skills.dom.json",
+      "path": "artifacts/browser.ui.kind.skills.dom.json",
+      "sha256": "58c61fcb2a2f2186be621b22e78eeefaa50ad4f25bf5f62d07601ac74be5ceab",
+      "bytes": 1662
+    },
+    {
+      "artifactId": "browser/ui.kind.packs.png",
+      "path": "artifacts/browser/ui.kind.packs.png",
+      "sha256": "5ee96f1b1047d304d6d4d808bb89b7baf1e637654dc77150b4154ed080a82119",
+      "bytes": 34829
+    },
+    {
+      "artifactId": "browser.ui.kind.packs.console.json",
+      "path": "artifacts/browser.ui.kind.packs.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.kind.packs.dom.json",
+      "path": "artifacts/browser.ui.kind.packs.dom.json",
+      "sha256": "aef01b179f49c199c3461f0f2cdef15a0f2f882dbeb5400eb969132bbf230cc5",
+      "bytes": 883
+    },
+    {
+      "artifactId": "browser/ui.kind.profiles.png",
+      "path": "artifacts/browser/ui.kind.profiles.png",
+      "sha256": "2898b9bdb9731947ce4057a1ebcb9709d2b272da69eddf95a6f4b96c1324b3c0",
+      "bytes": 34246
+    },
+    {
+      "artifactId": "browser.ui.kind.profiles.console.json",
+      "path": "artifacts/browser.ui.kind.profiles.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.kind.profiles.dom.json",
+      "path": "artifacts/browser.ui.kind.profiles.dom.json",
+      "sha256": "3c326c996b8005141cbe056849a042508a0106b5a133a835efe1fd7dedcef7c1",
+      "bytes": 645
+    },
+    {
+      "artifactId": "browser/ui.kind.workflows.png",
+      "path": "artifacts/browser/ui.kind.workflows.png",
+      "sha256": "9c7914b1e8619a4d95f59ec6723461e4a178e94ad16055d7b612094e846ee5a7",
+      "bytes": 32101
+    },
+    {
+      "artifactId": "browser.ui.kind.workflows.console.json",
+      "path": "artifacts/browser.ui.kind.workflows.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.kind.workflows.dom.json",
+      "path": "artifacts/browser.ui.kind.workflows.dom.json",
+      "sha256": "10d2467a3e4de494b6aa1fc5c2be70af6104827e9ec38ad63f4bdaef98bfba34",
+      "bytes": 535
+    },
+    {
+      "artifactId": "browser/ui.kind.providers.png",
+      "path": "artifacts/browser/ui.kind.providers.png",
+      "sha256": "c2fa37f9221c15c9a833e4b6f97916af718fac62c67fef769df4e5638610a869",
+      "bytes": 37715
+    },
+    {
+      "artifactId": "browser.ui.kind.providers.console.json",
+      "path": "artifacts/browser.ui.kind.providers.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.kind.providers.dom.json",
+      "path": "artifacts/browser.ui.kind.providers.dom.json",
+      "sha256": "599097a8c6aaba45a993f4377d2ef528d158700feb562f790848adcd47aa9f98",
+      "bytes": 629
+    },
+    {
+      "artifactId": "browser/ui.kind.recipes.png",
+      "path": "artifacts/browser/ui.kind.recipes.png",
+      "sha256": "87660bed39a6fbb42244b7e43fa246d33f09b4bd085cdc86c1d184e4734e7311",
+      "bytes": 25654
+    },
+    {
+      "artifactId": "browser.ui.kind.recipes.console.json",
+      "path": "artifacts/browser.ui.kind.recipes.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.kind.recipes.dom.json",
+      "path": "artifacts/browser.ui.kind.recipes.dom.json",
+      "sha256": "489bde5c5b477e6061042d3452203217103a22cce22224e785c83d96c661f909",
+      "bytes": 463
+    },
+    {
+      "artifactId": "browser/ui.detail.skills.png",
+      "path": "artifacts/browser/ui.detail.skills.png",
+      "sha256": "571939cd64ad051296b9a4d070a5e465295d7b6e3829736234a62bf7bc7e55ad",
+      "bytes": 85073
+    },
+    {
+      "artifactId": "browser.ui.detail.skills.console.json",
+      "path": "artifacts/browser.ui.detail.skills.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.detail.skills.dom.json",
+      "path": "artifacts/browser.ui.detail.skills.dom.json",
+      "sha256": "58c61fcb2a2f2186be621b22e78eeefaa50ad4f25bf5f62d07601ac74be5ceab",
+      "bytes": 1662
+    },
+    {
+      "artifactId": "browser/ui.detail.click.png",
+      "path": "artifacts/browser/ui.detail.click.png",
+      "sha256": "6946682db6ab5bd8d5272a10e6328a2b5666462ed7e2195f549dcf13bd3c6a2d",
+      "bytes": 334538
+    },
+    {
+      "artifactId": "browser.ui.detail.click.console.json",
+      "path": "artifacts/browser.ui.detail.click.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.detail.click.dom.json",
+      "path": "artifacts/browser.ui.detail.click.dom.json",
+      "sha256": "14728488b024c968389ea5437ab561a0f2128ee511a3a95efe02e1c651bb2733",
+      "bytes": 4719
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "url": "http://localhost:4173/capabilities/skills",
+  "title": "Control Plane",
+  "h1s": [
+    "Skills"
+  ],
+  "h2s": [
+    "Load Project"
+  ],
+  "links": [
+    "/capabilities/skills/default/character-consistency",
+    "/capabilities/skills/default/narrative-arc",
+    "/capabilities/skills/default/scene-validator"
+  ],
+  "bodyText": "Load Project No source loaded Current status: empty Open Directory (Chromium) Skills 3 entries character-consistency skill The `character-consistency` skill provides a multi-layered validation framework for maintaining character integrity across a narrative project. It addresses the primary consistency failure modes — idiolect drift, profile cross-reference rupture, dialogue tag inconsistency, POV breach, and voice degradation — and provides a character arc tracking layer to ensure that character growth is earned rather than asserted. narrative-arc skill The `narrative-arc` skill provides a structured decision framework for selecting and applying canonical story structure models. It helps authors and content systems choose the right narrative architecture for a given genre, target audience, and intended length — then execute that structure consistently from outline through final draft. scene-validator skill The `scene-validator` skill provides a structured validation framework for individual scenes within a narrative. It audits scenes for structural integrity against canonical scene models — goal/conflict/outcome/disaster, Dwight Swain's scene-sequel, and motivation-reaction units (MRU) — and surfaces common failure patterns before they compound into structural problems at the act level."
+}

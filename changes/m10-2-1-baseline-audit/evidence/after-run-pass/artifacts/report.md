@@ -1,0 +1,87 @@
+# Verification Report — SCN-M10-02-001
+
+- **Run**: `run-2026-09-13T14-56-09-301Z-fb46e13a`
+- **UAT**: UAT-M10-06
+- **Requirements**: REQ-VAH-BROWSER-AUDIT
+- **Overall**: **PASS**
+- **Git**: 0a5de69e5c8f5ee9582adce2fdf0a04b5b8829d0 (feat/m10-2-1-baseline-audit) — DIRTY
+- **Environment**: linux x64, node v25.9.0, python Python 3.14.7
+
+## Steps
+- ✅ `ui.build` (process.run, 1719ms)
+- ✅ `ui.start-preview` (browser.start-preview, 31ms)
+- ✅ `ui.overview` (browser.navigate, 838ms)
+- ✅ `ui.kind.skills` (browser.navigate, 834ms)
+- ✅ `ui.kind.packs` (browser.navigate, 796ms)
+- ✅ `ui.kind.profiles` (browser.navigate, 814ms)
+- ✅ `ui.kind.workflows` (browser.navigate, 796ms)
+- ✅ `ui.kind.providers` (browser.navigate, 797ms)
+- ✅ `ui.kind.recipes` (browser.navigate, 790ms)
+- ✅ `ui.detail.skills` (browser.navigate, 823ms)
+- ✅ `ui.detail.click` (browser.click, 333ms)
+
+## Oracles
+- ✅ `overview.content` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `kinds.skills` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/skills
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `kinds.packs` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/packs
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `kinds.profiles` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/profiles
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `kinds.workflows` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/workflows
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `kinds.providers` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/providers
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `kinds.recipes` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/recipes
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `detail.entity` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/skills/default/character-consistency
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `detail.no-raw-crossref` [browser-content/functional] DOM assertions hold on http://localhost:4173/capabilities/skills/default/character-consistency
+  - proves: the rendered UI page satisfies the declared DOM expectations
+  - doesNotProve: internal app semantics (store mutation, data provenance) or content quality
+- ✅ `browser.health` [browser/runtime-health] browser session healthy (0 page errors, 0 console errors)
+  - proves: the UI surface completed the flow without runtime errors
+  - doesNotProve: semantic equivalence of produced artifacts
+
+## Evidence index
+- `environment.json` — artifacts/environment.json (sha256:5e60cd1f18fd…, 125B)
+- `git.observation.json` — artifacts/git.observation.json (sha256:a9e49d1a4f79…, 1214B)
+- `git.dirty-files.json` — artifacts/git.dirty-files.json (sha256:ad4256209e6f…, 1096B)
+- `process.ui.build.stdout.txt` — artifacts/process.ui.build.stdout.txt (sha256:7371df63bb67…, 413B)
+- `process.ui.build.stderr.txt` — artifacts/process.ui.build.stderr.txt (sha256:269c223a4320…, 416B)
+- `browser/ui.overview.png` — artifacts/browser/ui.overview.png (sha256:778a112d901b…, 75419B)
+- `browser.ui.overview.console.json` — artifacts/browser.ui.overview.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.overview.dom.json` — artifacts/browser.ui.overview.dom.json (sha256:a7e5b3bbd1b7…, 2115B)
+- `browser/ui.kind.skills.png` — artifacts/browser/ui.kind.skills.png (sha256:571939cd64ad…, 85073B)
+- `browser.ui.kind.skills.console.json` — artifacts/browser.ui.kind.skills.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.kind.skills.dom.json` — artifacts/browser.ui.kind.skills.dom.json (sha256:58c61fcb2a2f…, 1662B)
+- `browser/ui.kind.packs.png` — artifacts/browser/ui.kind.packs.png (sha256:5ee96f1b1047…, 34829B)
+- `browser.ui.kind.packs.console.json` — artifacts/browser.ui.kind.packs.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.kind.packs.dom.json` — artifacts/browser.ui.kind.packs.dom.json (sha256:aef01b179f49…, 883B)
+- `browser/ui.kind.profiles.png` — artifacts/browser/ui.kind.profiles.png (sha256:2898b9bdb973…, 34246B)
+- `browser.ui.kind.profiles.console.json` — artifacts/browser.ui.kind.profiles.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.kind.profiles.dom.json` — artifacts/browser.ui.kind.profiles.dom.json (sha256:3c326c996b80…, 645B)
+- `browser/ui.kind.workflows.png` — artifacts/browser/ui.kind.workflows.png (sha256:9c7914b1e861…, 32101B)
+- `browser.ui.kind.workflows.console.json` — artifacts/browser.ui.kind.workflows.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.kind.workflows.dom.json` — artifacts/browser.ui.kind.workflows.dom.json (sha256:10d2467a3e4d…, 535B)
+- `browser/ui.kind.providers.png` — artifacts/browser/ui.kind.providers.png (sha256:c2fa37f9221c…, 37715B)
+- `browser.ui.kind.providers.console.json` — artifacts/browser.ui.kind.providers.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.kind.providers.dom.json` — artifacts/browser.ui.kind.providers.dom.json (sha256:599097a8c6aa…, 629B)
+- `browser/ui.kind.recipes.png` — artifacts/browser/ui.kind.recipes.png (sha256:87660bed39a6…, 25654B)
+- `browser.ui.kind.recipes.console.json` — artifacts/browser.ui.kind.recipes.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.kind.recipes.dom.json` — artifacts/browser.ui.kind.recipes.dom.json (sha256:489bde5c5b47…, 463B)
+- `browser/ui.detail.skills.png` — artifacts/browser/ui.detail.skills.png (sha256:571939cd64ad…, 85073B)
+- `browser.ui.detail.skills.console.json` — artifacts/browser.ui.detail.skills.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.detail.skills.dom.json` — artifacts/browser.ui.detail.skills.dom.json (sha256:58c61fcb2a2f…, 1662B)
+- `browser/ui.detail.click.png` — artifacts/browser/ui.detail.click.png (sha256:6946682db6ab…, 334538B)
+- `browser.ui.detail.click.console.json` — artifacts/browser.ui.detail.click.console.json (sha256:4e768728e3a6…, 46B)
+- `browser.ui.detail.click.dom.json` — artifacts/browser.ui.detail.click.dom.json (sha256:14728488b024…, 4719B)

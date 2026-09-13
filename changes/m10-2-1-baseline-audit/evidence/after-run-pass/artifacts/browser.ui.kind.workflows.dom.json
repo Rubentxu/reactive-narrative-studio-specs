@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:4173/capabilities/workflows",
+  "title": "Control Plane",
+  "h1s": [
+    "Comfy Workflows"
+  ],
+  "h2s": [
+    "Load Project"
+  ],
+  "links": [
+    "/capabilities/workflows/default/illustrated-page"
+  ],
+  "bodyText": "Load Project No source loaded Current status: empty Open Directory (Chromium) Comfy Workflows 1 entry illustrated-page workflowprovider: comfyuimodel: sdxl-1.0 Reference ComfyUI workflow for an illustrated-book page. One shot in, one asset out, one cp-visual-quality verdict emitted."
+}

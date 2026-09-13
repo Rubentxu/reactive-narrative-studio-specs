@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:4173/capabilities/recipes",
+  "title": "Control Plane",
+  "h1s": [
+    "Recipes"
+  ],
+  "h2s": [
+    "Load Project"
+  ],
+  "links": [
+    "/capabilities/recipes/default/middle-grade-illustrated"
+  ],
+  "bodyText": "Load Project No source loaded Current status: empty Open Directory (Chromium) Recipes 1 entry middle-grade-illustrated recipetitle: Middle Grade Illustrated Novel Starter for an illustrated 8–12 narrative project."
+}

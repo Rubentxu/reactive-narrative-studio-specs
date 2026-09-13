@@ -1,0 +1,15 @@
+{
+  "url": "http://localhost:4173/capabilities/profiles",
+  "title": "Control Plane",
+  "h1s": [
+    "Profiles"
+  ],
+  "h2s": [
+    "Load Project"
+  ],
+  "links": [
+    "/capabilities/profiles/default/profile-middle-grade-10-11",
+    "/capabilities/profiles/recipe%3Amiddle-grade-illustrated"
+  ],
+  "bodyText": "Load Project No source loaded Current status: empty Open Directory (Chromium) Profiles 2 entries profile-middle-grade-10-11 profileaudience: middle-gradeformat: illustrated-book Voice: playful | Guardrails: graphic-violence, explicit-romance recipe:middle-grade-illustrated profileaudience: unknownformat: unknown Voice: unknown"
+}
