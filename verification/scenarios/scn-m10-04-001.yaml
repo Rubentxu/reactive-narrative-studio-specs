@@ -1,0 +1,66 @@
+id: SCN-M10-04-001
+uat: UAT-M10-04
+requirements: [REQ-RECIPE-EQUIVALENCE]
+claims:
+  proves:
+    - CLI/Python y Control Plane/TypeScript producen planes de creación semánticamente equivalentes en los campos recipe-owned (manifest, skeleton con contenidos renderizados, perfiles, packs, skills, publishing targets), ejecutando ambos productores reales.
+  doesNotProve:
+    - Calidad narrativa.
+    - El sink File System Access API con dialog nativo (no automatizable en headless; se ejercita la ruta de descarga con fallback).
+steps:
+  - { id: workspace.prepare, driver: filesystem, action: temp-workspace, params: { prefix: m10-04 } }
+  - id: cli.create
+    driver: cli
+    action: create-project
+    params:
+      recipe: middle-grade-illustrated
+      params:
+        title: Mi Novela UAT
+        projectId: mi-novela-uat
+        audience: profile-middle-grade-10-11
+      out: "{{workspace.prepare.dir}}/from-cli"
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.navigate, driver: browser, action: navigate, params: { path: /create } }
+  - id: ui.fill
+    driver: browser
+    action: fill-wizard
+    params:
+      fields:
+        title: Mi Novela UAT
+        projectId: mi-novela-uat
+  - { id: ui.select-audience, driver: browser, action: select-option, params: { selector: "#audience", value: profile-middle-grade-10-11 } }
+  - { id: ui.submit-download, driver: browser, action: submit, params: { buttonSelector: "button[type=\"submit\"]" } }
+  - id: cli.replay-ui-plan
+    driver: cli
+    action: create-project
+    params:
+      plan: "{{ui.submit-download.planPath}}"
+      out: "{{workspace.prepare.dir}}/from-ui-plan"
+oracles:
+  # Core cross-runtime oracle: real CLI plan vs real UI plan (VAH-012).
+  - id: plan.recipe-owned-equivalence
+    type: cross-language
+    config:
+      expectedArtifact: cli.cli.create.create-plan.json
+      actualArtifact: browser.ui.submit-download.create-plan.json
+      ignoredPaths:
+        - { path: createdAt, reason: "render timestamp; declaratively non-semantic (design.md normalization discipline)" }
+  # CLI replay of the UI plan must produce the same skeleton tree as the CLI recipe run.
+  - id: skeleton.tree-replay
+    type: filesystem-tree
+    config:
+      expectedArtifact: filesystem.cli.create.tree.json
+      actualArtifact: filesystem.cli.replay-ui-plan.tree.json
+      ignoredPathPatterns:
+        - { pattern: "^\\.narrative/create-plan\\.json$", reason: "plan copies differ by construction (CLI-generated vs UI-provided); equivalence asserted by plan.recipe-owned-equivalence" }
+  # The rendered narrative.yaml (manifest source of truth) must be byte-equal.
+  - id: skeleton.narrative-content
+    type: file-content
+    config:
+      expectedFile: "{{workspace.prepare.dir}}/from-cli/narrative.yaml"
+      actualFile: "{{workspace.prepare.dir}}/from-ui-plan/narrative.yaml"
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.submit-download.console.json
