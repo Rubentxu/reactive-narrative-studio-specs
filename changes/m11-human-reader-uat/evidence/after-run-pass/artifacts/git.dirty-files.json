@@ -1,0 +1,23 @@
+{
+  "files": [
+    "M control-plane/src/extensions/registry.ts",
+    "M control-plane/src/extensions/types.ts",
+    "M control-plane/src/routes/router.tsx",
+    "M control-plane/test/extension-isolation.spec.ts",
+    "M tools/validate-recipes/validate.py",
+    "M verification/src/oracles/index.ts",
+    "M verification/src/runner/scenario.ts",
+    "M verification/src/scenario/loader.ts",
+    "M verification/src/types.ts",
+    "M verification/tsconfig.json",
+    "?? changes/m11-human-reader-uat/",
+    "?? control-plane/src/features/human-reader/",
+    "?? control-plane/src/views/ReaderUat.tsx",
+    "?? control-plane/test/human-reader.spec.ts",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/",
+    "?? verification/scenarios/scn-m11-01-001.yaml"
+  ]
+}

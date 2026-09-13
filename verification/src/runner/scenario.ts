@@ -359,13 +359,14 @@ export class ScenarioRunner {
       }      case 'browser.submit': {
         const page = deps.browser.page;
         if (!page) throw new Error('browser page not launched');
+        const artifactName = String(params.artifactName ?? `browser.${step.id}.create-plan.json`);
         const downloadPromise = page.waitForEvent('download', { timeout: 30_000 });
         await page.click(String(params.buttonSelector ?? 'button[type="submit"]'));
         const download = await downloadPromise;
-        const target = join(deps.run.dir, 'browser', `${step.id}-create-plan.json`);
+        const target = join(deps.run.dir, 'browser', `${step.id}-${download.suggestedFilename()}`);
         await mkdir(join(target, '..'), { recursive: true });
         await download.saveAs(target);
-        const ref = await deps.run.registerFile(`browser.${step.id}.create-plan.json`, target);
+        const ref = await deps.run.registerFile(artifactName, target);
         await deps.browser.screenshot(`${step.id}.png`);
         await deps.browser.captureConsole(`browser.${step.id}.console.json`);
         await deps.browser.captureDom(`browser.${step.id}.dom.json`);

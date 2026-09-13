@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:4173/reader-uat",
+  "title": "Control Plane",
+  "h1s": [
+    "Human Reader UAT"
+  ],
+  "h2s": [
+    "Load Project"
+  ],
+  "links": [
+    "/home"
+  ],
+  "bodyText": "Load Project Studio Home No source loaded Current status: empty Open Directory (Chromium) Human Reader UAT Anonymous reader feedback round. No personal data is collected: every field is optional and the round report is exported as a local file, never uploaded. Human feedback is stored separately from synthetic reader panels (ADR-019). Reader context (optional) Age bracket (not disclosed) child middle_grade ya adult undisclosed Engagement (not disclosed) cover_to_cover selected_chapters first_chapter Reading experience (optional) pacing12345clarity12345emotional_impact12345age_appropriateness12345 Editorial impact (optional) Revision impact (not assessed) none minor major blocker Manuscript revision (links the report to a revision decision)Highlights (one short paraphrased note per line, up to 10) Download round report (JSONL) Round report ready: reader-uat-8fcb0462a633455a9a6e3525a09d02d7.jsonl (403 bytes)"
+}

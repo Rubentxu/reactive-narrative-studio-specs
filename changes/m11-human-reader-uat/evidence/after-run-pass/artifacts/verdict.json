@@ -1,0 +1,1043 @@
+{
+  "runId": "run-2026-09-13T20-27-17-941Z-05b1014a",
+  "scenarioId": "SCN-M11-01-001",
+  "uat": "UAT-M11-01",
+  "requirements": [
+    "REQ-M11-1",
+    "REQ-M11-2",
+    "REQ-M11-3",
+    "REQ-M11-4"
+  ],
+  "overall": "PASS",
+  "startedAt": "2026-09-13T20:27:17.943Z",
+  "finishedAt": "2026-09-13T20:27:22.170Z",
+  "steps": [
+    {
+      "id": "ui.build",
+      "driver": "process",
+      "action": "run",
+      "status": "passed",
+      "observations": {
+        "exitCode": 0,
+        "timedOut": false
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "8975b2e2e8e14e8b611e2c5afd8aa7c3df4fe1bddb3642d1f416786233646d52",
+          "bytes": 1022
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "6bdf0da940b1fcba09dd84a6668ae9b4330872c116b2c217d776ced19ae6ab8c",
+          "bytes": 906
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "e7864e2631ce85afa275f3ce6edc14dd38a07fb345de8fb562d7f26a17101d79",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 1665
+    },
+    {
+      "id": "ui.start-preview",
+      "driver": "browser",
+      "action": "start-preview",
+      "status": "passed",
+      "observations": {
+        "preview": "running"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "8975b2e2e8e14e8b611e2c5afd8aa7c3df4fe1bddb3642d1f416786233646d52",
+          "bytes": 1022
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "6bdf0da940b1fcba09dd84a6668ae9b4330872c116b2c217d776ced19ae6ab8c",
+          "bytes": 906
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "e7864e2631ce85afa275f3ce6edc14dd38a07fb345de8fb562d7f26a17101d79",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 31
+    },
+    {
+      "id": "ui.reader-uat",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/reader-uat"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "8975b2e2e8e14e8b611e2c5afd8aa7c3df4fe1bddb3642d1f416786233646d52",
+          "bytes": 1022
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "6bdf0da940b1fcba09dd84a6668ae9b4330872c116b2c217d776ced19ae6ab8c",
+          "bytes": 906
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "e7864e2631ce85afa275f3ce6edc14dd38a07fb345de8fb562d7f26a17101d79",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        }
+      ],
+      "durationMs": 849
+    },
+    {
+      "id": "ui.submit-empty",
+      "driver": "browser",
+      "action": "submit",
+      "status": "passed",
+      "observations": {
+        "planArtifact": "browser.ui.submit-empty.round-report.jsonl",
+        "planPath": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-13T20-27-17-941Z-05b1014a/browser/ui.submit-empty-reader-uat-86bcd2ea05d34272862d9a8c442b74a0.jsonl",
+        "suggestedFilename": "reader-uat-86bcd2ea05d34272862d9a8c442b74a0.jsonl"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+          "bytes": 72635
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 119
+    },
+    {
+      "id": "ui.fill-context",
+      "driver": "browser",
+      "action": "select-option",
+      "status": "passed",
+      "observations": {
+        "selected": "middle_grade"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+          "bytes": 72635
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 13
+    },
+    {
+      "id": "ui.fill-engagement",
+      "driver": "browser",
+      "action": "select-option",
+      "status": "passed",
+      "observations": {
+        "selected": "cover_to_cover"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+          "bytes": 72635
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 10
+    },
+    {
+      "id": "ui.fill-impact",
+      "driver": "browser",
+      "action": "select-option",
+      "status": "passed",
+      "observations": {
+        "selected": "major"
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+          "bytes": 72635
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 11
+    },
+    {
+      "id": "ui.fill-revision",
+      "driver": "browser",
+      "action": "fill-wizard",
+      "status": "passed",
+      "observations": {
+        "filled": [
+          "manuscriptRevision"
+        ]
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+          "bytes": 72635
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 22
+    },
+    {
+      "id": "ui.fill-highlights",
+      "driver": "browser",
+      "action": "fill-wizard",
+      "status": "passed",
+      "observations": {
+        "filled": [
+          "highlights"
+        ]
+      },
+      "artifacts": [
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.reader-uat.png",
+          "path": "artifacts/browser/ui.reader-uat.png",
+          "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+          "bytes": 64198
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.console.json",
+          "path": "artifacts/browser.ui.reader-uat.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+          "bytes": 72635
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 19
+    },
+    {
+      "id": "ui.likert-pacing",
+      "driver": "browser",
+      "action": "click",
+      "status": "passed",
+      "observations": {
+        "clicked": "label.reader-uat-likert:has-text(\"pacing\") button:has-text(\"5\")",
+        "url": "http://localhost:4173/reader-uat"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.reader-uat.dom.json",
+          "path": "artifacts/browser.ui.reader-uat.dom.json",
+          "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+          "bytes": 1035
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+          "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+          "bytes": 182
+        },
+        {
+          "artifactId": "browser/ui.submit-empty.png",
+          "path": "artifacts/browser/ui.submit-empty.png",
+          "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+          "bytes": 72635
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-pacing.png",
+          "path": "artifacts/browser/ui.likert-pacing.png",
+          "sha256": "107c0ac8b47876c9dca89f69187a935446ba70c92a12913ddde36a4f87b72630",
+          "bytes": 75775
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.console.json",
+          "path": "artifacts/browser.ui.likert-pacing.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.dom.json",
+          "path": "artifacts/browser.ui.likert-pacing.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 103
+    },
+    {
+      "id": "ui.likert-clarity",
+      "driver": "browser",
+      "action": "click",
+      "status": "passed",
+      "observations": {
+        "clicked": "label.reader-uat-likert:has-text(\"clarity\") button:has-text(\"4\")",
+        "url": "http://localhost:4173/reader-uat"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.submit-empty.console.json",
+          "path": "artifacts/browser.ui.submit-empty.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-empty.dom.json",
+          "path": "artifacts/browser.ui.submit-empty.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-pacing.png",
+          "path": "artifacts/browser/ui.likert-pacing.png",
+          "sha256": "107c0ac8b47876c9dca89f69187a935446ba70c92a12913ddde36a4f87b72630",
+          "bytes": 75775
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.console.json",
+          "path": "artifacts/browser.ui.likert-pacing.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-pacing.dom.json",
+          "path": "artifacts/browser.ui.likert-pacing.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-clarity.png",
+          "path": "artifacts/browser/ui.likert-clarity.png",
+          "sha256": "107c0ac8b47876c9dca89f69187a935446ba70c92a12913ddde36a4f87b72630",
+          "bytes": 75775
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.console.json",
+          "path": "artifacts/browser.ui.likert-clarity.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.dom.json",
+          "path": "artifacts/browser.ui.likert-clarity.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 82
+    },
+    {
+      "id": "ui.submit-filled",
+      "driver": "browser",
+      "action": "submit",
+      "status": "passed",
+      "observations": {
+        "planArtifact": "browser.ui.submit-filled.round-report.jsonl",
+        "planPath": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-13T20-27-17-941Z-05b1014a/browser/ui.submit-filled-reader-uat-8fcb0462a633455a9a6e3525a09d02d7.jsonl",
+        "suggestedFilename": "reader-uat-8fcb0462a633455a9a6e3525a09d02d7.jsonl"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.likert-pacing.dom.json",
+          "path": "artifacts/browser.ui.likert-pacing.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser/ui.likert-clarity.png",
+          "path": "artifacts/browser/ui.likert-clarity.png",
+          "sha256": "107c0ac8b47876c9dca89f69187a935446ba70c92a12913ddde36a4f87b72630",
+          "bytes": 75775
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.console.json",
+          "path": "artifacts/browser.ui.likert-clarity.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.dom.json",
+          "path": "artifacts/browser.ui.likert-clarity.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-filled.round-report.jsonl",
+          "sha256": "1425e02676621ad6877ce31ca9f425da4ef5f6833b2e3a014a1ef3112b04759b",
+          "bytes": 403
+        },
+        {
+          "artifactId": "browser/ui.submit-filled.png",
+          "path": "artifacts/browser/ui.submit-filled.png",
+          "sha256": "cce59ffb57f412e73470b8d765003694b947d4eb068331242150032ec8c29d27",
+          "bytes": 76087
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.console.json",
+          "path": "artifacts/browser.ui.submit-filled.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.dom.json",
+          "path": "artifacts/browser.ui.submit-filled.dom.json",
+          "sha256": "37accb7296712efc9ec71ed1d03a19c7f40c0d185e22c317814e563080bf4ad5",
+          "bytes": 1117
+        }
+      ],
+      "durationMs": 97
+    },
+    {
+      "id": "ui.storage-probe",
+      "driver": "browser",
+      "action": "evaluate",
+      "status": "passed",
+      "observations": {
+        "evaluated": true,
+        "resultSummary": "{\"databases\":[],\"hasReaderId\":true,\"readerIdAnonymous\":true,\"localStorageKeys\":[]}"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.likert-clarity.console.json",
+          "path": "artifacts/browser.ui.likert-clarity.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.likert-clarity.dom.json",
+          "path": "artifacts/browser.ui.likert-clarity.dom.json",
+          "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.round-report.jsonl",
+          "path": "artifacts/browser.ui.submit-filled.round-report.jsonl",
+          "sha256": "1425e02676621ad6877ce31ca9f425da4ef5f6833b2e3a014a1ef3112b04759b",
+          "bytes": 403
+        },
+        {
+          "artifactId": "browser/ui.submit-filled.png",
+          "path": "artifacts/browser/ui.submit-filled.png",
+          "sha256": "cce59ffb57f412e73470b8d765003694b947d4eb068331242150032ec8c29d27",
+          "bytes": 76087
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.console.json",
+          "path": "artifacts/browser.ui.submit-filled.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.submit-filled.dom.json",
+          "path": "artifacts/browser.ui.submit-filled.dom.json",
+          "sha256": "37accb7296712efc9ec71ed1d03a19c7f40c0d185e22c317814e563080bf4ad5",
+          "bytes": 1117
+        },
+        {
+          "artifactId": "browser.ui.storage-probe.eval.json",
+          "path": "artifacts/browser.ui.storage-probe.eval.json",
+          "sha256": "6a603b5f1dc84901d5cc74fddccd9e80d3af964b32278dc3e355b21bfb021e0c",
+          "bytes": 100
+        },
+        {
+          "artifactId": "browser/ui.storage-probe.png",
+          "path": "artifacts/browser/ui.storage-probe.png",
+          "sha256": "cce59ffb57f412e73470b8d765003694b947d4eb068331242150032ec8c29d27",
+          "bytes": 76087
+        }
+      ],
+      "durationMs": 63
+    }
+  ],
+  "oracles": [
+    {
+      "id": "page.anonymity-and-separation",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/reader-uat",
+      "actualRef": "browser.ui.reader-uat.dom.json"
+    },
+    {
+      "id": "report.empty-form-valid",
+      "type": "jsonl-entry",
+      "classification": "functional",
+      "proves": "the round-report artifact carries exactly the declared fields per entry",
+      "doesNotProve": "that the feedback content is meaningful or that ids are unique across rounds",
+      "verdict": "passed",
+      "message": "1 JSONL entry match expectations (browser.ui.submit-empty.round-report.jsonl)",
+      "actualRef": "artifacts/report.empty-form-valid.actual.json",
+      "diffRef": "artifacts/report.empty-form-valid.diff.json"
+    },
+    {
+      "id": "report.filled-fields",
+      "type": "jsonl-entry",
+      "classification": "functional",
+      "proves": "the round-report artifact carries exactly the declared fields per entry",
+      "doesNotProve": "that the feedback content is meaningful or that ids are unique across rounds",
+      "verdict": "passed",
+      "message": "1 JSONL entry match expectations (browser.ui.submit-filled.round-report.jsonl)",
+      "actualRef": "artifacts/report.filled-fields.actual.json",
+      "diffRef": "artifacts/report.filled-fields.diff.json"
+    },
+    {
+      "id": "storage.no-databases-no-localstorage",
+      "type": "browser-evaluate",
+      "classification": "functional",
+      "proves": "the declared in-page probe (DOM/storage/state) returns the expected observable result",
+      "doesNotProve": "anything outside the probe script; probe correctness is reviewer-audited",
+      "verdict": "passed",
+      "message": "evaluate result matches expectations (browser.ui.storage-probe.eval.json)",
+      "actualRef": "artifacts/storage.no-databases-no-localstorage.actual.json",
+      "diffRef": "artifacts/storage.no-databases-no-localstorage.diff.json"
+    },
+    {
+      "id": "browser.health",
+      "type": "browser",
+      "classification": "runtime-health",
+      "proves": "the UI surface completed the flow without runtime errors",
+      "doesNotProve": "semantic equivalence of produced artifacts",
+      "verdict": "passed",
+      "message": "browser session healthy (0 page errors, 0 console errors)"
+    }
+  ],
+  "unprovenRequirements": [],
+  "appliedWaivers": [],
+  "git": {
+    "sha": "e2caefa666c841cbbaa80d1597266b8a85b95e30",
+    "branch": "feat/m11-human-reader-uat",
+    "dirty": true,
+    "dirtyFiles": [
+      "M control-plane/src/extensions/registry.ts",
+      "M control-plane/src/extensions/types.ts",
+      "M control-plane/src/routes/router.tsx",
+      "M control-plane/test/extension-isolation.spec.ts",
+      "M tools/validate-recipes/validate.py",
+      "M verification/src/oracles/index.ts",
+      "M verification/src/runner/scenario.ts",
+      "M verification/src/scenario/loader.ts",
+      "M verification/src/types.ts",
+      "M verification/tsconfig.json",
+      "?? changes/m11-human-reader-uat/",
+      "?? control-plane/src/features/human-reader/",
+      "?? control-plane/src/views/ReaderUat.tsx",
+      "?? control-plane/test/human-reader.spec.ts",
+      "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+      "?? docs/reactive-narrative-studio-openspec-evolutives/",
+      "?? docs/seedance-blocking.zip",
+      "?? docs/seedance-blocking/",
+      "?? verification/scenarios/scn-m11-01-001.yaml"
+    ]
+  },
+  "environment": {
+    "os": "linux x64",
+    "node": "v25.9.0",
+    "pnpm": "11.9.0",
+    "python": "Python 3.14.7",
+    "browser": "Version 1.63.0"
+  },
+  "evidenceIndex": [
+    {
+      "artifactId": "environment.json",
+      "path": "artifacts/environment.json",
+      "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+      "bytes": 125
+    },
+    {
+      "artifactId": "git.observation.json",
+      "path": "artifacts/git.observation.json",
+      "sha256": "8975b2e2e8e14e8b611e2c5afd8aa7c3df4fe1bddb3642d1f416786233646d52",
+      "bytes": 1022
+    },
+    {
+      "artifactId": "git.dirty-files.json",
+      "path": "artifacts/git.dirty-files.json",
+      "sha256": "6bdf0da940b1fcba09dd84a6668ae9b4330872c116b2c217d776ced19ae6ab8c",
+      "bytes": 906
+    },
+    {
+      "artifactId": "process.ui.build.stdout.txt",
+      "path": "artifacts/process.ui.build.stdout.txt",
+      "sha256": "e7864e2631ce85afa275f3ce6edc14dd38a07fb345de8fb562d7f26a17101d79",
+      "bytes": 413
+    },
+    {
+      "artifactId": "process.ui.build.stderr.txt",
+      "path": "artifacts/process.ui.build.stderr.txt",
+      "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+      "bytes": 416
+    },
+    {
+      "artifactId": "browser/ui.reader-uat.png",
+      "path": "artifacts/browser/ui.reader-uat.png",
+      "sha256": "569813ffc8d504617822cab088891ce30a6890f0739b8a70929e13c4af461525",
+      "bytes": 64198
+    },
+    {
+      "artifactId": "browser.ui.reader-uat.console.json",
+      "path": "artifacts/browser.ui.reader-uat.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.reader-uat.dom.json",
+      "path": "artifacts/browser.ui.reader-uat.dom.json",
+      "sha256": "43b2775c63064effbfd60c80277352f19b2483b43a0c7db9ecd6320d98e1141d",
+      "bytes": 1035
+    },
+    {
+      "artifactId": "browser.ui.submit-empty.round-report.jsonl",
+      "path": "artifacts/browser.ui.submit-empty.round-report.jsonl",
+      "sha256": "804c8cfd987a8bdcf20a7def8088b4817a4b844a2f96b69f9326e1d9bea05345",
+      "bytes": 182
+    },
+    {
+      "artifactId": "browser/ui.submit-empty.png",
+      "path": "artifacts/browser/ui.submit-empty.png",
+      "sha256": "5b50ef366f8321fa346ef9ad545c4c2fcc0ceebb69e67206b9ef0607358d80f8",
+      "bytes": 72635
+    },
+    {
+      "artifactId": "browser.ui.submit-empty.console.json",
+      "path": "artifacts/browser.ui.submit-empty.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.submit-empty.dom.json",
+      "path": "artifacts/browser.ui.submit-empty.dom.json",
+      "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser/ui.likert-pacing.png",
+      "path": "artifacts/browser/ui.likert-pacing.png",
+      "sha256": "107c0ac8b47876c9dca89f69187a935446ba70c92a12913ddde36a4f87b72630",
+      "bytes": 75775
+    },
+    {
+      "artifactId": "browser.ui.likert-pacing.console.json",
+      "path": "artifacts/browser.ui.likert-pacing.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.likert-pacing.dom.json",
+      "path": "artifacts/browser.ui.likert-pacing.dom.json",
+      "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser/ui.likert-clarity.png",
+      "path": "artifacts/browser/ui.likert-clarity.png",
+      "sha256": "107c0ac8b47876c9dca89f69187a935446ba70c92a12913ddde36a4f87b72630",
+      "bytes": 75775
+    },
+    {
+      "artifactId": "browser.ui.likert-clarity.console.json",
+      "path": "artifacts/browser.ui.likert-clarity.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.likert-clarity.dom.json",
+      "path": "artifacts/browser.ui.likert-clarity.dom.json",
+      "sha256": "9e8a8c5e1fc0c2ac7cf7ab71a8f62e1cbba39565328fc5c93902b0cf75fc41f8",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser.ui.submit-filled.round-report.jsonl",
+      "path": "artifacts/browser.ui.submit-filled.round-report.jsonl",
+      "sha256": "1425e02676621ad6877ce31ca9f425da4ef5f6833b2e3a014a1ef3112b04759b",
+      "bytes": 403
+    },
+    {
+      "artifactId": "browser/ui.submit-filled.png",
+      "path": "artifacts/browser/ui.submit-filled.png",
+      "sha256": "cce59ffb57f412e73470b8d765003694b947d4eb068331242150032ec8c29d27",
+      "bytes": 76087
+    },
+    {
+      "artifactId": "browser.ui.submit-filled.console.json",
+      "path": "artifacts/browser.ui.submit-filled.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.submit-filled.dom.json",
+      "path": "artifacts/browser.ui.submit-filled.dom.json",
+      "sha256": "37accb7296712efc9ec71ed1d03a19c7f40c0d185e22c317814e563080bf4ad5",
+      "bytes": 1117
+    },
+    {
+      "artifactId": "browser.ui.storage-probe.eval.json",
+      "path": "artifacts/browser.ui.storage-probe.eval.json",
+      "sha256": "6a603b5f1dc84901d5cc74fddccd9e80d3af964b32278dc3e355b21bfb021e0c",
+      "bytes": 100
+    },
+    {
+      "artifactId": "browser/ui.storage-probe.png",
+      "path": "artifacts/browser/ui.storage-probe.png",
+      "sha256": "cce59ffb57f412e73470b8d765003694b947d4eb068331242150032ec8c29d27",
+      "bytes": 76087
+    },
+    {
+      "artifactId": "report.empty-form-valid.actual.json",
+      "path": "artifacts/report.empty-form-valid.actual.json",
+      "sha256": "5003cddbb06feae5b956b2e93bbb7f16d618332f16ac94849199ed2d120ad743",
+      "bytes": 221
+    },
+    {
+      "artifactId": "report.empty-form-valid.diff.json",
+      "path": "artifacts/report.empty-form-valid.diff.json",
+      "sha256": "a5521996b0c733fb8d9b5aa4e14c7a81e94d874d2aa13de50bf5789dd82a1fab",
+      "bytes": 462
+    },
+    {
+      "artifactId": "report.filled-fields.actual.json",
+      "path": "artifacts/report.filled-fields.actual.json",
+      "sha256": "afe55f2efe279e489a449521f331b573af8812df36790549348a09c8eccec94a",
+      "bytes": 518
+    },
+    {
+      "artifactId": "report.filled-fields.diff.json",
+      "path": "artifacts/report.filled-fields.diff.json",
+      "sha256": "9a3bad9a57118d90f2d5fb17e7b56caebaa01bb623742070fe3feded25adffbf",
+      "bytes": 462
+    },
+    {
+      "artifactId": "storage.no-databases-no-localstorage.actual.json",
+      "path": "artifacts/storage.no-databases-no-localstorage.actual.json",
+      "sha256": "6a603b5f1dc84901d5cc74fddccd9e80d3af964b32278dc3e355b21bfb021e0c",
+      "bytes": 100
+    },
+    {
+      "artifactId": "storage.no-databases-no-localstorage.diff.json",
+      "path": "artifacts/storage.no-databases-no-localstorage.diff.json",
+      "sha256": "4c9c9c59cd3805a31ed3d4bae79e84485a10170e9a232a0cfa3ddf2d12c42e6a",
+      "bytes": 41
+    }
+  ]
+}
