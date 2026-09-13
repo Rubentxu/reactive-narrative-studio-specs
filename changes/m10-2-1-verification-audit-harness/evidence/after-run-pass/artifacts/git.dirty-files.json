@@ -1,0 +1,14 @@
+{
+  "files": [
+    "M control-plane/package.json",
+    "M control-plane/src/features/recipes/CreateWizard.tsx",
+    "M verification/src/drivers/cli.ts",
+    "M verification/src/runner/scenario.ts",
+    "?? control-plane/scripts/",
+    "?? control-plane/src/generated/",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/"
+  ]
+}

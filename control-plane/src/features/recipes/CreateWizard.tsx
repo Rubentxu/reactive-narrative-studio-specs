@@ -17,6 +17,12 @@ import { downloadPlanSink } from './DownloadPlanSink';
 import { emitPlan, recipeLockSha256 } from './RecipePlanEmitter';
 import type { CreatePlan } from './RecipePlanEmitter';
 
+/** Recipe asset bundle, pre-computed at build time by scripts/generate-recipe-assets.mjs.
+ *  import.meta.glob cannot include files outside the Vite root (recipes/ is at the
+ *  repo root) — the same defect class the m10.2 capability-catalog manifest solved
+ *  with a pre-computed JSON bundle. NO fetch(), NO network I/O (AC-INV-serverless). */
+import recipeAssets from '../../generated/recipe-assets.json';
+
 interface WizardState {
   recipeId: string;
   title: string;
@@ -29,30 +35,17 @@ interface WizardState {
   info: string | null;
 }
 
-/** Load skeleton file contents for a recipe (Vite glob). */
-const skeletonGlobs = import.meta.glob('/recipes/*/skeleton/**/*', { query: '?raw', import: 'default', eager: false }) as Record<string, () => Promise<string>>;
-
-/** Load recipe.lock.json files (Vite glob, raw JSON text). */
-const lockGlobs = import.meta.glob('/recipes/*/recipe.lock.json', { query: '?raw', import: 'default', eager: false }) as Record<string, () => Promise<string>>;
-
-async function loadSkeletonContents(recipeId: string): Promise<Record<string, string>> {
-  const prefix = `/recipes/${recipeId}/skeleton/`;
-  const matchingKeys = Object.keys(skeletonGlobs).filter(k => k.startsWith(prefix));
-  const entries = await Promise.all(
-    matchingKeys.map(async key => {
-      const content = await skeletonGlobs[key]!();
-      const relPath = key.slice(prefix.length);
-      return [relPath, content] as [string, string];
-    }),
-  );
-  return Object.fromEntries(entries);
+/** Load skeleton file contents for a recipe from the generated asset bundle. */
+function loadSkeletonContents(recipeId: string): Record<string, string> {
+  const assets = (recipeAssets as Record<string, { skeleton?: Record<string, string> }>)[recipeId];
+  return { ...(assets?.skeleton ?? {}) };
 }
 
-async function loadLockData(recipeId: string): Promise<Record<string, unknown> | null> {
-  const key = `/recipes/${recipeId}/recipe.lock.json`;
-  const loader = lockGlobs[key];
-  if (!loader) return null;
-  return JSON.parse(await loader()) as Record<string, unknown>;
+function loadLockData(recipeId: string): Record<string, unknown> | null {
+  const assets = (recipeAssets as Record<string, { 'recipe.lock.json'?: string }>)[recipeId];
+  const raw = assets?.['recipe.lock.json'];
+  if (!raw) return null;
+  return JSON.parse(raw) as Record<string, unknown>;
 }
 
 export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipeId?: string }) {
@@ -68,14 +61,14 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
     info: null,
   });
 
-  // Load skeleton + lock on mount
+  // Load skeleton + lock on mount (synchronous reads from the generated bundle)
   useEffect(() => {
     let cancelled = false;
     setState(s => ({ ...s, status: 'loading', error: null, info: null }));
 
     (async () => {
-      const skeletonContents = await loadSkeletonContents(recipeId);
-      const lockData = await loadLockData(recipeId);
+      const skeletonContents = loadSkeletonContents(recipeId);
+      const lockData = loadLockData(recipeId);
       if (cancelled) return;
 
       setState(s => ({
@@ -184,7 +177,7 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
             value={state.projectId}
             onChange={e => setState(s => ({ ...s, projectId: e.target.value }))}
             required
-            pattern="^[a-z0-9][a-z0-9_-]*$"
+            pattern="^[a-z0-9][a-z0-9_\-]*$"
           />
         </div>
         <div>

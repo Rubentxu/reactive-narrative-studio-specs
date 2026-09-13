@@ -133,7 +133,8 @@ export class ScenarioRunner {
     for (const oracle of scenario.oracles) {
       try {
         const impl = ORACLES[oracle.type];
-        oracles.push(await impl(oracle, ctx));
+        const interpolatedConfig = interpolateParams(oracle.config ?? {}, stepOutputs) as Record<string, unknown>;
+        oracles.push(await impl({ ...oracle, config: interpolatedConfig }, ctx));
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         oracles.push({
@@ -246,7 +247,7 @@ export class ScenarioRunner {
           {
             cmd: String(params.cmd),
             args: (params.args ?? []) as string[],
-            cwd: String(params.cwd),
+            cwd: resolvePath(params.cwd as string, this.config.repoRoot),
             envAllowlist: (params.envAllowlist ?? ['PATH', 'HOME']) as string[],
             timeoutMs: params.timeoutMs ? Number(params.timeoutMs) : undefined,
           },
@@ -338,11 +339,20 @@ export function interpolateParams(
 }
 
 function lookup(key: string, stepOutputs: Map<string, Record<string, unknown>>): unknown {
-  const dot = key.indexOf('.');
-  if (dot === -1) return undefined;
-  const stepId = key.slice(0, dot);
-  const field = key.slice(dot + 1);
-  return stepOutputs.get(stepId)?.[field];
+  // Step ids contain dots (e.g. "workspace.prepare"); match against the
+  // longest known step id so "workspace.prepare.dir" → step "workspace.prepare", field "dir".
+  const stepIds = [...stepOutputs.keys()].sort((a, b) => b.length - a.length);
+  for (const stepId of stepIds) {
+    if (key.startsWith(`${stepId}.`)) {
+      return stepOutputs.get(stepId)?.[key.slice(stepId.length + 1)];
+    }
+  }
+  return undefined;
+}
+
+function resolvePath(path: string, repoRoot: string): string {
+  if (path.startsWith('/')) return path;
+  return join(repoRoot, path);
 }
 
 export function renderMarkdownReport(verdict: Verdict): string {

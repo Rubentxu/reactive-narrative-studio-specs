@@ -1,0 +1,9 @@
+{
+  "runId": "run-2026-09-13T14-18-34-226Z-01437b8f",
+  "scenarioId": "SCN-M10-04-001",
+  "uat": "UAT-M10-04",
+  "overall": "PASS",
+  "startedAt": "2026-09-13T14:18:34.228Z",
+  "finishedAt": "2026-09-13T14:18:39.898Z",
+  "evidenceDir": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-13T14-18-34-226Z-01437b8f"
+}
