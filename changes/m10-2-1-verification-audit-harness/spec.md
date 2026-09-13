@@ -40,7 +40,8 @@ El H6 destapa el estado real de UAT-M10-04. La corrección se hace en producció
 - **PR-2**: `FileSystemAccessSink.ts` debe escribir el contenido renderizado y el plan emitido por el emisor, no plantillas crudas.
 - **PR-3**: `equivalenceOracle.ts` debe canonicalizar con sort recursivo (equivalente a `equivalence_oracle.py`), sin normalizadores catch-all.
 - **PR-4**: `templateEngine.spec.ts` debe leer los fixtures reales de `tools/narrative_recipes/tests/fixtures/mustache-subset/*.yaml` en lugar de copias a mano.
-- **PR-5**: `roundtrip.spec.ts` (TS) y `test_roundtrip.py` (Python) dejan de afirmar equivalencia cross-language que no ejecutan: se reescaman como tests unitarios honestos (canonicalización local) y la equivalencia real pasa a ser responsabilidad del scenario `SCN-M10-04-001` del Harness.
+- **PR-5**: `roundtrip.spec.ts` (TS) y `test_round.py` (Python) dejan de afirmar equivalencia cross-language que no ejecutan: se reescaman como tests unitarios honestos (canonicalización local) y la equivalencia real pasa a ser responsabilidad del scenario `SCN-M10-04-001` del Harness.
+- **PR-6** *(añadido tras la ejecución before del Harness)*: el rootRoute del router TanStack renderiza `SourcePicker` sin `<Outlet/>`, por lo que **ninguna ruta hija — incluida `/create` — llega a montarse**. El wizard es inalcanzable en la app real. Fix: layout de root con `<Outlet/>` y `SourcePicker` como ruta índice `/`. Evidencia: `evidence/before-run-fail-wizard-unreachable/` (screenshot `ui.navigate.png` muestra "Load Project" en `/create`; step `ui.fill` timeout).
 
 ## Requisitos nuevos definidos por este slice
 

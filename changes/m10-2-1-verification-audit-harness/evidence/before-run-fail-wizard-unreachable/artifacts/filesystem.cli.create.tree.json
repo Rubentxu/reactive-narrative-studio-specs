@@ -1,0 +1,70 @@
+{
+  "root": "/tmp/rns-m10-04-IvCO2B/from-cli",
+  "files": [
+    {
+      "path": ".narrative/create-plan.json",
+      "sha256": "e3dbe54cd327d959432c26d037852daa725b605c1333b4bf3b1ae68e790a3cf8",
+      "bytes": 9237
+    },
+    {
+      "path": "canon/chapters/01-opening.md",
+      "sha256": "c9b9902b158163f5f3a4654838f65a44cb23b25cf36683eb022fd055d88a4196",
+      "bytes": 441
+    },
+    {
+      "path": "canon/chapters/02-incident.md",
+      "sha256": "ae238a05e4063a7632cb601308e26a852034e9d79e9e78181e3025dafb160975",
+      "bytes": 402
+    },
+    {
+      "path": "canon/chapters/03-resolution.md",
+      "sha256": "cf0fea19fabd60c8c1a96784101121edcc971c8b97aa407a727b73f3c1323929",
+      "bytes": 399
+    },
+    {
+      "path": "canon/characters/deuteragonist.yaml",
+      "sha256": "0af6f9f7dcee86c116ac2243c9a89f0f91e7ac56bbc6d845d11bfcfac2ed26e4",
+      "bytes": 389
+    },
+    {
+      "path": "canon/characters/protagonist.yaml",
+      "sha256": "377fdfb243de0f79ddf6f1e0f3e91d00388730b1fa891e9b584a20a4427ac807",
+      "bytes": 388
+    },
+    {
+      "path": "goals.yaml",
+      "sha256": "33d94cfc15c165fbae628359ddce8dd9c4dd2ce2379e9140e3645b5f97f36653",
+      "bytes": 755
+    },
+    {
+      "path": "narrative.yaml",
+      "sha256": "dbc033001623ce9aff87658955030218a6d636b2933dfd6347b51b05da070c06",
+      "bytes": 711
+    },
+    {
+      "path": "packs/characters/character_design.md",
+      "sha256": "14abae4ce8f3a92b1923019b6ed07195c80636813f1293b2800b8a0e0b2ea877",
+      "bytes": 326
+    },
+    {
+      "path": "packs/editorial/editorial_pass.md",
+      "sha256": "44c7f62157536ed11ce6170b86c7713397c7bd0c0b69ee53ad2678b36b77a13b",
+      "bytes": 264
+    },
+    {
+      "path": "packs/story_core/story_intake.md",
+      "sha256": "1e266883e3f01e7951997cfbe342ef6cb6e8db91832ccc2fe5de039702cf9afc",
+      "bytes": 518
+    },
+    {
+      "path": "packs/visual_core/visual_bible_seed.md",
+      "sha256": "76d40dfe1f6e8efbdb9a9390c3fc9170b1f33ffc5a73639e4924b8d5d5b84982",
+      "bytes": 503
+    },
+    {
+      "path": "profiles/profile-middle-grade-10-11.yaml",
+      "sha256": "63c7d7a113d0586e1cff9a1a11635a3cfac1a9824fa0161678fc3493341c6d21",
+      "bytes": 542
+    }
+  ]
+}

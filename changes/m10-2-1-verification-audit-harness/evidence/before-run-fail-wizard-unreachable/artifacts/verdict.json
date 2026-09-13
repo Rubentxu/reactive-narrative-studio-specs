@@ -1,0 +1,500 @@
+{
+  "runId": "run-2026-09-13T13-55-09-740Z-d38ea65e",
+  "scenarioId": "SCN-M10-04-001",
+  "uat": "UAT-M10-04",
+  "requirements": [
+    "REQ-RECIPE-EQUIVALENCE"
+  ],
+  "overall": "FAIL",
+  "startedAt": "2026-09-13T13:55:09.741Z",
+  "finishedAt": "2026-09-13T13:55:45.107Z",
+  "steps": [
+    {
+      "id": "workspace.prepare",
+      "driver": "filesystem",
+      "action": "temp-workspace",
+      "status": "passed",
+      "observations": {
+        "dir": "/tmp/rns-m10-04-IvCO2B"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "3b51b9c59404bc15e91c793a4effa12ab764577a8f02e10c7dbb89ae184fbd5d",
+          "bytes": 428
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "c72f5595559e4660f693d2a31b66a1b743d755606e40a1ea4e8d76cac57efe82",
+          "bytes": 304
+        },
+        {
+          "artifactId": "filesystem.workspace.prepare.path.txt",
+          "path": "artifacts/filesystem.workspace.prepare.path.txt",
+          "sha256": "c7906f55af706ade4eb4d5953c277901dbdc17d3881eeb9c08d24395a231b80e",
+          "bytes": 22
+        }
+      ],
+      "durationMs": 2
+    },
+    {
+      "id": "cli.create",
+      "driver": "cli",
+      "action": "create-project",
+      "status": "passed",
+      "observations": {
+        "exitCode": 0,
+        "timedOut": false,
+        "out": "/tmp/rns-m10-04-IvCO2B/from-cli",
+        "treeArtifact": "filesystem.cli.create.tree.json",
+        "planArtifact": "cli.cli.create.create-plan.json"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "3b51b9c59404bc15e91c793a4effa12ab764577a8f02e10c7dbb89ae184fbd5d",
+          "bytes": 428
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "c72f5595559e4660f693d2a31b66a1b743d755606e40a1ea4e8d76cac57efe82",
+          "bytes": 304
+        },
+        {
+          "artifactId": "filesystem.workspace.prepare.path.txt",
+          "path": "artifacts/filesystem.workspace.prepare.path.txt",
+          "sha256": "c7906f55af706ade4eb4d5953c277901dbdc17d3881eeb9c08d24395a231b80e",
+          "bytes": 22
+        },
+        {
+          "artifactId": "cli.cli.create.stdout.txt",
+          "path": "artifacts/cli.cli.create.stdout.txt",
+          "sha256": "0b232f49ba2933459bcda7024f71a36c57d3ea753355067f85c5c990babed641",
+          "bytes": 9238
+        },
+        {
+          "artifactId": "cli.cli.create.stderr.txt",
+          "path": "artifacts/cli.cli.create.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "artifactId": "filesystem.cli.create.tree.json",
+          "path": "artifacts/filesystem.cli.create.tree.json",
+          "sha256": "4186d6f4a6f20865b897cadac7aca5487284c2886f94b7f9a98f1abe3eed00ce",
+          "bytes": 2194
+        },
+        {
+          "artifactId": "cli.cli.create.create-plan.json",
+          "path": "artifacts/cli.cli.create.create-plan.json",
+          "sha256": "e3dbe54cd327d959432c26d037852daa725b605c1333b4bf3b1ae68e790a3cf8",
+          "bytes": 9237
+        }
+      ],
+      "durationMs": 394
+    },
+    {
+      "id": "ui.build",
+      "driver": "process",
+      "action": "run",
+      "status": "passed",
+      "observations": {
+        "exitCode": 0,
+        "timedOut": false
+      },
+      "artifacts": [
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "c72f5595559e4660f693d2a31b66a1b743d755606e40a1ea4e8d76cac57efe82",
+          "bytes": 304
+        },
+        {
+          "artifactId": "filesystem.workspace.prepare.path.txt",
+          "path": "artifacts/filesystem.workspace.prepare.path.txt",
+          "sha256": "c7906f55af706ade4eb4d5953c277901dbdc17d3881eeb9c08d24395a231b80e",
+          "bytes": 22
+        },
+        {
+          "artifactId": "cli.cli.create.stdout.txt",
+          "path": "artifacts/cli.cli.create.stdout.txt",
+          "sha256": "0b232f49ba2933459bcda7024f71a36c57d3ea753355067f85c5c990babed641",
+          "bytes": 9238
+        },
+        {
+          "artifactId": "cli.cli.create.stderr.txt",
+          "path": "artifacts/cli.cli.create.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "artifactId": "filesystem.cli.create.tree.json",
+          "path": "artifacts/filesystem.cli.create.tree.json",
+          "sha256": "4186d6f4a6f20865b897cadac7aca5487284c2886f94b7f9a98f1abe3eed00ce",
+          "bytes": 2194
+        },
+        {
+          "artifactId": "cli.cli.create.create-plan.json",
+          "path": "artifacts/cli.cli.create.create-plan.json",
+          "sha256": "e3dbe54cd327d959432c26d037852daa725b605c1333b4bf3b1ae68e790a3cf8",
+          "bytes": 9237
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "d325382287fdb2abfaf38f058fbfc406a2b27fe7c1a7e167df0326ddbfd70bbe",
+          "bytes": 352
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "71c384b4a1fc1546eb87bba07c964be608de350d69432bec5e901de1eb81699c",
+          "bytes": 373
+        }
+      ],
+      "durationMs": 1656
+    },
+    {
+      "id": "ui.start-preview",
+      "driver": "browser",
+      "action": "start-preview",
+      "status": "passed",
+      "observations": {
+        "preview": "running"
+      },
+      "artifacts": [
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "c72f5595559e4660f693d2a31b66a1b743d755606e40a1ea4e8d76cac57efe82",
+          "bytes": 304
+        },
+        {
+          "artifactId": "filesystem.workspace.prepare.path.txt",
+          "path": "artifacts/filesystem.workspace.prepare.path.txt",
+          "sha256": "c7906f55af706ade4eb4d5953c277901dbdc17d3881eeb9c08d24395a231b80e",
+          "bytes": 22
+        },
+        {
+          "artifactId": "cli.cli.create.stdout.txt",
+          "path": "artifacts/cli.cli.create.stdout.txt",
+          "sha256": "0b232f49ba2933459bcda7024f71a36c57d3ea753355067f85c5c990babed641",
+          "bytes": 9238
+        },
+        {
+          "artifactId": "cli.cli.create.stderr.txt",
+          "path": "artifacts/cli.cli.create.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "artifactId": "filesystem.cli.create.tree.json",
+          "path": "artifacts/filesystem.cli.create.tree.json",
+          "sha256": "4186d6f4a6f20865b897cadac7aca5487284c2886f94b7f9a98f1abe3eed00ce",
+          "bytes": 2194
+        },
+        {
+          "artifactId": "cli.cli.create.create-plan.json",
+          "path": "artifacts/cli.cli.create.create-plan.json",
+          "sha256": "e3dbe54cd327d959432c26d037852daa725b605c1333b4bf3b1ae68e790a3cf8",
+          "bytes": 9237
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "d325382287fdb2abfaf38f058fbfc406a2b27fe7c1a7e167df0326ddbfd70bbe",
+          "bytes": 352
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "71c384b4a1fc1546eb87bba07c964be608de350d69432bec5e901de1eb81699c",
+          "bytes": 373
+        }
+      ],
+      "durationMs": 1045
+    },
+    {
+      "id": "ui.navigate",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/create"
+      },
+      "artifacts": [
+        {
+          "artifactId": "filesystem.workspace.prepare.path.txt",
+          "path": "artifacts/filesystem.workspace.prepare.path.txt",
+          "sha256": "c7906f55af706ade4eb4d5953c277901dbdc17d3881eeb9c08d24395a231b80e",
+          "bytes": 22
+        },
+        {
+          "artifactId": "cli.cli.create.stdout.txt",
+          "path": "artifacts/cli.cli.create.stdout.txt",
+          "sha256": "0b232f49ba2933459bcda7024f71a36c57d3ea753355067f85c5c990babed641",
+          "bytes": 9238
+        },
+        {
+          "artifactId": "cli.cli.create.stderr.txt",
+          "path": "artifacts/cli.cli.create.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "artifactId": "filesystem.cli.create.tree.json",
+          "path": "artifacts/filesystem.cli.create.tree.json",
+          "sha256": "4186d6f4a6f20865b897cadac7aca5487284c2886f94b7f9a98f1abe3eed00ce",
+          "bytes": 2194
+        },
+        {
+          "artifactId": "cli.cli.create.create-plan.json",
+          "path": "artifacts/cli.cli.create.create-plan.json",
+          "sha256": "e3dbe54cd327d959432c26d037852daa725b605c1333b4bf3b1ae68e790a3cf8",
+          "bytes": 9237
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "d325382287fdb2abfaf38f058fbfc406a2b27fe7c1a7e167df0326ddbfd70bbe",
+          "bytes": 352
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "71c384b4a1fc1546eb87bba07c964be608de350d69432bec5e901de1eb81699c",
+          "bytes": 373
+        },
+        {
+          "artifactId": "browser/ui.navigate.png",
+          "path": "artifacts/browser/ui.navigate.png",
+          "sha256": "f68e25f3edc133cb4db5528797e265e6658f0bf63cb4c4ee27726970332bf1b3",
+          "bytes": 14656
+        }
+      ],
+      "durationMs": 1044
+    },
+    {
+      "id": "ui.fill",
+      "driver": "browser",
+      "action": "fill-wizard",
+      "status": "failed",
+      "observations": {},
+      "artifacts": [
+        {
+          "artifactId": "filesystem.workspace.prepare.path.txt",
+          "path": "artifacts/filesystem.workspace.prepare.path.txt",
+          "sha256": "c7906f55af706ade4eb4d5953c277901dbdc17d3881eeb9c08d24395a231b80e",
+          "bytes": 22
+        },
+        {
+          "artifactId": "cli.cli.create.stdout.txt",
+          "path": "artifacts/cli.cli.create.stdout.txt",
+          "sha256": "0b232f49ba2933459bcda7024f71a36c57d3ea753355067f85c5c990babed641",
+          "bytes": 9238
+        },
+        {
+          "artifactId": "cli.cli.create.stderr.txt",
+          "path": "artifacts/cli.cli.create.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "artifactId": "filesystem.cli.create.tree.json",
+          "path": "artifacts/filesystem.cli.create.tree.json",
+          "sha256": "4186d6f4a6f20865b897cadac7aca5487284c2886f94b7f9a98f1abe3eed00ce",
+          "bytes": 2194
+        },
+        {
+          "artifactId": "cli.cli.create.create-plan.json",
+          "path": "artifacts/cli.cli.create.create-plan.json",
+          "sha256": "e3dbe54cd327d959432c26d037852daa725b605c1333b4bf3b1ae68e790a3cf8",
+          "bytes": 9237
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "d325382287fdb2abfaf38f058fbfc406a2b27fe7c1a7e167df0326ddbfd70bbe",
+          "bytes": 352
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "71c384b4a1fc1546eb87bba07c964be608de350d69432bec5e901de1eb81699c",
+          "bytes": 373
+        },
+        {
+          "artifactId": "browser/ui.navigate.png",
+          "path": "artifacts/browser/ui.navigate.png",
+          "sha256": "f68e25f3edc133cb4db5528797e265e6658f0bf63cb4c4ee27726970332bf1b3",
+          "bytes": 14656
+        }
+      ],
+      "error": "page.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#title, input[name=\"title\"], select[name=\"title\"], textarea[name=\"title\"]')\n",
+      "durationMs": 30004
+    }
+  ],
+  "oracles": [
+    {
+      "id": "plan.recipe-owned-equivalence",
+      "type": "cross-language",
+      "classification": "structural",
+      "proves": "n/a",
+      "doesNotProve": "n/a",
+      "verdict": "failed",
+      "message": "oracle error: artifact \"browser.ui.submit-download.create-plan.json\" not found in evidence bundle"
+    },
+    {
+      "id": "skeleton.tree-replay",
+      "type": "filesystem-tree",
+      "classification": "structural",
+      "proves": "n/a",
+      "doesNotProve": "n/a",
+      "verdict": "failed",
+      "message": "oracle error: artifact \"filesystem.cli.replay-ui-plan.tree.json\" not found in evidence bundle"
+    },
+    {
+      "id": "skeleton.narrative-content",
+      "type": "file-content",
+      "classification": "structural",
+      "proves": "n/a",
+      "doesNotProve": "n/a",
+      "verdict": "failed",
+      "message": "oracle error: ENOENT: no such file or directory, open '{{workspace.prepare.dir}}/from-cli/narrative.yaml'"
+    },
+    {
+      "id": "browser.health",
+      "type": "browser",
+      "classification": "structural",
+      "proves": "n/a",
+      "doesNotProve": "n/a",
+      "verdict": "failed",
+      "message": "oracle error: artifact \"browser.ui.submit-download.console.json\" not found in evidence bundle"
+    }
+  ],
+  "unprovenRequirements": [
+    "REQ-RECIPE-EQUIVALENCE"
+  ],
+  "git": {
+    "sha": "bb0f8b630f9fda5f61250028b7b84218d4a3a582",
+    "branch": "feat/m10-2-1-verification-harness",
+    "dirty": true,
+    "dirtyFiles": [
+      "M verification/src/drivers/cli.ts",
+      "M verification/src/runner/scenario.ts",
+      "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+      "?? docs/reactive-narrative-studio-openspec-evolutives/",
+      "?? docs/seedance-blocking.zip",
+      "?? docs/seedance-blocking/"
+    ]
+  },
+  "environment": {
+    "os": "linux x64",
+    "node": "v25.9.0",
+    "pnpm": "11.9.0",
+    "python": "Python 3.14.7",
+    "browser": "Version 1.63.0"
+  },
+  "evidenceIndex": [
+    {
+      "artifactId": "environment.json",
+      "path": "artifacts/environment.json",
+      "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+      "bytes": 125
+    },
+    {
+      "artifactId": "git.observation.json",
+      "path": "artifacts/git.observation.json",
+      "sha256": "3b51b9c59404bc15e91c793a4effa12ab764577a8f02e10c7dbb89ae184fbd5d",
+      "bytes": 428
+    },
+    {
+      "artifactId": "git.dirty-files.json",
+      "path": "artifacts/git.dirty-files.json",
+      "sha256": "c72f5595559e4660f693d2a31b66a1b743d755606e40a1ea4e8d76cac57efe82",
+      "bytes": 304
+    },
+    {
+      "artifactId": "filesystem.workspace.prepare.path.txt",
+      "path": "artifacts/filesystem.workspace.prepare.path.txt",
+      "sha256": "c7906f55af706ade4eb4d5953c277901dbdc17d3881eeb9c08d24395a231b80e",
+      "bytes": 22
+    },
+    {
+      "artifactId": "cli.cli.create.stdout.txt",
+      "path": "artifacts/cli.cli.create.stdout.txt",
+      "sha256": "0b232f49ba2933459bcda7024f71a36c57d3ea753355067f85c5c990babed641",
+      "bytes": 9238
+    },
+    {
+      "artifactId": "cli.cli.create.stderr.txt",
+      "path": "artifacts/cli.cli.create.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "artifactId": "filesystem.cli.create.tree.json",
+      "path": "artifacts/filesystem.cli.create.tree.json",
+      "sha256": "4186d6f4a6f20865b897cadac7aca5487284c2886f94b7f9a98f1abe3eed00ce",
+      "bytes": 2194
+    },
+    {
+      "artifactId": "cli.cli.create.create-plan.json",
+      "path": "artifacts/cli.cli.create.create-plan.json",
+      "sha256": "e3dbe54cd327d959432c26d037852daa725b605c1333b4bf3b1ae68e790a3cf8",
+      "bytes": 9237
+    },
+    {
+      "artifactId": "process.ui.build.stdout.txt",
+      "path": "artifacts/process.ui.build.stdout.txt",
+      "sha256": "d325382287fdb2abfaf38f058fbfc406a2b27fe7c1a7e167df0326ddbfd70bbe",
+      "bytes": 352
+    },
+    {
+      "artifactId": "process.ui.build.stderr.txt",
+      "path": "artifacts/process.ui.build.stderr.txt",
+      "sha256": "71c384b4a1fc1546eb87bba07c964be608de350d69432bec5e901de1eb81699c",
+      "bytes": 373
+    },
+    {
+      "artifactId": "browser/ui.navigate.png",
+      "path": "artifacts/browser/ui.navigate.png",
+      "sha256": "f68e25f3edc133cb4db5528797e265e6658f0bf63cb4c4ee27726970332bf1b3",
+      "bytes": 14656
+    },
+    {
+      "artifactId": "browser/ui.fill-trace.zip",
+      "path": "artifacts/browser/ui.fill-trace.zip",
+      "sha256": "dea426520779b5cad0c2ef4007570908af421a0b601780857ca24e61b4d55d02",
+      "bytes": 39606
+    },
+    {
+      "artifactId": "browser/ui.fill-failure.png",
+      "path": "artifacts/browser/ui.fill-failure.png",
+      "sha256": "f68e25f3edc133cb4db5528797e265e6658f0bf63cb4c4ee27726970332bf1b3",
+      "bytes": 14656
+    },
+    {
+      "artifactId": "browser/ui.fill-console.json",
+      "path": "artifacts/browser/ui.fill-console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    }
+  ]
+}

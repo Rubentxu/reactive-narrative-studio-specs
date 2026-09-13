@@ -1,0 +1,10 @@
+{
+  "files": [
+    "M verification/src/drivers/cli.ts",
+    "M verification/src/runner/scenario.ts",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/"
+  ]
+}
