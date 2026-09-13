@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-13T17:50:23.872Z
-- git: 49fe7f845ac8d0ceee5e4663a78174b2516de252
-- coverage: 25/56 requirements MAPPED · 31 UNMAPPED · 2/16 UATs executable · 2 waivers
+- generated: 2026-09-13T18:11:05.148Z
+- git: e679554847b488dc9f6b18b8249e6fbec0d4a214
+- coverage: 25/56 requirements MAPPED · 31 UNMAPPED · 3/16 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -39,7 +39,7 @@
 - ⚪ UAT-M10-01 (MANUAL_ONLY) → scenarios: —
 - ⚪ UAT-M10-02-catalog-entity-pages (MANUAL_ONLY) → scenarios: —
 - ⚪ UAT-M10-03-local-search-docs (MANUAL_ONLY) → scenarios: —
-- ⚪ UAT-M10-05-multi-project-catalog (MANUAL_ONLY) → scenarios: —
+- 🟢 UAT-M10-05-multi-project-catalog (EXECUTABLE) → scenarios: scn-m10-05-001.yaml
 - UNMAPPED requirements (7): REQ-CP-001, REQ-CP-002, REQ-CP-003, REQ-CP-004, REQ-CP-005, REQ-CP-006, REQ-CP-007
 
 ## M10.1 — Creation Recipes

@@ -250,3 +250,12 @@ three block unless an applicable waiver exists. Declared verification levels
 Historical per-scenario classification from evidence bundles: a scenario with both PASS
 and FAIL runs is `FLAKY`; only FAIL is `STABLE_FAIL`; only PASS is `STABLE_PASS`.
 Produced by `audit flakiness` (H10).
+
+### Studio Registry
+
+The IndexedDB-backed preferences database (`rns-studio`, object store `projects`)
+holding recent-project metadata only: project id, title, source kind, selected
+file names, last-opened timestamp and favorite flag. It never stores projections,
+docs or narrative content — projects live outside the browser (local
+directories / Git), so deleting the registry never deletes a project (M10.3,
+UAT-M10-05, REQ-MP-2/6).

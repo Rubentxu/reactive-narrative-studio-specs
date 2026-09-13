@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-13T17:50:23.872Z",
-  "gitSha": "49fe7f845ac8d0ceee5e4663a78174b2516de252",
+  "generatedAt": "2026-09-13T18:11:05.148Z",
+  "gitSha": "e679554847b488dc9f6b18b8249e6fbec0d4a214",
   "milestones": [
     {
       "id": "M0",
@@ -231,8 +231,10 @@
           "id": "UAT-M10-05-multi-project-catalog",
           "file": "uat/UAT-M10-05-multi-project-catalog.md",
           "milestone": "M10",
-          "scenarios": [],
-          "status": "MANUAL_ONLY"
+          "scenarios": [
+            "scn-m10-05-001.yaml"
+          ],
+          "status": "EXECUTABLE"
         }
       ],
       "requirements": [
@@ -995,13 +997,6 @@
       "detail": "UAT doc exists but no executable scenario links it yet"
     },
     {
-      "kind": "uat-without-scenario",
-      "ref": "UAT-M10-05-multi-project-catalog",
-      "milestone": "M10",
-      "severity": "HIGH",
-      "detail": "UAT doc exists but no executable scenario links it yet"
-    },
-    {
       "kind": "requirement-unmapped",
       "ref": "REQ-CP-001",
       "milestone": "M10",
@@ -1175,7 +1170,7 @@
     "mapped": 25,
     "unmapped": 31,
     "uats": 16,
-    "executable": 2,
+    "executable": 3,
     "waived": 2
   }
 }
