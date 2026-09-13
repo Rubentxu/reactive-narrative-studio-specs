@@ -41,10 +41,18 @@ const entityRoute = createRoute({
 });
 const createWizardRoute = createRoute({ getParentRoute: () => rootRoute, path: '/create', component: Create });
 
-// Capability catalog routes
+// Capability catalog routes.
+// PR-7 (M10.2.1 baseline audit): /capabilities is a LAYOUT route — without an
+// <Outlet/> here the six kind pages and the detail route never mounted in the
+// built app (caught by SCN-M10-02-001). The overview is now the index route.
 const capabilitiesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/capabilities',
+  component: () => <Outlet />,
+});
+const capabilitiesIndexRoute = createRoute({
+  getParentRoute: () => capabilitiesRoute,
+  path: '/',
   component: CapabilitiesOverview,
 });
 const capabilitiesSkillsRoute = createRoute({
@@ -95,6 +103,7 @@ const routeTree = rootRoute.addChildren([
   createWizardRoute,
   // Capability catalog routes
   capabilitiesRoute,
+  capabilitiesIndexRoute,
   capabilitiesSkillsRoute,
   capabilitiesPacksRoute,
   capabilitiesProfilesRoute,

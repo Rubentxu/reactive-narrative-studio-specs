@@ -4,6 +4,9 @@
  * Isolation tests for capability-catalog feature.
  * Verifies m10 invariants: no fetch, no Dexie/IndexedDB/Orama, no useProjectionStore.
  * Includes UAT-M10-06-3 round-trip no-op proof.
+ *
+ * Requirements: REQ-CR-CAP-10 (isolation), REQ-VAH-STORE-IMMUTABILITY (component-level
+ * round-trip no-op proof; see verification/traceability/waivers.json WVR-M10-2-1-002).
  */
 
 import { describe, it, expect } from 'vitest';

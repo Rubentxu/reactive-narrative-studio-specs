@@ -19,8 +19,23 @@ import { Link, useParams } from '@tanstack/react-router';
 import { useCapabilityManifest } from '../useCapabilityManifest';
 import { selectByEntityRef } from '../capabilitySelectors';
 import { extensionRegistry } from '../../../extensions';
-import '../m16EntityBridge'; // side-effect: register capability-kind extensions
+import { capabilityEntryToCatalogEntity } from '../m16EntityBridge'; // static import: registration + resolver (no require in browser)
 import type { CapabilityEntry } from '../parser';
+
+/**
+ * Route segments are plural (`/capabilities/skills/...`) while the manifest
+ * kind union is singular (`skill`). PR-8 (M10.2.1 baseline audit): without this
+ * normalization the detail page always rendered NotFound — the detail route had
+ * never mounted in the built app before SCN-M10-02-001 exercised it.
+ */
+const KIND_FROM_ROUTE_SEGMENT: Record<string, CapabilityEntry['kind'] | undefined> = {
+  skills: 'skill',
+  packs: 'pack',
+  profiles: 'profile',
+  workflows: 'workflow',
+  providers: 'provider',
+  recipes: 'recipe',
+};
 
 export function CapabilityDetail(): React.ReactElement {
   const params = useParams({} as any);
@@ -32,7 +47,12 @@ export function CapabilityDetail(): React.ReactElement {
     return <NotFound />;
   }
 
-  const entry = selectByEntityRef(manifest, kind as CapabilityEntry['kind'], namespace, name);
+  const manifestKind = KIND_FROM_ROUTE_SEGMENT[String(kind)];
+  if (!manifestKind) {
+    return <NotFound />;
+  }
+
+  const entry = selectByEntityRef(manifest, manifestKind, namespace, name);
 
   if (!entry) {
     return <NotFound />;
@@ -58,10 +78,6 @@ function NotFound(): React.ReactElement {
  * guaranteed even if a different entry path imports CapabilityDetail first.
  */
 function CapabilityDetailBody({ entry }: { entry: CapabilityEntry }): React.ReactElement {
-  // Re-import the bridge (idempotent at module-init level — already imported above)
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { capabilityEntryToCatalogEntity } = require('../m16EntityBridge') as typeof import('../m16EntityBridge');
-
   const entity = capabilityEntryToCatalogEntity(entry);
   const entityRef = { kind: entry.kind, namespace: entry.namespace, name: entry.name };
   const cards = extensionRegistry.resolveEntityCards(entity);
