@@ -1,0 +1,4 @@
+apiVersion: narrative.dev/v1alpha1
+kind: NarrativeProject
+metadata:
+  name: demo-project

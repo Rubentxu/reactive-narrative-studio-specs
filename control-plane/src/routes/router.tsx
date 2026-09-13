@@ -9,6 +9,7 @@ import { Search } from '../views/Search';
 import { Catalog } from '../views/Catalog';
 import { EntityPage } from '../views/EntityPage';
 import { Create } from '../views/Create';
+import { Home } from '../views/Home';
 
 // Capability catalog views
 import { CapabilitiesOverview } from '../features/capability-catalog/views/Overview';
@@ -27,6 +28,7 @@ const rootRoute = createRootRoute({
 });
 
 // Existing routes
+const homeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/home', component: Home });
 const overviewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/overview', component: Overview });
 const storyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/story', component: Story });
 const visualRoute = createRoute({ getParentRoute: () => rootRoute, path: '/visual', component: Visual });
@@ -92,6 +94,7 @@ const capabilityDetailRoute = createRoute({
 });
 
 const routeTree = rootRoute.addChildren([
+  homeRoute,
   overviewRoute,
   storyRoute,
   visualRoute,

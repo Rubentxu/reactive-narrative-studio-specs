@@ -1,0 +1,9 @@
+{
+  "kind": "pack",
+  "id": "pack-character_design",
+  "namespace": "recipe:middle-grade-illustrated",
+  "name": "Character Design Pack",
+  "description": "Protagonist: Backstory complete, Character arc defined, Visual design approved. Deuteragonist: Backstory complete, Character arc defined, Visual design approved. Supporting Cast: List identified, Key relationships mapped.",
+  "path": "/recipes/middle-grade-illustrated/skeleton/packs/characters/character_design.md",
+  "origin": "recipe:middle-grade-illustrated"
+}

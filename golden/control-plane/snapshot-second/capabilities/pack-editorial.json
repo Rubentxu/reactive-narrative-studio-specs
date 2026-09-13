@@ -1,0 +1,9 @@
+{
+  "kind": "pack",
+  "id": "pack-editorial_pass",
+  "namespace": "recipe:middle-grade-illustrated",
+  "name": "Editorial Pass Pack",
+  "description": "Chapter Reviews: Chapter 01 reviewed, Chapter 02 reviewed, Chapter 03 reviewed. Consistency Checks: Character voice consistency, Timeline consistency, Illustration placement review.",
+  "path": "/recipes/middle-grade-illustrated/skeleton/packs/editorial/editorial_pass.md",
+  "origin": "recipe:middle-grade-illustrated"
+}
