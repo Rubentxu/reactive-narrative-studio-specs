@@ -259,3 +259,12 @@ file names, last-opened timestamp and favorite flag. It never stores projections
 docs or narrative content — projects live outside the browser (local
 directories / Git), so deleting the registry never deletes a project (M10.3,
 UAT-M10-05, REQ-MP-2/6).
+
+### Reader UAT Round
+
+One completed pass of the anonymized human-reader feedback form (`/reader-uat`).
+The round report is a local JSONL download (one entry per round) carrying an
+anonymous session reader id, optional reader context and Likert metrics, free-text
+highlights and the editorial-impact link (`revisionImpact` + `manuscriptRevision`).
+Human rounds are stored separately from synthetic-reader output (ADR-019) and are
+never uploaded or persisted in the browser (M11, UAT-M11-01).

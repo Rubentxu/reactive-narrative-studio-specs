@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-13T18:11:05.148Z",
-  "gitSha": "e679554847b488dc9f6b18b8249e6fbec0d4a214",
+  "generatedAt": "2026-09-13T20:28:26.962Z",
+  "gitSha": "e2caefa666c841cbbaa80d1597266b8a85b95e30",
   "milestones": [
     {
       "id": "M0",
@@ -617,7 +617,8 @@
           ],
           "scenarios": [],
           "testRefs": [
-            "control-plane/test/capability-catalog.spec.ts"
+            "control-plane/test/capability-catalog.spec.ts",
+            "control-plane/test/extension-isolation.spec.ts"
           ],
           "status": "MAPPED"
         },
