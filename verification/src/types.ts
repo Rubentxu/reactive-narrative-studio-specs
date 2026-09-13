@@ -21,6 +21,7 @@ export type OracleType =
   | 'file-content'
   | 'golden'
   | 'browser'
+  | 'browser-content'
   | 'cross-language';
 
 export interface ScenarioOracle {
@@ -76,11 +77,15 @@ export interface OracleResult {
     | 'structural'
     | 'static-fitness'
     | 'runtime-health'
-    | 'cross-runtime';
+    | 'cross-runtime'
+    | 'functional';
   proves: string;
   doesNotProve: string;
   verdict: 'passed' | 'failed';
   message: string;
+  /** Set when a failing oracle is covered by a valid waiver (VAH: PASS_WITH_WAIVER, never PASS). */
+  waived?: boolean;
+  waiverId?: string;
   expectedRef?: string;
   actualRef?: string;
   diffRef?: string;
@@ -91,13 +96,14 @@ export interface Verdict {
   scenarioId: string;
   uat: string;
   requirements: string[];
-  overall: 'PASS' | 'FAIL';
+  overall: 'PASS' | 'FAIL' | 'PASS_WITH_WAIVER';
   startedAt: string;
   finishedAt: string;
   steps: StepResult[];
   oracles: OracleResult[];
-  /** Requirements NOT proven by this run when overall is FAIL (VAH-003/VAH-023). */
+  /** Requirements NOT proven by this run when overall is FAIL/PASS_WITH_WAIVER (VAH-003/VAH-023). */
   unprovenRequirements: string[];
+  appliedWaivers: string[];
   git: GitObservation;
   environment: EnvironmentObservation;
   evidenceIndex: EvidenceRef[];

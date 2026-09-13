@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadScenario } from './scenario/loader.ts';
 import { ScenarioRunner } from './runner/scenario.ts';
-import { buildRegistry, renderCoverageMatrix } from './traceability/build.ts';
+import { buildRegistry, renderCoverageMatrix, renderBaseline } from './traceability/build.ts';
 
 const REPO_ROOT = resolveRepoRoot();
 const VERIFICATION_ROOT = join(REPO_ROOT, 'verification');
@@ -60,7 +60,8 @@ async function main(): Promise<number> {
       const registry = await buildRegistry(REPO_ROOT);
       const { jsonPath, matrixPath } = await writeTraceabilityArtifacts(registry);
       if (sub === 'report') console.log(renderCoverageMatrix(registry));
-      else console.log(`traceability registry: ${jsonPath}\ncoverage matrix: ${matrixPath}`);
+      else if (sub === 'baseline') console.log(renderBaseline(registry));
+      else console.log(`traceability registry: ${jsonPath}\ncoverage matrix: ${matrixPath}\nbaseline: ${join(VERIFICATION_ROOT, 'traceability', 'baseline-m0-m10-2.md')}`);
       return 0;
     }
     case 'help':
@@ -87,7 +88,7 @@ async function runOne(file: string, args: CliArgs): Promise<number> {
   const { verdict, runDir } = await runner.run(scenario);
   console.log(`[${verdict.overall}] ${verdict.scenarioId} — evidence: ${runDir}`);
   printOracleSummary(verdict);
-  return verdict.overall === 'PASS' ? 0 : 1;
+  return verdict.overall === 'FAIL' ? 1 : 0;
 }
 
 async function runAll(args: CliArgs): Promise<number> {
@@ -103,7 +104,8 @@ async function runAll(args: CliArgs): Promise<number> {
 
 function printOracleSummary(verdict: Awaited<ReturnType<ScenarioRunner['run']>>['verdict']): void {
   for (const oracle of verdict.oracles) {
-    console.log(`  ${oracle.verdict === 'passed' ? '✅' : '❌'} ${oracle.id}: ${oracle.message}`);
+    const icon = oracle.verdict === 'passed' ? '✅' : oracle.waived ? '⚠️' : '❌';
+    console.log(`  ${icon} ${oracle.id}: ${oracle.message}`);
   }
   for (const step of verdict.steps) {
     if (step.status === 'failed') console.log(`  ❌ step ${step.id}: ${step.error ?? 'failed'}`);
@@ -116,8 +118,10 @@ async function writeTraceabilityArtifacts(registry: Awaited<ReturnType<typeof bu
   await mkdir(outDir, { recursive: true });
   const jsonPath = join(outDir, 'registry.json');
   const matrixPath = join(outDir, 'coverage-matrix.md');
+  const baselinePath = join(outDir, 'baseline-m0-m10-2.md');
   await writeFile(jsonPath, `${JSON.stringify(registry, null, 2)}\n`, 'utf8');
   await writeFile(matrixPath, renderCoverageMatrix(registry), 'utf8');
+  await writeFile(baselinePath, renderBaseline(registry), 'utf8');
   return { jsonPath, matrixPath };
 }
 

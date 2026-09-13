@@ -10,6 +10,7 @@ const ORACLE_TYPES = new Set([
   'file-content',
   'golden',
   'browser',
+  'browser-content',
   'cross-language',
 ]);
 

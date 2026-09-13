@@ -1,0 +1,90 @@
+id: SCN-M10-02-001
+uat: UAT-M10-06
+requirements: [REQ-VAH-BROWSER-AUDIT]
+claims:
+  proves:
+    - La app construida (build+preview) navega de verdad a /capabilities, los seis kind routes y un entity detail real, con DOM capturado como evidence y aserciones declarativas sobre él (UAT funcional M10.2).
+  doesNotProve:
+    - Mutación interna del projection store (cubierto a nivel componente por control-plane/test/capability-catalog.spec.ts; fitness separada de UAT funcional).
+    - Render positivo de cross-links [[Kind:ns/name]] (no existe contenido real con cross-refs; gap aceptado con waiver — ver waivers.json).
+    - Calidad del contenido del catálogo.
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.overview, driver: browser, action: navigate, params: { path: /capabilities } }
+  - { id: ui.kind.skills, driver: browser, action: navigate, params: { path: /capabilities/skills } }
+  - { id: ui.kind.packs, driver: browser, action: navigate, params: { path: /capabilities/packs } }
+  - { id: ui.kind.profiles, driver: browser, action: navigate, params: { path: /capabilities/profiles } }
+  - { id: ui.kind.workflows, driver: browser, action: navigate, params: { path: /capabilities/workflows } }
+  - { id: ui.kind.providers, driver: browser, action: navigate, params: { path: /capabilities/providers } }
+  - { id: ui.kind.recipes, driver: browser, action: navigate, params: { path: /capabilities/recipes } }
+  - { id: ui.detail.skills, driver: browser, action: navigate, params: { path: /capabilities/skills } }
+  - { id: ui.detail.click, driver: browser, action: click, params: { selector: "a.capability-name", waitForUrlContains: "/capabilities/skills/" } }
+oracles:
+  - id: overview.content
+    type: browser-content
+    config:
+      artifact: browser.ui.overview.dom.json
+      urlContains: /capabilities
+      h1Contains: ["Capability Catalog"]
+      linksContain:
+        - /capabilities/skills
+        - /capabilities/packs
+        - /capabilities/profiles
+        - /capabilities/workflows
+        - /capabilities/recipes
+      # providers has no "View all" link by design: count===0 renders the
+      # declared empty-state instead (asserted below, not as a link).
+      textContains: ["No image providers configured"]
+  - id: kinds.skills
+    type: browser-content
+    config:
+      artifact: browser.ui.kind.skills.dom.json
+      h1Contains: ["Skills"]
+      linksContain: ["/capabilities/skills/"]
+  - id: kinds.packs
+    type: browser-content
+    config:
+      artifact: browser.ui.kind.packs.dom.json
+      h1Contains: ["Packs"]
+      linksContain: ["/capabilities/packs/"]
+  - id: kinds.profiles
+    type: browser-content
+    config:
+      artifact: browser.ui.kind.profiles.dom.json
+      h1Contains: ["Profiles"]
+      linksContain: ["/capabilities/profiles/"]
+  - id: kinds.workflows
+    type: browser-content
+    config:
+      artifact: browser.ui.kind.workflows.dom.json
+      h1Contains: ["Comfy Workflows"]
+      linksContain: ["/capabilities/workflows/"]
+  - id: kinds.providers
+    type: browser-content
+    config:
+      artifact: browser.ui.kind.providers.dom.json
+      h1Contains: ["Image Providers"]
+      textContains: ["No image providers configured"]
+  - id: kinds.recipes
+    type: browser-content
+    config:
+      artifact: browser.ui.kind.recipes.dom.json
+      h1Contains: ["Recipes"]
+      linksContain: ["/capabilities/recipes/"]
+  - id: detail.entity
+    type: browser-content
+    config:
+      artifact: browser.ui.detail.click.dom.json
+      urlContains: "/capabilities/skills/"
+      textContains: ["default"]
+      noRawTextContains: ["Capability Not Found"]
+  - id: detail.no-raw-crossref
+    type: browser-content
+    config:
+      artifact: browser.ui.detail.click.dom.json
+      noRawTextContains: ["[["]
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.detail.click.console.json
