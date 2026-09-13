@@ -11,6 +11,7 @@ const ORACLE_TYPES = new Set([
   'golden',
   'browser',
   'browser-content',
+  'browser-evaluate',
   'cross-language',
 ]);
 

@@ -1,0 +1,164 @@
+id: SCN-M10-05-001
+uat: UAT-M10-05
+requirements: [REQ-MP-1, REQ-MP-3, REQ-MP-4, REQ-MP-5]
+claims:
+  proves:
+    - Dos snapshots de proyecto independientes se cargan simultáneamente con identidad runtime propia; Studio Home lista ambos; el Catalog filtra/alterna por proyecto; el registro IndexedDB solo contiene metadatos; borrar las preferencias IndexedDB no afecta a los proyectos (los mismos ficheros vuelven a cargarse).
+  doesNotProve:
+    - Sink por directorio (showDirectoryPicker nativo no automatizable en headless).
+    - Reapertura automática de un proyecto sin re-seleccionar ficheros (el navegador no expone rutas locales).
+    - Layout configurable de widgets del Studio Home (fuera del slice).
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.home-initial, driver: browser, action: navigate, params: { path: /home } }
+  - id: ui.load-a
+    driver: browser
+    action: set-input-files
+    params:
+      selector: 'input[aria-label="Load snapshot"]'
+      files:
+        - golden/control-plane/snapshot-valid/**
+      waitForText: { selector: ".source-picker", contains: "Demo Project" }
+  - id: ui.load-b
+    driver: browser
+    action: set-input-files
+    params:
+      selector: 'input[aria-label="Load snapshot"]'
+      files:
+        - golden/control-plane/snapshot-second/**
+      waitForText: { selector: ".source-picker", contains: "Demo Project B" }
+  - { id: ui.home-verify, driver: browser, action: click, params: { selector: ".source-picker-home-link", waitForUrlContains: "/home" } }
+  - { id: ui.catalog, driver: browser, action: click, params: { selector: ".home-catalog-link", waitForUrlContains: "/catalog" } }
+  - { id: ui.filter-a, driver: browser, action: click, params: { selector: '.catalog-project-chip[data-project-id="demo-project"]', waitForUrlContains: "/catalog" } }
+  - id: ui.active-a
+    driver: browser
+    action: evaluate
+    params:
+      script: "({ activeProject: document.querySelector('.catalog-project-chip.active')?.textContent ?? null, heading: document.querySelector('.view-catalog h1')?.textContent ?? null })"
+  - { id: ui.filter-b, driver: browser, action: click, params: { selector: '.catalog-project-chip[data-project-id="demo-project-b"]', waitForUrlContains: "/catalog" } }
+  - id: ui.active-b
+    driver: browser
+    action: evaluate
+    params:
+      script: "({ activeProject: document.querySelector('.catalog-project-chip.active')?.textContent ?? null, heading: document.querySelector('.view-catalog h1')?.textContent ?? null })"
+  - id: ui.idb-inspect
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (async () => {
+          const open = await new Promise((resolve, reject) => {
+            const req = indexedDB.open('rns-studio');
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+          });
+          const stores = Array.from(open.objectStoreNames);
+          const tx = open.transaction('projects', 'readonly');
+          const records = await new Promise((resolve, reject) => {
+            const req = tx.objectStore('projects').getAll();
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+          });
+          open.close();
+          const forbidden = ['bundle', 'projections', 'docs', 'chapters', 'characters', 'decisions', 'uat', 'history'];
+          const forbiddenHits = [];
+          const keyUnion = new Set();
+          for (const record of records) {
+            for (const key of Object.keys(record)) {
+              keyUnion.add(key);
+              if (forbidden.includes(key)) forbiddenHits.push(key);
+            }
+          }
+          return {
+            stores,
+            recordCount: records.length,
+            projectIds: records.map((r) => r.projectId).sort(),
+            recordKeys: Array.from(keyUnion).sort(),
+            forbiddenKeyHits: forbiddenHits,
+          };
+        })()
+  - id: ui.delete-idb
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (async () => await new Promise((resolve, reject) => {
+          const req = indexedDB.deleteDatabase('rns-studio');
+          req.onsuccess = () => resolve({ deleted: true });
+          req.onerror = () => reject(req.error);
+          req.onblocked = () => resolve({ deleted: true, blocked: true });
+        }))()
+  - { id: ui.home-after-delete, driver: browser, action: navigate, params: { path: /home } }
+  - id: ui.reload-a
+    driver: browser
+    action: set-input-files
+    params:
+      selector: 'input[aria-label="Load snapshot"]'
+      files:
+        - golden/control-plane/snapshot-valid/**
+      waitForText: { selector: ".source-picker", contains: "Demo Project" }
+  - id: ui.state-after-reload
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (async () => {
+          const open = await new Promise((resolve, reject) => {
+            const req = indexedDB.open('rns-studio');
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+          });
+          const tx = open.transaction('projects', 'readonly');
+          const records = await new Promise((resolve, reject) => {
+            const req = tx.objectStore('projects').getAll();
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+          });
+          open.close();
+          return { registryAfterReload: records.map((r) => r.projectId).sort() };
+        })()
+oracles:
+  - id: home.lists-both-projects
+    type: browser-content
+    config:
+      artifact: browser.ui.home-verify.dom.json
+      h1Contains: ["Studio Home"]
+      textContains: ["Demo Project", "Demo Project B", "demo-project", "demo-project-b", "loaded in runtime"]
+  - id: catalog.filter-project-a
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.active-a.eval.json
+      expected: { activeProject: "demo-project", heading: "Catalog — Demo Project" }
+      ignoredPaths: []
+  - id: catalog.filter-project-b
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.active-b.eval.json
+      expected: { activeProject: "demo-project-b", heading: "Catalog — Demo Project B" }
+      ignoredPaths: []
+  - id: idb.preferences-schema-only
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.idb-inspect.eval.json
+      expected:
+        stores: ["projects"]
+        recordCount: 2
+        projectIds: ["demo-project", "demo-project-b"]
+        recordKeys: ["favorite", "fileNames", "lastOpenedAt", "projectId", "sourceKind", "title"]
+        forbiddenKeyHits: []
+  - id: idb.delete-preferences-safe
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.state-after-reload.eval.json
+      expected: { registryAfterReload: ["demo-project"] }
+  - id: home.after-delete-empty
+    type: browser-content
+    config:
+      artifact: browser.ui.home-after-delete.dom.json
+      h1Contains: ["Studio Home"]
+      textContains: ["No recent projects recorded."]
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.reload-a.console.json

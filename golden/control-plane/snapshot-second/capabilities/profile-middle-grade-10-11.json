@@ -1,0 +1,11 @@
+{
+  "kind": "profile",
+  "id": "profile-middle-grade-10-11",
+  "namespace": "default",
+  "name": "profile-middle-grade-10-11",
+  "audience": "middle-grade",
+  "format": "illustrated-book",
+  "voice": "playful",
+  "guardrails": ["graphic-violence", "explicit-romance"],
+  "path": "/examples/middle-grade-profile.yaml"
+}

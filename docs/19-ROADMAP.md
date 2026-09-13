@@ -124,18 +124,27 @@ compares the emitted create-plans with explicit cross-language oracles.
   (v0.11.0, v0.12.0, v0.13.0). Spec:
   `docs/reactive-narrative-studio-openspec-evolutives/changes/m10-2-1-verification-audit-harness/`.
 
-## M10.3 — Multi-Project Local Studio
+## M10.3 — Multi-Project Local Studio — DELIVERED (v0.14.0)
 
 ### Deliver
-- IndexedDB recent-project registry;
+- IndexedDB recent-project registry (metadata only);
 - favorites;
-- multi-project catalog;
+- multi-project catalog (project filter);
 - local Studio Home.
 
 ### UAT
-`UAT-M10-05`.
+`UAT-M10-05` — executable: `SCN-M10-05-001` (verification/scenarios/).
 
-No central catalog DB.
+No central catalog DB: the only local database is the preferences registry
+(`rns-studio/projects`), asserted by the scenario (store list + record keys).
+
+### Implementation notes
+- Multi-project runtime: loaded projects keep independent identities; the
+  Catalog switches the active project without reloading the app.
+- Home (`/home`): Continue Working, Recent Projects, favorites, forget.
+- Defects found by the executable UAT and fixed: snapshot docs basename
+  matching for real file inputs; Home stale registry list; Catalog heading
+  identity; registry backend state loss.
 
 ## M11 — Human Reader UAT
 

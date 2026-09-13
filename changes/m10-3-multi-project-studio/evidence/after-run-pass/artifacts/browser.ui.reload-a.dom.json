@@ -1,0 +1,18 @@
+{
+  "url": "http://localhost:4173/home",
+  "title": "Control Plane",
+  "h1s": [
+    "Studio Home"
+  ],
+  "h2s": [
+    "Load Project",
+    "Continue Working",
+    "Recent Projects",
+    "Open a project"
+  ],
+  "links": [
+    "/home",
+    "/catalog"
+  ],
+  "bodyText": "Load Project Studio Home Source: Demo Project Current status: loaded Open Directory (Chromium) Studio Home Continue Working No projects yet. Open one below. Recent Projects No recent projects recorded. Open a project Use the Load Project panel above to choose project files or a directory — Studio Home only stores project metadata, never narrative content. Active project: demo-project Browse catalog"
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "control-plane/decisions/v1",
+  "generatedAt": "2026-01-01T00:00:00Z",
+  "sourceRevision": "abc123",
+  "decisions": [
+    {
+      "id": "silver-key",
+      "action": "Accept the silver key — the llave plateada that anchors the narrative",
+      "targetRef": "Scene:demo/scene-silver-key",
+      "date": "2026-01-01T00:00:00Z",
+      "status": "accepted"
+    },
+    {
+      "id": "nora-arc",
+      "action": "Pursue Nora character arc through the archive",
+      "targetRef": "Character:demo/nora",
+      "date": "2026-01-02T00:00:00Z",
+      "status": "pending"
+    },
+    {
+      "id": "iron-door",
+      "action": "Open the iron door for protagonist progression",
+      "targetRef": "Asset:demo/iron-door",
+      "date": "2026-01-03T00:00:00Z",
+      "status": "rejected"
+    }
+  ]
+}

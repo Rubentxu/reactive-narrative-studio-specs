@@ -309,6 +309,38 @@ export class ScenarioRunner {
         await deps.browser.captureDom(`browser.${step.id}.dom.json`);
         return { clicked: selector, url: page.url() };
       }
+      case 'browser.set-input-files': {
+        const page = deps.browser.page;
+        if (!page) throw new Error('browser page not launched');
+        const selector = String(params.selector ?? 'input[type="file"]');
+        const patterns = (params.files ?? []) as string[];
+        const resolved = await expandFilePatterns(patterns, this.config.repoRoot);
+        if (resolved.length === 0) throw new Error(`set-input-files: no files matched ${JSON.stringify(patterns)}`);
+        await page.setInputFiles(selector, resolved);
+        const wait = params.waitForText as { selector?: string; contains?: string } | undefined;
+        const waitContains = wait?.contains;
+        if (waitContains) {
+          const waitSelector = wait?.selector ?? 'body';
+          await page.waitForFunction(
+            ([sel, text]) => (document.querySelector(sel as string)?.textContent ?? '').includes(text as string),
+            [waitSelector, waitContains],
+            { timeout: 30_000 },
+          );
+        }
+        await deps.browser.screenshot(`${step.id}.png`);
+        await deps.browser.captureConsole(`browser.${step.id}.console.json`);
+        await deps.browser.captureDom(`browser.${step.id}.dom.json`);
+        return { files: resolved.map((f) => f.split('/').pop()), count: resolved.length };
+      }
+      case 'browser.evaluate': {
+        const page = deps.browser.page;
+        if (!page) throw new Error('browser page not launched');
+        const script = String(params.script);
+        const result = await page.evaluate(script);
+        await deps.run.writeJson(`browser.${step.id}.eval.json`, result);
+        await deps.browser.screenshot(`${step.id}.png`);
+        return { evaluated: true, resultSummary: JSON.stringify(result).slice(0, 200) };
+      }
       case 'browser.fill-wizard': {
         const page = deps.browser.page;
         if (!page) throw new Error('browser page not launched');
@@ -390,6 +422,32 @@ function lookup(key: string, stepOutputs: Map<string, Record<string, unknown>>):
 function resolvePath(path: string, repoRoot: string): string {
   if (path.startsWith('/')) return path;
   return join(repoRoot, path);
+}
+
+/**
+ * Expand file patterns (globs supported) into absolute paths for
+ * browser.set-input-files. Patterns without wildcards are literal paths.
+ */
+export async function expandFilePatterns(patterns: string[], repoRoot: string): Promise<string[]> {
+  const { globSync } = await import('node:fs');
+  const { statSync } = await import('node:fs');
+  const out: string[] = [];
+  for (const pattern of patterns) {
+    const absolute = resolvePath(pattern, repoRoot);
+    if (/[*?[\]]/.test(pattern) && typeof globSync === 'function') {
+      for (const match of globSync(absolute)) {
+        const path = String(match);
+        try {
+          if (statSync(path).isFile()) out.push(path);
+        } catch {
+          // vanished between glob and stat: ignore
+        }
+      }
+    } else {
+      out.push(absolute);
+    }
+  }
+  return [...new Set(out)].sort();
 }
 
 /**

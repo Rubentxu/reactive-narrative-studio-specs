@@ -1,0 +1,11 @@
+{
+  "schema": "control-plane/visual-quality/v1",
+  "generatedAt": "2026-01-01T00:00:00Z",
+  "sourceRevision": "abc123",
+  "visualQuality": {
+    "overallStatus": "pass",
+    "continuityStatus": "pass",
+    "editorialStatus": "pass",
+    "readabilityStatus": "pass"
+  }
+}

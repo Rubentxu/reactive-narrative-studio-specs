@@ -1,0 +1,10 @@
+{
+  "kind": "workflow",
+  "id": "workflow-sdxl-illustrated-page",
+  "namespace": "default",
+  "name": "sdxl-illustrated-page",
+  "provider": "comfyui",
+  "model": "sdxl-1.0",
+  "description": "Reference ComfyUI workflow for an illustrated-book page. One shot in, one asset out, one cp-visual-quality verdict emitted.",
+  "path": "/control-plane/workflows/comfyui/sdxl-illustrated-page.workflow.json"
+}

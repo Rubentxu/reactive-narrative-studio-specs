@@ -1,0 +1,7 @@
+{
+  "os": "linux x64",
+  "node": "v25.9.0",
+  "pnpm": "11.9.0",
+  "python": "Python 3.14.7",
+  "browser": "Version 1.63.0"
+}

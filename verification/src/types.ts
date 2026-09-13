@@ -22,6 +22,7 @@ export type OracleType =
   | 'golden'
   | 'browser'
   | 'browser-content'
+  | 'browser-evaluate'
   | 'cross-language';
 
 export interface ScenarioOracle {

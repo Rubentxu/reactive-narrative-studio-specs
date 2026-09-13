@@ -283,7 +283,10 @@ export function loadDocs(
         };
       }
 
-      const docFile = files.find((f) => f.name === `docs/${docPath}` || f.name === docPath);
+      // Browser file inputs hand over basenames only (no directory prefixes),
+      // so match on the basename as well (M10.3: real file-input flow needs it).
+      const baseName = docPath.split('/').pop() ?? docPath;
+      const docFile = files.find((f) => f.name === `docs/${docPath}` || f.name === docPath || f.name === baseName);
       if (!docFile) {
         return {
           ok: false,

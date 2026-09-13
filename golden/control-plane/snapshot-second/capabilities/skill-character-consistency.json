@@ -1,0 +1,9 @@
+{
+  "kind": "skill",
+  "id": "skill-character-consistency",
+  "namespace": "default",
+  "name": "character-consistency",
+  "purpose": "The `character-consistency` skill provides a multi-layered validation framework for maintaining character integrity across a narrative project. It addresses the primary consistency failure modes — idiolect drift, profile cross-reference rupture, dialogue tag inconsistency, POV breach, and voice degradation — and provides a character arc tracking layer to ensure that character growth is earned rather than asserted.",
+  "path": "/examples/skills/character-consistency/SKILL.md",
+  "origin": "global"
+}

@@ -1,0 +1,5 @@
+apiVersion: narrative.dev/v1alpha1
+kind: Character
+metadata:
+  name: nora
+  namespace: demo

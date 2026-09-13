@@ -1,0 +1,9 @@
+{
+  "kind": "skill",
+  "id": "skill-narrative-arc",
+  "namespace": "default",
+  "name": "narrative-arc",
+  "purpose": "The `narrative-arc` skill provides a structured decision framework for selecting and applying canonical story structure models. It helps authors and content systems choose the right narrative architecture for a given genre, target audience, and intended length — then execute that structure consistently from outline through final draft.",
+  "path": "/examples/skills/narrative-arc/SKILL.md",
+  "origin": "global"
+}
