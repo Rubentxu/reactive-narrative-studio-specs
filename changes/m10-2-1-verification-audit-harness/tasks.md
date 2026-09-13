@@ -22,47 +22,47 @@ B6  Docs            (glossary/roadmap/readme + receipts)
 ## Tareas
 
 ### B0 — Bootstrap + Evidence Core + Drivers base (H0, H2, H3 parcial)
-- [ ] T0.1 `verification/` scaffold: package.json, tsconfig, vitest, scripts (`verify`, `uat`).
-- [ ] T0.2 Core types (Scenario, Step, OracleResult, Verdict, EvidenceRef) + ScenarioLoader (YAML).
-- [ ] T0.3 EvidenceStore: bundle layout, runId, events.jsonl, hashes.sha256, inmutabilidad.
-- [ ] T0.4 EnvironmentProbe + GitProbe (VAH-007/008).
-- [ ] T0.5 ProcessDriver + CliDriver + FilesystemDriver (temp workspace, tree, hashes, before/after) con timeout/redaction.
-- [ ] T0.6 Runner mínimo + scenario trivial `verification/scenarios/trivial.yaml` → run.json (AC-1).
-- [ ] T0.7 Tests unitarios del core + architecture test (0 imports de verification/ en producción).
+- [x] T0.1 `verification/` scaffold: package.json, tsconfig, vitest, scripts (`verify`, `uat`).
+- [x] T0.2 Core types (Scenario, Step, OracleResult, Verdict, EvidenceRef) + ScenarioLoader (YAML).
+- [x] T0.3 EvidenceStore: bundle layout, runId, events.jsonl, hashes.sha256, inmutabilidad.
+- [x] T0.4 EnvironmentProbe + GitProbe (VAH-007/008).
+- [x] T0.5 ProcessDriver + CliDriver + FilesystemDriver (temp workspace, tree, hashes, before/after) con timeout/redaction.
+- [x] T0.6 Runner mínimo + scenario trivial `verification/scenarios/trivial.yaml` → run.json (AC-1).
+- [x] T0.7 Tests unitarios del core + architecture test (0 imports de verification/ en producción).
 
 ### B1 — Browser + Oracles + Debug (H3/H4/H5)
-- [ ] T1.1 BrowserDriver (Playwright): launch, navigate, fill/click, download capture, trace/screenshot/console/pageerror.
-- [ ] T1.2 Oracles: Schema, SemanticJson (canonical recursivo NFC + ignoredPaths con reason), FilesystemTree, FileContent, Golden, Browser, CrossLanguage.
-- [ ] T1.3 Verdict/report (machine JSON + markdown) con refs requirement/scenario/step/oracle (VAH-023).
-- [ ] T1.4 Diff expected-vs-actual + debug plane on failure (VAH-010/011).
-- [ ] T1.5 Tests unitarios oracles/drivers.
+- [x] T1.1 BrowserDriver (Playwright): launch, navigate, fill/click, download capture, trace/screenshot/console/pageerror.
+- [x] T1.2 Oracles: Schema, SemanticJson (canonical recursivo NFC + ignoredPaths con reason), FilesystemTree, FileContent, Golden, Browser, CrossLanguage.
+- [x] T1.3 Verdict/report (machine JSON + markdown) con refs requirement/scenario/step/oracle (VAH-023).
+- [x] T1.4 Diff expected-vs-actual + debug plane on failure (VAH-010/011).
+- [x] T1.5 Tests unitarios oracles/drivers.
 
 ### B2 — Traceability (H1)
-- [ ] T2.1 Schema del registry (IDs estables VAH-002) + builder desde roadmap/uat/changes.
-- [ ] T2.2 Inventario M0–M10.2 + vinculación UAT existentes + detección de IDs rotos.
-- [ ] T2.3 Coverage matrix (MAPPED/UNMAPPED) + report.
+- [x] T2.1 Schema del registry (IDs estables VAH-002) + builder desde roadmap/uat/changes.
+- [x] T2.2 Inventario M0–M10.2 + vinculación UAT existentes + detección de IDs rotos.
+- [x] T2.3 Coverage matrix (MAPPED/UNMAPPED) + report.
 
 ### B3 — H6 before (audit real UAT-M10-04)
-- [ ] T3.1 `SCN-M10-04-001` en `verification/scenarios/` (workspace.prepare → cli.create → ui.create → oracles).
-- [ ] T3.2 Ejecución real: CLI Python + preview server + Playwright Chromium.
-- [ ] T3.3 Registrar verdict baseline (se espera FAIL por exploración) + evidence bundle before.
-- [ ] T3.4 Documentar false-green exacto (tests que afirmaban equivalencia sin ejecutarla).
+- [x] T3.1 `SCN-M10-04-001` en `verification/scenarios/` (workspace.prepare → cli.create → ui.create → oracles).
+- [x] T3.2 Ejecución real: CLI Python + preview server + Playwright Chromium.
+- [x] T3.3 Registrar verdict baseline (se espera FAIL por exploración) + evidence bundle before.
+- [x] T3.4 Documentar false-green exacto (tests que afirmaban equivalencia sin ejecutarla).
 
 ### B4 — Corrección de producción (PR-1..PR-5, fuera de verification/)
-- [ ] T4.1 PR-1 CreateWizard: render real + RecipePlanEmitter (manifest/skeleton/sha reales, sin require()).
-- [ ] T4.2 PR-2 FileSystemAccessSink: escribir renderizado + plan emitido.
-- [ ] T4.3 PR-3 equivalenceOracle.ts: canonicalización recursiva igual a Python.
-- [ ] T4.4 PR-4 templateEngine.spec.ts: leer fixtures reales.
-- [ ] T4.5 PR-5 roundtrip.spec.ts / test_roundtrip.py: claims honestos (unitarios); equivalencia → Harness.
+- [x] T4.1 PR-1 CreateWizard: render real + RecipePlanEmitter (manifest/skeleton/sha reales, sin require()).
+- [x] T4.2 PR-2 FileSystemAccessSink: escribir renderizado + plan emitido.
+- [x] T4.3 PR-3 equivalenceOracle.ts: canonicalización recursiva igual a Python.
+- [x] T4.4 PR-4 templateEngine.spec.ts: leer fixtures reales.
+- [x] T4.5 PR-5 roundtrip.spec.ts / test_roundtrip.py: claims honestos (unitarios); equivalencia → Harness.
 
 ### B5 — H6 after
-- [ ] T5.1 Re-ejecutar SCN-M10-04-001 → evidence bundle after.
-- [ ] T5.2 Informe before/after + verdict final (PASS esperado; FAIL documentado si persiste).
-- [ ] T5.3 `narrative init --plan` sobre el plan UI (productor CLI consume plan UI) verificado.
+- [x] T5.1 Re-ejecutar SCN-M10-04-001 → evidence bundle after.
+- [x] T5.2 Informe before/after + verdict final (PASS esperado; FAIL documentado si persiste).
+- [x] T5.3 `narrative init --plan` sobre el plan UI (productor CLI consume plan UI) verificado.
 
 ### B6 — Docs + cierre
-- [ ] T6.1 Glossary/roadmap/README updates + MANIFEST regen si aplica.
-- [ ] T6.2 Receipts del ciclo + handoff notes.
+- [x] T6.1 Glossary/roadmap/README updates + MANIFEST regen si aplica.
+- [x] T6.2 Receipts del ciclo + handoff notes.
 
 ## Coverage Matrix
 

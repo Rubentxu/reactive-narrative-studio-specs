@@ -90,6 +90,22 @@ Catalog projections/pages for:
 ### Goal
 Make the Studio explain the creative toolchain as well as individual books.
 
+## M10.2.1 — Verification & Audit Harness (slice H0→H6) — IN PROGRESS
+
+**UAT-M10-04** now executes for real via the independent Harness (`verification/`, TS+Playwright):
+`SCN-M10-04-001` runs the Python CLI and the Control Plane wizard in a real browser and
+compares the emitted create-plans with explicit cross-language oracles.
+
+- Baseline BEFORE run (2026-09-13): **FAIL** — exposed the false-green: `/create` never
+  mounted (root route without `<Outlet/>`), wizard plan emission broken, sink wrote raw
+  templates, round-trip tests never executed both runtimes.
+- Production fixes PR-1..PR-6 applied outside the Harness; AFTER run: **PASS** with full
+  evidence bundle (before/after in `changes/m10-2-1-verification-audit-harness/evidence/`).
+- Traceability Registry (H1) Git-native: `verification/traceability/registry.json` +
+  coverage matrix M0–M10.2.
+- Pending in this milestone (H7→H10): M10.2 browser audit, M0–M10.2 baseline, CI Audit
+  Gate, hardening. Spec: `docs/reactive-narrative-studio-openspec-evolutives/changes/m10-2-1-verification-audit-harness/`.
+
 ## M10.3 — Multi-Project Local Studio
 
 ### Deliver

@@ -204,3 +204,34 @@ files (skills, packs, profiles, workflows, recipes) at module init,
 preserving the m10 serverless invariant (no runtime `fetch()`). The
 runtime never makes network calls; the manifest is pre-computed. M10.2
 design choice DD-1.
+
+### Verification & Audit Harness
+
+The independent verification package (`verification/`, TypeScript + Playwright)
+introduced by M10.2.1. It executes UAT scenarios against the real system (CLI
+processes, browser, filesystem) and derives verdicts from explicit oracles over
+immutable evidence bundles. Production code MUST NOT import from `verification/`
+(VAH-001). See [`changes/m10-2-1-verification-audit-harness/spec.md`](changes/m10-2-1-verification-audit-harness/spec.md).
+
+### Evidence Bundle
+
+The immutable, per-run output directory of the Harness
+(`verification/evidence/<runId>/`): `run.json`, `verdict.json`, `events.jsonl`,
+environment/git probes, browser traces, filesystem snapshots, and a
+`hashes.sha256` index. Every artifact is SHA-256 hashed; re-execution creates a
+new `runId` and never overwrites history (VAH-007/014/025).
+
+### Oracle
+
+A verification component that decides PASS/FAIL over captured observations and
+artifacts. Every oracle declares a classification and its epistemic claims —
+what it proves and what it does NOT prove (e.g. a filesystem-tree oracle proves
+structural equality, not narrative quality). Cross-language equivalence (VAH-012)
+MUST be demonstrated by oracles over artifacts produced by both real runtimes.
+
+### False Green
+
+A green test that does not demonstrate the acceptance criterion it claims to.
+Closed by M10.2.1 for Creation Recipes: the harness baseline run exposed that
+`/create` never mounted in the built app and that "round-trip" tests compared
+hand-written fixtures instead of executing both runtimes.
