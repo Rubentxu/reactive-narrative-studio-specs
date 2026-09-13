@@ -32,8 +32,10 @@ export class CliDriver {
   async run(args: string[], cwd: string, artifactPrefix: string): Promise<ProcessResult> {
     return this.process.execute(
       {
+        // narrative_cli has no __main__.py; the console-script entry point is
+        // narrative_cli.cli:main, invoked here without requiring installation.
         cmd: this.config.pythonBin ?? 'python3',
-        args: ['-m', 'narrative_cli', ...args],
+        args: ['-c', 'from narrative_cli.cli import main; main()', ...args],
         cwd,
         envAllowlist: ['PATH', 'HOME', 'LANG', 'LC_ALL', 'VIRTUAL_ENV'],
         env: this.narrativeEnv(),
