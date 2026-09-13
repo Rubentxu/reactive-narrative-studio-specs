@@ -1,16 +1,17 @@
 """
-test_roundtrip.py — cross-language equivalence oracle for creation recipes.
+test_roundtrip.py — Python-side unit guarantees for recipe rendering (PR-5, M10.2.1).
 
-Both Python and TypeScript template engines render the same recipe with the same
-canonical parameters and must produce canonical-JSON-equivalent output.
+This file previously claimed to be a "cross-language equivalence oracle", but it
+only rendered with Python and asserted on Python's own output — the TypeScript
+runtime was never executed (false-green identified by the Verification & Audit
+Harness).
 
-This test is the S-02 cross-language equivalence oracle.  It reads the canonical
-recipe (middle-grade-illustrated) and canonical parameters, renders the skeleton
-via the Python engine, and compares the manifest against the TypeScript output
-(which is tested in roundtrip.spec.ts using the same recipe and parameters).
+The REAL cross-language equivalence (CLI ↔ UI, both runtimes executing for real)
+is owned by scenario SCN-M10-04-001 in verification/scenarios/, run by the
+Verification & Audit Harness (`node verification/src/index.ts uat all`).
 
-The canonicalJsonEqual oracle is used so that ordering and timestamp differences
-do not cause false failures.
+What remains here are honest unit-level guarantees of the Python renderer and
+the canonical-JSON oracle itself.
 """
 
 import json

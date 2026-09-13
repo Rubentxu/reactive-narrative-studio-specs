@@ -1,4 +1,4 @@
-import { createRouter, createRootRoute, createRoute } from '@tanstack/react-router';
+import { createRouter, createRootRoute, createRoute, Outlet } from '@tanstack/react-router';
 import { SourcePicker } from '../app/SourcePicker';
 import { Overview } from '../views/Overview';
 import { Story } from '../views/Story';
@@ -15,7 +15,16 @@ import { CapabilitiesOverview } from '../features/capability-catalog/views/Overv
 import { KindList } from '../features/capability-catalog/views/KindList';
 import { CapabilityDetail } from '../features/capability-catalog/views/CapabilityDetail';
 
-const rootRoute = createRootRoute({ component: SourcePicker });
+// Root layout: SourcePicker remains the project-loading surface, but child
+// routes (e.g. /create) only mount through <Outlet/> (PR-6, M10.2.1 audit).
+const rootRoute = createRootRoute({
+  component: () => (
+    <>
+      <SourcePicker />
+      <Outlet />
+    </>
+  ),
+});
 
 // Existing routes
 const overviewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/overview', component: Overview });

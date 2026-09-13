@@ -38,16 +38,18 @@ async function write(
 
   const written: Array<{ path: string; sha256: string }> = [];
 
-  // Write each skeleton file
-  for (const [path, content] of Object.entries(skeletonContents)) {
-    const handle = await dirHandle.getFileHandle(path, { create: true });
+  // Write each skeleton file — RENDERED content from the plan (PR-2, M10.2.1);
+  // falls back to the caller-provided map only for plans without content.
+  for (const entry of plan.skeleton) {
+    const content = entry.content ?? skeletonContents[entry.path] ?? '';
+    const handle = await dirHandle.getFileHandle(entry.path, { create: true });
     const writable = await handle.createWritable();
     // Normalize line endings to LF, UTF-8
     const normalized = content.replace(/\r\n/g, '\n');
     await writable.write(normalized);
     await writable.close();
-    const sha = await sha256(content);
-    written.push({ path, sha256: sha });
+    const sha = await sha256(normalized);
+    written.push({ path: entry.path, sha256: sha });
   }
 
   // Write .narrative/create-plan.json

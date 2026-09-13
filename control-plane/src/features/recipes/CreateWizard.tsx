@@ -1,17 +1,20 @@
 /**
  * CreateWizard — creation recipe form at /create route.
  *
- * Simplifed form using plain React inputs + submit.
- * Uses recipe schema via useRecipeLoader (import.meta.glob).
+ * Renders the recipe skeleton with the TS template engine and emits a
+ * CLI-consumable create-plan.json via RecipePlanEmitter (PR-1, M10.2.1 audit).
+ * The manifest is parsed from the rendered narrative.yaml — the same source of
+ * truth as the Python CLI (yaml.safe_load of the rendered template).
  *
  * NEVER imports useProjectionStore — no state changes (per REQ-CR-12).
- * Emits create-plan.json via RecipePlanEmitter on submit.
  */
 
 import { useState, useEffect } from 'react';
+import { parse } from 'yaml';
+import { TemplateEngine, TemplateError } from '../../recipes/templateEngine';
 import { fileSystemAccessSink } from './FileSystemAccessSink';
 import { downloadPlanSink } from './DownloadPlanSink';
-import type { RenderResult } from '@recipes/projectRenderer';
+import { emitPlan, recipeLockSha256 } from './RecipePlanEmitter';
 import type { CreatePlan } from './RecipePlanEmitter';
 
 interface WizardState {
@@ -20,12 +23,17 @@ interface WizardState {
   projectId: string;
   audience: string;
   skeletonContents: Record<string, string>;
+  lockData: Record<string, unknown> | null;
   status: 'idle' | 'loading' | 'ready' | 'submitting' | 'done' | 'error';
   error: string | null;
+  info: string | null;
 }
 
 /** Load skeleton file contents for a recipe (Vite glob). */
 const skeletonGlobs = import.meta.glob('/recipes/*/skeleton/**/*', { query: '?raw', import: 'default', eager: false }) as Record<string, () => Promise<string>>;
+
+/** Load recipe.lock.json files (Vite glob, raw JSON text). */
+const lockGlobs = import.meta.glob('/recipes/*/recipe.lock.json', { query: '?raw', import: 'default', eager: false }) as Record<string, () => Promise<string>>;
 
 async function loadSkeletonContents(recipeId: string): Promise<Record<string, string>> {
   const prefix = `/recipes/${recipeId}/skeleton/`;
@@ -40,29 +48,11 @@ async function loadSkeletonContents(recipeId: string): Promise<Record<string, st
   return Object.fromEntries(entries);
 }
 
-/** Render skeleton template files using the TS template engine (pure, no I/O). */
-function renderSkeletons(
-  skeletonContents: Record<string, string>,
-  params: Record<string, unknown>,
-): { renderResult: RenderResult } {
-  const { TemplateEngine } = require('../../recipes/templateEngine');
-  const engine = new TemplateEngine();
-  const manifest: Record<string, unknown> = {};
-
-  for (const [_path, content] of Object.entries(skeletonContents)) {
-    engine.render(content, params); // throws TemplateError on forbidden patterns
-  }
-
-  return {
-    renderResult: {
-      ok: true,
-      code: 'render-ok',
-      message: 'Rendered successfully',
-      skeletonFiles: skeletonContents,
-      manifest,
-      warnings: [],
-    },
-  };
+async function loadLockData(recipeId: string): Promise<Record<string, unknown> | null> {
+  const key = `/recipes/${recipeId}/recipe.lock.json`;
+  const loader = lockGlobs[key];
+  if (!loader) return null;
+  return JSON.parse(await loader()) as Record<string, unknown>;
 }
 
 export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipeId?: string }) {
@@ -72,23 +62,27 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
     projectId: '',
     audience: 'profile-middle-grade-10-11',
     skeletonContents: {},
+    lockData: null,
     status: 'idle',
     error: null,
+    info: null,
   });
 
-  // Load skeleton on mount
+  // Load skeleton + lock on mount
   useEffect(() => {
     let cancelled = false;
-    setState(s => ({ ...s, status: 'loading', error: null }));
+    setState(s => ({ ...s, status: 'loading', error: null, info: null }));
 
     (async () => {
       const skeletonContents = await loadSkeletonContents(recipeId);
+      const lockData = await loadLockData(recipeId);
       if (cancelled) return;
 
       setState(s => ({
         ...s,
         status: 'ready',
         skeletonContents,
+        lockData,
         error: null,
       }));
     })();
@@ -98,36 +92,51 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setState(s => ({ ...s, status: 'submitting', error: null }));
+    setState(s => ({ ...s, status: 'submitting', error: null, info: null }));
 
     try {
+      // Same parameter set the CLI receives: the form fields only. Missing
+      // template variables render empty exactly like the Python engine.
       const params: Record<string, unknown> = {
         title: state.title,
         projectId: state.projectId,
         audience: state.audience,
       };
 
-      const { renderResult } = renderSkeletons(state.skeletonContents, params);
+      // Render every skeleton file (mirrors ProjectRenderer.render in Python).
+      const engine = new TemplateEngine();
+      const renderedSkeleton: Record<string, string> = {};
+      for (const [path, content] of Object.entries(state.skeletonContents)) {
+        renderedSkeleton[path] = engine.render(content, params); // throws TemplateError on forbidden patterns
+      }
 
-      const plan: CreatePlan = {
-        recipe: recipeId,
-        recipeLockSha256: '',
-        manifest: renderResult.manifest,
-        skeleton: [],
-        createPlanSha256: '',
-      };
+      // The manifest is the parsed rendered narrative.yaml (Python parity).
+      const renderedNarrative = renderedSkeleton['narrative.yaml'];
+      if (renderedNarrative === undefined) {
+        throw new Error('recipe skeleton is missing narrative.yaml');
+      }
+      const manifest = (parse(renderedNarrative) ?? {}) as Record<string, unknown>;
 
-      if (fileSystemAccessSink.isSupported()) {
-        await fileSystemAccessSink.write(plan, state.skeletonContents);
-      } else {
+      const lockSha = state.lockData ? await recipeLockSha256(state.lockData) : '';
+      const plan: CreatePlan = await emitPlan(recipeId, manifest, renderedSkeleton, lockSha);
+
+      // Prefer the File System Access sink; if the picker cannot be completed
+      // (unsupported, user abort, headless), fall back to the plan download.
+      try {
+        await fileSystemAccessSink.write(plan, renderedSkeleton);
+      } catch (sinkErr) {
         await downloadPlanSink.write(plan);
+        const reason = sinkErr instanceof Error ? sinkErr.message : String(sinkErr);
+        setState(s => ({ ...s, info: `Directory access unavailable (${reason}); create-plan.json downloaded instead.` }));
       }
       setState(s => ({ ...s, status: 'done' }));
     } catch (err) {
       setState(s => ({
         ...s,
         status: 'ready',
-        error: err instanceof Error ? err.message : String(err),
+        error: err instanceof TemplateError
+          ? `Template error: ${err.message}`
+          : err instanceof Error ? err.message : String(err),
       }));
     }
   };
@@ -145,6 +154,7 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
       <div className="create-wizard-done">
         <h2>Project created!</h2>
         <p>Your project has been created successfully.</p>
+        {state.info && <p className="create-wizard-info">{state.info}</p>}
         <button onClick={() => setState(s => ({ ...s, status: 'ready', title: '', projectId: '' }))}>
           Create another
         </button>

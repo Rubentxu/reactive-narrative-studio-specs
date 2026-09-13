@@ -24,14 +24,29 @@ import { ok, err, type Result } from "./result.js";
  * Serialize a value to canonical JSON (RFC 8785 JCS subset).
  *
  * Properties:
- * - Keys are sorted lexicographically
+ * - Keys are sorted lexicographically at EVERY nesting level (PR-3, M10.2.1:
+ *   parity with equivalence_oracle.py canonical_json, which sorts recursively)
  * - No insignificant whitespace
  * - UTF-8 encoding
  * - NFC Unicode normalization
  */
 export function canonicalJson(value: unknown): string {
-  const serialized = JSON.stringify(value, Object.keys(value as object).sort(), 0);
-  return serialized.normalize("NFC");
+  return JSON.stringify(canonicalize(value)).normalize("NFC");
+}
+
+function canonicalize(value: unknown): unknown {
+  if (value === null || typeof value !== "object") {
+    return typeof value === "string" ? value.normalize("NFC") : value;
+  }
+  if (Array.isArray(value)) {
+    return value.map(canonicalize);
+  }
+  const record = value as Record<string, unknown>;
+  const out: Record<string, unknown> = {};
+  for (const key of Object.keys(record).sort()) {
+    out[key.normalize("NFC")] = canonicalize(record[key]);
+  }
+  return out;
 }
 
 /** Check if two values are equal when serialized to canonical JSON. */

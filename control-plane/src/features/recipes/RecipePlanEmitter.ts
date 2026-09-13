@@ -1,20 +1,21 @@
 /**
  * RecipePlanEmitter — emit create-plan.json artifact (CLI-consumable).
  *
- * The plan is canonical JSON (RFC 8785 subset via equivalenceOracle.canonicalJson).
- * Shape per REQ-CR-5:
- *   { recipe, recipeLockSha256, manifest, skeleton: [{path, sha256, bytes}], createPlanSha256 }
+ * Shape parity with the Python CLI plan (narrative_cli/init.py:_build_plan_artifact):
+ *   { recipe, recipeLockSha256, manifest, skeleton: [{path, sha256, bytes, content}], createPlanSha256 }
+ * The `content` field is required so `narrative init --plan` can replay the plan
+ * without recipe lookup.
  *
  * This module is purely functional — NO filesystem write, NO useProjectionStore.
  */
 
 import { canonicalJson } from '@recipes/equivalenceOracle';
-import type { RenderResult } from '@recipes/projectRenderer';
 
 export interface SkeletonFileEntry {
   path: string;
   sha256: string;
   bytes: number;
+  content: string;
 }
 
 export interface CreatePlan {
@@ -34,34 +35,57 @@ export async function sha256(content: string): Promise<string> {
   return Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-/** Emit a create-plan.json artifact from a render result. */
+/**
+ * Reproduce Python `json.dumps(obj, sort_keys=True)` byte-for-byte (ASCII data).
+ * Python's default separators are (', ', ': ') — compact JSON.stringify differs.
+ */
+export function pythonSortedJson(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map(pythonSortedJson).join(', ')}]`;
+  const record = value as Record<string, unknown>;
+  const keys = Object.keys(record).sort();
+  return `{${keys.map(k => `${JSON.stringify(k)}: ${pythonSortedJson(record[k])}`).join(', ')}}`;
+}
+
+/** recipeLockSha256 — sha256 over json.dumps(lock, sort_keys=True), matching the CLI. */
+export async function recipeLockSha256(lockData: Record<string, unknown>): Promise<string> {
+  return sha256(pythonSortedJson(lockData));
+}
+
+/**
+ * Emit a create-plan.json artifact from a rendered project.
+ * `manifest` is the parsed rendered narrative.yaml (same source of truth as Python),
+ * `renderedSkeleton` maps path → rendered content.
+ */
 export async function emitPlan(
   recipeId: string,
-  renderResult: RenderResult,
-  skeletonContents: Record<string, string>,
+  manifest: Record<string, unknown>,
+  renderedSkeleton: Record<string, string>,
+  lockSha: string,
 ): Promise<CreatePlan> {
-  const { manifest } = renderResult;
-
-  // Skeleton file list
-  const skeleton: SkeletonFileEntry[] = await Promise.all(
-    Object.entries(skeletonContents).map(async ([path, content]) => ({
-      path,
-      sha256: await sha256(content),
-      bytes: new TextEncoder().encode(content).length,
-    })),
+  const skeleton: SkeletonFileEntry[] = Object.entries(renderedSkeleton).map(([path, content]) => ({
+    path,
+    sha256: '',
+    bytes: new TextEncoder().encode(content).length,
+    content,
+  }));
+  // sha256 needs async; fill after building entries.
+  const withShas: SkeletonFileEntry[] = await Promise.all(
+    skeleton.map(async (entry) => ({ ...entry, sha256: await sha256(entry.content) })),
   );
 
+  // createPlanSha256 is computed over the plan WITHOUT the key itself (same as Python).
   const plan: CreatePlan = {
     recipe: recipeId,
-    recipeLockSha256: '',
+    recipeLockSha256: lockSha,
     manifest,
-    skeleton,
+    skeleton: withShas,
     createPlanSha256: '',
   };
+  const { createPlanSha256: _omit, ...planWithoutSha } = plan;
 
-  // Compute createPlanSha256
-  const planJson = canonicalJson(plan as unknown as Record<string, unknown>);
-  plan.createPlanSha256 = await sha256(planJson);
+  // Python: json.dumps(plan, sort_keys=True, separators=(",",":"), ensure_ascii=False), NFC, sha256.
+  plan.createPlanSha256 = await sha256(canonicalJson(planWithoutSha));
 
   return plan;
 }
