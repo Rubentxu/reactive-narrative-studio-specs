@@ -74,6 +74,9 @@ const MILESTONE_LABELS: Record<string, string> = {
   'M10.2.1': 'Verification & Audit Harness',
 };
 
+/** Canonical milestone order for range audits. */
+export const MILESTONE_ORDER: string[] = Object.keys(MILESTONE_LABELS);
+
 export function milestoneOfUat(filename: string): string {
   const id = filename.replace(/\.md$/, '');
   // The UAT-M10-* series is an umbrella: individual UATs belong to specific
@@ -165,6 +168,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
   };
   await harvestTests(join(repoRoot, 'control-plane', 'test'), (f) => /\.(ts|tsx)$/.test(f));
   await harvestTests(join(repoRoot, 'tools'), (f) => /tests?\/.*\.py$/.test(f));
+  await harvestTests(join(repoRoot, 'verification', 'test'), (f) => /\.(ts|tsx)$/.test(f));
 
   const waivers = await loadWaivers(join(repoRoot, 'verification'));
   const waivedRequirements = new Map<string, string>();
