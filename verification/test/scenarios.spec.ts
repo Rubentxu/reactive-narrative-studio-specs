@@ -50,3 +50,13 @@ describe('VAH-001 production isolation (architecture fitness function)', () => {
     expect(violations).toEqual([]);
   });
 });
+
+describe('requirement harvest (REQ-TC-01)', () => {
+  it('wildcard prose does not create phantom bare requirement ids', async () => {
+    const { isWildcardMatch } = await import('../src/traceability/build.ts');
+    const text = 'Closes REQ-CR-* items; see REQ-CR-10 for details.';
+    const matches = [...text.matchAll(/REQ-[A-Z0-9]+(?:-[A-Z0-9]+)*/g)];
+    const kept = matches.filter((m) => !isWildcardMatch(text, m)).map((m) => m[0]);
+    expect(kept).toEqual(['REQ-CR-10']);
+  });
+});

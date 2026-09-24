@@ -144,5 +144,34 @@ def plan(
     sys.exit(exit_code if exit_code else exit_codes.EXIT_SUCCESS)
 
 
+@cli.command("inspect")
+@click.option("--workspace", "workspace", type=click.Path(exists=True, path_type=Path), default=".", show_default=True, help="Rendered project directory containing narrative.yaml")
+@click.option("--json", "as_json", is_flag=True, default=True, help="JSON output (contract: specs/inspect.schema.json)")
+def inspect(workspace: Path, as_json: bool) -> None:
+    """
+    Emit the stable inspect envelope for a rendered project
+    (contract: specs/inspect.schema.json).
+    """
+    from narrative_cli.inspect import build_inspect_payload, inspect_payload_to_json
+
+    try:
+        payload = build_inspect_payload(workspace)
+    except FileNotFoundError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(exit_codes.EXIT_VALIDATION_ERROR)
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(exit_codes.EXIT_VALIDATION_ERROR)
+
+    if as_json:
+        print(inspect_payload_to_json(payload))
+    else:
+        project = payload["project"]
+        print(f"project: {project['identity']['namespace']}/{project['identity']['name']}")
+        print(f"profile: {project['profile']}")
+        print(f"runtimePath: {project['runtimePath']}")
+    sys.exit(exit_codes.EXIT_SUCCESS)
+
+
 def main():
     cli()

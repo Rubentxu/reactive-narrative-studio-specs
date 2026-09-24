@@ -90,8 +90,12 @@ def init(
     # Render project
     renderer = ProjectRenderer()
 
+    # Apply declared parameter defaults (REQ-CR-10) before validation —
+    # explicit user params are never overwritten.
+    from narrative_recipes import ParameterValidator, apply_schema_defaults
+    params = apply_schema_defaults(params, bundle.parameters_schema)
+
     # Validate parameters before any write (REQ-CR-12)
-    from narrative_recipes import ParameterValidator
     validator = ParameterValidator()
     validation_result = validator.validate(params, bundle.parameters_schema)
     if not validation_result.ok:

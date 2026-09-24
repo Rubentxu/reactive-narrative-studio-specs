@@ -1,3 +1,8 @@
+/**
+ * EntityPage composition tests (REQ-CEP-2): the /entity/$kind/$namespace/$name
+ * page composes EntityHeader + extension-resolved cards/tabs with no domain
+ * logic — verified here at the registry/extension level.
+ */
 import { describe, it, expect } from 'vitest';
 import { extensionRegistry } from '../src/extensions';
 
@@ -43,5 +48,20 @@ describe('entity-page-composition', () => {
     const ids = tabs.map((t) => t.id);
     const uniqueIds = new Set(ids);
     expect(uniqueIds.size).toBe(ids.length);
+  });
+});
+
+/**
+ * REQ-CEP-3: parseEntityRef round-trips the Kind:namespace/name route params
+ * that EntityPage reads from the URL, rejecting malformed refs.
+ */
+describe('parseEntityRef (REQ-CEP-3)', () => {
+  it('parses Kind:namespace/name refs and rejects malformed input', async () => {
+    const { parseEntityRef, formatEntityRef, EntityRefParseError } = await import('../src/store/entityRef');
+    const ref = parseEntityRef('Skill:demo/ns');
+    expect(ref).toEqual({ kind: 'Skill', namespace: 'demo', name: 'ns' });
+    expect(formatEntityRef(ref)).toBe('Skill:demo/ns');
+    expect(() => parseEntityRef('no-separator')).toThrow(EntityRefParseError);
+    expect(() => parseEntityRef('Skill:')).toThrow(EntityRefParseError);
   });
 });

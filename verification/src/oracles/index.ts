@@ -601,6 +601,48 @@ export const epubEntriesOracle: OracleImpl = async (oracle, ctx) => {
   });
 };
 
+
+/** Assertions over a prior `process.run` step's registered artifacts
+ *  (process.<stepId>.{exit,stdout,stderr}.txt). */
+export const processOracle: OracleImpl = async (oracle, ctx) => {
+  const config = oracle.config ?? {};
+  const step = config.step as string;
+  if (!step) throw new Error(`oracle "${oracle.id}" requires config.step`);
+  const failures: string[] = [];
+  const exitRef = ctx.run.artifactIds.get(`process.${step}.exit.txt`);
+  if (!exitRef) throw new Error(`oracle "${oracle.id}": process.${step}.exit.txt not found in evidence bundle`);
+  const exitText = (await readFile(join(ctx.run.dir, exitRef.path), 'utf8')).trim();
+  if (config.exitCode !== undefined && exitText !== String(config.exitCode)) {
+    failures.push(`exit code ${exitText}, expected ${config.exitCode}`);
+  }
+  const stdoutRef = ctx.run.artifactIds.get(`process.${step}.stdout.txt`);
+  const stdoutText = stdoutRef ? await readFile(join(ctx.run.dir, stdoutRef.path), 'utf8') : '';
+  for (const needle of (config.stdoutContains ?? []) as string[]) {
+    if (!stdoutText.includes(needle)) failures.push(`stdout lacks "${needle.slice(0, 40)}…"`);
+  }
+  const stderrRef = ctx.run.artifactIds.get(`process.${step}.stderr.txt`);
+  const stderrText = stderrRef ? await readFile(join(ctx.run.dir, stderrRef.path), 'utf8') : '';
+  for (const needle of (config.stderrContains ?? []) as string[]) {
+    if (!stderrText.includes(needle)) failures.push(`stderr lacks "${needle.slice(0, 40)}…"`);
+  }
+  if (config.stdoutEmpty === true && stdoutText.trim().length > 0) {
+    failures.push(`stdout not empty: "${stdoutText.slice(0, 40)}…"`);
+  }
+  if (config.stderrEmpty === true && stderrText.trim().length > 0) {
+    failures.push(`stderr not empty: "${stderrText.slice(0, 40)}…"`);
+  }
+
+  return result({
+    id: oracle.id,
+    type: 'process',
+    verdict: failures.length === 0 ? 'passed' : 'failed',
+    message: failures.length === 0 ? `process ${step}: exit ${exitText}, output assertions hold` : `${failures.length} process assertion(s) failed: ${failures.slice(0, 4).join('; ')}`,
+    classification: 'structural',
+    proves: 'the executed command exited as declared and produced the declared stdout/stderr shape',
+    doesNotProve: 'behavior beyond the captured command output',
+  });
+};
+
 export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   schema: schemaOracle,
   'semantic-json': semanticJsonOracle,
@@ -613,5 +655,6 @@ export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   'jsonl-entry': jsonlEntryOracle,
   'zip-entries': zipEntriesOracle,
   'epub-entries': epubEntriesOracle,
+  'process': processOracle,
   'cross-language': crossLanguageOracle,
 };

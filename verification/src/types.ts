@@ -26,6 +26,7 @@ export type OracleType =
   | 'jsonl-entry'
   | 'zip-entries'
   | 'epub-entries'
+  | 'process'
   | 'cross-language';
 
 export interface ScenarioOracle {

@@ -69,3 +69,41 @@ class TestParameterValidator:
         params = {"genre": "horror"}  # not in enum
         result = validator.validate(params, schema)
         assert result.ok is False
+
+
+class TestApplySchemaDefaults:
+    """REQ-CR-10: default parameters yield a renderable project (EVT-CR-10a)."""
+
+    SCHEMA = {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "required": ["title", "projectId", "audience"],
+        "properties": {
+            "title": {"type": "string"},
+            "projectId": {"type": "string"},
+            "audience": {"type": "string", "enum": ["a", "b"], "default": "b"},
+            "imagePolicy": {"type": "string", "enum": ["local_only", "local_preferred"], "default": "local_preferred"},
+        },
+    }
+
+    def test_missing_params_take_schema_defaults(self):
+        from narrative_recipes import apply_schema_defaults
+
+        merged = apply_schema_defaults({"title": "T", "projectId": "p1"}, self.SCHEMA)
+        assert merged["audience"] == "b"
+        assert merged["imagePolicy"] == "local_preferred"
+        # Defaults satisfy the declared required list (audience was required).
+        assert set(self.SCHEMA["required"]) <= set(merged)
+
+    def test_explicit_params_never_overwritten(self):
+        from narrative_recipes import apply_schema_defaults
+
+        merged = apply_schema_defaults({"title": "T", "projectId": "p1", "audience": "a"}, self.SCHEMA)
+        assert merged["audience"] == "a"
+
+    def test_merged_params_validate(self):
+        from narrative_recipes import apply_schema_defaults, ParameterValidator
+
+        merged = apply_schema_defaults({"title": "T", "projectId": "p1"}, self.SCHEMA)
+        result = ParameterValidator().validate(merged, self.SCHEMA)
+        assert result.ok is True

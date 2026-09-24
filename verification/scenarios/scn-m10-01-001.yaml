@@ -1,0 +1,76 @@
+id: SCN-M10-01-001
+uat: UAT-M10-07
+requirements: [REQ-CR-7, REQ-CR-8, REQ-CR-10, REQ-CR-11, REQ-CR-12]
+claims:
+  proves:
+    - La receta bundled middle-grade-illustrated valida contra el schema y el plan con parámetros POR DEFECTO rinde un proyecto renderizable (audience profile-middle-grade-10-11, imagePolicy local_preferred, genre fantasy, outputLanguage es-ES, skeleton >= 12 entradas).
+    - No existe vector de ejecución de scripts (eval/exec) ni llamadas subprocess/os.system en los paquetes Python (scan AST), y el código TS del wizard no contiene llamadas fetch( ni usa useProjectionStore fuera de comentarios (invariantes serverless/no-write).
+    - Las baterías pytest de narrative_recipes y narrative_cli pasan, y la ruta /create renderiza el wizard en navegador sin errores de página ni de consola.
+  doesNotProve:
+    - Calidad visual/UX del wizard más allá de renderizar sin errores.
+    - Generación de imágenes o habilitación de proveedores (excluida explícitamente por REQ-CR-12).
+    - La ejecución del pipeline de CI remoto (aquí se ejecutan las mismas baterías localmente).
+steps:
+  - { id: ws.prepare, driver: filesystem, action: temp-workspace, params: { prefix: rec } }
+  - { id: recipes.validate, driver: process, action: run, params: { cmd: python3, args: [tools/validate-recipes/validate.py, recipes/middle-grade-illustrated], cwd: ., timeoutMs: 120000 } }
+  - { id: recipes.plan, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools', 'tools/narrative-cli']; sys.argv = ['narrative', 'plan', '--recipe', 'middle-grade-illustrated', '--param', 'title=El faro de sal', '--param', 'projectId=plan-smoke', '--json', '--out', '{{ws.prepare.dir}}/plan.json']; from narrative_cli.cli import main; main()"], cwd: ., timeoutMs: 120000 } }
+  - { id: recipes.plan-assert, driver: process, action: run, params: { cmd: python3, args: ["-c", "import json, sys; plan = json.load(open(sys.argv[1] + '/plan.json')); m = plan['manifest']; assert m['audience']['profile'] == 'profile-middle-grade-10-11', m; assert m['imagePolicy'] == 'local_preferred', m; assert m['genre'] == 'fantasy', m; assert m['outputLanguage'] == 'es-ES', m; assert len(plan['skeleton']) >= 12, len(plan['skeleton'])", "{{ws.prepare.dir}}"], cwd: ., timeoutMs: 60000 } }
+  - { id: pytest.core, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools', 'tools/narrative-cli']; import pytest; raise SystemExit(pytest.main(['tools/narrative_recipes/tests', 'tools/narrative-cli/tests', '-q']))"], cwd: ., timeoutMs: 300000 } }
+  - { id: security.ast-scan, driver: process, action: run, params: { cmd: python3, args: ["-c", "import ast, pathlib, sys; bad = []; roots = ['tools/narrative_recipes', 'tools/narrative-cli/narrative_cli']; files = [p for r in roots for p in pathlib.Path(r).rglob('*.py') if '__pycache__' not in str(p)]; [bad.append((str(f), n.lineno)) for f in files for n in ast.walk(ast.parse(f.read_text(), str(f))) if isinstance(n, ast.Call) and ((isinstance(n.func, ast.Name) and n.func.id in ('eval', 'exec', 'compile')) or (isinstance(n.func, ast.Attribute) and isinstance(n.func.value, ast.Name) and n.func.value.id in ('subprocess', 'os') and n.func.attr in ('system', 'popen', 'call', 'run', 'exec', 'Popen'))) or (isinstance(n, ast.Import) and any(a.name == 'subprocess' for a in n.names))]; sys.exit(1 if bad else 0)"], cwd: ., timeoutMs: 60000 } }
+  - { id: security.grep-cp-write, driver: process, action: run, params: { cmd: sh, args: ["-c", "grep -rEn 'fetch\\(|useProjectionStore' control-plane/src/features/recipes --include='*.ts' --include='*.tsx' | grep -vE ':[0-9]+:\\s*(//|/\\*|\\*)'"], cwd: ., timeoutMs: 60000 } }
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.create, driver: browser, action: navigate, params: { path: /create } }
+  - id: ui.probe-create
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => ({ heading: document.querySelector('h1')?.textContent ?? '' }))()
+oracles:
+  - id: recipes.schema-valid
+    type: process
+    config:
+      step: recipes.validate
+      exitCode: 0
+      stderrContains: ["All checks passed"]
+  - id: recipes.plan-defaults
+    type: process
+    config:
+      step: recipes.plan
+      exitCode: 0
+      stderrContains: ["Plan written"]
+  - id: recipes.plan-contract
+    type: process
+    config:
+      step: recipes.plan-assert
+      exitCode: 0
+      stderrEmpty: true
+  - id: pytest.batteries-green
+    type: process
+    config:
+      step: pytest.core
+      exitCode: 0
+      stdoutContains: ["passed"]
+  - id: security.no-script-execution
+    type: process
+    config:
+      step: security.ast-scan
+      exitCode: 0
+      stderrEmpty: true
+  - id: security.no-cp-write-no-fetch
+    type: process
+    config:
+      step: security.grep-cp-write
+      exitCode: 1
+      stdoutEmpty: true
+  - id: create.wizard-renders
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe-create.eval.json
+      expected:
+        heading: Create New Project
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.create.console.json

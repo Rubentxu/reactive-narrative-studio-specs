@@ -1,59 +1,56 @@
 # Audit Gate — all
 
-- generated: 2026-09-24T19:14:31.108Z
-- git: 1419585bbf02e151e602e190cc1ede195aaf96b8
-- overall: **FAIL** — proven 18 · waived 1 · blocking 37
-
-## Blocking (VAH-003)
-- ❌ REQ-CLI-001 (M9, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CLI-002 (M9, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CLI-003 (M9, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CLI-004 (M9, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CLI-005 (M9, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CLI-006 (M9, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CLI-007 (M9, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CP-001 (M10, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CP-002 (M10, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CP-003 (M10, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CP-004 (M10, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CP-005 (M10, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CP-006 (M10, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CP-007 (M10, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR (M10.1, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR-10 (M10.1, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR-11 (M10.1, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR-12 (M10.1, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-7 (M10.1, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR-8 (M10.1, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR-9 (M10.1, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CEP-1 (M10.2, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CEP-2 (M10.2, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CEP-3 (M10.2, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CEP-4 (M10.2, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR-CAP-1 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-10 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-11 (M10.2, functional) — UNMAPPED: no scenario or test references
-- ❌ REQ-CR-CAP-12 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-2 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-3 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-4 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-5 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-6 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-7 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-8 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
-- ❌ REQ-CR-CAP-9 (M10.2, functional) — PARTIALLY_VERIFIED: only component test refs; functional requirement needs a scenario verdict
+- generated: 2026-09-24T20:30:25.547Z
+- git: edbbca84d980ba49b6950b8a4cb620e5bff0a92b
+- overall: **PASS_WITH_WAIVER** — proven 66 · waived 1 · blocking 0
 
 ## Waived
 - ⚠️ REQ-VAH-CROSSREF-RENDER (M10.2.1) — WVR-M10-2-1-001: only component test refs; functional requirement needs a scenario verdict
 
 ## Proven
+- ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CLI-002 (M9, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CLI-003 (M9, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CLI-004 (M9, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CLI-005 (M9, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CLI-006 (M9, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CLI-007 (M9, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CP-001 (M10, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CP-002 (M10, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CP-003 (M10, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CP-004 (M10, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CP-005 (M10, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CP-006 (M10, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CP-007 (M10, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-CR-1 (M10.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-10 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-11 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-12 (M10.1, functional) — scenario evidence: SCN-M10-01-001
 - ✅ REQ-CR-2 (M10.1, functional) — scenario evidence: SCN-M13-01-001
 - ✅ REQ-CR-3 (M10.1, functional) — scenario evidence: SCN-M13-01-001
 - ✅ REQ-CR-4 (M10.1, functional) — scenario evidence: SCN-M13-01-001
 - ✅ REQ-CR-5 (M10.1, functional) — scenario evidence: SCN-M13-01-001
 - ✅ REQ-CR-6 (M10.1, functional) — scenario evidence: SCN-M13-01-001
+- ✅ REQ-CR-7 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-8 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-9 (M10.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-RECIPE-EQUIVALENCE (M10.1, functional) — scenario evidence: SCN-M10-04-001
+- ✅ REQ-CEP-1 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CEP-2 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CEP-3 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CEP-4 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-CAP-1 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-CAP-10 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-CAP-11 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CR-CAP-12 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-CAP-2 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-CAP-3 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CR-CAP-4 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CR-CAP-5 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CR-CAP-6 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CR-CAP-7 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CR-CAP-8 (M10.2, functional) — scenario evidence: SCN-M10-02-001
+- ✅ REQ-CR-CAP-9 (M10.2, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-AUDIT-GATE (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-BASELINE (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-BOOTSTRAP (M10.2.1, functional) — scenario evidence: SCN-HARNESS-BOOTSTRAP-001
@@ -65,3 +62,15 @@
 - ✅ REQ-VAH-STORE-IMMUTABILITY (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-VERIFICATION-LEVEL (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-WAIVER (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M14-01 (M14, functional) — scenario evidence: SCN-M14-01-001
+- ✅ REQ-M14-02 (M14, functional) — scenario evidence: SCN-M14-01-001
+- ✅ REQ-M14-03 (M14, functional) — scenario evidence: SCN-M14-01-001
+- ✅ REQ-M14-04 (M14, functional) — scenario evidence: SCN-M14-01-001
+- ✅ REQ-M14-05 (M14, functional) — scenario evidence: SCN-M14-01-001
+- ✅ REQ-M14-06 (M14, functional) — scenario evidence: SCN-M14-01-001
+- ✅ REQ-M15-01 (M15, functional) — scenario evidence: SCN-M15-01-001
+- ✅ REQ-M15-02 (M15, functional) — scenario evidence: SCN-M15-01-001
+- ✅ REQ-M15-03 (M15, functional) — scenario evidence: SCN-M15-01-001
+- ✅ REQ-M15-04 (M15, functional) — scenario evidence: SCN-M15-01-001
+- ✅ REQ-M15-05 (M15, functional) — scenario evidence: SCN-M15-01-001
+- ✅ REQ-M15-06 (M15, functional) — scenario evidence: SCN-M15-01-001

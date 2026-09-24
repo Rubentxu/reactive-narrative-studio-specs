@@ -78,6 +78,7 @@ export class ProcessDriver {
 
     await this.run.writeArtifact(`${artifactPrefix}.stdout.txt`, observation.stdout);
     await this.run.writeArtifact(`${artifactPrefix}.stderr.txt`, observation.stderr);
+    await this.run.writeArtifact(`${artifactPrefix}.exit.txt`, String(observation.exitCode));
     await this.run.emitEvent('process.executed', {
       artifactPrefix,
       command: observation.command,

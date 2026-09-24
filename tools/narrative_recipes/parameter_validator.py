@@ -22,6 +22,19 @@ class ValidationDiagnostic:
     path: Optional[str] = None
 
 
+def apply_schema_defaults(parameters: dict[str, Any], parameters_schema: dict) -> dict[str, Any]:
+    """
+    Return a copy of `parameters` with JSON Schema `default` values applied
+    for missing top-level properties (REQ-CR-10: default parameters yield a
+    renderable project). Explicit user params are never overwritten.
+    """
+    merged = dict(parameters)
+    for name, prop in (parameters_schema.get("properties") or {}).items():
+        if name not in merged and isinstance(prop, dict) and "default" in prop:
+            merged[name] = prop["default"]
+    return merged
+
+
 class ParameterValidator:
     """
     Validates user-supplied parameters against a recipe's parameters.schema.json.

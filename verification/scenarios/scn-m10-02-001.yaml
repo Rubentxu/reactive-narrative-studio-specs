@@ -1,9 +1,11 @@
 id: SCN-M10-02-001
 uat: UAT-M10-06
-requirements: [REQ-VAH-BROWSER-AUDIT]
+requirements: [REQ-VAH-BROWSER-AUDIT, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-11, REQ-CEP-1, REQ-CEP-2]
 claims:
   proves:
     - La app construida (build+preview) navega de verdad a /capabilities, los seis kind routes y un entity detail real, con DOM capturado como evidence y aserciones declarativas sobre él (UAT funcional M10.2).
+    - El smoke de build+preview que exige REQ-CR-CAP-11 se ejecuta aquí de verdad (build step + navegación preview) junto con la batería canónica del harness.
+    - REQ-CR-CAP-3..8 (overview con counts, páginas por kind, detail vía registry, providers empty-state, badges de scope, links) y REQ-CEP-1/2 (orden de rutas + composición de EntityPage) se prueban navegando las páginas reales.
   doesNotProve:
     - Mutación interna del projection store (cubierto a nivel componente por control-plane/test/capability-catalog.spec.ts; fitness separada de UAT funcional).
     - Render positivo de cross-links [[Kind:ns/name]] (no existe contenido real con cross-refs; gap aceptado con waiver — ver waivers.json).

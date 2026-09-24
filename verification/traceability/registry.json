@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-24T19:37:22.302Z",
-  "gitSha": "7a37443f6bff40c739ead057e410c162983e2352",
+  "generatedAt": "2026-09-24T20:18:37.066Z",
+  "gitSha": "edbbca84d980ba49b6950b8a4cb620e5bff0a92b",
   "milestones": [
     {
       "id": "M0",
@@ -139,8 +139,10 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "tools/narrative-cli/tests/test_cli_contract.py"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CLI-002",
@@ -149,8 +151,10 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "tools/narrative-cli/tests/test_cli_contract.py"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CLI-003",
@@ -159,8 +163,10 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "tools/narrative-cli/tests/test_cli_contract.py"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CLI-004",
@@ -169,8 +175,10 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "tools/narrative-cli/tests/test_cli_contract.py"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CLI-005",
@@ -179,8 +187,10 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "tools/narrative-cli/tests/test_cli_contract.py"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CLI-006",
@@ -188,8 +198,10 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "tools/narrative-cli/tests/test_cli_contract.py"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CLI-007",
@@ -198,8 +210,10 @@
             "spec-completion/specs/narrative-init-cli/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "tools/narrative-cli/tests/test_cli_contract.py"
+          ],
+          "status": "MAPPED"
         }
       ]
     },
@@ -245,8 +259,10 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CP-002",
@@ -255,8 +271,10 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CP-003",
@@ -266,8 +284,10 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CP-004",
@@ -275,8 +295,10 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CP-005",
@@ -284,8 +306,10 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CP-006",
@@ -293,8 +317,10 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CP-007",
@@ -303,8 +329,10 @@
             "spec-completion/specs/control-plane-projections/spec.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
         }
       ]
     },
@@ -319,20 +347,18 @@
             "scn-m10-04-001.yaml"
           ],
           "status": "EXECUTABLE"
+        },
+        {
+          "id": "UAT-M10-07",
+          "file": "uat/UAT-M10-07.md",
+          "milestone": "M10.1",
+          "scenarios": [
+            "scn-m10-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
         }
       ],
       "requirements": [
-        {
-          "id": "REQ-CR",
-          "sources": [
-            "m13-comic-renderer/tasks.md",
-            "m10-2-1-audit-gate-hardening/spec.md",
-            "m10-1-creation-recipes/tasks.md"
-          ],
-          "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
-        },
         {
           "id": "REQ-CR-1",
           "sources": [
@@ -354,9 +380,14 @@
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "scenarios": [
+            "scn-m10-01-001.yaml"
+          ],
+          "testRefs": [
+            "tools/narrative_recipes/tests/test_parameter_validator.py",
+            "tools/narrative-cli/tests/test_cli.py"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-11",
@@ -364,9 +395,11 @@
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-01-001.yaml"
+          ],
           "testRefs": [],
-          "status": "UNMAPPED"
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-12",
@@ -374,7 +407,9 @@
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-01-001.yaml"
+          ],
           "testRefs": [
             "verification/test/harness.spec.ts"
           ],
@@ -467,9 +502,11 @@
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-01-001.yaml"
+          ],
           "testRefs": [],
-          "status": "UNMAPPED"
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-8",
@@ -477,9 +514,11 @@
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-01-001.yaml"
+          ],
           "testRefs": [],
-          "status": "UNMAPPED"
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-9",
@@ -488,8 +527,10 @@
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/recipe-sinks.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-RECIPE-EQUIVALENCE",
@@ -527,9 +568,11 @@
             "cp-catalog-entities/spec.md",
             "cp-catalog-entities/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [],
-          "status": "UNMAPPED"
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CEP-2",
@@ -537,9 +580,13 @@
             "cp-catalog-entities/spec.md",
             "cp-catalog-entities/tasks.md"
           ],
-          "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/entity-page-composition.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CEP-3",
@@ -549,8 +596,10 @@
             "cp-catalog-entities/tasks.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/entity-page-composition.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CEP-4",
@@ -560,8 +609,10 @@
             "cp-catalog-entities/tasks.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/catalog-store.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-1",
@@ -593,9 +644,11 @@
             "m10-2-capability-catalog/spec.md",
             "m10-2-capability-catalog/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [],
-          "status": "UNMAPPED"
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-12",
@@ -627,7 +680,9 @@
             "m10-2-capability-catalog/spec.md",
             "m10-2-capability-catalog/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [
             "control-plane/test/capability-catalog.spec.ts"
           ],
@@ -639,7 +694,9 @@
             "m10-2-capability-catalog/spec.md",
             "m10-2-capability-catalog/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [
             "control-plane/test/capability-catalog.spec.ts"
           ],
@@ -651,7 +708,9 @@
             "m10-2-capability-catalog/spec.md",
             "m10-2-capability-catalog/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [
             "control-plane/test/capability-catalog.spec.ts",
             "control-plane/test/extension-isolation.spec.ts"
@@ -665,7 +724,9 @@
             "m10-2-capability-catalog/spec.md",
             "m10-2-capability-catalog/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [
             "control-plane/test/capability-cross-ref.spec.ts"
           ],
@@ -677,7 +738,9 @@
             "m10-2-capability-catalog/spec.md",
             "m10-2-capability-catalog/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [
             "control-plane/test/capability-catalog.spec.ts",
             "control-plane/test/capability-parsers.spec.ts"
@@ -690,7 +753,9 @@
             "m10-2-capability-catalog/spec.md",
             "m10-2-capability-catalog/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [
             "control-plane/test/capability-catalog.spec.ts",
             "control-plane/test/capability-parsers.spec.ts"
@@ -1188,55 +1253,6 @@
       "detail": "UAT doc exists but no executable scenario links it yet"
     },
     {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CLI-001",
-      "milestone": "M9",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CLI-002",
-      "milestone": "M9",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CLI-003",
-      "milestone": "M9",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CLI-004",
-      "milestone": "M9",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CLI-005",
-      "milestone": "M9",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CLI-006",
-      "milestone": "M9",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CLI-007",
-      "milestone": "M9",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
       "kind": "uat-without-scenario",
       "ref": "UAT-M10-01",
       "milestone": "M10",
@@ -1256,140 +1272,14 @@
       "milestone": "M10",
       "severity": "HIGH",
       "detail": "UAT doc exists but no executable scenario links it yet"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CP-001",
-      "milestone": "M10",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CP-002",
-      "milestone": "M10",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CP-003",
-      "milestone": "M10",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CP-004",
-      "milestone": "M10",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CP-005",
-      "milestone": "M10",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CP-006",
-      "milestone": "M10",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CP-007",
-      "milestone": "M10",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-10",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-11",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-7",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-8",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-9",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CEP-1",
-      "milestone": "M10.2",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CEP-2",
-      "milestone": "M10.2",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CEP-3",
-      "milestone": "M10.2",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CEP-4",
-      "milestone": "M10.2",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-CAP-11",
-      "milestone": "M10.2",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
     }
   ],
   "coverage": {
-    "requirements": 68,
-    "mapped": 43,
-    "unmapped": 25,
-    "uats": 20,
-    "executable": 7,
+    "requirements": 67,
+    "mapped": 67,
+    "unmapped": 0,
+    "uats": 21,
+    "executable": 8,
     "waived": 2
   }
 }
