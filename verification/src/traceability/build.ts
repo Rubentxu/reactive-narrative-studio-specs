@@ -57,6 +57,12 @@ export interface TraceabilityRegistry {
 }
 
 const REQ_ID = /REQ-[A-Z0-9]+(?:-[A-Z0-9]+)*/g;
+
+/** Wildcard prose like "REQ-CR-*" must not create a phantom bare id. */
+export function isWildcardMatch(text: string, match: RegExpMatchArray): boolean {
+  const end = (match.index ?? 0) + match[0].length;
+  return text.slice(end, end + 2) === '-*';
+}
 const MILESTONE_LABELS: Record<string, string> = {
   M0: 'Foundations / specs',
   M1: 'Narrative workspace',
@@ -88,6 +94,7 @@ export function milestoneOfUat(filename: string): string {
   const overrides: Array<[string, string]> = [
     ['UAT-M10-04', 'M10.1'],
     ['UAT-M10-06', 'M10.2'],
+    ['UAT-M10-07', 'M10.1'],
   ];
   for (const [prefix, milestone] of overrides) {
     if (id.startsWith(prefix)) return milestone;
@@ -129,6 +136,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
       const full = join(dir, String(f));
       const text = await readFile(full, 'utf8');
       for (const match of text.matchAll(REQ_ID)) {
+        if (isWildcardMatch(text, match)) continue;
         const id = match[0];
         const list = reqSources.get(id) ?? [];
         list.push(String(f));
@@ -143,6 +151,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
   const reqScenario = new Map<string, string[]>();
   for (const { file, text } of scenarioContents) {
     for (const match of text.matchAll(REQ_ID)) {
+      if (isWildcardMatch(text, match)) continue;
       const id = match[0];
       const list = reqScenario.get(id) ?? [];
       list.push(file);
@@ -163,6 +172,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
       if (!include(f)) continue;
       const text = await readFile(join(dir, f), 'utf8');
       for (const match of text.matchAll(REQ_ID)) {
+        if (isWildcardMatch(text, match)) continue;
         const id = match[0];
         const list = reqTests.get(id) ?? [];
         list.push(`${dir.replace(`${repoRoot}/`, '')}/${f}`);

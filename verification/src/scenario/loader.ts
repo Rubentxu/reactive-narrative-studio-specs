@@ -15,6 +15,7 @@ const ORACLE_TYPES = new Set([
   'jsonl-entry',
   'zip-entries',
   'epub-entries',
+  'process',
   'cross-language',
 ]);
 
