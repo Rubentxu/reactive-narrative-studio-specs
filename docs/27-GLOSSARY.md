@@ -302,3 +302,21 @@ monochrome + screentone) with identical editable lettering. Reading direction
 mirrors the panel grid columns (panel 0 at the right of its row in manga);
 rows read top-down in both directions. Exercised by the profile switcher on
 `/comic` and verified by `SCN-M14-01-001`.
+
+### EPUB Reflowable / Fixed-Layout
+
+The two M15 export targets built by the publishing feature. Reflowable
+packages render the manuscript's prose and dialogue as real text (one XHTML
+chapter per scene, EPUB 3 nav/OPF/spine). Fixed-layout packages are
+pre-paginated (`rendition:layout=pre-paginated`) and embed the comic
+renderer's layered SVG pages — lettering stays editable SVG text, never
+raster.
+
+### Validation Adapter
+
+The deterministic M15 checker implementing the reader-entry contract that
+reference readers perform when opening an EPUB: `mimetype` first stored entry
+with exact content, `META-INF/container.xml` resolving to the package
+document, package metadata, manifest hrefs and spine idrefs resolving inside
+the archive, nav presence, and fixed-layout rendition metadata. Exposed as
+`validateEpub` (product side) and the `epub-entries` oracle (harness side).

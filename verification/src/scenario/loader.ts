@@ -14,6 +14,7 @@ const ORACLE_TYPES = new Set([
   'browser-evaluate',
   'jsonl-entry',
   'zip-entries',
+  'epub-entries',
   'cross-language',
 ]);
 

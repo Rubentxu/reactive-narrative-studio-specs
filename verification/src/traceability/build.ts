@@ -75,6 +75,7 @@ const MILESTONE_LABELS: Record<string, string> = {
   M12: 'Sequential Art Core',
   M13: 'Comic Renderer',
   M14: 'Manga Profile',
+  M15: 'Digital Publishing',
 };
 
 /** Canonical milestone order for range audits. */
@@ -307,6 +308,7 @@ function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   if (milestone === 'M12' && area === 'M12') return true;
   if (milestone === 'M13' && area === 'M13') return true;
   if (milestone === 'M14' && area === 'M14') return true;
+  if (milestone === 'M15' && area === 'M15') return true;
   void areaToMilestone;
   return false;
 }
