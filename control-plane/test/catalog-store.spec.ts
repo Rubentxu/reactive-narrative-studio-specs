@@ -1,3 +1,8 @@
+/**
+ * Catalog store tests (REQ-CEP-4): catalogSelectors (byKind, byEntityRef,
+ * byNamespace, count) resolve validated CatalogEntities from the projection
+ * store — the lookup surface EntityPage consumes.
+ */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { catalogSelectors } from '../src/store/catalogSelectors';
 import { useProjectionStore } from '../src/store/projectionStore';
