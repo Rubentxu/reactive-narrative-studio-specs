@@ -268,3 +268,11 @@ anonymous session reader id, optional reader context and Likert metrics, free-te
 highlights and the editorial-impact link (`revisionImpact` + `manuscriptRevision`).
 Human rounds are stored separately from synthetic-reader output (ADR-019) and are
 never uploaded or persisted in the browser (M11, UAT-M11-01).
+
+### Sequential Graph Lens
+
+The M12 Control Plane view that renders the adapted SequentialArtIR as a
+sequence graph: one node per panel in reading order, edges following the
+reading sequence, node weight reflecting beat importance, and visible gaps at
+scene breaks. It complements the panel storyboard page (`/storyboard`) and
+shares its invariant: dialogue is editable text, never part of an image.

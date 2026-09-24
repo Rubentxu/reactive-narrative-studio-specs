@@ -1,0 +1,11 @@
+{
+  "pageCards": 10,
+  "panelCount": 33,
+  "orderStrictlyIncreasing": true,
+  "imgCount": 0,
+  "dialogueInDom": true,
+  "lensNodes": 33,
+  "lensEdges": 32,
+  "sceneBreaks": 2,
+  "direction": "ltr"
+}
