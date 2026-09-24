@@ -1,0 +1,70 @@
+id: SCN-M12-01-001
+uat: UAT-M12-01
+requirements: [REQ-SA-1, REQ-SA-2, REQ-SA-3, REQ-SA-4, REQ-SA-6]
+claims:
+  proves:
+    - Un capítulo de prosa aceptado (reducido a beats tipados) se adapta a SequentialArtIR y el CP renderiza 8–10 páginas de estructuras panel/storyboard con orden de lectura estrictamente secuencial, cortes de escena visibles y dirección de lectura indicada.
+    - Todo diálogo permanece como texto editable en el DOM; la página no contiene elementos <img> (lettering fuera de imágenes, doc 11).
+    - La lente de grafo secuencial muestra un nodo por panel en orden de lectura con aristas de secuencia.
+  doesNotProve:
+    - Generación de imágenes ni calidad visual (Visual IR/M13; los shotRefs son el contrato con la generación posterior).
+    - Extracción NLP de prosa libre a beats (el manuscrito de muestra es un fixture de autoría).
+    - Colocación optimizada de balones (template grid según doc 11).
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.storyboard, driver: browser, action: navigate, params: { path: /storyboard } }
+  - id: ui.probe
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const pageCards = document.querySelectorAll('[data-page-card]').length;
+          const panels = Array.from(document.querySelectorAll('[data-reading-order]')).map((el) => Number(el.getAttribute('data-reading-order')));
+          const orderStrictlyIncreasing = panels.every((v, i) => i === 0 || v === panels[i - 1] + 1);
+          const imgCount = document.querySelectorAll('img').length;
+          const dialogueSamples = ['Eso es imposible.', 'El mar no borra, nieta. Cambia de sitio las cosas.', '«Sil»… así se llama la isla.'];
+          const dialogueInDom = dialogueSamples.every((text) => document.body.innerText.includes(text));
+          const lensNodes = document.querySelectorAll('.seq-lens-node').length;
+          const lensEdges = document.querySelectorAll('.seq-lens-edge').length;
+          const sceneBreaks = document.querySelectorAll('[data-scene-break]').length;
+          const direction = document.querySelector('[data-testid="reading-direction"]')?.textContent ?? null;
+          return {
+            pageCards,
+            panelCount: panels.length,
+            orderStrictlyIncreasing,
+            imgCount,
+            dialogueInDom,
+            lensNodes,
+            lensEdges,
+            sceneBreaks,
+            direction,
+          };
+        })()
+oracles:
+  - id: storyboard.uat-m12-01
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe.eval.json
+      expected:
+        pageCards: 10
+        panelCount: 33
+        orderStrictlyIncreasing: true
+        imgCount: 0
+        dialogueInDom: true
+        lensNodes: 33
+        lensEdges: 32
+        sceneBreaks: 2
+        direction: ltr
+      ignoredPaths: []
+  - id: storyboard.page-range
+    type: browser-content
+    config:
+      artifact: browser.ui.storyboard.dom.json
+      h1Contains: ["Sequential Storyboard"]
+      textContains: ["Reading direction", "Scene break"]
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.storyboard.console.json

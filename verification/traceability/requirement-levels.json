@@ -94,5 +94,33 @@
   "REQ-M11-6": {
     "level": "functional",
     "rationale": "El propio requisito exige un scenario ejecutable; se prueba a sí mismo al ejecutarse."
+  },
+  "REQ-SA-1": {
+    "level": "functional",
+    "rationale": "La validez contra el schema se demuestra en el golden y en el scenario real (documento adaptado renderizado)."
+  },
+  "REQ-SA-2": {
+    "level": "functional",
+    "rationale": "8-10 paginas y orden estrictamente secuencial se verifican en browser real (UAT-M12-01)."
+  },
+  "REQ-SA-3": {
+    "level": "functional",
+    "rationale": "El dialogo como texto editable y cero <img> es un criterio pass del UAT, verificado en el DOM real."
+  },
+  "REQ-SA-4": {
+    "level": "functional",
+    "rationale": "Scene-breaks y direccion se verifican en el scenario sobre la pagina real."
+  },
+  "REQ-SA-5": {
+    "level": "fitness",
+    "rationale": "El determinismo de shotRefs es una propiedad pura del adaptador, verificada por tests unitarios y golden."
+  },
+  "REQ-SA-6": {
+    "level": "functional",
+    "rationale": "Storyboard y lens se renderizan y miden en browser real (nodos/aristas)."
+  },
+  "REQ-SA-7": {
+    "level": "functional",
+    "rationale": "El propio requisito exige el scenario ejecutable."
   }
 }
