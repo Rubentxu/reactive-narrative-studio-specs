@@ -513,6 +513,94 @@ export const zipEntriesOracle: OracleImpl = async (oracle, ctx) => {
   });
 };
 
+
+/** EPUB OCF reader-entry checks (M15): mimetype first+exact, container.xml,
+ *  optional FXL rendition meta, plus the zip-entries-style content rules. */
+export const epubEntriesOracle: OracleImpl = async (oracle, ctx) => {
+  const config = oracle.config ?? {};
+  const artifactName = config.artifact as string;
+  const ref = ctx.run.artifactIds.get(artifactName);
+  if (!ref) throw new Error(`artifact "${artifactName}" not found in evidence bundle`);
+  const { readStoreZip } = await import('../audit/zip.ts');
+  const bytes = await readFile(join(ctx.run.dir, ref.path));
+  let entries;
+  try {
+    entries = readStoreZip(new Uint8Array(bytes.buffer, bytes.byteOffset, bytes.byteLength));
+  } catch (err) {
+    return result({
+      id: oracle.id,
+      type: 'epub-entries',
+      verdict: 'failed',
+      message: `unreadable zip: ${err instanceof Error ? err.message : String(err)}`,
+      classification: 'structural',
+      proves: 'the EPUB parses as a zip',
+      doesNotProve: 'entry content',
+    });
+  }
+
+  const failures: string[] = [];
+  const first = entries[0];
+  if (!first || first.name !== 'mimetype') {
+    failures.push(`first entry is "${first?.name ?? '<none>'}", expected "mimetype"`);
+  } else if (first.text !== 'application/epub+zip') {
+    failures.push(`mimetype content must be exactly "application/epub+zip", got "${first.text.slice(0, 40)}"`);
+  }
+  if (!entries.some((e) => e.name === 'META-INF/container.xml')) {
+    failures.push('missing META-INF/container.xml');
+  }
+  const opfPath = (config.opfPath as string | undefined) ?? 'OEBPS/content.opf';
+  const opf = entries.find((e) => e.name === opfPath);
+  if (!opf) {
+    failures.push(`missing package document "${opfPath}"`);
+  } else {
+    if (!opf.text.includes('unique-identifier=')) failures.push('OPF lacks unique-identifier');
+    if (!opf.text.includes('<dc:title>')) failures.push('OPF lacks dc:title');
+    if (config.fxl === true && !opf.text.includes('rendition:layout">pre-paginated')) {
+      failures.push('FXL package lacks rendition:layout pre-paginated');
+    }
+    if (config.fxl === true && !opf.text.includes('properties="svg"')) {
+      failures.push('FXL package lacks svg page properties');
+    }
+  }
+  const minEntries = config.minEntries as number | undefined;
+  if (minEntries !== undefined && entries.length < minEntries) {
+    failures.push(`expected >= ${minEntries} entries, got ${entries.length}`);
+  }
+  for (const expectedName of (config.namesInclude ?? []) as string[]) {
+    if (!entries.some((e) => e.name === expectedName)) failures.push(`missing entry "${expectedName}"`);
+  }
+  for (const rule of (config.entryContains ?? []) as Array<{ namePrefix: string; contains: string[] }>) {
+    const matches = entries.filter((e) => e.name.startsWith(rule.namePrefix));
+    if (matches.length === 0) {
+      failures.push(`no entries matching prefix "${rule.namePrefix}"`);
+      continue;
+    }
+    for (const needle of rule.contains) {
+      if (!matches.some((e) => e.text.includes(needle))) {
+        failures.push(`no entry matching "${rule.namePrefix}" contains "${needle.slice(0, 40)}…"`);
+      }
+    }
+  }
+  for (const forbiddenName of (config.forbiddenNames ?? []) as string[]) {
+    if (entries.some((e) => e.name === forbiddenName)) failures.push(`forbidden entry "${forbiddenName}" present`);
+  }
+
+  const listing = await ctx.run.writeArtifact(`${oracle.id}.entries.txt`, entries.map((e) => `${e.name} (${e.size}B)`).join('\n') + '\n');
+  return result({
+    id: oracle.id,
+    type: 'epub-entries',
+    verdict: failures.length === 0 ? 'passed' : 'failed',
+    message:
+      failures.length === 0
+        ? `epub ok: ${entries.length} entries [${entries.map((e) => e.name).join(', ').slice(0, 120)}${entries.length > 6 ? '…' : ''}]`
+        : `${failures.length} epub assertion(s) failed: ${failures.slice(0, 6).join('; ')}`,
+    classification: 'structural',
+    proves: 'the EPUB satisfies the reader-entry contract (OCF layout, container→OPF, manifest/spine content searchable)',
+    doesNotProve: 'rendering quality in third-party reader applications',
+    actualRef: listing.path,
+  });
+};
+
 export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   schema: schemaOracle,
   'semantic-json': semanticJsonOracle,
@@ -524,5 +612,6 @@ export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   'browser-evaluate': browserEvaluateOracle,
   'jsonl-entry': jsonlEntryOracle,
   'zip-entries': zipEntriesOracle,
+  'epub-entries': epubEntriesOracle,
   'cross-language': crossLanguageOracle,
 };

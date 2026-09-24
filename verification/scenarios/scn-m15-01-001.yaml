@@ -1,0 +1,76 @@
+id: SCN-M15-01-001
+uat: UAT-M15-01
+requirements: [REQ-M15-01, REQ-M15-02, REQ-M15-03, REQ-M15-04, REQ-M15-05, REQ-M15-06]
+claims:
+  proves:
+    - La vista /publish construye los dos objetivos EPUB 3 sobre el mismo capítulo y el validation adapter (contrato de entrada de lectores) marca OK ambas variantes antes de habilitar la descarga.
+    - El EPUB reflowable descargado cumple el contrato OCF (mimetype primero y exacto, container.xml → OEBPS/content.opf, nav) y lleva la prosa y el diálogo del manuscrito como texto real buscable en los bytes.
+    - El EPUB fixed-layout descargado declara rendition pre-paginated con páginas svg, viewport por página, y sus documentos incrustan el SVG por capas del comic renderer (lettering editable, sin raster).
+  doesNotProve:
+    - Calidad de renderizado en aplicaciones lectoras de terceros (contrato estructural de entrada; sin epubcheck/JVM).
+    - Preflight de impresión (objetivo M9), paquetes Kindle o export webtoon.
+    - Calidad tipográfica del reflow (se prueba estructura y fidelidad de contenido).
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.publish, driver: browser, action: navigate, params: { path: /publish } }
+  - id: ui.probe-validation
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const ok = (id) => {
+            const el = document.querySelector(`[data-testid="${id}"]`);
+            return el ? el.getAttribute('data-ok') === 'true' : false;
+          };
+          const buttons = {
+            reflowable: !document.querySelector('[data-testid="download-reflowable"]')?.disabled,
+            fxl: !document.querySelector('[data-testid="download-fxl"]')?.disabled,
+          };
+          return {
+            reflowableOk: ok('validation-reflowable'),
+            fxlOk: ok('validation-fxl'),
+            downloadEnabled: buttons.reflowable && buttons.fxl,
+            titlePresent: document.querySelector('.view-publish h1')?.textContent === 'Publishing Proof',
+          };
+        })()
+  - { id: ui.download-reflowable, driver: browser, action: submit, params: { buttonSelector: '[data-testid="download-reflowable"]', artifactName: book.reflowable.epub } }
+  - { id: ui.download-fxl, driver: browser, action: submit, params: { buttonSelector: '[data-testid="download-fxl"]', artifactName: book.fxl.epub } }
+oracles:
+  - id: publish.validation-panel-ok
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe-validation.eval.json
+      expected:
+        reflowableOk: true
+        fxlOk: true
+        downloadEnabled: true
+        titlePresent: true
+  - id: epub.reflowable-ocf
+    type: epub-entries
+    config:
+      artifact: book.reflowable.epub
+      opfPath: OEBPS/content.opf
+      minEntries: 6
+      namesInclude: ["OEBPS/nav.xhtml", "OEBPS/scene-01.xhtml", "OEBPS/scene-02.xhtml", "OEBPS/scene-03.xhtml"]
+      entryContains:
+        - namePrefix: "OEBPS/scene-"
+          contains: ["class=\"dialogue\""]
+      forbiddenNames: []
+  - id: epub.fxl-ocf
+    type: epub-entries
+    config:
+      artifact: book.fxl.epub
+      opfPath: OEBPS/content.opf
+      fxl: true
+      minEntries: 13
+      namesInclude: ["OEBPS/nav.xhtml"]
+      entryContains:
+        - namePrefix: "OEBPS/page-"
+          contains: ["comic-lettering-layer", "name=\"viewport\""]
+      forbiddenNames: ["mimetype.bak"]
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.publish.console.json
