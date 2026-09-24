@@ -446,6 +446,73 @@ export const jsonlEntryOracle: OracleImpl = async (oracle, ctx) => {
   });
 };
 
+/**
+ * ZipEntriesOracle — parses a store-mode ZIP artifact (e.g. a CBZ proof) and
+ * verifies entry count, names and raw-text content (store mode keeps bytes
+ * uncompressed, so dialogue text is directly searchable).
+ */
+export const zipEntriesOracle: OracleImpl = async (oracle, ctx) => {
+  const config = oracle.config ?? {};
+  const artifactName = config.artifact as string;
+  const ref = ctx.run.artifactIds.get(artifactName);
+  if (!ref) throw new Error(`artifact "${artifactName}" not found in evidence bundle`);
+  const { readStoreZip } = await import('../audit/zip.ts');
+  const bytes = await readFile(join(ctx.run.dir, ref.path));
+  let entries;
+  try {
+    entries = readStoreZip(new Uint8Array(bytes.buffer, bytes.byteOffset, bytes.byteLength));
+  } catch (err) {
+    return result({
+      id: oracle.id,
+      type: 'zip-entries',
+      verdict: 'failed',
+      message: `unreadable zip: ${err instanceof Error ? err.message : String(err)}`,
+      classification: 'structural',
+      proves: 'the archive parses as a zip',
+      doesNotProve: 'entry content',
+    });
+  }
+
+  const failures: string[] = [];
+  const minEntries = config.minEntries as number | undefined;
+  if (minEntries !== undefined && entries.length < minEntries) {
+    failures.push(`expected >= ${minEntries} entries, got ${entries.length}`);
+  }
+  for (const expectedName of (config.namesInclude ?? []) as string[]) {
+    if (!entries.some((e) => e.name === expectedName)) failures.push(`missing entry "${expectedName}"`);
+  }
+  for (const rule of (config.entryContains ?? []) as Array<{ namePrefix: string; contains: string[] }>) {
+    const matches = entries.filter((e) => e.name.startsWith(rule.namePrefix));
+    if (matches.length === 0) {
+      failures.push(`no entries matching prefix "${rule.namePrefix}"`);
+      continue;
+    }
+    for (const needle of rule.contains) {
+      if (!matches.some((e) => e.text.includes(needle))) {
+        failures.push(`no entry matching "${rule.namePrefix}" contains "${needle.slice(0, 40)}…"`);
+      }
+    }
+  }
+  for (const forbiddenName of (config.forbiddenNames ?? []) as string[]) {
+    if (entries.some((e) => e.name === forbiddenName)) failures.push(`forbidden entry "${forbiddenName}" present`);
+  }
+
+  const listing = await ctx.run.writeArtifact(`${oracle.id}.entries.txt`, entries.map((e) => `${e.name} (${e.size}B)`).join('\n') + '\n');
+  return result({
+    id: oracle.id,
+    type: 'zip-entries',
+    verdict: failures.length === 0 ? 'passed' : 'failed',
+    message:
+      failures.length === 0
+        ? `zip ok: ${entries.length} entries [${entries.map((e) => e.name).join(', ').slice(0, 120)}${entries.length > 6 ? '…' : ''}]`
+        : `${failures.length} zip assertion(s) failed: ${failures.slice(0, 6).join('; ')}`,
+    classification: 'structural',
+    proves: 'the exported archive carries the declared entries and searchable raw content',
+    doesNotProve: 'visual rendering quality of the pages',
+    actualRef: listing.path,
+  });
+};
+
 export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   schema: schemaOracle,
   'semantic-json': semanticJsonOracle,
@@ -456,5 +523,6 @@ export const ORACLES: Record<ScenarioOracle['type'], OracleImpl> = {
   'browser-content': browserContentOracle,
   'browser-evaluate': browserEvaluateOracle,
   'jsonl-entry': jsonlEntryOracle,
+  'zip-entries': zipEntriesOracle,
   'cross-language': crossLanguageOracle,
 };

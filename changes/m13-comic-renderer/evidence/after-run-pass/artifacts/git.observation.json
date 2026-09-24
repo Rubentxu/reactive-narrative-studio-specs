@@ -1,0 +1,25 @@
+{
+  "sha": "e9e49809783e0049b7769063457e46a0f5035570",
+  "branch": "feat/m13-comic-renderer",
+  "dirty": true,
+  "dirtyFiles": [
+    "M control-plane/src/routes/router.tsx",
+    "M control-plane/test/extension-isolation.spec.ts",
+    "M verification/src/oracles/index.ts",
+    "M verification/src/scenario/loader.ts",
+    "M verification/src/types.ts",
+    "M verification/tsconfig.json",
+    "?? AGENTS.md",
+    "?? changes/m13-comic-renderer/",
+    "?? control-plane/src/features/comic-renderer/",
+    "?? control-plane/src/views/ComicProof.tsx",
+    "?? control-plane/test/comic-renderer.spec.ts",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/",
+    "?? uat/UAT-M13-01.md",
+    "?? verification/scenarios/scn-m13-01-001.yaml",
+    "?? verification/src/audit/zip.ts"
+  ]
+}

@@ -1,0 +1,90 @@
+id: SCN-M13-01-001
+uat: UAT-M13-01
+requirements: [REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6]
+claims:
+  proves:
+    - El comic proof se compone por capas: art-layer con slots placeholder etiquetados por shotRef (sin texto narrativo) y lettering-layer con todo el diálogo como nodos de texto editables; los toggles de capa prueban la separación.
+    - El CBZ descargado contiene una página SVG por página del IR más ComicInfo.xml, con los diálogos buscables en los bytes (store-mode) y sin contenido rasterizado del texto.
+  doesNotProve:
+    - Generación de imágenes real (Visual IR pipeline; los slots son placeholders).
+    - Calidad tipográfica o de colocación de balones (template-based según doc 11).
+    - Lectura del CBZ en visores de terceros.
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.comic, driver: browser, action: navigate, params: { path: /comic } }
+  - id: ui.probe-layers
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const svg = document.querySelector('[data-testid="comic-page-view"] svg');
+          const art = svg?.querySelector('.comic-art-layer');
+          const lettering = svg?.querySelector('.comic-lettering-layer');
+          const narrativeTextInArt = Array.from(art?.querySelectorAll('text') ?? [])
+            .filter((t) => t.getAttribute('data-meta') !== 'true').length;
+          const letteringTexts = Array.from(lettering?.querySelectorAll('text') ?? []).map((t) => t.textContent ?? '').join(' ');
+          return {
+            svgPresent: Boolean(svg),
+            artSlots: art?.querySelectorAll('.comic-art-slot').length ?? 0,
+            narrativeTextInArt,
+            letteringTextCount: lettering?.querySelectorAll('text').length ?? 0,
+            hasDialogue: letteringTexts.includes('Abuela… ¿estás ahí?'),
+            imageTags: svg?.querySelectorAll('image').length ?? -1,
+          };
+        })()
+  - { id: ui.toggle-art, driver: browser, action: click, params: { selector: '.comic-toggle input[type="checkbox"]', waitForUrlContains: "/comic" } }
+  - id: ui.probe-after-toggle
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const svg = document.querySelector('[data-testid="comic-page-view"] svg');
+          const art = svg?.querySelector('.comic-art-layer');
+          const lettering = svg?.querySelector('.comic-lettering-layer');
+          return {
+            artHidden: (art?.getAttribute('style') ?? '').includes('none'),
+            letteringStillVisible: lettering !== null && !(lettering.getAttribute('style') ?? '').includes('none'),
+          };
+        })()
+  - id: ui.download-cbz
+    driver: browser
+    action: submit
+    params:
+      buttonSelector: "button.comic-download-cbz"
+      artifactName: comic.proof.cbz
+oracles:
+  - id: comic.layers-separated
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe-layers.eval.json
+      expected:
+        svgPresent: true
+        artSlots: 4
+        narrativeTextInArt: 0
+        letteringTextCount: 5
+        hasDialogue: true
+        imageTags: 0
+  - id: comic.toggle-works
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe-after-toggle.eval.json
+      expected:
+        artHidden: true
+        letteringStillVisible: true
+  - id: cbz.proof-contents
+    type: zip-entries
+    config:
+      artifact: comic.proof.cbz
+      minEntries: 11
+      namesInclude: ["ComicInfo.xml"]
+      entryContains:
+        - namePrefix: "page-"
+          contains: ["Eso es imposible.", "comic-lettering-layer"]
+      forbiddenNames: []
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.comic.console.json

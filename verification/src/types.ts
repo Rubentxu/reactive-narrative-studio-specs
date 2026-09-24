@@ -24,6 +24,7 @@ export type OracleType =
   | 'browser-content'
   | 'browser-evaluate'
   | 'jsonl-entry'
+  | 'zip-entries'
   | 'cross-language';
 
 export interface ScenarioOracle {

@@ -1,0 +1,630 @@
+{
+  "runId": "run-2026-09-24T18-50-33-811Z-44dc63b7",
+  "scenarioId": "SCN-M13-01-001",
+  "uat": "UAT-M13-01",
+  "requirements": [
+    "REQ-CR-2",
+    "REQ-CR-3",
+    "REQ-CR-4",
+    "REQ-CR-5",
+    "REQ-CR-6"
+  ],
+  "overall": "PASS",
+  "startedAt": "2026-09-24T18:50:33.812Z",
+  "finishedAt": "2026-09-24T18:50:39.038Z",
+  "steps": [
+    {
+      "id": "ui.build",
+      "driver": "process",
+      "action": "run",
+      "status": "passed",
+      "observations": {
+        "exitCode": 0,
+        "timedOut": false
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "45f12d279308f7d71667496830398ddb59c602f9dbd1e64ec6c8a864dd11def1",
+          "bytes": 925
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "0169cbcc15d14408f320f5031d01c65096dfac1203861e27cb485045045bb166",
+          "bytes": 811
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "499215dc07ad1e40ac5581c6720f4e787887bb34158ddb319d4ed211c20567a8",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 1607
+    },
+    {
+      "id": "ui.start-preview",
+      "driver": "browser",
+      "action": "start-preview",
+      "status": "passed",
+      "observations": {
+        "preview": "running"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "45f12d279308f7d71667496830398ddb59c602f9dbd1e64ec6c8a864dd11def1",
+          "bytes": 925
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "0169cbcc15d14408f320f5031d01c65096dfac1203861e27cb485045045bb166",
+          "bytes": 811
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "499215dc07ad1e40ac5581c6720f4e787887bb34158ddb319d4ed211c20567a8",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 1044
+    },
+    {
+      "id": "ui.comic",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/comic"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "45f12d279308f7d71667496830398ddb59c602f9dbd1e64ec6c8a864dd11def1",
+          "bytes": 925
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "0169cbcc15d14408f320f5031d01c65096dfac1203861e27cb485045045bb166",
+          "bytes": 811
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "499215dc07ad1e40ac5581c6720f4e787887bb34158ddb319d4ed211c20567a8",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.comic.png",
+          "path": "artifacts/browser/ui.comic.png",
+          "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+          "bytes": 69590
+        },
+        {
+          "artifactId": "browser.ui.comic.console.json",
+          "path": "artifacts/browser.ui.comic.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.comic.dom.json",
+          "path": "artifacts/browser.ui.comic.dom.json",
+          "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+          "bytes": 990
+        }
+      ],
+      "durationMs": 874
+    },
+    {
+      "id": "ui.probe-layers",
+      "driver": "browser",
+      "action": "evaluate",
+      "status": "passed",
+      "observations": {
+        "evaluated": true,
+        "resultSummary": "{\"svgPresent\":true,\"artSlots\":4,\"narrativeTextInArt\":0,\"letteringTextCount\":5,\"hasDialogue\":true,\"imageTags\":0}"
+      },
+      "artifacts": [
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "0169cbcc15d14408f320f5031d01c65096dfac1203861e27cb485045045bb166",
+          "bytes": 811
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "499215dc07ad1e40ac5581c6720f4e787887bb34158ddb319d4ed211c20567a8",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.comic.png",
+          "path": "artifacts/browser/ui.comic.png",
+          "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+          "bytes": 69590
+        },
+        {
+          "artifactId": "browser.ui.comic.console.json",
+          "path": "artifacts/browser.ui.comic.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.comic.dom.json",
+          "path": "artifacts/browser.ui.comic.dom.json",
+          "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+          "bytes": 990
+        },
+        {
+          "artifactId": "browser.ui.probe-layers.eval.json",
+          "path": "artifacts/browser.ui.probe-layers.eval.json",
+          "sha256": "abb2f814c12e72ffbefaaae2f4f4db4653bc2c66127020e76087f804c6eba49e",
+          "bytes": 137
+        },
+        {
+          "artifactId": "browser/ui.probe-layers.png",
+          "path": "artifacts/browser/ui.probe-layers.png",
+          "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+          "bytes": 69590
+        }
+      ],
+      "durationMs": 112
+    },
+    {
+      "id": "ui.toggle-art",
+      "driver": "browser",
+      "action": "click",
+      "status": "passed",
+      "observations": {
+        "clicked": ".comic-toggle input[type=\"checkbox\"]",
+        "url": "http://localhost:4173/comic"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser/ui.comic.png",
+          "path": "artifacts/browser/ui.comic.png",
+          "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+          "bytes": 69590
+        },
+        {
+          "artifactId": "browser.ui.comic.console.json",
+          "path": "artifacts/browser.ui.comic.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.comic.dom.json",
+          "path": "artifacts/browser.ui.comic.dom.json",
+          "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+          "bytes": 990
+        },
+        {
+          "artifactId": "browser.ui.probe-layers.eval.json",
+          "path": "artifacts/browser.ui.probe-layers.eval.json",
+          "sha256": "abb2f814c12e72ffbefaaae2f4f4db4653bc2c66127020e76087f804c6eba49e",
+          "bytes": 137
+        },
+        {
+          "artifactId": "browser/ui.probe-layers.png",
+          "path": "artifacts/browser/ui.probe-layers.png",
+          "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+          "bytes": 69590
+        },
+        {
+          "artifactId": "browser/ui.toggle-art.png",
+          "path": "artifacts/browser/ui.toggle-art.png",
+          "sha256": "cd352a971e728eb1c1cf1f20c93f706f160c7fcf6fc00ff42f44ce2852e3e1e3",
+          "bytes": 62675
+        },
+        {
+          "artifactId": "browser.ui.toggle-art.console.json",
+          "path": "artifacts/browser.ui.toggle-art.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.toggle-art.dom.json",
+          "path": "artifacts/browser.ui.toggle-art.dom.json",
+          "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+          "bytes": 990
+        }
+      ],
+      "durationMs": 165
+    },
+    {
+      "id": "ui.probe-after-toggle",
+      "driver": "browser",
+      "action": "evaluate",
+      "status": "passed",
+      "observations": {
+        "evaluated": true,
+        "resultSummary": "{\"artHidden\":true,\"letteringStillVisible\":true}"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.comic.dom.json",
+          "path": "artifacts/browser.ui.comic.dom.json",
+          "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+          "bytes": 990
+        },
+        {
+          "artifactId": "browser.ui.probe-layers.eval.json",
+          "path": "artifacts/browser.ui.probe-layers.eval.json",
+          "sha256": "abb2f814c12e72ffbefaaae2f4f4db4653bc2c66127020e76087f804c6eba49e",
+          "bytes": 137
+        },
+        {
+          "artifactId": "browser/ui.probe-layers.png",
+          "path": "artifacts/browser/ui.probe-layers.png",
+          "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+          "bytes": 69590
+        },
+        {
+          "artifactId": "browser/ui.toggle-art.png",
+          "path": "artifacts/browser/ui.toggle-art.png",
+          "sha256": "cd352a971e728eb1c1cf1f20c93f706f160c7fcf6fc00ff42f44ce2852e3e1e3",
+          "bytes": 62675
+        },
+        {
+          "artifactId": "browser.ui.toggle-art.console.json",
+          "path": "artifacts/browser.ui.toggle-art.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.toggle-art.dom.json",
+          "path": "artifacts/browser.ui.toggle-art.dom.json",
+          "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+          "bytes": 990
+        },
+        {
+          "artifactId": "browser.ui.probe-after-toggle.eval.json",
+          "path": "artifacts/browser.ui.probe-after-toggle.eval.json",
+          "sha256": "84ae6b7b98d40be1cf4e3685a72e1b6382f0ec2bbfafc7995f478b4795c68dbd",
+          "bytes": 57
+        },
+        {
+          "artifactId": "browser/ui.probe-after-toggle.png",
+          "path": "artifacts/browser/ui.probe-after-toggle.png",
+          "sha256": "cd352a971e728eb1c1cf1f20c93f706f160c7fcf6fc00ff42f44ce2852e3e1e3",
+          "bytes": 62675
+        }
+      ],
+      "durationMs": 92
+    },
+    {
+      "id": "ui.download-cbz",
+      "driver": "browser",
+      "action": "submit",
+      "status": "passed",
+      "observations": {
+        "planArtifact": "comic.proof.cbz",
+        "planPath": "/var/mnt/DiscoChino2-fast/Proyectos/python/reactive-narrative-studio-specs/verification/evidence/run-2026-09-24T18-50-33-811Z-44dc63b7/browser/ui.download-cbz-comic-proof-ch-faro-de-sal.cbz",
+        "suggestedFilename": "comic-proof-ch-faro-de-sal.cbz"
+      },
+      "artifacts": [
+        {
+          "artifactId": "browser.ui.toggle-art.console.json",
+          "path": "artifacts/browser.ui.toggle-art.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.toggle-art.dom.json",
+          "path": "artifacts/browser.ui.toggle-art.dom.json",
+          "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+          "bytes": 990
+        },
+        {
+          "artifactId": "browser.ui.probe-after-toggle.eval.json",
+          "path": "artifacts/browser.ui.probe-after-toggle.eval.json",
+          "sha256": "84ae6b7b98d40be1cf4e3685a72e1b6382f0ec2bbfafc7995f478b4795c68dbd",
+          "bytes": 57
+        },
+        {
+          "artifactId": "browser/ui.probe-after-toggle.png",
+          "path": "artifacts/browser/ui.probe-after-toggle.png",
+          "sha256": "cd352a971e728eb1c1cf1f20c93f706f160c7fcf6fc00ff42f44ce2852e3e1e3",
+          "bytes": 62675
+        },
+        {
+          "artifactId": "comic.proof.cbz",
+          "path": "artifacts/comic.proof.cbz",
+          "sha256": "92a0e87ad289f93c48b38b20826135915e06664776f6fe0aad7721f937430073",
+          "bytes": 29697
+        },
+        {
+          "artifactId": "browser/ui.download-cbz.png",
+          "path": "artifacts/browser/ui.download-cbz.png",
+          "sha256": "2217769923d616e58eb78e692639c4a0c00119741795eb1c74fbe95942378407",
+          "bytes": 67378
+        },
+        {
+          "artifactId": "browser.ui.download-cbz.console.json",
+          "path": "artifacts/browser.ui.download-cbz.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.download-cbz.dom.json",
+          "path": "artifacts/browser.ui.download-cbz.dom.json",
+          "sha256": "cb626f7dd4356bfb185eff5742acff5428d8df794896d358cf90a1101f577dbd",
+          "bytes": 1034
+        }
+      ],
+      "durationMs": 142
+    }
+  ],
+  "oracles": [
+    {
+      "id": "comic.layers-separated",
+      "type": "browser-evaluate",
+      "classification": "functional",
+      "proves": "the declared in-page probe (DOM/storage/state) returns the expected observable result",
+      "doesNotProve": "anything outside the probe script; probe correctness is reviewer-audited",
+      "verdict": "passed",
+      "message": "evaluate result matches expectations (browser.ui.probe-layers.eval.json)",
+      "actualRef": "artifacts/comic.layers-separated.actual.json",
+      "diffRef": "artifacts/comic.layers-separated.diff.json"
+    },
+    {
+      "id": "comic.toggle-works",
+      "type": "browser-evaluate",
+      "classification": "functional",
+      "proves": "the declared in-page probe (DOM/storage/state) returns the expected observable result",
+      "doesNotProve": "anything outside the probe script; probe correctness is reviewer-audited",
+      "verdict": "passed",
+      "message": "evaluate result matches expectations (browser.ui.probe-after-toggle.eval.json)",
+      "actualRef": "artifacts/comic.toggle-works.actual.json",
+      "diffRef": "artifacts/comic.toggle-works.diff.json"
+    },
+    {
+      "id": "cbz.proof-contents",
+      "type": "zip-entries",
+      "classification": "structural",
+      "proves": "the exported archive carries the declared entries and searchable raw content",
+      "doesNotProve": "visual rendering quality of the pages",
+      "verdict": "passed",
+      "message": "zip ok: 11 entries [page-01.svg, page-02.svg, page-03.svg, page-04.svg, page-05.svg, page-06.svg, page-07.svg, page-08.svg, page-09.svg, pag…]",
+      "actualRef": "artifacts/cbz.proof-contents.entries.txt"
+    },
+    {
+      "id": "browser.health",
+      "type": "browser",
+      "classification": "runtime-health",
+      "proves": "the UI surface completed the flow without runtime errors",
+      "doesNotProve": "semantic equivalence of produced artifacts",
+      "verdict": "passed",
+      "message": "browser session healthy (0 page errors, 0 console errors)"
+    }
+  ],
+  "unprovenRequirements": [],
+  "appliedWaivers": [],
+  "git": {
+    "sha": "e9e49809783e0049b7769063457e46a0f5035570",
+    "branch": "feat/m13-comic-renderer",
+    "dirty": true,
+    "dirtyFiles": [
+      "M control-plane/src/routes/router.tsx",
+      "M control-plane/test/extension-isolation.spec.ts",
+      "M verification/src/oracles/index.ts",
+      "M verification/src/scenario/loader.ts",
+      "M verification/src/types.ts",
+      "M verification/tsconfig.json",
+      "?? AGENTS.md",
+      "?? changes/m13-comic-renderer/",
+      "?? control-plane/src/features/comic-renderer/",
+      "?? control-plane/src/views/ComicProof.tsx",
+      "?? control-plane/test/comic-renderer.spec.ts",
+      "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+      "?? docs/reactive-narrative-studio-openspec-evolutives/",
+      "?? docs/seedance-blocking.zip",
+      "?? docs/seedance-blocking/",
+      "?? uat/UAT-M13-01.md",
+      "?? verification/scenarios/scn-m13-01-001.yaml",
+      "?? verification/src/audit/zip.ts"
+    ]
+  },
+  "environment": {
+    "os": "linux x64",
+    "node": "v25.9.0",
+    "pnpm": "11.9.0",
+    "python": "Python 3.14.7",
+    "browser": "Version 1.63.0"
+  },
+  "evidenceIndex": [
+    {
+      "artifactId": "environment.json",
+      "path": "artifacts/environment.json",
+      "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+      "bytes": 125
+    },
+    {
+      "artifactId": "git.observation.json",
+      "path": "artifacts/git.observation.json",
+      "sha256": "45f12d279308f7d71667496830398ddb59c602f9dbd1e64ec6c8a864dd11def1",
+      "bytes": 925
+    },
+    {
+      "artifactId": "git.dirty-files.json",
+      "path": "artifacts/git.dirty-files.json",
+      "sha256": "0169cbcc15d14408f320f5031d01c65096dfac1203861e27cb485045045bb166",
+      "bytes": 811
+    },
+    {
+      "artifactId": "process.ui.build.stdout.txt",
+      "path": "artifacts/process.ui.build.stdout.txt",
+      "sha256": "499215dc07ad1e40ac5581c6720f4e787887bb34158ddb319d4ed211c20567a8",
+      "bytes": 413
+    },
+    {
+      "artifactId": "process.ui.build.stderr.txt",
+      "path": "artifacts/process.ui.build.stderr.txt",
+      "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+      "bytes": 416
+    },
+    {
+      "artifactId": "browser/ui.comic.png",
+      "path": "artifacts/browser/ui.comic.png",
+      "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+      "bytes": 69590
+    },
+    {
+      "artifactId": "browser.ui.comic.console.json",
+      "path": "artifacts/browser.ui.comic.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.comic.dom.json",
+      "path": "artifacts/browser.ui.comic.dom.json",
+      "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+      "bytes": 990
+    },
+    {
+      "artifactId": "browser.ui.probe-layers.eval.json",
+      "path": "artifacts/browser.ui.probe-layers.eval.json",
+      "sha256": "abb2f814c12e72ffbefaaae2f4f4db4653bc2c66127020e76087f804c6eba49e",
+      "bytes": 137
+    },
+    {
+      "artifactId": "browser/ui.probe-layers.png",
+      "path": "artifacts/browser/ui.probe-layers.png",
+      "sha256": "811396ff0c1b957777a7c1d8e0398c68ff46d5af3e243bf6583c0198a68ba5ac",
+      "bytes": 69590
+    },
+    {
+      "artifactId": "browser/ui.toggle-art.png",
+      "path": "artifacts/browser/ui.toggle-art.png",
+      "sha256": "cd352a971e728eb1c1cf1f20c93f706f160c7fcf6fc00ff42f44ce2852e3e1e3",
+      "bytes": 62675
+    },
+    {
+      "artifactId": "browser.ui.toggle-art.console.json",
+      "path": "artifacts/browser.ui.toggle-art.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.toggle-art.dom.json",
+      "path": "artifacts/browser.ui.toggle-art.dom.json",
+      "sha256": "d980a64850a52ab52302e80997ef105e001d7bc878e16df29a5a098174ef29da",
+      "bytes": 990
+    },
+    {
+      "artifactId": "browser.ui.probe-after-toggle.eval.json",
+      "path": "artifacts/browser.ui.probe-after-toggle.eval.json",
+      "sha256": "84ae6b7b98d40be1cf4e3685a72e1b6382f0ec2bbfafc7995f478b4795c68dbd",
+      "bytes": 57
+    },
+    {
+      "artifactId": "browser/ui.probe-after-toggle.png",
+      "path": "artifacts/browser/ui.probe-after-toggle.png",
+      "sha256": "cd352a971e728eb1c1cf1f20c93f706f160c7fcf6fc00ff42f44ce2852e3e1e3",
+      "bytes": 62675
+    },
+    {
+      "artifactId": "comic.proof.cbz",
+      "path": "artifacts/comic.proof.cbz",
+      "sha256": "92a0e87ad289f93c48b38b20826135915e06664776f6fe0aad7721f937430073",
+      "bytes": 29697
+    },
+    {
+      "artifactId": "browser/ui.download-cbz.png",
+      "path": "artifacts/browser/ui.download-cbz.png",
+      "sha256": "2217769923d616e58eb78e692639c4a0c00119741795eb1c74fbe95942378407",
+      "bytes": 67378
+    },
+    {
+      "artifactId": "browser.ui.download-cbz.console.json",
+      "path": "artifacts/browser.ui.download-cbz.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.download-cbz.dom.json",
+      "path": "artifacts/browser.ui.download-cbz.dom.json",
+      "sha256": "cb626f7dd4356bfb185eff5742acff5428d8df794896d358cf90a1101f577dbd",
+      "bytes": 1034
+    },
+    {
+      "artifactId": "comic.layers-separated.actual.json",
+      "path": "artifacts/comic.layers-separated.actual.json",
+      "sha256": "abb2f814c12e72ffbefaaae2f4f4db4653bc2c66127020e76087f804c6eba49e",
+      "bytes": 137
+    },
+    {
+      "artifactId": "comic.layers-separated.diff.json",
+      "path": "artifacts/comic.layers-separated.diff.json",
+      "sha256": "4c9c9c59cd3805a31ed3d4bae79e84485a10170e9a232a0cfa3ddf2d12c42e6a",
+      "bytes": 41
+    },
+    {
+      "artifactId": "comic.toggle-works.actual.json",
+      "path": "artifacts/comic.toggle-works.actual.json",
+      "sha256": "84ae6b7b98d40be1cf4e3685a72e1b6382f0ec2bbfafc7995f478b4795c68dbd",
+      "bytes": 57
+    },
+    {
+      "artifactId": "comic.toggle-works.diff.json",
+      "path": "artifacts/comic.toggle-works.diff.json",
+      "sha256": "4c9c9c59cd3805a31ed3d4bae79e84485a10170e9a232a0cfa3ddf2d12c42e6a",
+      "bytes": 41
+    },
+    {
+      "artifactId": "cbz.proof-contents.entries.txt",
+      "path": "artifacts/cbz.proof-contents.entries.txt",
+      "sha256": "b0430c4093044de58bf3b263ea13c0ed1b2d0d378c3e045082abd6e1570f0896",
+      "bytes": 221
+    }
+  ]
+}
