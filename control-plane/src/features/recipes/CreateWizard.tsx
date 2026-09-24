@@ -30,6 +30,7 @@ interface WizardState {
   audience: string;
   skeletonContents: Record<string, string>;
   lockData: Record<string, unknown> | null;
+  parametersSchema: Record<string, unknown> | null;
   status: 'idle' | 'loading' | 'ready' | 'submitting' | 'done' | 'error';
   error: string | null;
   info: string | null;
@@ -41,11 +42,41 @@ function loadSkeletonContents(recipeId: string): Record<string, string> {
   return { ...(assets?.skeleton ?? {}) };
 }
 
+/** Load the recipe's declared parameters schema (defaults source). */
+function loadParametersSchema(recipeId: string): Record<string, unknown> | null {
+  const assets = (recipeAssets as Record<string, Record<string, unknown>>)[recipeId];
+  const raw = assets?.['parameters.schema.json'];
+  if (!raw) return null;
+  // The generated bundle inlines the schema as a nested JSON object.
+  if (typeof raw === 'object') return raw as Record<string, unknown>;
+  try {
+    return JSON.parse(String(raw)) as Record<string, unknown>;
+  } catch {
+    return null;
+  }
+}
+
 function loadLockData(recipeId: string): Record<string, unknown> | null {
   const assets = (recipeAssets as Record<string, { 'recipe.lock.json'?: string }>)[recipeId];
   const raw = assets?.['recipe.lock.json'];
   if (!raw) return null;
   return JSON.parse(raw) as Record<string, unknown>;
+}
+
+/** Mirror of narrative_recipes.apply_schema_defaults: fill missing params with
+ *  the recipe's declared JSON Schema defaults so the TS and Python runtimes
+ *  render byte-identical plans (cross-runtime equivalence oracle). */
+function applySchemaDefaults(
+  params: Record<string, unknown>,
+  schema: Record<string, unknown> | null,
+): Record<string, unknown> {
+  const merged = { ...params };
+  if (!schema) return merged;
+  const properties = (schema.properties ?? {}) as Record<string, { default?: unknown }>;
+  for (const [name, prop] of Object.entries(properties)) {
+    if (!(name in merged) && prop && 'default' in prop) merged[name] = prop.default;
+  }
+  return merged;
 }
 
 export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipeId?: string }) {
@@ -56,6 +87,7 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
     audience: 'profile-middle-grade-10-11',
     skeletonContents: {},
     lockData: null,
+    parametersSchema: null,
     status: 'idle',
     error: null,
     info: null,
@@ -69,6 +101,7 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
     (async () => {
       const skeletonContents = loadSkeletonContents(recipeId);
       const lockData = loadLockData(recipeId);
+      const parametersSchema = loadParametersSchema(recipeId);
       if (cancelled) return;
 
       setState(s => ({
@@ -76,6 +109,7 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
         status: 'ready',
         skeletonContents,
         lockData,
+        parametersSchema,
         error: null,
       }));
     })();
@@ -88,13 +122,18 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
     setState(s => ({ ...s, status: 'submitting', error: null, info: null }));
 
     try {
-      // Same parameter set the CLI receives: the form fields only. Missing
-      // template variables render empty exactly like the Python engine.
-      const params: Record<string, unknown> = {
-        title: state.title,
-        projectId: state.projectId,
-        audience: state.audience,
-      };
+      // Same parameter set the CLI receives: the form fields, then declared
+      // schema defaults applied for missing properties (REQ-CR-10, matching
+      // apply_schema_defaults in the Python runtime so both runtimes render
+      // byte-identical plans — the cross-runtime equivalence oracle enforces it).
+      const params: Record<string, unknown> = applySchemaDefaults(
+        {
+          title: state.title,
+          projectId: state.projectId,
+          audience: state.audience,
+        },
+        state.parametersSchema,
+      );
 
       // Render every skeleton file (mirrors ProjectRenderer.render in Python).
       const engine = new TemplateEngine();

@@ -34,11 +34,12 @@ def run_narrative_via_entry_point(args: list[str], recipes_root: str = "recipes"
     # repo_root is 4 parents up from tools/narrative-cli/tests/test_cli.py
     repo_root = Path(__file__).resolve().parent.parent.parent.parent
     env = os.environ.copy()
-    env["PYTHONPATH"] = f"{repo_root}/tools:{env.get('PYTHONPATH', '')}"
+    env["PYTHONPATH"] = f"{repo_root}/tools:{repo_root}/tools/narrative-cli:{env.get('PYTHONPATH', '')}"
     code = f"""
 import sys
 from pathlib import Path
 repo_root = Path('{repo_root}')
+sys.path.insert(0, str(repo_root / 'tools' / 'narrative-cli'))
 sys.path.insert(0, str(repo_root / 'tools'))
 from narrative_cli.cli import main
 main()
@@ -288,3 +289,23 @@ class TestNarrativePlan:
         plan = json.loads(out_file.read_text())
         assert plan["recipe"] == "middle-grade-illustrated"
         assert "plan written" in stderr.lower()
+
+
+def test_plan_applies_schema_defaults():
+    """REQ-CR-10 / EVT-CR-10a: plan with DEFAULT parameters renders a project —
+    declared schema defaults (audience, imagePolicy, genre, outputLanguage)
+    are applied before validation and render."""
+    rc, stdout, stderr = run_narrative_via_entry_point([
+        "plan", "--recipe", "middle-grade-illustrated",
+        "--param", "title=El faro de sal",
+        "--param", "projectId=plan-smoke",
+        "--json",
+    ])
+    assert rc == 0, f"Expected 0, got {rc}. stderr: {stderr}"
+    plan = json.loads(stdout)
+    manifest = plan["manifest"]
+    assert manifest["audience"]["profile"] == "profile-middle-grade-10-11"
+    assert manifest.get("imagePolicy") == "local_preferred"
+    assert manifest.get("genre") == "fantasy"
+    assert manifest.get("outputLanguage") == "es-ES"
+    assert len(plan["skeleton"]) >= 12

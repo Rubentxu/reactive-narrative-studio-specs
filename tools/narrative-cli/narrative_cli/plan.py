@@ -52,6 +52,11 @@ def plan(
     # Validate parameters BEFORE any rendering (REQ-CR-12)
     from narrative_recipes import ParameterValidator
     validator = ParameterValidator()
+    # Apply declared parameter defaults (REQ-CR-10) before validation —
+    # explicit user params are never overwritten.
+    from narrative_recipes import apply_schema_defaults
+    params = apply_schema_defaults(params, bundle.parameters_schema)
+
     validation_result = validator.validate(params, bundle.parameters_schema)
     if not validation_result.ok:
         print(f"Error: {validation_result.message}", file=sys.stderr)
