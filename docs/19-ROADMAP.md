@@ -212,9 +212,33 @@ searchable in the stored CBZ bytes; art/lettering toggles prove separation.
 - The renderer takes a `PresentationProfile` from day one (M14 adds the manga
   profile against the same sequential source).
 
-## M14 — Manga Profile
+## M14 — Manga Profile — DELIVERED (v0.18.0)
 
-As previously defined.
+### Deliver (original definition)
+- RTL reading direction (doc 11 §Reading direction: manga `rtl`);
+- monochrome/screentone settings (deterministic SVG dot-grid pattern fill);
+- manga visual/editorial profile (`MANGA_PROFILE` over the same engine).
+
+### Exit
+"same sequential source can be rendered through distinct comic vs manga
+presentation profiles" — verified: `SCN-M14-01-001` renders the SAME
+SequentialArtIR through both profiles (switcher on `/comic`): manga declares
+`data-direction="rtl"`, mirrors panel 0 to the rightmost column, fills art
+slots via the screentone `<pattern>`, uses a grayscale-only palette, and the
+narrative lettering is identical across profiles; a CBZ proof is exported per
+profile with profile-marked pages.
+
+### UAT
+`uat/UAT-M14-01.md` authored this cycle — executable as `SCN-M14-01-001`.
+
+### Notes
+- Comic profile output is byte-compatible with M13 (flat fills, LTR grid,
+  M13 palette) — regression-locked by unit tests.
+- Lettering/meta colors were lifted from svg.ts hardcodes into the profile
+  (`captionStroke/textFill/captionTextFill/metaFill`) so the manga
+  monochrome guarantee holds without touching comic bytes.
+- Balloon placement stays template-based; reading direction only mirrors the
+  grid columns (rows read top-down in both directions).
 
 ## M15 — Digital Publishing
 

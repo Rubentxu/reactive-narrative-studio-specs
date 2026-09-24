@@ -24,4 +24,4 @@ B2  Docs + receipts + cierre SDDK + release v0.18.0
 - [x] Run real: SCN-M14-01-001 PASS (5/5 oracles); canonical `verify` 8/8 PASS; audit M10.2.1 PASS_WITH_WAIVER (0 bloqueos); audit M14 PASS
 
 ### B2
-- [ ] Docs (roadmap M14 entregado, glossary) + receipts + release v0.18.0 + archive
+- [x] Docs (roadmap M14 entregado, glossary) + receipts + release v0.18.0 + archive
