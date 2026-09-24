@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SCN-M12-01-001" tests="7" failures="0" skipped="0" time="0">
+  <testcase classname="SCN-M12-01-001.steps" name="ui.build" time="1.521"/>
+  <testcase classname="SCN-M12-01-001.steps" name="ui.start-preview" time="1.044"/>
+  <testcase classname="SCN-M12-01-001.steps" name="ui.storyboard" time="1.047"/>
+  <testcase classname="SCN-M12-01-001.steps" name="ui.probe" time="0.278"/>
+  <testcase classname="SCN-M12-01-001.oracles" name="storyboard.uat-m12-01 [browser-evaluate]" time="0"/>
+  <testcase classname="SCN-M12-01-001.oracles" name="storyboard.page-range [browser-content]" time="0"/>
+  <testcase classname="SCN-M12-01-001.oracles" name="browser.health [browser]" time="0"/>
+</testsuite>

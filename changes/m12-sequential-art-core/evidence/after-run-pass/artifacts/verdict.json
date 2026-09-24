@@ -1,0 +1,358 @@
+{
+  "runId": "run-2026-09-24T17-34-11-847Z-6037a976",
+  "scenarioId": "SCN-M12-01-001",
+  "uat": "UAT-M12-01",
+  "requirements": [
+    "REQ-SA-1",
+    "REQ-SA-2",
+    "REQ-SA-3",
+    "REQ-SA-4",
+    "REQ-SA-6"
+  ],
+  "overall": "PASS",
+  "startedAt": "2026-09-24T17:34:11.849Z",
+  "finishedAt": "2026-09-24T17:34:16.880Z",
+  "steps": [
+    {
+      "id": "ui.build",
+      "driver": "process",
+      "action": "run",
+      "status": "passed",
+      "observations": {
+        "exitCode": 0,
+        "timedOut": false
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "ae07c52b672b78f6867be76168046fedfbb173d9d36035eef762b4be17ff70a3",
+          "bytes": 742
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "d0c852d8503d27b20aee6c84f0efdf65312764295cbf84508db718905f2f79e7",
+          "bytes": 623
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "ced6b127fea62e63e9d852f2814e96942f075f396e96fe82ac50c782349f4933",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 1521
+    },
+    {
+      "id": "ui.start-preview",
+      "driver": "browser",
+      "action": "start-preview",
+      "status": "passed",
+      "observations": {
+        "preview": "running"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "ae07c52b672b78f6867be76168046fedfbb173d9d36035eef762b4be17ff70a3",
+          "bytes": 742
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "d0c852d8503d27b20aee6c84f0efdf65312764295cbf84508db718905f2f79e7",
+          "bytes": 623
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "ced6b127fea62e63e9d852f2814e96942f075f396e96fe82ac50c782349f4933",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        }
+      ],
+      "durationMs": 1044
+    },
+    {
+      "id": "ui.storyboard",
+      "driver": "browser",
+      "action": "navigate",
+      "status": "passed",
+      "observations": {
+        "url": "/storyboard"
+      },
+      "artifacts": [
+        {
+          "artifactId": "environment.json",
+          "path": "artifacts/environment.json",
+          "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+          "bytes": 125
+        },
+        {
+          "artifactId": "git.observation.json",
+          "path": "artifacts/git.observation.json",
+          "sha256": "ae07c52b672b78f6867be76168046fedfbb173d9d36035eef762b4be17ff70a3",
+          "bytes": 742
+        },
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "d0c852d8503d27b20aee6c84f0efdf65312764295cbf84508db718905f2f79e7",
+          "bytes": 623
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "ced6b127fea62e63e9d852f2814e96942f075f396e96fe82ac50c782349f4933",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.storyboard.png",
+          "path": "artifacts/browser/ui.storyboard.png",
+          "sha256": "53ecf65bea536e04aa34ad98329742640c82c4e7964e9b8fe575f3665ef8505c",
+          "bytes": 376472
+        },
+        {
+          "artifactId": "browser.ui.storyboard.console.json",
+          "path": "artifacts/browser.ui.storyboard.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.storyboard.dom.json",
+          "path": "artifacts/browser.ui.storyboard.dom.json",
+          "sha256": "6a1a5167390e5119b03bd0f2ea28923306bb1781956cf6d549ac212ba176afb0",
+          "bytes": 4298
+        }
+      ],
+      "durationMs": 1047
+    },
+    {
+      "id": "ui.probe",
+      "driver": "browser",
+      "action": "evaluate",
+      "status": "passed",
+      "observations": {
+        "evaluated": true,
+        "resultSummary": "{\"pageCards\":10,\"panelCount\":33,\"orderStrictlyIncreasing\":true,\"imgCount\":0,\"dialogueInDom\":true,\"lensNodes\":33,\"lensEdges\":32,\"sceneBreaks\":2,\"direction\":\"ltr\"}"
+      },
+      "artifacts": [
+        {
+          "artifactId": "git.dirty-files.json",
+          "path": "artifacts/git.dirty-files.json",
+          "sha256": "d0c852d8503d27b20aee6c84f0efdf65312764295cbf84508db718905f2f79e7",
+          "bytes": 623
+        },
+        {
+          "artifactId": "process.ui.build.stdout.txt",
+          "path": "artifacts/process.ui.build.stdout.txt",
+          "sha256": "ced6b127fea62e63e9d852f2814e96942f075f396e96fe82ac50c782349f4933",
+          "bytes": 413
+        },
+        {
+          "artifactId": "process.ui.build.stderr.txt",
+          "path": "artifacts/process.ui.build.stderr.txt",
+          "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+          "bytes": 416
+        },
+        {
+          "artifactId": "browser/ui.storyboard.png",
+          "path": "artifacts/browser/ui.storyboard.png",
+          "sha256": "53ecf65bea536e04aa34ad98329742640c82c4e7964e9b8fe575f3665ef8505c",
+          "bytes": 376472
+        },
+        {
+          "artifactId": "browser.ui.storyboard.console.json",
+          "path": "artifacts/browser.ui.storyboard.console.json",
+          "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+          "bytes": 46
+        },
+        {
+          "artifactId": "browser.ui.storyboard.dom.json",
+          "path": "artifacts/browser.ui.storyboard.dom.json",
+          "sha256": "6a1a5167390e5119b03bd0f2ea28923306bb1781956cf6d549ac212ba176afb0",
+          "bytes": 4298
+        },
+        {
+          "artifactId": "browser.ui.probe.eval.json",
+          "path": "artifacts/browser.ui.probe.eval.json",
+          "sha256": "5b05708b868b6bbd2029b41649270438778eb41f6eb9da9fa90e20d60ebe5951",
+          "bytes": 199
+        },
+        {
+          "artifactId": "browser/ui.probe.png",
+          "path": "artifacts/browser/ui.probe.png",
+          "sha256": "53ecf65bea536e04aa34ad98329742640c82c4e7964e9b8fe575f3665ef8505c",
+          "bytes": 376472
+        }
+      ],
+      "durationMs": 278
+    }
+  ],
+  "oracles": [
+    {
+      "id": "storyboard.uat-m12-01",
+      "type": "browser-evaluate",
+      "classification": "functional",
+      "proves": "the declared in-page probe (DOM/storage/state) returns the expected observable result",
+      "doesNotProve": "anything outside the probe script; probe correctness is reviewer-audited",
+      "verdict": "passed",
+      "message": "evaluate result matches expectations (browser.ui.probe.eval.json)",
+      "actualRef": "artifacts/storyboard.uat-m12-01.actual.json",
+      "diffRef": "artifacts/storyboard.uat-m12-01.diff.json"
+    },
+    {
+      "id": "storyboard.page-range",
+      "type": "browser-content",
+      "classification": "functional",
+      "proves": "the rendered UI page satisfies the declared DOM expectations",
+      "doesNotProve": "internal app semantics (store mutation, data provenance) or content quality",
+      "verdict": "passed",
+      "message": "DOM assertions hold on http://localhost:4173/storyboard",
+      "actualRef": "browser.ui.storyboard.dom.json"
+    },
+    {
+      "id": "browser.health",
+      "type": "browser",
+      "classification": "runtime-health",
+      "proves": "the UI surface completed the flow without runtime errors",
+      "doesNotProve": "semantic equivalence of produced artifacts",
+      "verdict": "passed",
+      "message": "browser session healthy (0 page errors, 0 console errors)"
+    }
+  ],
+  "unprovenRequirements": [],
+  "appliedWaivers": [],
+  "git": {
+    "sha": "06d4f5f507b815f538d411a1d9040d3ec29c52b1",
+    "branch": "feat/m12-sequential-art-core",
+    "dirty": true,
+    "dirtyFiles": [
+      "M control-plane/src/routes/router.tsx",
+      "M verification/tsconfig.json",
+      "?? AGENTS.md",
+      "?? changes/m12-sequential-art-core/",
+      "?? control-plane/src/features/sequential-art/",
+      "?? control-plane/src/views/Storyboard.tsx",
+      "?? control-plane/test/fixtures/sequential-art/",
+      "?? control-plane/test/sequential-art.spec.ts",
+      "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+      "?? docs/reactive-narrative-studio-openspec-evolutives/",
+      "?? docs/seedance-blocking.zip",
+      "?? docs/seedance-blocking/",
+      "?? verification/scenarios/scn-m12-01-001.yaml"
+    ]
+  },
+  "environment": {
+    "os": "linux x64",
+    "node": "v25.9.0",
+    "pnpm": "11.9.0",
+    "python": "Python 3.14.7",
+    "browser": "Version 1.63.0"
+  },
+  "evidenceIndex": [
+    {
+      "artifactId": "environment.json",
+      "path": "artifacts/environment.json",
+      "sha256": "5e60cd1f18fd5b0a2dbd597e9c9b18c86c95517f0e05de8d0b38a229eff95711",
+      "bytes": 125
+    },
+    {
+      "artifactId": "git.observation.json",
+      "path": "artifacts/git.observation.json",
+      "sha256": "ae07c52b672b78f6867be76168046fedfbb173d9d36035eef762b4be17ff70a3",
+      "bytes": 742
+    },
+    {
+      "artifactId": "git.dirty-files.json",
+      "path": "artifacts/git.dirty-files.json",
+      "sha256": "d0c852d8503d27b20aee6c84f0efdf65312764295cbf84508db718905f2f79e7",
+      "bytes": 623
+    },
+    {
+      "artifactId": "process.ui.build.stdout.txt",
+      "path": "artifacts/process.ui.build.stdout.txt",
+      "sha256": "ced6b127fea62e63e9d852f2814e96942f075f396e96fe82ac50c782349f4933",
+      "bytes": 413
+    },
+    {
+      "artifactId": "process.ui.build.stderr.txt",
+      "path": "artifacts/process.ui.build.stderr.txt",
+      "sha256": "269c223a43208a3515b81d5b340989d904a1e7c42caa16fc7b334884376c47ab",
+      "bytes": 416
+    },
+    {
+      "artifactId": "browser/ui.storyboard.png",
+      "path": "artifacts/browser/ui.storyboard.png",
+      "sha256": "53ecf65bea536e04aa34ad98329742640c82c4e7964e9b8fe575f3665ef8505c",
+      "bytes": 376472
+    },
+    {
+      "artifactId": "browser.ui.storyboard.console.json",
+      "path": "artifacts/browser.ui.storyboard.console.json",
+      "sha256": "4e768728e3a6785221f219d056cf4ea9120cacce6a06cb227a52f422ec9c27fd",
+      "bytes": 46
+    },
+    {
+      "artifactId": "browser.ui.storyboard.dom.json",
+      "path": "artifacts/browser.ui.storyboard.dom.json",
+      "sha256": "6a1a5167390e5119b03bd0f2ea28923306bb1781956cf6d549ac212ba176afb0",
+      "bytes": 4298
+    },
+    {
+      "artifactId": "browser.ui.probe.eval.json",
+      "path": "artifacts/browser.ui.probe.eval.json",
+      "sha256": "5b05708b868b6bbd2029b41649270438778eb41f6eb9da9fa90e20d60ebe5951",
+      "bytes": 199
+    },
+    {
+      "artifactId": "browser/ui.probe.png",
+      "path": "artifacts/browser/ui.probe.png",
+      "sha256": "53ecf65bea536e04aa34ad98329742640c82c4e7964e9b8fe575f3665ef8505c",
+      "bytes": 376472
+    },
+    {
+      "artifactId": "storyboard.uat-m12-01.actual.json",
+      "path": "artifacts/storyboard.uat-m12-01.actual.json",
+      "sha256": "5b05708b868b6bbd2029b41649270438778eb41f6eb9da9fa90e20d60ebe5951",
+      "bytes": 199
+    },
+    {
+      "artifactId": "storyboard.uat-m12-01.diff.json",
+      "path": "artifacts/storyboard.uat-m12-01.diff.json",
+      "sha256": "4c9c9c59cd3805a31ed3d4bae79e84485a10170e9a232a0cfa3ddf2d12c42e6a",
+      "bytes": 41
+    }
+  ]
+}

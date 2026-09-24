@@ -1,0 +1,25 @@
+{
+  "url": "http://localhost:4173/storyboard",
+  "title": "Control Plane",
+  "h1s": [
+    "Sequential Storyboard — El faro de sal"
+  ],
+  "h2s": [
+    "Load Project",
+    "page-01 (2×2 grid)",
+    "page-02 (2×2 grid)",
+    "page-03 (2×2 grid)",
+    "page-04 (2×2 grid)",
+    "page-05 (2×2 grid)",
+    "page-06 (2×2 grid)",
+    "page-07 (2×2 grid)",
+    "page-08 (2×2 grid)",
+    "page-09 (2×2 grid)",
+    "page-10 (2×2 grid)",
+    "Sequential graph lens"
+  ],
+  "links": [
+    "/home"
+  ],
+  "bodyText": "Load Project Studio Home No source loaded Current status: empty Open Directory (Chromium) Sequential Storyboard — El faro de sal Sample chapter (M12 core) · Reading direction: ltr · 10 pages · 33 panels · dialogue is editable text, never baked into images. page-01 (2×2 grid) #1panel-01 · shot-01 Amanecer sobre la bahía; el faro de sal destaca entre la niebla. #2panel-02 · shot-02 Nora sube el sendero de conchas con la lata de su abuela bajo el brazo. #3panel-03 · shot-03 Nora mira la puerta entreabierta del faro. nora: Abuela… ¿estás ahí? #4panel-04 · shot-04 El viento empuja la puerta; dentro, las escaleras giran hacia arriba. page-02 (2×2 grid) #5panel-05 · shot-05 Desde arriba baja un eco teñido de sal. abuela: Sube, nieta. La marea no espera. #6panel-06 · shot-06 Nora aprieta la lata y sube dos peldaños de golpe. #7panel-07 · shot-07 La linterna del faro, cubierta de cristales de sal, gira despacio. #8panel-08 · shot-08 Entre los cristales brilla una llave pequeña hecha de espuma apelmazada. nora: Eso es imposible. page-03 (2×2 grid) #9panel-09 · shot-09 La abuela sostiene un cuaderno salado. abuela: Todo lo que el mar guarda, alguien lo tuvo que anotar. #10panel-10 · shot-10 Nora abre la lata: dentro, una página arrancada del mismo cuaderno. #11panel-11 · shot-11 Las dos miran la página; el faro gira sobre ellas. — Scene break — #12panel-12 · shot-12 El despacho del faro: mapas, corchos, una taza con arena. page-04 (2×2 grid) #13panel-13 · shot-13 Nora extiende la página sobre la mesa. nora: Mi nombre está escrito aquí. Y no lo recuerdo. #14panel-14 · shot-14 La abuela cierra los ojos un instante demasiado largo. #15panel-15 · shot-15 La abuela señala la costa con el dedo. abuela: Hay una isla que solo aparece cuando la marea baja del todo. page-05 (2×2 grid) #16panel-16 · shot-16 Sobre el mapa, una ruta de corchos une el faro con un vacío blanco. #17panel-17 · shot-17 Nora repite la palabra del mapa. nora: «Sil»… así se llama la isla. #18panel-18 · shot-18 La llave de espuma se curva sola hacia el vacío del mapa. page-06 (2×2 grid) #19panel-19 · shot-19 La abuela guarda el cuaderno y coge un farol de aceite. #20panel-20 · shot-20 Aviso sereno antes de bajar. abuela: Tráete la lata. El mar cobra en recuerdos. #21panel-21 · shot-21 Las dos descienden; la marea empieza a retirarse. — Scene break — page-07 (2×2 grid) #22panel-22 · shot-22 La playa desierta al anochecer; la arena brilla como sal molida. #23panel-23 · shot-23 Nora y su abuela caminan hacia la línea donde el agua duda. #24panel-24 · shot-24 Nora frena al borde del agua. nora: ¿Y si la isla no quiere devolverme lo que sé? page-08 (2×2 grid) #25panel-25 · shot-25 La abuela sonríe sin apartar la vista del horizonte. abuela: Entonces negociaremos. Yo sé regatear con mareas. #26panel-26 · shot-26 Entre la niebla, una silueta de roca blanca emerge: la isla Sil. #27panel-27 · shot-27 La llave de espuma vibra dentro de la lata. page-09 (2×2 grid) #28panel-28 · shot-28 Una barca vieja, medio enterrada, espera junto a unos tablones. #29panel-29 · shot-29 La abuela empuja la barca hacia el agua con un hombro. #30panel-30 · shot-30 Nora sube primero, con la lata abrazada. nora: Si algo me borra, recuerda tú por mí. page-10 (2×2 grid) #31panel-31 · shot-31 La abuela rema hacia la niebla. abuela: El mar no borra, nieta. Cambia de sitio las cosas. #32panel-32 · shot-32 La isla Sil crece entre la bruma; el faro queda pequeño atrás. #33panel-33 · shot-33 Primera estrella sobre el agua; la barca cruza la línea de espuma. Sequential graph lens One node per panel in reading order; edges follow the reading sequence; node size reflects beat importance; gaps mark scene breaks."
+}

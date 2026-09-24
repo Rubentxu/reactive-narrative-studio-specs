@@ -1,0 +1,20 @@
+{
+  "sha": "06d4f5f507b815f538d411a1d9040d3ec29c52b1",
+  "branch": "feat/m12-sequential-art-core",
+  "dirty": true,
+  "dirtyFiles": [
+    "M control-plane/src/routes/router.tsx",
+    "M verification/tsconfig.json",
+    "?? AGENTS.md",
+    "?? changes/m12-sequential-art-core/",
+    "?? control-plane/src/features/sequential-art/",
+    "?? control-plane/src/views/Storyboard.tsx",
+    "?? control-plane/test/fixtures/sequential-art/",
+    "?? control-plane/test/sequential-art.spec.ts",
+    "?? docs/reactive-narrative-studio-openspec-evolutives.zip",
+    "?? docs/reactive-narrative-studio-openspec-evolutives/",
+    "?? docs/seedance-blocking.zip",
+    "?? docs/seedance-blocking/",
+    "?? verification/scenarios/scn-m12-01-001.yaml"
+  ]
+}
