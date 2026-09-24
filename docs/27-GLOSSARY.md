@@ -276,3 +276,12 @@ sequence graph: one node per panel in reading order, edges following the
 reading sequence, node weight reflecting beat importance, and visible gaps at
 scene breaks. It complements the panel storyboard page (`/storyboard`) and
 shares its invariant: dialogue is editable text, never part of an image.
+
+### Comic Proof
+
+The M13 export produced by the comic renderer from a SequentialArtIR document:
+a store-mode CBZ containing one layered SVG page per IR page (art placeholder
+slots tagged by shotRef + a separate lettering layer of editable `<text>`
+balloons/captions) plus `ComicInfo.xml`. Dialogue text is never baked into
+raster images — the art layer holds no narrative text, so lettering can be
+regenerated without touching any image.

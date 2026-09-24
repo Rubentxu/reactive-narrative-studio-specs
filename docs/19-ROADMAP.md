@@ -189,9 +189,28 @@ strictly increasing order, dialogue in DOM, imgCount 0, lens nodes/edges).
   (`ChapterManuscript`) is the authoring surface. Sample chapter fixture is
   labeled in the UI. Balloon placement stays template-based (doc 11).
 
-## M13 — Comic Renderer
+## M13 — Comic Renderer — DELIVERED (v0.17.0)
 
-As previously defined.
+### Deliver (original definition)
+- panel templates (deterministic grid rects from the page layout);
+- layered image composition (art layer with placeholder slots tagged by
+  shotRef + separate lettering layer — no image generation in this milestone);
+- lettering layer (all dialogue/captions as editable SVG `<text>`);
+- balloons/captions (template placement, doc 11);
+- CBZ proof (store-mode zip, no new deps: one SVG page per IR page +
+  ComicInfo.xml).
+
+### Exit
+"produce comic proof with editable text not baked by the image model" —
+verified: the proof contains no `<image>` and no rasterized text; dialogue is
+searchable in the stored CBZ bytes; art/lettering toggles prove separation.
+
+### UAT
+`uat/UAT-M13-01.md` authored this cycle — executable as `SCN-M13-01-001`.
+
+### Notes
+- The renderer takes a `PresentationProfile` from day one (M14 adds the manga
+  profile against the same sequential source).
 
 ## M14 — Manga Profile
 

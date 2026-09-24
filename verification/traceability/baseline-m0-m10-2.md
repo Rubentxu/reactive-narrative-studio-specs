@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-24T17:35:53.678Z
-- git: 06d4f5f507b815f538d411a1d9040d3ec29c52b1
-- coverage: 25/56 requirements MAPPED (scenario or test) · 31 UNMAPPED · 3/16 UATs executable · 2 waiver(s)
+- generated: 2026-09-24T18:52:20.392Z
+- git: e9e49809783e0049b7769063457e46a0f5035570
+- coverage: 31/56 requirements MAPPED (scenario or test) · 25 UNMAPPED · 3/16 UATs executable · 2 waiver(s)
 
 ## Per-milestone status
 
@@ -46,8 +46,8 @@
 
 ### M10.1 — Creation Recipes
 - 🟢 UAT-M10-04-creation-recipe — EXECUTABLE (scn-m10-04-001.yaml)
-- requirements MAPPED (2): REQ-CR-12, REQ-RECIPE-EQUIVALENCE
-- requirements UNMAPPED (12): REQ-CR, REQ-CR-1, REQ-CR-10, REQ-CR-11, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-CR-7, REQ-CR-8, REQ-CR-9
+- requirements MAPPED (8): REQ-CR-1, REQ-CR-12, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-RECIPE-EQUIVALENCE
+- requirements UNMAPPED (6): REQ-CR, REQ-CR-10, REQ-CR-11, REQ-CR-7, REQ-CR-8, REQ-CR-9
 
 ### M10.2 — Capability Catalog
 - 🟢 UAT-M10-06-capability-catalog — EXECUTABLE (scn-m10-02-001.yaml)
@@ -86,14 +86,8 @@
 - [MEDIUM] requirement-unmapped: REQ-CP-006 (M10) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CP-007 (M10) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR (M10.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-CR-1 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-10 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-11 (M10.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-CR-2 (M10.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-CR-3 (M10.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-CR-4 (M10.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-CR-5 (M10.1) — no scenario or test references this requirement
-- [MEDIUM] requirement-unmapped: REQ-CR-6 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-7 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-8 (M10.1) — no scenario or test references this requirement
 - [MEDIUM] requirement-unmapped: REQ-CR-9 (M10.1) — no scenario or test references this requirement

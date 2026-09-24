@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-24T17:35:53.678Z
-- git: 06d4f5f507b815f538d411a1d9040d3ec29c52b1
-- coverage: 25/56 requirements MAPPED · 31 UNMAPPED · 3/16 UATs executable · 2 waivers
+- generated: 2026-09-24T18:52:20.392Z
+- git: e9e49809783e0049b7769063457e46a0f5035570
+- coverage: 31/56 requirements MAPPED · 25 UNMAPPED · 3/16 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -44,7 +44,7 @@
 
 ## M10.1 — Creation Recipes
 - 🟢 UAT-M10-04-creation-recipe (EXECUTABLE) → scenarios: scn-m10-04-001.yaml
-- UNMAPPED requirements (12): REQ-CR, REQ-CR-1, REQ-CR-10, REQ-CR-11, REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6, REQ-CR-7, REQ-CR-8, REQ-CR-9
+- UNMAPPED requirements (6): REQ-CR, REQ-CR-10, REQ-CR-11, REQ-CR-7, REQ-CR-8, REQ-CR-9
 
 ## M10.2 — Capability Catalog
 - 🟢 UAT-M10-06-capability-catalog (EXECUTABLE) → scenarios: scn-m10-02-001.yaml
