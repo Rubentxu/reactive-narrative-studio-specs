@@ -146,5 +146,113 @@
   "REQ-CR-6": {
     "level": "functional",
     "rationale": "El propio requisito exige el scenario ejecutable sobre la UAT autorada."
+  },
+  "REQ-CR-7": {
+    "level": "functional",
+    "rationale": "El wizard /create es una superficie de usuario: se demuestra renderizando la ruta real en navegador (SCN-M10-01-001)."
+  },
+  "REQ-CR-8": {
+    "level": "functional",
+    "rationale": "El sink de File System Access y los invariantes no-write/no-fetch se verifican ejecutando el contrato real: grep de código (no comentarios) + render real de /create."
+  },
+  "REQ-CR-10": {
+    "level": "functional",
+    "rationale": "La receta bundled y sus defaults se ejecutan de verdad: validate.py + plan con parámetros por defecto + aserciones del manifiesto (SCN-M10-01-001)."
+  },
+  "REQ-CR-11": {
+    "level": "functional",
+    "rationale": "Las baterías CI (pytest de ambos paquetes Python) se ejecutan dentro del scenario sobre el árbol real."
+  },
+  "REQ-CR-12": {
+    "level": "functional",
+    "rationale": "La seguridad (cero vectores de ejecución de scripts) se verifica con un scan AST real de los paquetes Python dentro del scenario."
+  },
+  "REQ-CP-001": {
+    "level": "fitness",
+    "rationale": "Contrato estructural (inventario de 13 schemas + cp-decisions): verificación determinista por test unitario, sin comportamiento en runtime."
+  },
+  "REQ-CP-002": {
+    "level": "fitness",
+    "rationale": "Discriminador schema constante: propiedad estructural de cada fichero, verificada por test."
+  },
+  "REQ-CP-003": {
+    "level": "fitness",
+    "rationale": "Alcanzabilidad por $ref desde el envelope: comprobación estructural del grafo de schemas por test."
+  },
+  "REQ-CP-004": {
+    "level": "fitness",
+    "rationale": "Metadatos de frescura requeridos: propiedad estructural declarada en cada schema, verificada por test."
+  },
+  "REQ-CP-005": {
+    "level": "fitness",
+    "rationale": "Draft 2020-12: propiedad estructural de cabecera, verificada por test."
+  },
+  "REQ-CP-006": {
+    "level": "fitness",
+    "rationale": "additionalProperties false en raíz: propiedad estructural, verificada por test."
+  },
+  "REQ-CP-007": {
+    "level": "fitness",
+    "rationale": "Referencia cruzada en prosa: propiedad documental verificada por test determinista."
+  },
+  "REQ-CLI-001": {
+    "level": "fitness",
+    "rationale": "Existencia y cabecera del schema (2020-12 + $id): verificación estructural determinista por test."
+  },
+  "REQ-CLI-002": {
+    "level": "fitness",
+    "rationale": "Contrato del schema next (goal + recommended_skills): verificación estructural determinista por test."
+  },
+  "REQ-CLI-003": {
+    "level": "fitness",
+    "rationale": "Referencia de docs al schema inspect: propiedad documental verificada por test."
+  },
+  "REQ-CLI-004": {
+    "level": "fitness",
+    "rationale": "Referencia de docs al schema next: propiedad documental verificada por test."
+  },
+  "REQ-CLI-005": {
+    "level": "fitness",
+    "rationale": "Tabla normativa de exit codes: propiedad documental verificada por test determinista."
+  },
+  "REQ-CLI-006": {
+    "level": "fitness",
+    "rationale": "Política no shell-string en docs: propiedad documental verificada por test."
+  },
+  "REQ-CLI-007": {
+    "level": "fitness",
+    "rationale": "El envelope de inspect --json se valida contra el schema del contrato en cada ejecución del comando (test determinista con jsonschema); no hay comportamiento de navegador/runtime que exigiera scenario."
+  },
+  "REQ-CR-CAP-1": {
+    "level": "fitness",
+    "rationale": "Carga build-time de manifiestos (import.meta.glob + loadManifest): función pura de enumeración verificada por tests de componente deterministas."
+  },
+  "REQ-CR-CAP-2": {
+    "level": "fitness",
+    "rationale": "Parsers tipados de capacidades: funciones puras sobre ficheros estáticos, verificadas por tests unitarios (capability-parsers)."
+  },
+  "REQ-CR-CAP-9": {
+    "level": "fitness",
+    "rationale": "Registro de rutas y oráculo F-004: propiedad estructural del route tree, verificada por routes-router.spec."
+  },
+  "REQ-CR-CAP-10": {
+    "level": "fitness",
+    "rationale": "Invariante de aislamiento (cero useProjectionStore, cero imports cruzados): verificación estática por greps en extension-isolation/capability-isolation."
+  },
+  "REQ-CR-CAP-12": {
+    "level": "fitness",
+    "rationale": "Fixtures golden de capacidades: datos estáticos verificados por los tests que los consumen (capability-catalog/store)."
+  },
+  "REQ-CEP-3": {
+    "level": "fitness",
+    "rationale": "parseEntityRef: función pura de parseo de refs de ruta, verificada por test unitario determinista."
+  },
+  "REQ-CEP-4": {
+    "level": "fitness",
+    "rationale": "catalogSelectors: funciones puras de lookup sobre el store, verificadas por tests de componente (catalog-store)."
+  },
+  "REQ-CR-9": {
+    "level": "fitness",
+    "rationale": "DownloadPlanSink: interacción DOM/blob pura verificada con fakes inyectados (recipe-sinks.spec); el flujo completo de descarga se ejercita además en el wizard real."
   }
 }

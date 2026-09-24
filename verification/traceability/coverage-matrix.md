@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-24T19:37:22.302Z
-- git: 7a37443f6bff40c739ead057e410c162983e2352
-- coverage: 43/68 requirements MAPPED · 25 UNMAPPED · 7/20 UATs executable · 2 waivers
+- generated: 2026-09-24T20:18:37.066Z
+- git: edbbca84d980ba49b6950b8a4cb620e5bff0a92b
+- coverage: 67/67 requirements MAPPED · 0 UNMAPPED · 8/21 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -33,22 +33,19 @@
 
 ## M9 — CLI
 - ⚪ UAT-M9-01 (MANUAL_ONLY) → scenarios: —
-- UNMAPPED requirements (7): REQ-CLI-001, REQ-CLI-002, REQ-CLI-003, REQ-CLI-004, REQ-CLI-005, REQ-CLI-006, REQ-CLI-007
 
 ## M10 — Control Plane Foundation
 - ⚪ UAT-M10-01 (MANUAL_ONLY) → scenarios: —
 - ⚪ UAT-M10-02-catalog-entity-pages (MANUAL_ONLY) → scenarios: —
 - ⚪ UAT-M10-03-local-search-docs (MANUAL_ONLY) → scenarios: —
 - 🟢 UAT-M10-05-multi-project-catalog (EXECUTABLE) → scenarios: scn-m10-05-001.yaml
-- UNMAPPED requirements (7): REQ-CP-001, REQ-CP-002, REQ-CP-003, REQ-CP-004, REQ-CP-005, REQ-CP-006, REQ-CP-007
 
 ## M10.1 — Creation Recipes
 - 🟢 UAT-M10-04-creation-recipe (EXECUTABLE) → scenarios: scn-m10-04-001.yaml
-- UNMAPPED requirements (6): REQ-CR, REQ-CR-10, REQ-CR-11, REQ-CR-7, REQ-CR-8, REQ-CR-9
+- 🟢 UAT-M10-07 (EXECUTABLE) → scenarios: scn-m10-01-001.yaml
 
 ## M10.2 — Capability Catalog
 - 🟢 UAT-M10-06-capability-catalog (EXECUTABLE) → scenarios: scn-m10-02-001.yaml
-- UNMAPPED requirements (5): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-11
 
 ## M10.2.1 — Verification & Audit Harness
 
