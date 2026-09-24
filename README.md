@@ -38,6 +38,7 @@ repository, following the constraints documented in
 | Open Studio Home | run `pnpm preview` in `control-plane/` and visit `/home` — multi-project view (M10.3, UAT-M10-05) |
 | Run a human reader round | `/reader-uat` — anonymized feedback form exporting a JSONL round report (M11, UAT-M11-01) |
 | View the sequential storyboard | `/storyboard` — panel storyboard + sequential graph lens from a chapter (M12, UAT-M12-01) |
+| Export a comic proof | `/comic` — layered comic preview with CBZ export (M13, UAT-M13-01) |
 | Run an audit gate | `cd verification && node src/index.ts audit milestone M10.2.1` (also `range`, `flakiness`, `retention`, `verify-evidence`) |
 | Check the glossary | [`docs/27-GLOSSARY.md`](docs/27-GLOSSARY.md) |
 | See the risks | [`docs/26-RISKS.md`](docs/26-RISKS.md) |

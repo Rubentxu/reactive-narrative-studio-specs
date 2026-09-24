@@ -122,5 +122,29 @@
   "REQ-SA-7": {
     "level": "functional",
     "rationale": "El propio requisito exige el scenario ejecutable."
+  },
+  "REQ-CR-1": {
+    "level": "fitness",
+    "rationale": "Los rects de panel son una funcion pura del layout: solapes y limites se verifican con tests unitarios deterministas."
+  },
+  "REQ-CR-2": {
+    "level": "functional",
+    "rationale": "La composicion por capas se verifica en browser real (probe de capas + toggle) y en el SVG exportado."
+  },
+  "REQ-CR-3": {
+    "level": "functional",
+    "rationale": "Balones/captions como texto editable se verifican en el DOM real y en los bytes del CBZ."
+  },
+  "REQ-CR-4": {
+    "level": "functional",
+    "rationale": "El CBZ descargado se verifica por el oracle zip-entries sobre el artefacto real (entradas + contenido)."
+  },
+  "REQ-CR-5": {
+    "level": "functional",
+    "rationale": "Toggles de capa y descargas se ejercitan en el scenario de browser real."
+  },
+  "REQ-CR-6": {
+    "level": "functional",
+    "rationale": "El propio requisito exige el scenario ejecutable sobre la UAT autorada."
   }
 }

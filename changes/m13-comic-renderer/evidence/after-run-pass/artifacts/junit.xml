@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SCN-M13-01-001" tests="11" failures="0" skipped="0" time="0">
+  <testcase classname="SCN-M13-01-001.steps" name="ui.build" time="1.607"/>
+  <testcase classname="SCN-M13-01-001.steps" name="ui.start-preview" time="1.044"/>
+  <testcase classname="SCN-M13-01-001.steps" name="ui.comic" time="0.874"/>
+  <testcase classname="SCN-M13-01-001.steps" name="ui.probe-layers" time="0.112"/>
+  <testcase classname="SCN-M13-01-001.steps" name="ui.toggle-art" time="0.165"/>
+  <testcase classname="SCN-M13-01-001.steps" name="ui.probe-after-toggle" time="0.092"/>
+  <testcase classname="SCN-M13-01-001.steps" name="ui.download-cbz" time="0.142"/>
+  <testcase classname="SCN-M13-01-001.oracles" name="comic.layers-separated [browser-evaluate]" time="0"/>
+  <testcase classname="SCN-M13-01-001.oracles" name="comic.toggle-works [browser-evaluate]" time="0"/>
+  <testcase classname="SCN-M13-01-001.oracles" name="cbz.proof-contents [zip-entries]" time="0"/>
+  <testcase classname="SCN-M13-01-001.oracles" name="browser.health [browser]" time="0"/>
+</testsuite>

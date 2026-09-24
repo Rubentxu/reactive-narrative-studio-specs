@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-24T17:35:53.678Z",
-  "gitSha": "06d4f5f507b815f538d411a1d9040d3ec29c52b1",
+  "generatedAt": "2026-09-24T18:52:20.392Z",
+  "gitSha": "e9e49809783e0049b7769063457e46a0f5035570",
   "milestones": [
     {
       "id": "M0",
@@ -325,6 +325,7 @@
         {
           "id": "REQ-CR",
           "sources": [
+            "m13-comic-renderer/tasks.md",
             "m10-2-1-audit-gate-hardening/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -335,13 +336,17 @@
         {
           "id": "REQ-CR-1",
           "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md",
             "31-CREATION-RECIPES.md"
           ],
           "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-10",
@@ -378,52 +383,78 @@
         {
           "id": "REQ-CR-2",
           "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-3",
           "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-4",
           "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
-          "testRefs": [],
-          "status": "UNMAPPED"
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-5",
           "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
           "testRefs": [],
-          "status": "UNMAPPED"
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-6",
           "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
           "testRefs": [],
-          "status": "UNMAPPED"
+          "status": "MAPPED"
         },
         {
           "id": "REQ-CR-7",
@@ -1055,13 +1086,6 @@
     },
     {
       "kind": "requirement-unmapped",
-      "ref": "REQ-CR-1",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
       "ref": "REQ-CR-10",
       "milestone": "M10.1",
       "severity": "MEDIUM",
@@ -1070,41 +1094,6 @@
     {
       "kind": "requirement-unmapped",
       "ref": "REQ-CR-11",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-2",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-3",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-4",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-5",
-      "milestone": "M10.1",
-      "severity": "MEDIUM",
-      "detail": "no scenario or test references this requirement"
-    },
-    {
-      "kind": "requirement-unmapped",
-      "ref": "REQ-CR-6",
       "milestone": "M10.1",
       "severity": "MEDIUM",
       "detail": "no scenario or test references this requirement"
@@ -1168,8 +1157,8 @@
   ],
   "coverage": {
     "requirements": 56,
-    "mapped": 25,
-    "unmapped": 31,
+    "mapped": 31,
+    "unmapped": 25,
     "uats": 16,
     "executable": 3,
     "waived": 2

@@ -12,6 +12,7 @@ import { Create } from '../views/Create';
 import { Home } from '../views/Home';
 import { ReaderUat } from '../views/ReaderUat';
 import { Storyboard } from '../views/Storyboard';
+import { ComicProof } from '../views/ComicProof';
 
 // Capability catalog views
 import { CapabilitiesOverview } from '../features/capability-catalog/views/Overview';
@@ -33,6 +34,7 @@ const rootRoute = createRootRoute({
 const homeRoute = createRoute({ getParentRoute: () => rootRoute, path: '/home', component: Home });
 const readerUatRoute = createRoute({ getParentRoute: () => rootRoute, path: '/reader-uat', component: ReaderUat });
 const storyboardRoute = createRoute({ getParentRoute: () => rootRoute, path: '/storyboard', component: Storyboard });
+const comicRoute = createRoute({ getParentRoute: () => rootRoute, path: '/comic', component: ComicProof });
 const overviewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/overview', component: Overview });
 const storyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/story', component: Story });
 const visualRoute = createRoute({ getParentRoute: () => rootRoute, path: '/visual', component: Visual });
@@ -101,6 +103,7 @@ const routeTree = rootRoute.addChildren([
   homeRoute,
   readerUatRoute,
   storyboardRoute,
+  comicRoute,
   overviewRoute,
   storyRoute,
   visualRoute,

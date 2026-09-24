@@ -13,6 +13,7 @@ const ORACLE_TYPES = new Set([
   'browser-content',
   'browser-evaluate',
   'jsonl-entry',
+  'zip-entries',
   'cross-language',
 ]);
 

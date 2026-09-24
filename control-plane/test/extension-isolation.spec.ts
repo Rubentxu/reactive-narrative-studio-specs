@@ -109,7 +109,10 @@ describe('extension-isolation', () => {
       const relFile = relative(featuresRoot, file).split(sep).join('/');
       const currentFeature = relFile.split('/')[0];
       const text = readFileSync(file, 'utf8');
-      for (const match of text.matchAll(importSpecRe)) {
+      // Type-only imports are CONTRACT dependencies (e.g. comic-renderer
+      // consuming the sequential-art IR types) — no runtime coupling, exempt.
+      const runtimeText = text.replace(/^import\s+type\s[^;]+;\s*$/gm, '');
+      for (const match of runtimeText.matchAll(importSpecRe)) {
         const spec = match[1];
         if (!spec) continue;
         const resolved = resolve(dirname(file), spec);
