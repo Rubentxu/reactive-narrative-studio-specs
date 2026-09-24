@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "audit-report/v1",
+  "generatedAt": "2026-09-24T19:37:23.104Z",
+  "gitSha": "7a37443f6bff40c739ead057e410c162983e2352",
+  "target": "milestone M15",
+  "overall": "PASS",
+  "blocking": [],
+  "waived": [],
+  "proven": [
+    {
+      "id": "REQ-M15-01",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/epub.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-02",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/epub.spec.ts",
+        "control-plane/test/extension-isolation.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-03",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/epub.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-04",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-05",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-06",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-M15-01",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/epub.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-02",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/epub.spec.ts",
+        "control-plane/test/extension-isolation.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-03",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/epub.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-04",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-05",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M15-06",
+      "milestone": "M15",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m15-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M15-01-001"
+    }
+  ]
+}

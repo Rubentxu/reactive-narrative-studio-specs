@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-24T19:17:26.373Z",
-  "gitSha": "1419585bbf02e151e602e190cc1ede195aaf96b8",
+  "generatedAt": "2026-09-24T19:37:22.302Z",
+  "gitSha": "7a37443f6bff40c739ead057e410c162983e2352",
   "milestones": [
     {
       "id": "M0",
@@ -993,6 +993,102 @@
           "status": "MAPPED"
         }
       ]
+    },
+    {
+      "id": "M15",
+      "uats": [
+        {
+          "id": "UAT-M15-01",
+          "file": "uat/UAT-M15-01.md",
+          "milestone": "M15",
+          "scenarios": [
+            "scn-m15-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-M15-01",
+          "sources": [
+            "m15-digital-publishing/spec.md",
+            "m15-digital-publishing/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m15-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/epub.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M15-02",
+          "sources": [
+            "m15-digital-publishing/design.md",
+            "m15-digital-publishing/spec.md",
+            "m15-digital-publishing/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m15-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/epub.spec.ts",
+            "control-plane/test/extension-isolation.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M15-03",
+          "sources": [
+            "m15-digital-publishing/spec.md",
+            "m15-digital-publishing/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m15-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/epub.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M15-04",
+          "sources": [
+            "m15-digital-publishing/spec.md",
+            "m15-digital-publishing/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m15-01-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M15-05",
+          "sources": [
+            "m15-digital-publishing/spec.md",
+            "m15-digital-publishing/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m15-01-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M15-06",
+          "sources": [
+            "m15-digital-publishing/spec.md",
+            "m15-digital-publishing/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m15-01-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        }
+      ]
     }
   ],
   "brokenReferences": [],
@@ -1289,11 +1385,11 @@
     }
   ],
   "coverage": {
-    "requirements": 62,
-    "mapped": 37,
+    "requirements": 68,
+    "mapped": 43,
     "unmapped": 25,
-    "uats": 19,
-    "executable": 6,
+    "uats": 20,
+    "executable": 7,
     "waived": 2
   }
 }

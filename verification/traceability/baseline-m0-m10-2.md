@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-24T19:17:26.373Z
-- git: 1419585bbf02e151e602e190cc1ede195aaf96b8
-- coverage: 37/62 requirements MAPPED (scenario or test) · 25 UNMAPPED · 6/19 UATs executable · 2 waiver(s)
+- generated: 2026-09-24T19:37:22.302Z
+- git: 7a37443f6bff40c739ead057e410c162983e2352
+- coverage: 43/68 requirements MAPPED (scenario or test) · 25 UNMAPPED · 7/20 UATs executable · 2 waiver(s)
 
 ## Per-milestone status
 
@@ -66,6 +66,10 @@
 ### M14 — Manga Profile
 - 🟢 UAT-M14-01 — EXECUTABLE (scn-m14-01-001.yaml)
 - requirements MAPPED (6): REQ-M14-01, REQ-M14-02, REQ-M14-03, REQ-M14-04, REQ-M14-05, REQ-M14-06
+
+### M15 — Digital Publishing
+- 🟢 UAT-M15-01 — EXECUTABLE (scn-m15-01-001.yaml)
+- requirements MAPPED (6): REQ-M15-01, REQ-M15-02, REQ-M15-03, REQ-M15-04, REQ-M15-05, REQ-M15-06
 
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet

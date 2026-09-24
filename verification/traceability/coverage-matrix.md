@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-24T19:17:26.373Z
-- git: 1419585bbf02e151e602e190cc1ede195aaf96b8
-- coverage: 37/62 requirements MAPPED · 25 UNMAPPED · 6/19 UATs executable · 2 waivers
+- generated: 2026-09-24T19:37:22.302Z
+- git: 7a37443f6bff40c739ead057e410c162983e2352
+- coverage: 43/68 requirements MAPPED · 25 UNMAPPED · 7/20 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -60,3 +60,6 @@
 
 ## M14 — Manga Profile
 - 🟢 UAT-M14-01 (EXECUTABLE) → scenarios: scn-m14-01-001.yaml
+
+## M15 — Digital Publishing
+- 🟢 UAT-M15-01 (EXECUTABLE) → scenarios: scn-m15-01-001.yaml
