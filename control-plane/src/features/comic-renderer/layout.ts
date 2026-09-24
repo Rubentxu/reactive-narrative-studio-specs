@@ -9,7 +9,9 @@
 import type { SequentialIrDoc, SequentialPage } from '../sequential-art/types';
 import type { BalloonModel, CaptionModel, PanelRect, PresentationProfile } from './types';
 
-/** Panel rectangles for one page: grid rows×cols with margins and gutters. */
+/** Panel rectangles for one page: grid rows×cols with margins and gutters.
+ *  RTL profiles mirror column assignment: panel 0 sits in the rightmost
+ *  column of its row (doc 11 §Reading direction). Rows always read top-down. */
 export function computePanelRects(page: SequentialPage, profile: PresentationProfile): PanelRect[] {
   const usableWidth = profile.page.width - profile.margin * 2;
   const usableHeight = profile.page.height - profile.margin * 2;
@@ -19,7 +21,8 @@ export function computePanelRects(page: SequentialPage, profile: PresentationPro
   const cellHeight = (usableHeight - profile.gutter * (rows - 1)) / rows;
 
   return page.panels.map((panel, index) => {
-    const col = index % columns;
+    const ltrCol = index % columns;
+    const col = profile.direction === 'rtl' ? columns - 1 - ltrCol : ltrCol;
     const row = Math.floor(index / columns);
     return {
       panelId: panel.id,
