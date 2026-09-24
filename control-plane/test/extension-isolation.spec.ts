@@ -101,6 +101,13 @@ describe('extension-isolation', () => {
           'REQ-CR-CAP-5: capability detail composes m16 EntityHeader/MetadataCard/RelationsList; ' +
           'registry-mediated composition refactor tracked as INC-M11-001 (vault incidences/)',
       },
+      {
+        from: 'epub/epub.ts',
+        to: 'comic-renderer',
+        reason:
+          'REQ-M15-02: the fixed-layout EPUB embeds the comic renderer layered SVG pages ' +
+          '(doc 14: publishing adapters compose presentation output; art/lettering stay layered)',
+      },
     ];
 
     const violations: string[] = [];
