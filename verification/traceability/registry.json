@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-24T19:12:07.019Z",
-  "gitSha": "e8546e23b747d4a7e85539d3981759ad4fda97a5",
+  "generatedAt": "2026-09-24T19:17:26.373Z",
+  "gitSha": "1419585bbf02e151e602e190cc1ede195aaf96b8",
   "milestones": [
     {
       "id": "M0",
@@ -909,17 +909,93 @@
           "status": "EXECUTABLE"
         }
       ],
-      "requirements": []
+      "requirements": [
+        {
+          "id": "REQ-M14-01",
+          "sources": [
+            "m14-manga-profile/design.md",
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-02",
+          "sources": [
+            "m14-manga-profile/spec.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-03",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-04",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-05",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-06",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        }
+      ]
     }
   ],
-  "brokenReferences": [
-    "scenarios reference unknown requirement REQ-M14-01",
-    "scenarios reference unknown requirement REQ-M14-02",
-    "scenarios reference unknown requirement REQ-M14-03",
-    "scenarios reference unknown requirement REQ-M14-04",
-    "scenarios reference unknown requirement REQ-M14-05",
-    "scenarios reference unknown requirement REQ-M14-06"
-  ],
+  "brokenReferences": [],
   "waivers": [
     {
       "id": "WVR-M10-2-1-001",
@@ -1213,8 +1289,8 @@
     }
   ],
   "coverage": {
-    "requirements": 56,
-    "mapped": 31,
+    "requirements": 62,
+    "mapped": 37,
     "unmapped": 25,
     "uats": 19,
     "executable": 6,

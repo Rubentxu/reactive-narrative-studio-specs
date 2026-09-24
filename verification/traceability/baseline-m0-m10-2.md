@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-24T19:12:07.019Z
-- git: e8546e23b747d4a7e85539d3981759ad4fda97a5
-- coverage: 31/56 requirements MAPPED (scenario or test) · 25 UNMAPPED · 6/19 UATs executable · 2 waiver(s)
+- generated: 2026-09-24T19:17:26.373Z
+- git: 1419585bbf02e151e602e190cc1ede195aaf96b8
+- coverage: 37/62 requirements MAPPED (scenario or test) · 25 UNMAPPED · 6/19 UATs executable · 2 waiver(s)
 
 ## Per-milestone status
 
@@ -65,6 +65,7 @@
 
 ### M14 — Manga Profile
 - 🟢 UAT-M14-01 — EXECUTABLE (scn-m14-01-001.yaml)
+- requirements MAPPED (6): REQ-M14-01, REQ-M14-02, REQ-M14-03, REQ-M14-04, REQ-M14-05, REQ-M14-06
 
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet
@@ -113,11 +114,3 @@
 - WVR-M10-2-1-002 — requirement REQ-VAH-STORE-IMMUTABILITY — Projection-store non-mutation is proven at component level (round-trip no-op deep-equal pre/post route mount). It is not reachable black-box in the browser without test hooks (TEST_MODE is prohibited by the change spec), so the functional scenario explicitly does not claim it. (scope: M10.2 read-only catalog invariant (m10 no-write); owner: m10.2.1-baseline-audit cycle)
   - evidence: control-plane/test/capability-catalog.spec.ts (useProjectionStore.getState() deep-equal round-trip proof)
   - evidence: spec.md del slice: separación fitness/UAT (REQ-VAH-FITNESS-SEPARATION)
-
-## Broken references
-- ⚠️ scenarios reference unknown requirement REQ-M14-01
-- ⚠️ scenarios reference unknown requirement REQ-M14-02
-- ⚠️ scenarios reference unknown requirement REQ-M14-03
-- ⚠️ scenarios reference unknown requirement REQ-M14-04
-- ⚠️ scenarios reference unknown requirement REQ-M14-05
-- ⚠️ scenarios reference unknown requirement REQ-M14-06

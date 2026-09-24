@@ -1,16 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-24T19:12:07.019Z
-- git: e8546e23b747d4a7e85539d3981759ad4fda97a5
-- coverage: 31/56 requirements MAPPED · 25 UNMAPPED · 6/19 UATs executable · 2 waivers
-
-## Broken references
-- ⚠️ scenarios reference unknown requirement REQ-M14-01
-- ⚠️ scenarios reference unknown requirement REQ-M14-02
-- ⚠️ scenarios reference unknown requirement REQ-M14-03
-- ⚠️ scenarios reference unknown requirement REQ-M14-04
-- ⚠️ scenarios reference unknown requirement REQ-M14-05
-- ⚠️ scenarios reference unknown requirement REQ-M14-06
+- generated: 2026-09-24T19:17:26.373Z
+- git: 1419585bbf02e151e602e190cc1ede195aaf96b8
+- coverage: 37/62 requirements MAPPED · 25 UNMAPPED · 6/19 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
