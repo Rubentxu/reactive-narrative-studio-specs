@@ -1,0 +1,1177 @@
+{
+  "schemaVersion": "audit-report/v1",
+  "generatedAt": "2026-09-24T19:14:31.108Z",
+  "gitSha": "1419585bbf02e151e602e190cc1ede195aaf96b8",
+  "target": "all",
+  "overall": "FAIL",
+  "blocking": [
+    {
+      "id": "REQ-CLI-001",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-002",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-003",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-004",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-005",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-006",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-007",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-001",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-002",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-003",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-004",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-005",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-006",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-007",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-10",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-11",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-12",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/harness.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-7",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-8",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-9",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CEP-1",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CEP-2",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CEP-3",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CEP-4",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-CAP-1",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-10",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-isolation.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-11",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-CAP-12",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-2",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-3",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-4",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-5",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts",
+        "control-plane/test/extension-isolation.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-6",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-7",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts",
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-8",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts",
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-9",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    }
+  ],
+  "waived": [
+    {
+      "id": "REQ-VAH-CROSSREF-RENDER",
+      "milestone": "M10.2.1",
+      "level": "functional",
+      "status": "WAIVED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts"
+      ],
+      "waiverId": "WVR-M10-2-1-001",
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    }
+  ],
+  "proven": [
+    {
+      "id": "REQ-CR-1",
+      "milestone": "M10.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CR-2",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-3",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-4",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-5",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-6",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-RECIPE-EQUIVALENCE",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-04-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-04-001"
+    },
+    {
+      "id": "REQ-VAH-AUDIT-GATE",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/audit-gate.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-BASELINE",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-BOOTSTRAP",
+      "milestone": "M10.2.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-harness-bootstrap.yaml"
+      ],
+      "testRefs": [
+        "verification/test/scenarios.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-HARNESS-BOOTSTRAP-001"
+    },
+    {
+      "id": "REQ-VAH-BROWSER-AUDIT",
+      "milestone": "M10.2.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
+      ],
+      "testRefs": [
+        "verification/test/audit-gate.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
+    },
+    {
+      "id": "REQ-VAH-CI-ARTIFACTS",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/hardening.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-EVIDENCE-INTEGRITY",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/hardening.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-FITNESS-SEPARATION",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-HARDENING",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/hardening.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-STORE-IMMUTABILITY",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-isolation.spec.ts"
+      ],
+      "waiverId": "WVR-M10-2-1-002",
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-VERIFICATION-LEVEL",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/audit-gate.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-WAIVER",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-CLI-001",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-002",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-003",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-004",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-005",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-006",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CLI-007",
+      "milestone": "M9",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-001",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-002",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-003",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-004",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-005",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-006",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CP-007",
+      "milestone": "M10",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-1",
+      "milestone": "M10.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CR-10",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-11",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-12",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/harness.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-2",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-3",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-4",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-5",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-6",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-CR-7",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-8",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-9",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-RECIPE-EQUIVALENCE",
+      "milestone": "M10.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-04-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-04-001"
+    },
+    {
+      "id": "REQ-CEP-1",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CEP-2",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CEP-3",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CEP-4",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-CAP-1",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-10",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-isolation.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-11",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "UNMAPPED",
+      "scenarioRefs": [],
+      "testRefs": [],
+      "detail": "no scenario or test references"
+    },
+    {
+      "id": "REQ-CR-CAP-12",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-2",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-3",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-4",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-5",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts",
+        "control-plane/test/extension-isolation.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-6",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-7",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts",
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-8",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts",
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-CR-CAP-9",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PARTIALLY_VERIFIED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-catalog.spec.ts"
+      ],
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-VAH-AUDIT-GATE",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/audit-gate.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-BASELINE",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-BOOTSTRAP",
+      "milestone": "M10.2.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-harness-bootstrap.yaml"
+      ],
+      "testRefs": [
+        "verification/test/scenarios.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-HARNESS-BOOTSTRAP-001"
+    },
+    {
+      "id": "REQ-VAH-BROWSER-AUDIT",
+      "milestone": "M10.2.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
+      ],
+      "testRefs": [
+        "verification/test/audit-gate.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
+    },
+    {
+      "id": "REQ-VAH-CI-ARTIFACTS",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/hardening.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-CROSSREF-RENDER",
+      "milestone": "M10.2.1",
+      "level": "functional",
+      "status": "WAIVED",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts"
+      ],
+      "waiverId": "WVR-M10-2-1-001",
+      "detail": "only component test refs; functional requirement needs a scenario verdict"
+    },
+    {
+      "id": "REQ-VAH-EVIDENCE-INTEGRITY",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/hardening.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-FITNESS-SEPARATION",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-HARDENING",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/hardening.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-STORE-IMMUTABILITY",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-isolation.spec.ts"
+      ],
+      "waiverId": "WVR-M10-2-1-002",
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-VERIFICATION-LEVEL",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/audit-gate.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-WAIVER",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    }
+  ]
+}

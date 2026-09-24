@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "audit-report/v1",
+  "generatedAt": "2026-09-24T19:17:00.461Z",
+  "gitSha": "1419585bbf02e151e602e190cc1ede195aaf96b8",
+  "target": "milestone M13",
+  "overall": "PASS",
+  "blocking": [],
+  "waived": [],
+  "proven": [],
+  "requirements": []
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "audit-report/v1",
+  "generatedAt": "2026-09-24T19:17:27.196Z",
+  "gitSha": "1419585bbf02e151e602e190cc1ede195aaf96b8",
+  "target": "milestone M14",
+  "overall": "PASS",
+  "blocking": [],
+  "waived": [],
+  "proven": [
+    {
+      "id": "REQ-M14-01",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-02",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-03",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-04",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-05",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-06",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "REQ-M14-01",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-02",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-03",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-04",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-05",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer-manga.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    },
+    {
+      "id": "REQ-M14-06",
+      "milestone": "M14",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m14-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M14-01-001"
+    }
+  ]
+}
