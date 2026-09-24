@@ -1,8 +1,16 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-24T18:52:20.392Z
-- git: e9e49809783e0049b7769063457e46a0f5035570
-- coverage: 31/56 requirements MAPPED · 25 UNMAPPED · 3/16 UATs executable · 2 waivers
+- generated: 2026-09-24T19:12:07.019Z
+- git: e8546e23b747d4a7e85539d3981759ad4fda97a5
+- coverage: 31/56 requirements MAPPED · 25 UNMAPPED · 6/19 UATs executable · 2 waivers
+
+## Broken references
+- ⚠️ scenarios reference unknown requirement REQ-M14-01
+- ⚠️ scenarios reference unknown requirement REQ-M14-02
+- ⚠️ scenarios reference unknown requirement REQ-M14-03
+- ⚠️ scenarios reference unknown requirement REQ-M14-04
+- ⚠️ scenarios reference unknown requirement REQ-M14-05
+- ⚠️ scenarios reference unknown requirement REQ-M14-06
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -51,3 +59,12 @@
 - UNMAPPED requirements (5): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-11
 
 ## M10.2.1 — Verification & Audit Harness
+
+## M12 — Sequential Art Core
+- 🟢 UAT-M12-01 (EXECUTABLE) → scenarios: scn-m12-01-001.yaml
+
+## M13 — Comic Renderer
+- 🟢 UAT-M13-01 (EXECUTABLE) → scenarios: scn-m13-01-001.yaml
+
+## M14 — Manga Profile
+- 🟢 UAT-M14-01 (EXECUTABLE) → scenarios: scn-m14-01-001.yaml

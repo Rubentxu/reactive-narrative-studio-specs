@@ -72,6 +72,9 @@ const MILESTONE_LABELS: Record<string, string> = {
   'M10.1': 'Creation Recipes',
   'M10.2': 'Capability Catalog',
   'M10.2.1': 'Verification & Audit Harness',
+  M12: 'Sequential Art Core',
+  M13: 'Comic Renderer',
+  M14: 'Manga Profile',
 };
 
 /** Canonical milestone order for range audits. */

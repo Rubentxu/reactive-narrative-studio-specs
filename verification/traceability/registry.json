@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-24T18:52:20.392Z",
-  "gitSha": "e9e49809783e0049b7769063457e46a0f5035570",
+  "generatedAt": "2026-09-24T19:12:07.019Z",
+  "gitSha": "e8546e23b747d4a7e85539d3981759ad4fda97a5",
   "milestones": [
     {
       "id": "M0",
@@ -385,6 +385,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -401,6 +402,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -417,6 +419,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -433,6 +436,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -447,6 +451,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -860,9 +865,61 @@
           "status": "MAPPED"
         }
       ]
+    },
+    {
+      "id": "M12",
+      "uats": [
+        {
+          "id": "UAT-M12-01",
+          "file": "uat/UAT-M12-01.md",
+          "milestone": "M12",
+          "scenarios": [
+            "scn-m12-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M13",
+      "uats": [
+        {
+          "id": "UAT-M13-01",
+          "file": "uat/UAT-M13-01.md",
+          "milestone": "M13",
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M14",
+      "uats": [
+        {
+          "id": "UAT-M14-01",
+          "file": "uat/UAT-M14-01.md",
+          "milestone": "M14",
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": []
     }
   ],
-  "brokenReferences": [],
+  "brokenReferences": [
+    "scenarios reference unknown requirement REQ-M14-01",
+    "scenarios reference unknown requirement REQ-M14-02",
+    "scenarios reference unknown requirement REQ-M14-03",
+    "scenarios reference unknown requirement REQ-M14-04",
+    "scenarios reference unknown requirement REQ-M14-05",
+    "scenarios reference unknown requirement REQ-M14-06"
+  ],
   "waivers": [
     {
       "id": "WVR-M10-2-1-001",
@@ -1159,8 +1216,8 @@
     "requirements": 56,
     "mapped": 31,
     "unmapped": 25,
-    "uats": 16,
-    "executable": 3,
+    "uats": 19,
+    "executable": 6,
     "waived": 2
   }
 }

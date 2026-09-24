@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-24T18:52:20.392Z
-- git: e9e49809783e0049b7769063457e46a0f5035570
-- coverage: 31/56 requirements MAPPED (scenario or test) · 25 UNMAPPED · 3/16 UATs executable · 2 waiver(s)
+- generated: 2026-09-24T19:12:07.019Z
+- git: e8546e23b747d4a7e85539d3981759ad4fda97a5
+- coverage: 31/56 requirements MAPPED (scenario or test) · 25 UNMAPPED · 6/19 UATs executable · 2 waiver(s)
 
 ## Per-milestone status
 
@@ -57,6 +57,15 @@
 ### M10.2.1 — Verification & Audit Harness
 - requirements MAPPED (12): REQ-VAH-AUDIT-GATE, REQ-VAH-BASELINE, REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CI-ARTIFACTS, REQ-VAH-CROSSREF-RENDER, REQ-VAH-EVIDENCE-INTEGRITY, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-HARDENING, REQ-VAH-STORE-IMMUTABILITY, REQ-VAH-VERIFICATION-LEVEL, REQ-VAH-WAIVER
 
+### M12 — Sequential Art Core
+- 🟢 UAT-M12-01 — EXECUTABLE (scn-m12-01-001.yaml)
+
+### M13 — Comic Renderer
+- 🟢 UAT-M13-01 — EXECUTABLE (scn-m13-01-001.yaml)
+
+### M14 — Manga Profile
+- 🟢 UAT-M14-01 — EXECUTABLE (scn-m14-01-001.yaml)
+
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet
 - [HIGH] uat-without-scenario: UAT-M10-02-catalog-entity-pages (M10) — UAT doc exists but no executable scenario links it yet
@@ -104,3 +113,11 @@
 - WVR-M10-2-1-002 — requirement REQ-VAH-STORE-IMMUTABILITY — Projection-store non-mutation is proven at component level (round-trip no-op deep-equal pre/post route mount). It is not reachable black-box in the browser without test hooks (TEST_MODE is prohibited by the change spec), so the functional scenario explicitly does not claim it. (scope: M10.2 read-only catalog invariant (m10 no-write); owner: m10.2.1-baseline-audit cycle)
   - evidence: control-plane/test/capability-catalog.spec.ts (useProjectionStore.getState() deep-equal round-trip proof)
   - evidence: spec.md del slice: separación fitness/UAT (REQ-VAH-FITNESS-SEPARATION)
+
+## Broken references
+- ⚠️ scenarios reference unknown requirement REQ-M14-01
+- ⚠️ scenarios reference unknown requirement REQ-M14-02
+- ⚠️ scenarios reference unknown requirement REQ-M14-03
+- ⚠️ scenarios reference unknown requirement REQ-M14-04
+- ⚠️ scenarios reference unknown requirement REQ-M14-05
+- ⚠️ scenarios reference unknown requirement REQ-M14-06
