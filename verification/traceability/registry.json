@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-24T18:52:20.392Z",
-  "gitSha": "e9e49809783e0049b7769063457e46a0f5035570",
+  "generatedAt": "2026-09-24T19:17:26.373Z",
+  "gitSha": "1419585bbf02e151e602e190cc1ede195aaf96b8",
   "milestones": [
     {
       "id": "M0",
@@ -385,6 +385,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -401,6 +402,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -417,6 +419,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -433,6 +436,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -447,6 +451,7 @@
           "sources": [
             "m13-comic-renderer/spec.md",
             "m13-comic-renderer/tasks.md",
+            "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -860,6 +865,134 @@
           "status": "MAPPED"
         }
       ]
+    },
+    {
+      "id": "M12",
+      "uats": [
+        {
+          "id": "UAT-M12-01",
+          "file": "uat/UAT-M12-01.md",
+          "milestone": "M12",
+          "scenarios": [
+            "scn-m12-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M13",
+      "uats": [
+        {
+          "id": "UAT-M13-01",
+          "file": "uat/UAT-M13-01.md",
+          "milestone": "M13",
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": []
+    },
+    {
+      "id": "M14",
+      "uats": [
+        {
+          "id": "UAT-M14-01",
+          "file": "uat/UAT-M14-01.md",
+          "milestone": "M14",
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-M14-01",
+          "sources": [
+            "m14-manga-profile/design.md",
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-02",
+          "sources": [
+            "m14-manga-profile/spec.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-03",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-04",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-05",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer-manga.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M14-06",
+          "sources": [
+            "m14-manga-profile/spec.md",
+            "m14-manga-profile/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m14-01-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        }
+      ]
     }
   ],
   "brokenReferences": [],
@@ -1156,11 +1289,11 @@
     }
   ],
   "coverage": {
-    "requirements": 56,
-    "mapped": 31,
+    "requirements": 62,
+    "mapped": 37,
     "unmapped": 25,
-    "uats": 16,
-    "executable": 3,
+    "uats": 19,
+    "executable": 6,
     "waived": 2
   }
 }

@@ -285,3 +285,20 @@ slots tagged by shotRef + a separate lettering layer of editable `<text>`
 balloons/captions) plus `ComicInfo.xml`. Dialogue text is never baked into
 raster images — the art layer holds no narrative text, so lettering can be
 regenerated without touching any image.
+
+### Screentone
+
+The deterministic dot-grid SVG `<pattern>` the manga presentation profile
+(M14) uses to fill art slots in place of raster tone work. The pattern is
+emitted only when the active profile declares `screentone: true`; the comic
+profile keeps its flat M13 fills. Tones are vector geometry, never generated
+images.
+
+### Dual-Render Proof
+
+The M14 exit criterion: the same SequentialArtIR document renders through two
+distinct presentation profiles (comic: LTR, flat fills; manga: RTL,
+monochrome + screentone) with identical editable lettering. Reading direction
+mirrors the panel grid columns (panel 0 at the right of its row in manga);
+rows read top-down in both directions. Exercised by the profile switcher on
+`/comic` and verified by `SCN-M14-01-001`.

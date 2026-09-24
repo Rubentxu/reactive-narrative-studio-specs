@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-24T18:52:20.392Z
-- git: e9e49809783e0049b7769063457e46a0f5035570
-- coverage: 31/56 requirements MAPPED (scenario or test) · 25 UNMAPPED · 3/16 UATs executable · 2 waiver(s)
+- generated: 2026-09-24T19:17:26.373Z
+- git: 1419585bbf02e151e602e190cc1ede195aaf96b8
+- coverage: 37/62 requirements MAPPED (scenario or test) · 25 UNMAPPED · 6/19 UATs executable · 2 waiver(s)
 
 ## Per-milestone status
 
@@ -56,6 +56,16 @@
 
 ### M10.2.1 — Verification & Audit Harness
 - requirements MAPPED (12): REQ-VAH-AUDIT-GATE, REQ-VAH-BASELINE, REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CI-ARTIFACTS, REQ-VAH-CROSSREF-RENDER, REQ-VAH-EVIDENCE-INTEGRITY, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-HARDENING, REQ-VAH-STORE-IMMUTABILITY, REQ-VAH-VERIFICATION-LEVEL, REQ-VAH-WAIVER
+
+### M12 — Sequential Art Core
+- 🟢 UAT-M12-01 — EXECUTABLE (scn-m12-01-001.yaml)
+
+### M13 — Comic Renderer
+- 🟢 UAT-M13-01 — EXECUTABLE (scn-m13-01-001.yaml)
+
+### M14 — Manga Profile
+- 🟢 UAT-M14-01 — EXECUTABLE (scn-m14-01-001.yaml)
+- requirements MAPPED (6): REQ-M14-01, REQ-M14-02, REQ-M14-03, REQ-M14-04, REQ-M14-05, REQ-M14-06
 
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet

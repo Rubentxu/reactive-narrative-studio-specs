@@ -72,6 +72,9 @@ const MILESTONE_LABELS: Record<string, string> = {
   'M10.1': 'Creation Recipes',
   'M10.2': 'Capability Catalog',
   'M10.2.1': 'Verification & Audit Harness',
+  M12: 'Sequential Art Core',
+  M13: 'Comic Renderer',
+  M14: 'Manga Profile',
 };
 
 /** Canonical milestone order for range audits. */
@@ -300,6 +303,10 @@ function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   if (milestone === 'M10' && area === 'CP') return true;
   if (milestone === 'M9' && area === 'CLI') return true;
   if (milestone === 'M10.2.1' && area.startsWith('VAH')) return true;
+  // Milestone-scoped requirement areas (M12+ cycles declare REQ-<MILESTONE>-n).
+  if (milestone === 'M12' && area === 'M12') return true;
+  if (milestone === 'M13' && area === 'M13') return true;
+  if (milestone === 'M14' && area === 'M14') return true;
   void areaToMilestone;
   return false;
 }
