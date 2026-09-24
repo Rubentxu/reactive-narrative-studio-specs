@@ -240,9 +240,35 @@ profile with profile-marked pages.
 - Balloon placement stays template-based; reading direction only mirrors the
   grid columns (rows read top-down in both directions).
 
-## M15 — Digital Publishing
+## M15 — Digital Publishing — DELIVERED (v0.19.0)
 
-As previously defined.
+### Deliver (original definition)
+- EPUB reflowable (prose chapters from the ChapterManuscript: scene beats as
+  prose, dialogue as real text, EPUB 3 nav/OPF/spine);
+- fixed-layout experiment (pre-paginated pages embedding the comic renderer's
+  layered SVG pages — rendition meta, svg properties, viewport per page);
+- validation adapters (deterministic reader-entry contract: OCF layout,
+  container→OPF resolution, metadata, manifest↔zip correspondence, spine
+  resolution; product-side `validateEpub` + harness `epub-entries` oracle).
+
+### Exit
+"artifacts open correctly in agreed reference readers" — verified at the
+reader-entry contract level: both EPUBs built from the same sample chapter
+pass `validateEpub` on `/publish` (downloads stay disabled otherwise) and
+satisfy `SCN-M15-01-001`'s `epub-entries` oracles (mimetype first + exact
+content, container→OPF, pre-paginated rendition with svg pages, dialogue
+searchable in stored bytes).
+
+### UAT
+`uat/UAT-M15-01.md` authored this cycle — executable as `SCN-M15-01-001`.
+
+### Notes
+- The store-mode zip builder moved to `src/lib/store-zip.ts` (generic
+  infrastructure); comic-renderer re-exports it for compatibility.
+- The runtime edge `epub → comic-renderer` is declared in the isolation
+  allowlist (doc 14: publishing adapters compose presentation output).
+- Structural conformance only — no epubcheck/JVM claim; third-party reader
+  rendering quality is explicitly out of the proof.
 
 ## M16 — Series Canon
 

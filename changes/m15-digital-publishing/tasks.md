@@ -23,4 +23,4 @@ B2  Docs + receipts + release v0.19.0 + archive
 - [x] REQ-M15-06: UAT-M15-01 + SCN-M15-01-001 PASS — `7a37443`
 
 ### B2
-- [ ] Docs (roadmap M15 entregado, glossary) + receipts + release v0.19.0 + archive
+- [x] Docs (roadmap M15 entregado, glossary) + receipts + release v0.19.0 + archive
