@@ -169,13 +169,25 @@ round fields exact, no IndexedDB/localStorage created, separation labels).
   (capability-catalog → catalog components), now an audited exception tracked
   as INC-M11-001.
 
-## M12 — Sequential Art Core
+## M12 — Sequential Art Core — DELIVERED (v0.16.0)
 
-As previously defined.
+### Deliver
+- Deterministic chapter-beats → SequentialArtIR adapter validated against
+  `specs/sequential-ir.schema.json` (8–10 pages target, reading order,
+  scene-break gutters, deterministic shotRefs, dialogue as editable text);
+- panel storyboard page `/storyboard` (pages/panels grid, reading-order
+  badges, scene breaks, direction, ZERO `<img>` per UAT-M12-01);
+- sequential graph lens (one node per panel, sequence edges, importance
+  weighting, scene-break gaps).
 
-Control Plane additions:
-- panel storyboard page;
-- sequential graph lens.
+### UAT
+`UAT-M12-01` — executable: `SCN-M12-01-001` (10 pages / 33 panels probe,
+strictly increasing order, dialogue in DOM, imgCount 0, lens nodes/edges).
+
+### Notes
+- Prose-to-beat extraction is a future skill; the beat contract
+  (`ChapterManuscript`) is the authoring surface. Sample chapter fixture is
+  labeled in the UI. Balloon placement stays template-based (doc 11).
 
 ## M13 — Comic Renderer
 
