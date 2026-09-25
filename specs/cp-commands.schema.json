@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/cp-commands.schema.json",
+  "title": "Control Plane Decision Commands (outbound)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "command", "targetRef", "createdAt", "origin", "payload"],
+  "properties": {
+    "schema": {
+      "const": "control-plane/commands/v1"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command": {
+      "enum": ["approve", "reject", "comment", "regenerate"]
+    },
+    "targetRef": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z]+:[a-z0-9-]+/[a-z0-9-]+$"
+    },
+    "createdAt": {
+      "$ref": "#/$defs/isoTimestamp"
+    },
+    "origin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "subjectDecision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "enum": ["scene", "chapter", "edition"]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["command"],
+        "properties": {
+          "command": { "enum": ["approve", "reject"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "properties": {
+              "subjectDecision": { "type": "string", "minLength": 1 },
+              "rationale": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["command"],
+        "properties": {
+          "command": { "const": "comment" }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+              "text": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["command"],
+        "properties": {
+          "command": { "const": "regenerate" }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": ["reason"],
+            "properties": {
+              "reason": { "type": "string", "minLength": 1 },
+              "scope": { "enum": ["scene", "chapter", "edition"] }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "isoTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
