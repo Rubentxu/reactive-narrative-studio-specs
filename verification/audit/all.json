@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-09-24T20:30:25.547Z",
-  "gitSha": "edbbca84d980ba49b6950b8a4cb620e5bff0a92b",
+  "generatedAt": "2026-09-25T09:25:14.595Z",
+  "gitSha": "989c56365fe40947ac0cc34ca2e346635c8bf8b9",
   "target": "all",
   "overall": "PASS_WITH_WAIVER",
   "blocking": [],
@@ -796,6 +796,99 @@
       ],
       "testRefs": [],
       "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M17-1",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-2",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-3",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-4",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-5",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts",
+        "control-plane/test/decisions-view.spec.tsx"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-6",
+      "milestone": "M17",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m17-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M17-01-001"
+    },
+    {
+      "id": "REQ-M17-7",
+      "milestone": "M17",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m17-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/decisions-view.spec.tsx"
+      ],
+      "detail": "scenario evidence: SCN-M17-01-001"
+    },
+    {
+      "id": "REQ-M17-8",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
     }
   ],
   "requirements": [
@@ -1587,6 +1680,99 @@
       ],
       "testRefs": [],
       "detail": "scenario evidence: SCN-M15-01-001"
+    },
+    {
+      "id": "REQ-M17-1",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-2",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-3",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-4",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-5",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/cp-commands-schema.spec.ts",
+        "control-plane/test/decisions-view.spec.tsx"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-M17-6",
+      "milestone": "M17",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m17-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M17-01-001"
+    },
+    {
+      "id": "REQ-M17-7",
+      "milestone": "M17",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m17-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/decisions-view.spec.tsx"
+      ],
+      "detail": "scenario evidence: SCN-M17-01-001"
+    },
+    {
+      "id": "REQ-M17-8",
+      "milestone": "M17",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
     }
   ]
 }

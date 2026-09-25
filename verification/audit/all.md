@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-09-24T20:30:25.547Z
-- git: edbbca84d980ba49b6950b8a4cb620e5bff0a92b
-- overall: **PASS_WITH_WAIVER** — proven 66 · waived 1 · blocking 0
+- generated: 2026-09-25T09:25:14.595Z
+- git: 989c56365fe40947ac0cc34ca2e346635c8bf8b9
+- overall: **PASS_WITH_WAIVER** — proven 74 · waived 1 · blocking 0
 
 ## Waived
 - ⚠️ REQ-VAH-CROSSREF-RENDER (M10.2.1) — WVR-M10-2-1-001: only component test refs; functional requirement needs a scenario verdict
@@ -74,3 +74,11 @@
 - ✅ REQ-M15-04 (M15, functional) — scenario evidence: SCN-M15-01-001
 - ✅ REQ-M15-05 (M15, functional) — scenario evidence: SCN-M15-01-001
 - ✅ REQ-M15-06 (M15, functional) — scenario evidence: SCN-M15-01-001
+- ✅ REQ-M17-1 (M17, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M17-2 (M17, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M17-3 (M17, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M17-4 (M17, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M17-5 (M17, fitness) — fitness level: 2 test ref(s)
+- ✅ REQ-M17-6 (M17, functional) — scenario evidence: SCN-M17-01-001
+- ✅ REQ-M17-7 (M17, functional) — scenario evidence: SCN-M17-01-001
+- ✅ REQ-M17-8 (M17, fitness) — fitness level: 1 test ref(s)
