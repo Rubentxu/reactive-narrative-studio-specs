@@ -10,7 +10,9 @@ import { EvidenceStore } from '../src/evidence/store.ts';
 const REPO_ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..');
 
 // Requirements: REQ-VAH-WAIVER (waiver model + PASS_WITH_WAIVER semantics; levels declared in
-// traceability/requirement-levels.json)
+// traceability/requirement-levels.json). State pinned after m10-2-1-crossref-render:
+// WVR-M10-2-1-001 removed (cross-link render proven by SCN-M10-02-001); WVR-M10-2-1-002
+// (store immutability) remains the single accepted gap.
 describe('waivers (VAH: PASS_WITH_WAIVER, never PASS)', () => {
   it('rejects waivers missing required fields', () => {
     expect(() => validateWaiver({ id: 'W1', requirement: 'R' }, 'test')).toThrow(WaiverValidationError);
@@ -46,10 +48,13 @@ describe('waivers (VAH: PASS_WITH_WAIVER, never PASS)', () => {
   });
 
   it('the repo waivers file is valid and covers the accepted gaps', async () => {
+    // State after m10-2-1-crossref-render: the positive cross-link render is
+    // proven by SCN-M10-02-001, so WVR-M10-2-1-001 was removed; only the
+    // store-immutability gap (WVR-M10-2-1-002) remains waived.
     const waivers = await loadWaivers(join(REPO_ROOT, 'verification'));
-    expect(waivers.length).toBeGreaterThanOrEqual(2);
+    expect(waivers.length).toBeGreaterThanOrEqual(1);
     const ids = waivers.map((w) => w.id);
-    expect(ids).toContain('WVR-M10-2-1-001');
+    expect(ids).not.toContain('WVR-M10-2-1-001');
     expect(ids).toContain('WVR-M10-2-1-002');
     for (const waiver of waivers) {
       expect(waiver.evidence.length).toBeGreaterThan(0);
@@ -103,11 +108,11 @@ describe('baseline M0-M10.2 (H8)', () => {
   it('registry includes testRefs, waivers and gaps for M0-M10.2', async () => {
     const { buildRegistry, renderBaseline } = await import('../src/traceability/build.ts');
     const registry = await buildRegistry(REPO_ROOT);
-    expect(registry.coverage.waived).toBeGreaterThanOrEqual(2);
+    expect(registry.coverage.waived).toBeGreaterThanOrEqual(1);
     expect(registry.gaps.length).toBeGreaterThan(0);
     const baseline = renderBaseline(registry);
     expect(baseline).toContain('## Gaps / backlog');
-    expect(baseline).toContain('WVR-M10-2-1-001');
+    expect(baseline).not.toContain('WVR-M10-2-1-001');
     // test refs harvested from component tests (M10.2 requirements cite their tests)
     const m10_2 = registry.milestones.find((m) => m.id === 'M10.2');
     expect(m10_2?.requirements.some((r) => r.testRefs.length > 0)).toBe(true);
