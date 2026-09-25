@@ -11,7 +11,10 @@ export function MetadataCard({ entity }: { entity: CatalogEntity }): React.React
         <dt>Namespace</dt><dd>{String(entity.metadata?.namespace ?? '—')}</dd>
         {Object.entries(entity.metadata ?? {}).map(([k, v]) => (
           <React.Fragment key={k}>
-            {k !== 'name' && k !== 'namespace' && (
+            {/* 'content' carries raw markdown (capability SKILL.md) — it is rendered
+                by the docs/capability card via docsSafeMarkdown, never dumped flat
+                (REQ-CR-CAP-13: a key bearing [[...]] must not print as plain text). */}
+            {k !== 'name' && k !== 'namespace' && k !== 'content' && (
               <>
                 <dt>{k}</dt><dd>{String(v)}</dd>
               </>
