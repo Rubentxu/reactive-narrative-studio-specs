@@ -1,0 +1,157 @@
+id: SCN-M17-01-001
+uat: UAT-M17-01
+requirements: [REQ-M17-6, REQ-M17-7]
+claims:
+  proves:
+    - La vista /decisions lista la proyección cp-decisions cargada (id/acción/targetRef/status) y las acciones de fila rellenan el composer (kind, targetRef, subjectDecision).
+    - El registro de comando emitido (approve y regenerate) se valida contra specs/cp-commands.schema.json, se escribe como JSON de una línea y aterriza en el sistema de archivos vía la cadena de sinks FSA→descarga, sin backend persistente.
+  doesNotProve:
+    - Que los comandos se apliquen de vuelta al snapshot del proyecto (flujo externo al CP).
+    - Regeneración real de contenido (el comando es una petición outbound).
+    - UX del directory picker nativo en navegadores reales (en headless se ejercita la descarga).
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.decisions, driver: browser, action: navigate, params: { path: /decisions } }
+  - id: ui.load-snapshot
+    driver: browser
+    action: set-input-files
+    params:
+      selector: 'input[aria-label="Load snapshot"]'
+      files:
+        - golden/control-plane/snapshot-valid/**
+      waitForText: { selector: ".source-picker", contains: "Demo Project" }
+  - id: ui.probe-decisions
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const rows = Array.from(document.querySelectorAll('[data-testid^="decision-row-"]')).map((r) => r.getAttribute('data-testid'));
+          const status = (id) => document.querySelector('[data-testid="decision-status-' + id + '"]')?.textContent ?? null;
+          return {
+            count: document.querySelector('[data-testid="decisions-count"]')?.textContent ?? null,
+            rows,
+            silverKey: status('silver-key'),
+            noraArc: status('nora-arc'),
+            ironDoor: status('iron-door'),
+            composers: document.querySelectorAll('form.command-composer').length,
+          };
+        })()
+  - { id: ui.prefill-approve, driver: browser, action: click, params: { selector: '[data-testid="decision-nora-arc-approve"]' } }
+  - id: ui.probe-prefill
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const form = document.querySelector('.decisions-command form.command-composer');
+          const val = (tid) => form?.querySelector('[data-testid="' + tid + '"]')?.value ?? null;
+          return { kind: val('command-kind'), targetRef: val('command-target-ref'), subjectDecision: val('command-subject-decision') };
+        })()
+  - id: ui.fill-rationale
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const form = document.querySelector('.decisions-command form.command-composer');
+          const ta = form?.querySelector('[data-testid="command-rationale"]');
+          if (!ta) return { filled: false };
+          const setter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set;
+          setter.call(ta, 'Confirmed after reader feedback round 2; arc pacing holds.');
+          ta.dispatchEvent(new Event('input', { bubbles: true }));
+          return { filled: true, rationale: ta.value };
+        })()
+  - id: ui.download-approve
+    driver: browser
+    action: submit
+    params:
+      buttonSelector: '.decisions-command button[data-testid="command-submit"]'
+      artifactName: decisions.approve.command.json
+  - id: ui.fill-regenerate
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const form = document.querySelector('.decisions-new-command form.command-composer');
+          if (!form) return { filled: false };
+          const set = (tid, proto, value, evt) => {
+            const el = form.querySelector('[data-testid="' + tid + '"]');
+            const setter = Object.getOwnPropertyDescriptor(proto.prototype, 'value').set;
+            setter.call(el, value);
+            el.dispatchEvent(new Event(evt, { bubbles: true }));
+          };
+          set('command-kind', HTMLSelectElement, 'regenerate', 'change');
+          set('command-target-ref', HTMLInputElement, 'Scene:demo/scene-silver-key', 'input');
+          set('command-regen-reason', HTMLTextAreaElement, 'Archive page 4 breaks continuity after the iron-door rejection.', 'input');
+          set('command-regen-scope', HTMLSelectElement, 'scene', 'change');
+          return { filled: true, kind: form.querySelector('[data-testid="command-kind"]').value };
+        })()
+  - id: ui.download-regenerate
+    driver: browser
+    action: submit
+    params:
+      buttonSelector: '.decisions-new-command button[data-testid="command-submit"]'
+      artifactName: decisions.regenerate.command.json
+oracles:
+  - id: decisions.projection-listed
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe-decisions.eval.json
+      expected:
+        count: "3"
+        rows: ["decision-row-silver-key", "decision-row-nora-arc", "decision-row-iron-door"]
+        silverKey: accepted
+        noraArc: pending
+        ironDoor: rejected
+        composers: 2
+  - id: decisions.prefill-applied
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe-prefill.eval.json
+      expected:
+        kind: approve
+        targetRef: "Character:demo/nora"
+        subjectDecision: nora-arc
+  - id: approve.record-conforms
+    type: schema
+    config:
+      schemaPath: specs/cp-commands.schema.json
+      artifact: decisions.approve.command.json
+  - id: approve.record-fields
+    type: jsonl-entry
+    config:
+      artifact: decisions.approve.command.json
+      expected:
+        - schema: "control-plane/commands/v1"
+          command: approve
+          targetRef: "Character:demo/nora"
+          origin: control-plane/m17
+          payload: { subjectDecision: nora-arc, rationale: "Confirmed after reader feedback round 2; arc pacing holds." }
+      ignoredPaths:
+        - { path: "[0].id", reason: "generated per record (non-semantic id; displayed in the UI and covered by the conformance schema)" }
+        - { path: "[0].createdAt", reason: "creation timestamp (non-semantic)" }
+  - id: regenerate.record-conforms
+    type: schema
+    config:
+      schemaPath: specs/cp-commands.schema.json
+      artifact: decisions.regenerate.command.json
+  - id: regenerate.record-fields
+    type: jsonl-entry
+    config:
+      artifact: decisions.regenerate.command.json
+      expected:
+        - schema: "control-plane/commands/v1"
+          command: regenerate
+          targetRef: "Scene:demo/scene-silver-key"
+          origin: control-plane/m17
+          payload: { reason: "Archive page 4 breaks continuity after the iron-door rejection.", scope: scene }
+      ignoredPaths:
+        - { path: "[0].id", reason: "generated per record (non-semantic id)" }
+        - { path: "[0].createdAt", reason: "creation timestamp (non-semantic)" }
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.download-regenerate.console.json

@@ -41,6 +41,7 @@ repository, following the constraints documented in
 | Export a comic proof | `/comic` — layered comic preview with CBZ export (M13, UAT-M13-01) |
 | Render manga profile | `/comic` — comic\|manga switcher: RTL, monochrome, screentone, CBZ per profile (M14, UAT-M14-01) |
 | Export EPUB proofs | `/publish` — reflowable + fixed-layout EPUB 3 with validation adapter panel (M15, UAT-M15-01) |
+| Issue decision commands | `/decisions` — approve/reject/comment/regenerate records validated against cp-commands schema, FSA→download (M17, UAT-M17-01) |
 | Run an audit gate | `cd verification && node src/index.ts audit milestone M10.2.1` (also `range`, `flakiness`, `retention`, `verify-evidence`) |
 | Check the glossary | [`docs/27-GLOSSARY.md`](docs/27-GLOSSARY.md) |
 | See the risks | [`docs/26-RISKS.md`](docs/26-RISKS.md) |

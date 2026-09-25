@@ -107,7 +107,9 @@ async function runAudit(args: CliArgs): Promise<number> {
   const sub = args.positional[0];
 
   if (sub === 'flakiness') {
-    const records = await classifyFlakiness(VERIFICATION_ROOT);
+    // Canonical history only (VAH-014): development runs (--tag dev) are not
+    // acceptance evidence and must not fail the flakiness gate.
+    const records = await classifyFlakiness(VERIFICATION_ROOT, { onlyTags: ['canonical'] });
     console.log(renderFlakiness(records));
     const outDir = join(VERIFICATION_ROOT, 'audit');
     await writeFile(join(outDir, 'flakiness.json'), `${JSON.stringify(records, null, 2)}\n`, 'utf8').catch(async () => {
@@ -179,7 +181,7 @@ async function runOne(file: string, args: CliArgs, tags: string[] = []): Promise
     repoRoot: REPO_ROOT,
     verificationRoot: VERIFICATION_ROOT,
     headless: !args.flags.has('headed'),
-    tags: extraTag ? [...tags, extraTag] : tags,
+    tags: extraTag ? [...new Set([...tags, extraTag])] : tags,
   });
   const { verdict, runDir } = await runner.run(scenario);
   console.log(`[${verdict.overall}] ${verdict.scenarioId} — evidence: ${runDir}`);
@@ -198,8 +200,13 @@ async function runAll(args: CliArgs): Promise<number> {
   let failures = 0;
   const suites: string[] = [];
   const summaries: JUnitRunSummary[] = [];
+  // --tag <name> REPLACES the default 'canonical' tag: development iterations
+  // of a scenario under construction run with --tag dev so they never pollute
+  // the canonical flakiness history (VAH-014).
+  const tagFlag = args.flags.get('tag');
+  const baseTags = tagFlag ? [tagFlag] : ['canonical'];
   for (const file of files) {
-    const result = await runOne(join(dir, file), args, ['canonical']);
+    const result = await runOne(join(dir, file), args, baseTags);
     if (result.code !== 0) failures += 1;
     suites.push(result.junit);
     summaries.push(result.summary);

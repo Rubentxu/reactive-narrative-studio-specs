@@ -25,6 +25,10 @@ export const CP_COSTS_ID = 'https://narrative.dev/schemas/cp-costs.schema.json';
 export const CP_APPROVALS_ID = 'https://narrative.dev/schemas/cp-approvals.schema.json';
 // NOTE: CP_DECISIONS_ID stub only — full schema file (cp-decisions.schema.json) is created in Block 3
 export const CP_DECISIONS_ID = 'https://narrative.dev/schemas/cp-decisions.schema.json';
+// M17 outbound artifact: decision-command records written by the /decisions view.
+// Deliberately NOT referenced from specs/control-plane.schema.json $defs — the
+// envelope describes a loaded project; commands are outbound records.
+export const CP_COMMANDS_ID = 'https://narrative.dev/schemas/cp-commands.schema.json';
 export const CATALOG_ENTITY_ID = 'https://narrative.dev/schemas/catalog-entity-v1alpha1.json';
 export const CONTROL_PLANE_ID = 'https://narrative.dev/schemas/control-plane-project-v1.json';
 export const CONTROL_PLANE_EXT_ID = 'https://narrative.dev/schemas/control-plane-extension-v1.json';
@@ -44,6 +48,7 @@ const BY_SCHEMA_CONST: Readonly<Record<string, string>> = {
   'control-plane/costs/v1': CP_COSTS_ID,
   'control-plane/approvals/v1': CP_APPROVALS_ID,
   'control-plane/decisions/v1': CP_DECISIONS_ID, // stub — full schema in Block 3
+  'control-plane/commands/v1': CP_COMMANDS_ID, // M17 outbound artifact
   'control-plane-extension-config/v1': CONTROL_PLANE_EXT_ID,
 };
 

@@ -1,12 +1,14 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import AjvDefault from 'ajv';
+import Ajv2020Default from 'ajv/dist/2020.js';
 import type { ScenarioOracle } from '../types.ts';
 import { semanticCompare } from '../util/canonical.ts';
 import type { FileEntry } from '../drivers/filesystem.ts';
 import type { RunContext } from '../evidence/store.ts';
 
 const Ajv = AjvDefault as unknown as new (options?: Record<string, unknown>) => import('ajv').Ajv;
+const Ajv2020 = Ajv2020Default as unknown as new (options?: Record<string, unknown>) => import('ajv').Ajv;
 
 import type { OracleResult } from '../types.ts';
 
@@ -74,7 +76,12 @@ export const schemaOracle: OracleImpl = async (oracle, ctx) => {
   const artifactName = config.artifact as string;
   const schema = JSON.parse(await readFile(schemaPath, 'utf8'));
   const value = await readArtifactJson(ctx.run, artifactName);
-  const ajv = new Ajv({ allErrors: true, strict: false });
+  // Draft selection: 2020-12 schemas need Ajv2020 (classic Ajv rejects their
+  // $schema key); pre-2020 schemas keep the default Ajv instance.
+  const ajv =
+    typeof schema.$schema === 'string' && schema.$schema.includes('2020-12')
+      ? new Ajv2020({ allErrors: true, strict: false })
+      : new Ajv({ allErrors: true, strict: false });
   const validate = ajv.compile(schema);
   const ok = validate(value) as boolean;
   const message = ok

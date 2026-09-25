@@ -294,6 +294,27 @@ emitted only when the active profile declares `screentone: true`; the comic
 profile keeps its flat M13 fills. Tones are vector geometry, never generated
 images.
 
+### Command Record (cp-commands)
+
+The outbound artifact of the write-capable Control Plane (M17): a single
+`control-plane/commands/v1` JSON document — `{schema, id, command, targetRef,
+createdAt, origin, payload}` — emitted from `/decisions` for `approve`,
+`reject`, `comment` or `regenerate`. Records are validated against
+`specs/cp-commands.schema.json` before write and land on the filesystem (FSA
+directory sink writes `commands/<id>.json`, download fallback otherwise).
+They instruct the external workflow; the Control Plane never mutates a loaded
+project in place. Contrast with the [[cp-decisions envelope]] (read-only
+project projection).
+
+### Decision-Command Sink
+
+The M17 writer pair behind command records, mirroring the recipe plan sinks:
+`fileSystemAccessCommandSink` (showDirectoryPicker readwrite →
+`commands/<id>.json`, single-line JSON) and `downloadCommandSink` (Blob +
+`<a download>`). The composer tries the directory sink first and falls back to
+download on any failure — same discipline as the CreateWizard. Sinks never
+import the projection store and perform no network I/O.
+
 ### Dual-Render Proof
 
 The M14 exit criterion: the same SequentialArtIR document renders through two

@@ -254,5 +254,37 @@
   "REQ-CR-9": {
     "level": "fitness",
     "rationale": "DownloadPlanSink: interacción DOM/blob pura verificada con fakes inyectados (recipe-sinks.spec); el flujo completo de descarga se ejercita además en el wizard real."
+  },
+  "REQ-M17-1": {
+    "level": "fitness",
+    "rationale": "Contrato de esquema cerrado (cp-commands, draft 2020-12): los tests de frontera AJV cubren cada clase de violación; no requiere escenario."
+  },
+  "REQ-M17-2": {
+    "level": "fitness",
+    "rationale": "Forma del payload approve/reject: verificable por frontera de esquema (subjectDecision/rationale opcionales, tipos estrictos)."
+  },
+  "REQ-M17-3": {
+    "level": "fitness",
+    "rationale": "El texto del comentario no vacío es una restricción de esquema; la frontera AJV la demuestra."
+  },
+  "REQ-M17-4": {
+    "level": "fitness",
+    "rationale": "Reason obligatorio y scope con enum acotado: restricciones de esquema cubiertas por frontera AJV."
+  },
+  "REQ-M17-5": {
+    "level": "fitness",
+    "rationale": "La validación antes de escribir es un gate de componente; los tests de vistas (submit deshabilitado, sin sink) y de frontera lo prueban sin E2E."
+  },
+  "REQ-M17-6": {
+    "level": "functional",
+    "rationale": "La ruta de escritura real (FSA→descarga) y el contenido del registro emitido deben demostrarse de extremo a extremo: scn-m17-01-001 captura los artefactos y los valida (schema + jsonl)."
+  },
+  "REQ-M17-7": {
+    "level": "functional",
+    "rationale": "El listado de decisiones y el prefill del composer son comportamiento funcional de la vista /decisions; solo el escenario ejecutable con DOM real lo prueba (round-trip no-op además en tests)."
+  },
+  "REQ-M17-8": {
+    "level": "fitness",
+    "rationale": "Invariante de aislamiento (sin fetch/IndexedDB/store en la feature): purity tests por diseño, no requiere escenario."
   }
 }

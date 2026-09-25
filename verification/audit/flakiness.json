@@ -2,31 +2,101 @@
   {
     "scenarioId": "SCN-HARNESS-BOOTSTRAP-001",
     "classification": "STABLE_PASS",
-    "runs": 1,
-    "passed": 1,
+    "runs": 12,
+    "passed": 12,
     "failed": 0,
     "passWithWaiver": 0,
-    "lastRunId": "run-2026-09-13T17-49-34-285Z-aa1ee8f0",
+    "lastRunId": "run-2026-09-25T09-07-26-660Z-cd4f97aa",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M10-01-001",
+    "classification": "STABLE_PASS",
+    "runs": 6,
+    "passed": 6,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-25T09-07-29-322Z-56125bb1",
     "lastOverall": "PASS"
   },
   {
     "scenarioId": "SCN-M10-02-001",
     "classification": "STABLE_PASS",
-    "runs": 1,
-    "passed": 1,
+    "runs": 12,
+    "passed": 12,
     "failed": 0,
     "passWithWaiver": 0,
-    "lastRunId": "run-2026-09-13T17-49-35-512Z-4764590a",
+    "lastRunId": "run-2026-09-25T09-07-45-973Z-b81775ab",
     "lastOverall": "PASS"
   },
   {
     "scenarioId": "SCN-M10-04-001",
     "classification": "STABLE_PASS",
-    "runs": 1,
-    "passed": 1,
+    "runs": 10,
+    "passed": 10,
     "failed": 0,
     "passWithWaiver": 0,
-    "lastRunId": "run-2026-09-13T17-49-45-123Z-c93b365a",
+    "lastRunId": "run-2026-09-25T09-07-58-129Z-158663bc",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M10-05-001",
+    "classification": "STABLE_PASS",
+    "runs": 12,
+    "passed": 12,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-25T09-08-05-382Z-65da85ef",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M11-01-001",
+    "classification": "STABLE_PASS",
+    "runs": 12,
+    "passed": 12,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-25T09-08-13-639Z-9c1c26e6",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M12-01-001",
+    "classification": "STABLE_PASS",
+    "runs": 11,
+    "passed": 11,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-25T09-08-20-467Z-46f43640",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M13-01-001",
+    "classification": "STABLE_PASS",
+    "runs": 10,
+    "passed": 10,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-25T09-08-27-255Z-b1896ccd",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M14-01-001",
+    "classification": "STABLE_PASS",
+    "runs": 9,
+    "passed": 9,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-25T09-08-34-097Z-91984334",
+    "lastOverall": "PASS"
+  },
+  {
+    "scenarioId": "SCN-M15-01-001",
+    "classification": "STABLE_PASS",
+    "runs": 7,
+    "passed": 7,
+    "failed": 0,
+    "passWithWaiver": 0,
+    "lastRunId": "run-2026-09-25T09-08-41-339Z-4db23dec",
     "lastOverall": "PASS"
   }
 ]
