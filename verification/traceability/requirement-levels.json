@@ -286,5 +286,13 @@
   "REQ-M17-8": {
     "level": "fitness",
     "rationale": "Invariante de aislamiento (sin fetch/IndexedDB/store en la feature): purity tests por diseño, no requiere escenario."
+  },
+  "REQ-DOC-5": {
+    "level": "fitness",
+    "rationale": "Contrato de emisión del anchor (plugin + sanitización): lo cubren los test refs de componente (capability-cross-ref.spec.ts, docs-sanitization.spec.ts) y además la sonda browser-evaluate de SCN-M10-02-001 como evidencia adicional end-to-end."
+  },
+  "REQ-CR-CAP-13": {
+    "level": "functional",
+    "rationale": "El render markdown del campo descriptivo en la página de detalle de capacidades es comportamiento funcional de UI: exige veredicto PASS de SCN-M10-02-001 (sonda crossref.anchor-probe); solo testRefs sería PARTIALLY_VERIFIED (blocking)."
   }
 }

@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-09-25T11:43:42.015Z
-- git: d373a8a1656c0af744135ef0d673a0f5d4f0b7c0
-- overall: **PASS** — proven 76 · waived 0 · blocking 0
+- generated: 2026-09-25T12:11:32.856Z
+- git: a27424388c5e53ea7688cdbae9ccb12e6392139b
+- overall: **PASS** — proven 77 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -49,6 +49,7 @@
 - ✅ REQ-CR-CAP-7 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-8 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-9 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DOC-5 (M10.2.1, fitness) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-VAH-AUDIT-GATE (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-BASELINE (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-BOOTSTRAP (M10.2.1, functional) — scenario evidence: SCN-HARNESS-BOOTSTRAP-001

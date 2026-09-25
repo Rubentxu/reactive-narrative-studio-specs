@@ -1,6 +1,6 @@
 id: SCN-M10-02-001
 uat: UAT-M10-06
-requirements: [REQ-VAH-BROWSER-AUDIT, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-11, REQ-CR-CAP-13, REQ-CEP-1, REQ-CEP-2, REQ-VAH-CROSSREF-RENDER]
+requirements: [REQ-VAH-BROWSER-AUDIT, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-11, REQ-CR-CAP-13, REQ-CEP-1, REQ-CEP-2, REQ-VAH-CROSSREF-RENDER, REQ-DOC-5]
 claims:
   proves:
     - La app construida (build+preview) navega de verdad a /capabilities, los seis kind routes y un entity detail real, con DOM capturado como evidence y aserciones declarativas sobre él (UAT funcional M10.2).

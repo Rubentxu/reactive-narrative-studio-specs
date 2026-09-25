@@ -295,9 +295,20 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
   };
 }
 
+// Per-requirement owner overrides (checked before the area heuristic): areas
+// like DOC span cycles (m16 declared REQ-DOC-3/4; m10.2.1 added REQ-DOC-5), so
+// only individually-owned requirements get inventory visibility. Unowned
+// requirements (REQ-DOC-3/4, m16, deferred) stay out until their debt item
+// closes — see SDDK backlog.
+const REQ_MILESTONE_OVERRIDES: Record<string, string> = {
+  'REQ-DOC-5': 'M10.2.1',
+};
+
 function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   // PRAGMATIC heuristic for the inventory: REQ-<AREA>-* maps to the milestone that
   // owns the area. Areas are matched against milestone ids present in changes/.
+  const override = REQ_MILESTONE_OVERRIDES[reqId];
+  if (override) return milestone === override;
   const area = reqId.replace(/^REQ-/, '').replace(/-\d+.*$/, '');
   const areaToMilestone: Record<string, string> = {
     CR: 'M10.1',

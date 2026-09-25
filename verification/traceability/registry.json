@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-25T11:21:19.347Z",
-  "gitSha": "a07df327bce585b0b668baa25b4fdd70141612d2",
+  "generatedAt": "2026-09-25T12:10:52.803Z",
+  "gitSha": "a27424388c5e53ea7688cdbae9ccb12e6392139b",
   "milestones": [
     {
       "id": "M0",
@@ -805,6 +805,22 @@
       "uats": [],
       "requirements": [
         {
+          "id": "REQ-DOC-5",
+          "sources": [
+            "m10-2-1-crossref-render/design.md",
+            "m10-2-1-crossref-render/spec.md"
+          ],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/capability-cross-ref.spec.ts",
+            "control-plane/test/capability-doc-card.spec.ts",
+            "control-plane/test/docs-sanitization.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
           "id": "REQ-VAH-AUDIT-GATE",
           "sources": [
             "m10-2-1-audit-gate-hardening/spec.md",
@@ -1404,8 +1420,8 @@
     }
   ],
   "coverage": {
-    "requirements": 76,
-    "mapped": 76,
+    "requirements": 77,
+    "mapped": 77,
     "unmapped": 0,
     "uats": 22,
     "executable": 9,
