@@ -82,6 +82,7 @@ const MILESTONE_LABELS: Record<string, string> = {
   M13: 'Comic Renderer',
   M14: 'Manga Profile',
   M15: 'Digital Publishing',
+  M17: 'Write-capable Control Plane',
 };
 
 /** Canonical milestone order for range audits. */
@@ -319,6 +320,7 @@ function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   if (milestone === 'M13' && area === 'M13') return true;
   if (milestone === 'M14' && area === 'M14') return true;
   if (milestone === 'M15' && area === 'M15') return true;
+  if (milestone === 'M17' && area === 'M17') return true;
   void areaToMilestone;
   return false;
 }

@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M10.2)
 
-- generated: 2026-09-24T20:18:37.066Z
-- git: edbbca84d980ba49b6950b8a4cb620e5bff0a92b
-- coverage: 67/67 requirements MAPPED · 0 UNMAPPED · 8/21 UATs executable · 2 waivers
+- generated: 2026-09-25T09:04:30.934Z
+- git: f1f361f245660e91a9acc88326dce0f69c7d09b2
+- coverage: 75/75 requirements MAPPED · 0 UNMAPPED · 9/22 UATs executable · 2 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -60,3 +60,6 @@
 
 ## M15 — Digital Publishing
 - 🟢 UAT-M15-01 (EXECUTABLE) → scenarios: scn-m15-01-001.yaml
+
+## M17 — Write-capable Control Plane
+- 🟢 UAT-M17-01 (EXECUTABLE) → scenarios: scn-m17-01-001.yaml

@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-24T20:18:37.066Z
-- git: edbbca84d980ba49b6950b8a4cb620e5bff0a92b
-- coverage: 67/67 requirements MAPPED (scenario or test) · 0 UNMAPPED · 8/21 UATs executable · 2 waiver(s)
+- generated: 2026-09-25T09:04:30.934Z
+- git: f1f361f245660e91a9acc88326dce0f69c7d09b2
+- coverage: 75/75 requirements MAPPED (scenario or test) · 0 UNMAPPED · 9/22 UATs executable · 2 waiver(s)
 
 ## Per-milestone status
 
@@ -69,6 +69,10 @@
 ### M15 — Digital Publishing
 - 🟢 UAT-M15-01 — EXECUTABLE (scn-m15-01-001.yaml)
 - requirements MAPPED (6): REQ-M15-01, REQ-M15-02, REQ-M15-03, REQ-M15-04, REQ-M15-05, REQ-M15-06
+
+### M17 — Write-capable Control Plane
+- 🟢 UAT-M17-01 — EXECUTABLE (scn-m17-01-001.yaml)
+- requirements MAPPED (8): REQ-M17-1, REQ-M17-2, REQ-M17-3, REQ-M17-4, REQ-M17-5, REQ-M17-6, REQ-M17-7, REQ-M17-8
 
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet

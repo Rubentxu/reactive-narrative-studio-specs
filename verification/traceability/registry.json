@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-24T20:18:37.066Z",
-  "gitSha": "edbbca84d980ba49b6950b8a4cb620e5bff0a92b",
+  "generatedAt": "2026-09-25T09:04:30.934Z",
+  "gitSha": "f1f361f245660e91a9acc88326dce0f69c7d09b2",
   "milestones": [
     {
       "id": "M0",
@@ -136,7 +136,8 @@
           "id": "REQ-CLI-001",
           "sources": [
             "spec-completion/tasks.md",
-            "spec-completion/specs/narrative-init-cli/spec.md"
+            "spec-completion/specs/narrative-init-cli/spec.md",
+            "m10-traceability-closure/spec.md"
           ],
           "scenarios": [],
           "testRefs": [
@@ -256,7 +257,8 @@
           "id": "REQ-CP-001",
           "sources": [
             "spec-completion/design.md",
-            "spec-completion/specs/control-plane-projections/spec.md"
+            "spec-completion/specs/control-plane-projections/spec.md",
+            "m10-traceability-closure/spec.md"
           ],
           "scenarios": [],
           "testRefs": [
@@ -377,6 +379,7 @@
         {
           "id": "REQ-CR-10",
           "sources": [
+            "m10-traceability-closure/spec.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -385,7 +388,8 @@
           ],
           "testRefs": [
             "tools/narrative_recipes/tests/test_parameter_validator.py",
-            "tools/narrative-cli/tests/test_cli.py"
+            "tools/narrative-cli/tests/test_cli.py",
+            "verification/test/scenarios.spec.ts"
           ],
           "status": "MAPPED"
         },
@@ -499,6 +503,7 @@
         {
           "id": "REQ-CR-7",
           "sources": [
+            "m10-traceability-closure/spec.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
@@ -1154,6 +1159,115 @@
           "status": "MAPPED"
         }
       ]
+    },
+    {
+      "id": "M17",
+      "uats": [
+        {
+          "id": "UAT-M17-01",
+          "file": "uat/UAT-M17-01.md",
+          "milestone": "M17",
+          "scenarios": [
+            "scn-m17-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-M17-1",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/cp-commands-schema.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M17-2",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/cp-commands-schema.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M17-3",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/cp-commands-schema.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M17-4",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/cp-commands-schema.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M17-5",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/cp-commands-schema.spec.ts",
+            "control-plane/test/decisions-view.spec.tsx"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M17-6",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [
+            "scn-m17-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/decisions-command-sinks.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M17-7",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [
+            "scn-m17-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/decisions-view.spec.tsx"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M17-8",
+          "sources": [
+            "m17-write-capable-cp/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/decisions-command-sinks.spec.ts"
+          ],
+          "status": "MAPPED"
+        }
+      ]
     }
   ],
   "brokenReferences": [],
@@ -1275,11 +1389,11 @@
     }
   ],
   "coverage": {
-    "requirements": 67,
-    "mapped": 67,
+    "requirements": 75,
+    "mapped": 75,
     "unmapped": 0,
-    "uats": 21,
-    "executable": 8,
+    "uats": 22,
+    "executable": 9,
     "waived": 2
   }
 }
