@@ -134,7 +134,7 @@ export class ScenarioRunner {
     // Oracles run even if a step failed: partial evidence is still evidence,
     // but every oracle that cannot find its artifacts fails with a clear message.
     const oracles: OracleResult[] = [];
-    const ctx = { run, stepOutputs };
+    const ctx = { run, stepOutputs, repoRoot: this.config.repoRoot };
     for (const oracle of scenario.oracles) {
       try {
         const impl = ORACLES[oracle.type];

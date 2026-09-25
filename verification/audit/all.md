@@ -1,11 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-09-25T09:25:14.595Z
-- git: 989c56365fe40947ac0cc34ca2e346635c8bf8b9
-- overall: **PASS_WITH_WAIVER** — proven 74 · waived 1 · blocking 0
-
-## Waived
-- ⚠️ REQ-VAH-CROSSREF-RENDER (M10.2.1) — WVR-M10-2-1-001: only component test refs; functional requirement needs a scenario verdict
+- generated: 2026-09-25T11:21:20.205Z
+- git: a07df327bce585b0b668baa25b4fdd70141612d2
+- overall: **PASS** — proven 76 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -43,6 +40,7 @@
 - ✅ REQ-CR-CAP-10 (M10.2, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-CR-CAP-11 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-12 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-CAP-13 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-2 (M10.2, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-CR-CAP-3 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-4 (M10.2, functional) — scenario evidence: SCN-M10-02-001
@@ -56,6 +54,7 @@
 - ✅ REQ-VAH-BOOTSTRAP (M10.2.1, functional) — scenario evidence: SCN-HARNESS-BOOTSTRAP-001
 - ✅ REQ-VAH-BROWSER-AUDIT (M10.2.1, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-VAH-CI-ARTIFACTS (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-VAH-CROSSREF-RENDER (M10.2.1, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-VAH-EVIDENCE-INTEGRITY (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-FITNESS-SEPARATION (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-HARDENING (M10.2.1, fitness) — fitness level: 1 test ref(s)

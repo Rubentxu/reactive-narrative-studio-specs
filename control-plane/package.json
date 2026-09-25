@@ -10,7 +10,7 @@
   "preinstall": "node -e \"const [maj]=process.versions.node.split('.'); if (Number(maj) < 24) { console.error('control-plane requires Node >=24'); process.exit(1); }\"",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-recipe-assets.mjs && vite build",
+    "build": "node scripts/generate-capability-manifest.mjs && node scripts/generate-recipe-assets.mjs && vite build",
     "preview": "vite preview",
     "test": "vitest run"
   },

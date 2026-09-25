@@ -16,6 +16,21 @@ export interface OracleContext {
   run: RunContext;
   /** Observation payloads produced by steps, keyed by step id. */
   stepOutputs: Map<string, Record<string, unknown>>;
+  /** Harness repo root. Scenario-declared file paths (schemaPath, expectedFile,
+   *  actualFile) resolve against it — the same convention as the runner's
+   *  process.run cwd (resolvePath against config.repoRoot) — never against the
+   *  incidental process cwd (fixes SCN-M17-01-001 ENOENT under the canonical
+   *  `cd verification && pnpm verify` invocation). */
+  repoRoot: string;
+}
+
+/**
+ * Scenario-declared file paths are repo-root-relative or absolute — never
+ * process-cwd-relative (mirror of the runner's private resolvePath).
+ */
+function resolveScenarioPath(path: string, repoRoot: string): string {
+  if (path.startsWith('/')) return path;
+  return join(repoRoot, path);
 }
 
 export type OracleImpl = (oracle: ScenarioOracle, ctx: OracleContext) => Promise<OracleResult>;
@@ -72,7 +87,7 @@ function ignoredFromConfig(config: Record<string, unknown>): Array<{ path: strin
 /** SchemaOracle — structural conformance of a JSON artifact against a JSON Schema. */
 export const schemaOracle: OracleImpl = async (oracle, ctx) => {
   const config = oracle.config ?? {};
-  const schemaPath = config.schemaPath as string;
+  const schemaPath = resolveScenarioPath(config.schemaPath as string, ctx.repoRoot);
   const artifactName = config.artifact as string;
   const schema = JSON.parse(await readFile(schemaPath, 'utf8'));
   const value = await readArtifactJson(ctx.run, artifactName);
@@ -202,9 +217,11 @@ export const fileContentOracle: OracleImpl = async (oracle, ctx) => {
     actualText = await readArtifactText(ctx.run, actualName);
     label = `${expectedName} vs ${actualName}`;
   } else if (expectedFile && actualFile) {
-    expectedText = await readFile(expectedFile, 'utf8');
-    actualText = await readFile(actualFile, 'utf8');
-    label = `${expectedFile} vs ${actualFile}`;
+    const expectedPath = resolveScenarioPath(expectedFile as string, ctx.repoRoot);
+    const actualPath = resolveScenarioPath(actualFile as string, ctx.repoRoot);
+    expectedText = await readFile(expectedPath, 'utf8');
+    actualText = await readFile(actualPath, 'utf8');
+    label = `${expectedPath} vs ${actualPath}`;
   } else {
     throw new Error(
       `oracle "${oracle.id}" requires (expectedArtifact+actualArtifact) or (expectedFile+actualFile)`,

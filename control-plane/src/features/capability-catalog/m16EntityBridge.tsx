@@ -45,6 +45,10 @@ export function capabilityEntryToCatalogEntity(entry: CapabilityEntry): CatalogE
   switch (entry.kind) {
     case 'skill':
       baseMetadata.purpose = entry.purpose;
+      // Full SKILL.md markdown, rendered by the docs/capability card through
+      // docsSafeMarkdown so [[Kind:ns/name]] cross-refs become anchors
+      // (REQ-CR-CAP-13). MetadataCard skips this key (no flat dump).
+      baseMetadata.content = entry.content;
       break;
     case 'pack':
       baseMetadata.description = entry.description;

@@ -9,7 +9,7 @@
   },
   "REQ-VAH-CROSSREF-RENDER": {
     "level": "functional",
-    "rationale": "El render positivo de cross-links es funcional; hoy aceptado como gap con waiver WVR-M10-2-1-001."
+    "rationale": "El render positivo de cross-links es funcional: SCN-M10-02-001 lo demuestra con la primera cross-reference real ([[Skill:default/narrative-arc]] en examples/skills/character-consistency/SKILL.md), sonda del anchor y navegación por click; waiver WVR-M10-2-1-001 eliminado en m10-2-1-crossref-render."
   },
   "REQ-VAH-STORE-IMMUTABILITY": {
     "level": "fitness",

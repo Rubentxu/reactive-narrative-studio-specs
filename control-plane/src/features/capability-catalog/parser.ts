@@ -20,6 +20,8 @@ export interface ParsedSkill {
   namespace: string;
   name: string;
   purpose: string;
+  /** Full raw markdown of the SKILL.md — rendered by the docs feature via docsSafeMarkdown (REQ-CR-CAP-13). */
+  content: string;
   path: string;
   sha256: string;
   origin: 'global';
@@ -183,6 +185,7 @@ export function parseSkill(content: string, path: string): ParsedSkill {
     namespace: 'default',
     name,
     purpose,
+    content,
     path,
     sha256: computeSha256(content),
     origin: 'global',

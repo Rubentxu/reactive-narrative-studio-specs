@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-25T09:23:06.712Z",
-  "gitSha": "cd19505dfd5d24ed1b442b0f7682f57de258c79e",
+  "generatedAt": "2026-09-25T11:21:19.347Z",
+  "gitSha": "a07df327bce585b0b668baa25b4fdd70141612d2",
   "milestones": [
     {
       "id": "M0",
@@ -569,6 +569,7 @@
         {
           "id": "REQ-CEP-1",
           "sources": [
+            "m10-2-1-crossref-render/design.md",
             "cp-catalog-entities/design.md",
             "cp-catalog-entities/spec.md",
             "cp-catalog-entities/tasks.md"
@@ -582,6 +583,7 @@
         {
           "id": "REQ-CEP-2",
           "sources": [
+            "m10-2-1-crossref-render/design.md",
             "cp-catalog-entities/spec.md",
             "cp-catalog-entities/tasks.md"
           ],
@@ -647,7 +649,8 @@
           "id": "REQ-CR-CAP-11",
           "sources": [
             "m10-2-capability-catalog/spec.md",
-            "m10-2-capability-catalog/tasks.md"
+            "m10-2-capability-catalog/tasks.md",
+            "m10-2-1-crossref-render/design.md"
           ],
           "scenarios": [
             "scn-m10-02-001.yaml"
@@ -668,6 +671,22 @@
           "status": "MAPPED"
         },
         {
+          "id": "REQ-CR-CAP-13",
+          "sources": [
+            "m10-2-1-crossref-render/design.md",
+            "m10-2-1-crossref-render/spec.md"
+          ],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/capability-cross-ref.spec.ts",
+            "control-plane/test/capability-doc-card.spec.ts",
+            "control-plane/test/docs-sanitization.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
           "id": "REQ-CR-CAP-2",
           "sources": [
             "m10-2-capability-catalog/spec.md",
@@ -683,7 +702,8 @@
           "id": "REQ-CR-CAP-3",
           "sources": [
             "m10-2-capability-catalog/spec.md",
-            "m10-2-capability-catalog/tasks.md"
+            "m10-2-capability-catalog/tasks.md",
+            "m10-2-1-crossref-render/design.md"
           ],
           "scenarios": [
             "scn-m10-02-001.yaml"
@@ -732,16 +752,15 @@
           "scenarios": [
             "scn-m10-02-001.yaml"
           ],
-          "testRefs": [
-            "control-plane/test/capability-cross-ref.spec.ts"
-          ],
+          "testRefs": [],
           "status": "MAPPED"
         },
         {
           "id": "REQ-CR-CAP-7",
           "sources": [
             "m10-2-capability-catalog/spec.md",
-            "m10-2-capability-catalog/tasks.md"
+            "m10-2-capability-catalog/tasks.md",
+            "m10-2-1-crossref-render/design.md"
           ],
           "scenarios": [
             "scn-m10-02-001.yaml"
@@ -827,6 +846,7 @@
         {
           "id": "REQ-VAH-BROWSER-AUDIT",
           "sources": [
+            "m10-2-1-crossref-render/design.md",
             "m10-2-1-baseline-audit/spec.md",
             "m10-2-1-baseline-audit/tasks.md",
             "m10-2-1-baseline-audit/evidence/before-run-catalog-unreachable/artifacts/report.md",
@@ -855,11 +875,16 @@
         {
           "id": "REQ-VAH-CROSSREF-RENDER",
           "sources": [
+            "m10-2-1-crossref-render/design.md",
+            "m10-2-1-crossref-render/spec.md",
             "m10-2-1-baseline-audit/spec.md"
           ],
-          "scenarios": [],
+          "scenarios": [
+            "scn-m10-02-001.yaml"
+          ],
           "testRefs": [
-            "control-plane/test/capability-cross-ref.spec.ts"
+            "control-plane/test/capability-cross-ref.spec.ts",
+            "control-plane/test/capability-doc-card.spec.ts"
           ],
           "status": "MAPPED"
         },
@@ -878,6 +903,7 @@
         {
           "id": "REQ-VAH-FITNESS-SEPARATION",
           "sources": [
+            "m10-2-1-crossref-render/spec.md",
             "m10-2-1-baseline-audit/spec.md",
             "m10-2-1-baseline-audit/tasks.md"
           ],
@@ -1273,17 +1299,6 @@
   "brokenReferences": [],
   "waivers": [
     {
-      "id": "WVR-M10-2-1-001",
-      "requirement": "REQ-VAH-CROSSREF-RENDER",
-      "reason": "No real capability content contains [[Kind:namespace/name]] cross-references, so positive cross-link rendering cannot be demonstrated as a functional browser UAT. The plugin semantics are covered at component level; functional coverage is deferred until the first real cross-reference lands in content.",
-      "scope": "M10.2 capability catalog cross-links (SCN-M10-02-001 doesNotProve)",
-      "owner": "m10.2.1-baseline-audit cycle",
-      "evidence": [
-        "control-plane/test/capability-cross-ref.spec.ts (component-level plugin coverage)",
-        "grep -rn '\\[\\[' examples/ recipes/ → 0 occurrences (2026-09-13)"
-      ]
-    },
-    {
       "id": "WVR-M10-2-1-002",
       "requirement": "REQ-VAH-STORE-IMMUTABILITY",
       "reason": "Projection-store non-mutation is proven at component level (round-trip no-op deep-equal pre/post route mount). It is not reachable black-box in the browser without test hooks (TEST_MODE is prohibited by the change spec), so the functional scenario explicitly does not claim it.",
@@ -1389,11 +1404,11 @@
     }
   ],
   "coverage": {
-    "requirements": 75,
-    "mapped": 75,
+    "requirements": 76,
+    "mapped": 76,
     "unmapped": 0,
     "uats": 22,
     "executable": 9,
-    "waived": 2
+    "waived": 1
   }
 }

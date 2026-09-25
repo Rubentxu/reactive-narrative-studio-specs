@@ -1,14 +1,15 @@
 id: SCN-M10-02-001
 uat: UAT-M10-06
-requirements: [REQ-VAH-BROWSER-AUDIT, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-11, REQ-CEP-1, REQ-CEP-2]
+requirements: [REQ-VAH-BROWSER-AUDIT, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-11, REQ-CR-CAP-13, REQ-CEP-1, REQ-CEP-2, REQ-VAH-CROSSREF-RENDER]
 claims:
   proves:
     - La app construida (build+preview) navega de verdad a /capabilities, los seis kind routes y un entity detail real, con DOM capturado como evidence y aserciones declarativas sobre él (UAT funcional M10.2).
     - El smoke de build+preview que exige REQ-CR-CAP-11 se ejecuta aquí de verdad (build step + navegación preview) junto con la batería canónica del harness.
     - REQ-CR-CAP-3..8 (overview con counts, páginas por kind, detail vía registry, providers empty-state, badges de scope, links) y REQ-CEP-1/2 (orden de rutas + composición de EntityPage) se prueban navegando las páginas reales.
+    - REQ-CR-CAP-13 y REQ-VAH-CROSSREF-RENDER: la primera cross-reference real de contenido ([[Skill:default/narrative-arc]] en el SKILL.md de character-consistency) se renderiza como anchor resuelto (data-capability-ref + href) en la página de detalle y el click navega a la detail de narrative-arc.
   doesNotProve:
     - Mutación interna del projection store (cubierto a nivel componente por control-plane/test/capability-catalog.spec.ts; fitness separada de UAT funcional).
-    - Render positivo de cross-links [[Kind:ns/name]] (no existe contenido real con cross-refs; gap aceptado con waiver — ver waivers.json).
+    - Render positivo de cross-links más allá del par afirmado [[Skill:default/narrative-arc]] (única cross-reference real de contenido; otros kinds, namespaces y pares quedan pendientes de que exista contenido real).
     - Calidad del contenido del catálogo.
 steps:
   - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000 } }
@@ -22,6 +23,16 @@ steps:
   - { id: ui.kind.recipes, driver: browser, action: navigate, params: { path: /capabilities/recipes } }
   - { id: ui.detail.skills, driver: browser, action: navigate, params: { path: /capabilities/skills } }
   - { id: ui.detail.click, driver: browser, action: click, params: { selector: "a.capability-name", waitForUrlContains: "/capabilities/skills/" } }
+  - { id: ui.crossref.detail, driver: browser, action: navigate, params: { path: /capabilities/skills/default/character-consistency } }
+  - id: ui.crossref.probe
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => { const a = document.querySelector('a[data-capability-ref="Skill:default/narrative-arc"]');
+        return a ? { found: true, href: a.getAttribute('href'), className: a.className }
+                 : { found: false, href: '', className: '' }; })()
+  - { id: ui.crossref.click, driver: browser, action: click, params: { selector: 'a[data-capability-ref="Skill:default/narrative-arc"]', waitForUrlContains: "/capabilities/skills/default/narrative-arc" } }
 oracles:
   - id: overview.content
     type: browser-content
@@ -86,6 +97,21 @@ oracles:
     config:
       artifact: browser.ui.detail.click.dom.json
       noRawTextContains: ["[["]
+  - id: crossref.anchor-probe
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.crossref.probe.eval.json
+      expected:
+        found: true
+        href: /capabilities/skills/default/narrative-arc
+        className: doc-capability-link
+  - id: crossref.destination
+    type: browser-content
+    config:
+      artifact: browser.ui.crossref.click.dom.json
+      urlContains: /capabilities/skills/default/narrative-arc
+      textContains: ["narrative-arc"]
+      noRawTextContains: ["Capability Not Found"]
   - id: browser.health
     type: browser
     config:

@@ -4,8 +4,9 @@
  * Build-time static manifest imported from pre-computed JSON.
  * NO runtime I/O, NO fetch, NO IndexedDB — per m10 serverless invariant.
  *
- * The manifest data is pre-computed by tools/generate-capability-manifest.ts
- * during the build process and stored as static JSON.
+ * The manifest data is pre-computed by control-plane/scripts/
+ * generate-capability-manifest.mjs (first step of `pnpm build`) and stored as
+ * static JSON.
  */
 
 import type { CapabilityEntry } from './parser';

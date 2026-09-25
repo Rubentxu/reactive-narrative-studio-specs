@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-25T09:23:06.712Z
-- git: cd19505dfd5d24ed1b442b0f7682f57de258c79e
-- coverage: 75/75 requirements MAPPED (scenario or test) · 0 UNMAPPED · 9/22 UATs executable · 2 waiver(s)
+- generated: 2026-09-25T11:21:19.347Z
+- git: a07df327bce585b0b668baa25b4fdd70141612d2
+- coverage: 76/76 requirements MAPPED (scenario or test) · 0 UNMAPPED · 9/22 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -51,7 +51,7 @@
 
 ### M10.2 — Capability Catalog
 - 🟢 UAT-M10-06-capability-catalog — EXECUTABLE (scn-m10-02-001.yaml)
-- requirements MAPPED (16): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-1, REQ-CR-CAP-10, REQ-CR-CAP-11, REQ-CR-CAP-12, REQ-CR-CAP-2, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-9
+- requirements MAPPED (17): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-1, REQ-CR-CAP-10, REQ-CR-CAP-11, REQ-CR-CAP-12, REQ-CR-CAP-13, REQ-CR-CAP-2, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-9
 
 ### M10.2.1 — Verification & Audit Harness
 - requirements MAPPED (12): REQ-VAH-AUDIT-GATE, REQ-VAH-BASELINE, REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CI-ARTIFACTS, REQ-VAH-CROSSREF-RENDER, REQ-VAH-EVIDENCE-INTEGRITY, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-HARDENING, REQ-VAH-STORE-IMMUTABILITY, REQ-VAH-VERIFICATION-LEVEL, REQ-VAH-WAIVER
@@ -90,9 +90,6 @@
 - [MEDIUM] uat-without-scenario: UAT-M9-01 (M9) — UAT doc exists but no executable scenario links it yet
 
 ## Waivers
-- WVR-M10-2-1-001 — requirement REQ-VAH-CROSSREF-RENDER — No real capability content contains [[Kind:namespace/name]] cross-references, so positive cross-link rendering cannot be demonstrated as a functional browser UAT. The plugin semantics are covered at component level; functional coverage is deferred until the first real cross-reference lands in content. (scope: M10.2 capability catalog cross-links (SCN-M10-02-001 doesNotProve); owner: m10.2.1-baseline-audit cycle)
-  - evidence: control-plane/test/capability-cross-ref.spec.ts (component-level plugin coverage)
-  - evidence: grep -rn '\[\[' examples/ recipes/ → 0 occurrences (2026-09-13)
 - WVR-M10-2-1-002 — requirement REQ-VAH-STORE-IMMUTABILITY — Projection-store non-mutation is proven at component level (round-trip no-op deep-equal pre/post route mount). It is not reachable black-box in the browser without test hooks (TEST_MODE is prohibited by the change spec), so the functional scenario explicitly does not claim it. (scope: M10.2 read-only catalog invariant (m10 no-write); owner: m10.2.1-baseline-audit cycle)
   - evidence: control-plane/test/capability-catalog.spec.ts (useProjectionStore.getState() deep-equal round-trip proof)
   - evidence: spec.md del slice: separación fitness/UAT (REQ-VAH-FITNESS-SEPARATION)
