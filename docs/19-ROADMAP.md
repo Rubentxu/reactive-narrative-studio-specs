@@ -283,19 +283,38 @@ Universe
 
 Do not create these abstractions earlier without need.
 
-## M17 candidate — Write-capable Control Plane
+## M17 — Write-capable Control Plane — DELIVERED (v0.21.0)
 
-Only if read-only Control Plane proves useful.
+### Deliver (original definition)
+- approve / reject / comment / regeneration request — as OUTBOUND
+  decision-command records (`specs/cp-commands.schema.json`,
+  `control-plane/commands/v1`): one record per file, validated against the
+  schema before write, discriminated payloads (subjectDecision/rationale,
+  comment text, regeneration reason + scope).
+- Architecture honored: filesystem decision/command records — FSA directory
+  sink writes `commands/<id>.json` into the user-picked directory, download
+  fallback otherwise. No persistent backend, no network, no store mutation.
+- `/decisions` view: lists the loaded cp-decisions projection with per-decision
+  action buttons prefilling the composer; standalone composer for arbitrary
+  EntityRefs; store round-trip no-op preserved.
 
-Potential:
-- approve/reject;
-- comment;
-- regeneration request.
+### Exit
+"write-capable surface proven end-to-end": `SCN-M17-01-001` loads the golden
+snapshot, probes rows/statuses/prefill, emits approve + regenerate records and
+asserts schema conformance (`schema` oracle, now draft 2020-12 capable) and
+exact payload fields (`jsonl-entry` oracle, id/createdAt declared non-semantic).
 
-Architecture:
-filesystem decision/command records or explicit local runner bridge.
+### UAT
+`uat/UAT-M17-01.md` authored this cycle — executable as `SCN-M17-01-001`.
 
-A persistent backend remains optional, not assumed.
+### Notes
+- cp-commands is deliberately NOT referenced from the control-plane envelope
+  `$defs` — the envelope describes a loaded project; commands are outbound
+  artifacts (negative-reachability test enforces this).
+- Harness fixes delivered with the cycle: `schema` oracle accepts draft
+  2020-12; `verify --tag dev` gives scenario-under-construction runs a
+  non-canonical tag (VAH-014 canonical history stays clean);
+  `audit flakiness` now applies the same canonical filter as the hardening test.
 
 ## Active Milestones
 
