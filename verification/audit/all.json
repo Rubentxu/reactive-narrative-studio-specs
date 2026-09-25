@@ -1,24 +1,11 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-09-25T09:25:14.595Z",
-  "gitSha": "989c56365fe40947ac0cc34ca2e346635c8bf8b9",
+  "generatedAt": "2026-09-25T11:21:20.205Z",
+  "gitSha": "a07df327bce585b0b668baa25b4fdd70141612d2",
   "target": "all",
-  "overall": "PASS_WITH_WAIVER",
+  "overall": "PASS",
   "blocking": [],
-  "waived": [
-    {
-      "id": "REQ-VAH-CROSSREF-RENDER",
-      "milestone": "M10.2.1",
-      "level": "functional",
-      "status": "WAIVED",
-      "scenarioRefs": [],
-      "testRefs": [
-        "control-plane/test/capability-cross-ref.spec.ts"
-      ],
-      "waiverId": "WVR-M10-2-1-001",
-      "detail": "only component test refs; functional requirement needs a scenario verdict"
-    }
-  ],
+  "waived": [],
   "proven": [
     {
       "id": "REQ-CLI-001",
@@ -420,6 +407,21 @@
       "detail": "fitness level: 1 test ref(s)"
     },
     {
+      "id": "REQ-CR-CAP-13",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts",
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/docs-sanitization.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
+    },
+    {
       "id": "REQ-CR-CAP-2",
       "milestone": "M10.2",
       "level": "fitness",
@@ -478,9 +480,7 @@
       "scenarioRefs": [
         "scn-m10-02-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/capability-cross-ref.spec.ts"
-      ],
+      "testRefs": [],
       "detail": "scenario evidence: SCN-M10-02-001"
     },
     {
@@ -580,6 +580,20 @@
         "verification/test/hardening.spec.ts"
       ],
       "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-VAH-CROSSREF-RENDER",
+      "milestone": "M10.2.1",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts",
+        "control-plane/test/capability-doc-card.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
     },
     {
       "id": "REQ-VAH-EVIDENCE-INTEGRITY",
@@ -1292,6 +1306,21 @@
       "detail": "fitness level: 1 test ref(s)"
     },
     {
+      "id": "REQ-CR-CAP-13",
+      "milestone": "M10.2",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts",
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/docs-sanitization.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
+    },
+    {
       "id": "REQ-CR-CAP-2",
       "milestone": "M10.2",
       "level": "fitness",
@@ -1350,9 +1379,7 @@
       "scenarioRefs": [
         "scn-m10-02-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/capability-cross-ref.spec.ts"
-      ],
+      "testRefs": [],
       "detail": "scenario evidence: SCN-M10-02-001"
     },
     {
@@ -1457,13 +1484,15 @@
       "id": "REQ-VAH-CROSSREF-RENDER",
       "milestone": "M10.2.1",
       "level": "functional",
-      "status": "WAIVED",
-      "scenarioRefs": [],
-      "testRefs": [
-        "control-plane/test/capability-cross-ref.spec.ts"
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
       ],
-      "waiverId": "WVR-M10-2-1-001",
-      "detail": "only component test refs; functional requirement needs a scenario verdict"
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts",
+        "control-plane/test/capability-doc-card.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
     },
     {
       "id": "REQ-VAH-EVIDENCE-INTEGRITY",
