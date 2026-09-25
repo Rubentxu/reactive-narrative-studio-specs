@@ -70,7 +70,7 @@ describe('browser-content oracle', () => {
     await run.writeJson('dom.json', dom);
     return browserContentOracle(
       { id: 'bc', type: 'browser-content', config: { artifact: 'dom.json', h1Contains: ['Skills'], linksContain: ['/capabilities/skills/'], noRawTextContains: ['[['] } },
-      { run, stepOutputs: new Map() },
+      { run, stepOutputs: new Map(), repoRoot: REPO_ROOT },
     );
   }
 

@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { EvidenceStore } from '../src/evidence/store.ts';
-import { semanticJsonOracle, filesystemTreeOracle, fileContentOracle } from '../src/oracles/index.ts';
+import { semanticJsonOracle, filesystemTreeOracle, fileContentOracle, schemaOracle } from '../src/oracles/index.ts';
 import { FilesystemDriver } from '../src/drivers/filesystem.ts';
 
 const REPO_ROOT = join(fileURLToPath(import.meta.url), '..', '..', '..');
@@ -42,14 +42,14 @@ describe('oracles', () => {
     await run.writeJson('actual.json', { id: 'x', project: { packs: ['a'] } });
     const ok = await semanticJsonOracle(
       { id: 'o', type: 'semantic-json', config: { expectedArtifact: 'expected.json', actualArtifact: 'actual.json', ignoredPaths: [] } },
-      { run, stepOutputs: new Map() },
+      { run, stepOutputs: new Map(), repoRoot: REPO_ROOT },
     );
     expect(ok.verdict).toBe('passed');
 
     await run.writeJson('other.json', { id: 'x', project: { packs: ['b'] } });
     const bad = await semanticJsonOracle(
       { id: 'o2', type: 'semantic-json', config: { expectedArtifact: 'expected.json', actualArtifact: 'other.json', ignoredPaths: [] } },
-      { run, stepOutputs: new Map() },
+      { run, stepOutputs: new Map(), repoRoot: REPO_ROOT },
     );
     expect(bad.verdict).toBe('failed');
     expect(bad.diffRef).toBeDefined();
@@ -70,7 +70,7 @@ describe('oracles', () => {
     await fs.writeTreeArtifact('treeB.json', wsB);
     const result = await filesystemTreeOracle(
       { id: 'tree', type: 'filesystem-tree', config: { expectedArtifact: 'treeA.json', actualArtifact: 'treeB.json', ignoredPathPatterns: [{ pattern: '^only-a\\.md$', reason: 'plan copy metadata' }] } },
-      { run, stepOutputs: new Map() },
+      { run, stepOutputs: new Map(), repoRoot: REPO_ROOT },
     );
     expect(result.verdict).toBe('passed');
     expect(result.message).toContain('ignored by declared patterns');
@@ -83,9 +83,43 @@ describe('oracles', () => {
     await writeFile(join(ws, 'b.yaml'), 'id: x\n');
     const result = await fileContentOracle(
       { id: 'fc', type: 'file-content', config: { expectedFile: join(ws, 'a.yaml'), actualFile: join(ws, 'b.yaml') } },
-      { run, stepOutputs: new Map() },
+      { run, stepOutputs: new Map(), repoRoot: REPO_ROOT },
     );
     expect(result.verdict).toBe('passed');
+  });
+
+  it('schemaOracle resolves relative scenario schemaPath against repoRoot, not process cwd', async () => {
+    // Regression for SCN-M17-01-001 ENOENT under the canonical
+    // `cd verification && pnpm verify` invocation: schemaPath is declared
+    // repo-root-relative, so the oracle must resolve it against ctx.repoRoot.
+    const run = await oracleRun();
+    const ws = await mkdtemp(join(tmpdir(), 'rns-schema-'));
+    await mkdir(join(ws, 'schemas'), { recursive: true });
+    await writeFile(
+      join(ws, 'schemas', 'cmd.schema.json'),
+      JSON.stringify({
+        type: 'object',
+        required: ['schema'],
+        additionalProperties: false,
+        properties: { schema: { type: 'string' } },
+      }),
+      'utf8',
+    );
+    await run.writeJson('cmd.json', { schema: 'cp-commands/v1' });
+    const ok = await schemaOracle(
+      { id: 'sch', type: 'schema', config: { artifact: 'cmd.json', schemaPath: 'schemas/cmd.schema.json' } },
+      { run, stepOutputs: new Map(), repoRoot: ws },
+    );
+    expect(ok.verdict).toBe('passed');
+    expect(ok.message).toContain('cmd.schema.json');
+
+    // A schema violation still fails the oracle through the resolved path.
+    await run.writeJson('bad.json', { unexpected: true });
+    const bad = await schemaOracle(
+      { id: 'sch-bad', type: 'schema', config: { artifact: 'bad.json', schemaPath: 'schemas/cmd.schema.json' } },
+      { run, stepOutputs: new Map(), repoRoot: ws },
+    );
+    expect(bad.verdict).toBe('failed');
   });
 });
 
