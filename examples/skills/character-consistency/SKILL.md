@@ -227,6 +227,7 @@ The dialogue tag audit is a mechanical tone check; it cannot detect when a dialo
 
 ## Cross-references
 
+- [[Skill:default/narrative-arc]]: Arc provides the macro-level character transformation beats that arc beat alignment is checked against.
 - **narrative-arc** (`examples/skills/narrative-arc/SKILL.md`): Arc provides the macro-level character transformation beats that arc beat alignment is checked against.
 - **scene-validator** (`examples/skills/scene-validator/SKILL.md`): Scene-validator's `pov_breach` flag triggers a character-consistency POV check as a downstream validation.
 - **docs/08-PROFILES.md**: The canonical source of character profiles; all profile cross-reference checks are validated against this file.
