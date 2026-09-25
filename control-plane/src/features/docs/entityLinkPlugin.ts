@@ -4,13 +4,15 @@
  * Transforms [[entityId]] syntax into custom `entityLink` mdast nodes
  * that the rehype renderer can transform into proper links.
  *
- * Also handles capability references:
+ * Also handles capability references, emitted as real anchors (REQ-DOC-5):
+ * the href reuses the exact /capabilities/{route}/{namespace}/{name} format of
+ * the routes registered in routes/router.tsx and of KindList.tsx links.
  * - [[Skill:default/character-consistency]] → /capabilities/skills/default/character-consistency
  * - [[Pack:editorial/story_core]] → /capabilities/packs/editorial/story_core
  * - [[Profile:default/middle-grade-10-11]] → /capabilities/profiles/default/middle-grade-10-11
  * - [[Workflow:default/sdxl-illustrated-page]] → /capabilities/workflows/default/sdxl-illustrated-page
  * - [[Recipe:default/middle-grade-illustrated]] → /capabilities/recipes/default/middle-grade-illustrated
- * - Provider pattern omitted (no instances today)
+ * - Provider pattern omitted (no instances today): falls through to plain text
  *
  * m16 entity refs (Character, Chapter, etc.) continue to work.
  */
@@ -40,8 +42,9 @@ export interface CapabilityLinkNode {
   name: string;
   children: [{ type: 'text'; value: string }];
   data: {
-    hName: 'span';
+    hName: 'a';
     hProperties: {
+      href: string;
       className: string[];
       'data-capability-ref': string;
     };
@@ -128,9 +131,13 @@ export function entityLinkPlugin(): (tree: unknown) => void {
             // First, try to parse as capability reference
             const capabilityParsed = tryParseCapabilityRef(ref);
             if (capabilityParsed) {
-              // Create capability link node
-              // Note: routeSegment could be used for building actual links later
-              void capabilityKindToRoute(capabilityParsed.kind);
+              // Create capability link node — an <a> whose href matches the
+              // /capabilities/{route}/{ns}/{name} routes registered in
+              // routes/router.tsx and the links built by KindList.tsx (REQ-DOC-5).
+              const href =
+                `/capabilities/${capabilityKindToRoute(capabilityParsed.kind)}/` +
+                `${encodeURIComponent(capabilityParsed.namespace)}/` +
+                `${encodeURIComponent(capabilityParsed.name)}`;
               const capabilityLinkNode: CapabilityLinkNode = {
                 type: 'capabilityLink',
                 capabilityRef: ref,
@@ -139,8 +146,9 @@ export function entityLinkPlugin(): (tree: unknown) => void {
                 name: capabilityParsed.name,
                 children: [{ type: 'text', value: ref }],
                 data: {
-                  hName: 'span',
+                  hName: 'a',
                   hProperties: {
+                    href,
                     className: ['doc-capability-link'],
                     'data-capability-ref': ref,
                   },

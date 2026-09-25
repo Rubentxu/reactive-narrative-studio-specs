@@ -135,3 +135,37 @@ describe('docsSafeMarkdown — REQ-DOC-2 OWASP XSS vectors', () => {
     }
   });
 });
+
+// Requirements: REQ-DOC-5 (capability anchor survives sanitization), REQ-CR-CAP-13
+// (detail page renders cross-ref-bearing content via this pipeline).
+describe('docsSafeMarkdown — REQ-DOC-5 capability anchor survives sanitization', () => {
+  it('renders [[Skill:default/narrative-arc]] as a sanitized anchor with href, class and data-capability-ref', () => {
+    const { container } = render(docsSafeMarkdown('Ver [[Skill:default/narrative-arc]] aquí'));
+    const anchor = container.querySelector('a[data-capability-ref="Skill:default/narrative-arc"]');
+    expect(anchor).not.toBeNull();
+    expect(anchor?.getAttribute('href')).toBe('/capabilities/skills/default/narrative-arc');
+    expect(anchor?.className).toContain('doc-capability-link');
+    expect(anchor?.textContent).toBe('Skill:default/narrative-arc');
+    // No raw cross-reference syntax leaks into the visible text (R2 / detail.no-raw-crossref).
+    const text = container.textContent ?? '';
+    expect(text).not.toContain('[[');
+  });
+
+  it('does not relax protocol filtering with the widened <a> allow-list', () => {
+    // AC-2 of REQ-DOC-5: the allow-list delta adds only an attribute for <a>;
+    // javascript:/data: hrefs remain neutralized (REQ-DOC-2 vectors 2/5/8).
+    const md = '[safe](https://example.com) [js](javascript:alert(1)) [data](data:text/html,evil) [vbs](vbscript:msgbox(1))';
+    const { container } = render(docsSafeMarkdown(md));
+    const anchors = Array.from(container.querySelectorAll('a'));
+    expect(anchors.length).toBeGreaterThan(0);
+    for (const a of anchors) {
+      const href = a.getAttribute('href') ?? '';
+      expect(href).not.toMatch(/^(javascript|data|vbscript):/);
+    }
+    const text = container.textContent ?? '';
+    expect(text).toContain('safe');
+    expect(text).not.toContain('javascript:');
+    expect(text).not.toContain('data:');
+    expect(text).not.toContain('vbscript:');
+  });
+});

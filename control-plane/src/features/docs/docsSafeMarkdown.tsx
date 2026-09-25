@@ -10,7 +10,8 @@
  *   1. clobberPrefix: 'user-content-' — belt-and-suspenders against id/name collision
  *   2. protocols.href = [http, https, mailto, relative] — strips javascript:, vbscript:, data:
  *   3. protocols.src = [http, https, data:image] — strips data: except image MIME
- *   4. attributes — explicit allow-list for a[href,className,data-entity-ref],
+ *   4. attributes — explicit allow-list for
+ *      a[href,className,data-entity-ref,data-capability-ref],
  *      img[src,alt,data-entity-ref], span[className,data-entity-ref] (survives sanitize)
  *
  * Blocks all 10 OWASP Markdown XSS vectors enumerated in REQ-DOC-2.
@@ -48,7 +49,7 @@ const customSchema = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   attributes: {
     ...(defaultSchema.attributes ?? {}),
-    a: ['href', 'className', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
+    a: ['href', 'className', 'data-entity-ref', 'data-capability-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
     img: ['src', 'alt', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
     span: ['className', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
   },
