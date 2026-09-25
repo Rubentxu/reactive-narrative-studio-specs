@@ -6,6 +6,7 @@ export const routePaths = [
   "path: '/visual'",
   "path: '/qa'",
   "path: '/history'",
+  "path: '/decisions'", // M17 write-capable control plane
   "path: '/search'",
   "path: '/create'",
   // Capability catalog routes (m10.2)

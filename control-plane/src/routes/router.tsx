@@ -5,6 +5,7 @@ import { Story } from '../views/Story';
 import { Visual } from '../views/Visual';
 import { QA } from '../views/QA';
 import { History } from '../views/History';
+import { Decisions } from '../views/Decisions';
 import { Search } from '../views/Search';
 import { Catalog } from '../views/Catalog';
 import { EntityPage } from '../views/EntityPage';
@@ -42,6 +43,7 @@ const storyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/story'
 const visualRoute = createRoute({ getParentRoute: () => rootRoute, path: '/visual', component: Visual });
 const qaRoute = createRoute({ getParentRoute: () => rootRoute, path: '/qa', component: QA });
 const historyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/history', component: History });
+const decisionsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/decisions', component: Decisions });
 const searchRoute = createRoute({ getParentRoute: () => rootRoute, path: '/search', component: Search });
 const catalogRoute = createRoute({ getParentRoute: () => rootRoute, path: '/catalog', component: Catalog });
 const entityRoute = createRoute({
@@ -112,6 +114,7 @@ const routeTree = rootRoute.addChildren([
   visualRoute,
   qaRoute,
   historyRoute,
+  decisionsRoute,
   searchRoute,
   catalogRoute,
   entityRoute,
