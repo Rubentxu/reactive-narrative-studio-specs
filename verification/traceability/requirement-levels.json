@@ -291,6 +291,14 @@
     "level": "fitness",
     "rationale": "Contrato de emisión del anchor (plugin + sanitización): lo cubren los test refs de componente (capability-cross-ref.spec.ts, docs-sanitization.spec.ts) y además la sonda browser-evaluate de SCN-M10-02-001 como evidencia adicional end-to-end."
   },
+  "REQ-DOC-3": {
+    "level": "fitness",
+    "rationale": "Emisión del anchor navegable /entity/{kind}/{ns}/{name} en el branch m16 del plugin: comportamiento local del pipeline markdown cubierto por test refs de componente (entity-link-render.spec.ts: plugin mdast directo + render post-sanitize, misma clase que REQ-DOC-5); sin escenario YAML E2E en este ciclo."
+  },
+  "REQ-DOC-4": {
+    "level": "fitness",
+    "rationale": "Resolución de source-path sobre la lógica real (DocTab + loadDocs): cubierta por test refs de componente (doc-source-path.spec.tsx: estados DocTab con ctx simulado + guard isSafeRelativePath de loadDocs); sin escenario YAML E2E en este ciclo."
+  },
   "REQ-CR-CAP-13": {
     "level": "functional",
     "rationale": "El render markdown del campo descriptivo en la página de detalle de capacidades es comportamiento funcional de UI: exige veredicto PASS de SCN-M10-02-001 (sonda crossref.anchor-probe); solo testRefs sería PARTIALLY_VERIFIED (blocking)."
