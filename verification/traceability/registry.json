@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-25T12:10:52.803Z",
-  "gitSha": "a27424388c5e53ea7688cdbae9ccb12e6392139b",
+  "generatedAt": "2026-09-30T23:20:07.050Z",
+  "gitSha": "3071e473ae126400dea63790b55242571e4d3882",
   "milestones": [
     {
       "id": "M0",
@@ -598,6 +598,7 @@
         {
           "id": "REQ-CEP-3",
           "sources": [
+            "m16-doc-entity-links/spec.md",
             "cp-catalog-entities/design.md",
             "cp-catalog-entities/spec.md",
             "cp-catalog-entities/tasks.md"
@@ -673,6 +674,8 @@
         {
           "id": "REQ-CR-CAP-13",
           "sources": [
+            "m16-doc-entity-links/design.md",
+            "m16-doc-entity-links/spec.md",
             "m10-2-1-crossref-render/design.md",
             "m10-2-1-crossref-render/spec.md"
           ],
@@ -807,6 +810,8 @@
         {
           "id": "REQ-DOC-5",
           "sources": [
+            "m16-doc-entity-links/design.md",
+            "m16-doc-entity-links/spec.md",
             "m10-2-1-crossref-render/design.md",
             "m10-2-1-crossref-render/spec.md"
           ],
@@ -816,7 +821,8 @@
           "testRefs": [
             "control-plane/test/capability-cross-ref.spec.ts",
             "control-plane/test/capability-doc-card.spec.ts",
-            "control-plane/test/docs-sanitization.spec.ts"
+            "control-plane/test/docs-sanitization.spec.ts",
+            "control-plane/test/entity-link-render.spec.ts"
           ],
           "status": "MAPPED"
         },
@@ -1203,6 +1209,44 @@
       ]
     },
     {
+      "id": "M16",
+      "uats": [],
+      "requirements": [
+        {
+          "id": "REQ-DOC-3",
+          "sources": [
+            "m16-doc-entity-links/design.md",
+            "m16-doc-entity-links/spec.md",
+            "m16-cp-studio-search-docs/design.md",
+            "m16-cp-studio-search-docs/spec.md",
+            "m16-cp-studio-search-docs/tasks.md",
+            "m10-2-1-crossref-render/design.md",
+            "m10-2-1-crossref-render/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/entity-link-render.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DOC-4",
+          "sources": [
+            "m16-doc-entity-links/design.md",
+            "m16-doc-entity-links/spec.md",
+            "m16-cp-studio-search-docs/design.md",
+            "m16-cp-studio-search-docs/spec.md",
+            "m16-cp-studio-search-docs/tasks.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/doc-source-path.spec.tsx"
+          ],
+          "status": "MAPPED"
+        }
+      ]
+    },
+    {
       "id": "M17",
       "uats": [
         {
@@ -1420,8 +1464,8 @@
     }
   ],
   "coverage": {
-    "requirements": 77,
-    "mapped": 77,
+    "requirements": 79,
+    "mapped": 79,
     "unmapped": 0,
     "uats": 22,
     "executable": 9,

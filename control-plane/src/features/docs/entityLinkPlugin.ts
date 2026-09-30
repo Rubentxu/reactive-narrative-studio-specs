@@ -14,7 +14,11 @@
  * - [[Recipe:default/middle-grade-illustrated]] → /capabilities/recipes/default/middle-grade-illustrated
  * - Provider pattern omitted (no instances today): falls through to plain text
  *
- * m16 entity refs (Character, Chapter, etc.) continue to work.
+ * m16 entity refs (Character, Chapter, etc.) are emitted as real navigable
+ * anchors (REQ-DOC-3): the href reuses the exact /entity/{kind}/{namespace}/{name}
+ * format of the routes registered in routes/router.tsx, built exclusively from
+ * the components validated by parseEntityRef (never re-parsing the raw string)
+ * and percent-encoded per segment. Invalid refs fall through to plain text.
  */
 
 import { parseEntityRef } from '../../store/entityRef';
@@ -25,8 +29,9 @@ export interface EntityLinkNode {
   entityId: string;
   children: [{ type: 'text'; value: string }];
   data: {
-    hName: 'span';
+    hName: 'a';
     hProperties: {
+      href: string;
       className: string[];
       'data-entity-ref': string;
     };
@@ -158,16 +163,29 @@ export function entityLinkPlugin(): (tree: unknown) => void {
             } else {
               // Try to parse as entity reference (m16 pattern)
               try {
-                parseEntityRef(ref);
+                const parsed = parseEntityRef(ref);
 
-                // Valid entity reference - create custom node
+                // Valid entity reference - create custom node as a real
+                // navigable <a> (REQ-DOC-3): href targets the entity page
+                // route /entity/{kind}/{namespace}/{name} registered in
+                // routes/router.tsx. It is built exclusively from the
+                // components validated by parseEntityRef (whose [^:/]+
+                // pattern excludes URL separators) and percent-encoded per
+                // segment, so no attacker-controlled URL can leak into the
+                // href (REQ-DOC-3 SHALL NOT clause).
+                const href =
+                  '/entity/' +
+                  `${encodeURIComponent(parsed.kind)}/` +
+                  `${encodeURIComponent(parsed.namespace)}/` +
+                  `${encodeURIComponent(parsed.name)}`;
                 const entityLinkNode: EntityLinkNode = {
                   type: 'entityLink',
                   entityId: ref,
                   children: [{ type: 'text', value: ref }],
                   data: {
-                    hName: 'span',
+                    hName: 'a',
                     hProperties: {
+                      href,
                       className: ['doc-entity-link'],
                       'data-entity-ref': ref,
                     },

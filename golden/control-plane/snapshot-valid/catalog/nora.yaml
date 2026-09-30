@@ -3,3 +3,5 @@ kind: Character
 metadata:
   name: nora
   namespace: demo
+  annotations:
+    narrative.dev/source-path: docs/nora.md

@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-09-25T12:11:32.856Z
-- git: a27424388c5e53ea7688cdbae9ccb12e6392139b
-- overall: **PASS** — proven 77 · waived 0 · blocking 0
+- generated: 2026-09-30T23:20:07.936Z
+- git: 3071e473ae126400dea63790b55242571e4d3882
+- overall: **PASS** — proven 79 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -74,6 +74,8 @@
 - ✅ REQ-M15-04 (M15, functional) — scenario evidence: SCN-M15-01-001
 - ✅ REQ-M15-05 (M15, functional) — scenario evidence: SCN-M15-01-001
 - ✅ REQ-M15-06 (M15, functional) — scenario evidence: SCN-M15-01-001
+- ✅ REQ-DOC-3 (M16, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DOC-4 (M16, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-M17-1 (M17, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-M17-2 (M17, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-M17-3 (M17, fitness) — fitness level: 1 test ref(s)

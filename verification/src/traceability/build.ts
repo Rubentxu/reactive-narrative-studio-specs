@@ -82,6 +82,7 @@ const MILESTONE_LABELS: Record<string, string> = {
   M13: 'Comic Renderer',
   M14: 'Manga Profile',
   M15: 'Digital Publishing',
+  M16: 'Series Canon',
   M17: 'Write-capable Control Plane',
 };
 
@@ -296,12 +297,15 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
 }
 
 // Per-requirement owner overrides (checked before the area heuristic): areas
-// like DOC span cycles (m16 declared REQ-DOC-3/4; m10.2.1 added REQ-DOC-5), so
-// only individually-owned requirements get inventory visibility. Unowned
-// requirements (REQ-DOC-3/4, m16, deferred) stay out until their debt item
-// closes — see SDDK backlog.
+// like DOC span cycles (m10.2.1 added REQ-DOC-5; m16-doc-entity-links closed
+// the REQ-DOC-3/4 debt items with a navigable anchor + source-path evidence),
+// so only individually-owned requirements get inventory visibility. The DOC
+// area has no heuristic mapping (and must not: CPS stays dead code to keep
+// REQ-CPS-* out of the inventory).
 const REQ_MILESTONE_OVERRIDES: Record<string, string> = {
   'REQ-DOC-5': 'M10.2.1',
+  'REQ-DOC-3': 'M16',
+  'REQ-DOC-4': 'M16',
 };
 
 function reqBelongsToMilestone(reqId: string, milestone: string): boolean {

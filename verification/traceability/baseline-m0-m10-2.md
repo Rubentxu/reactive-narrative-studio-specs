@@ -1,8 +1,8 @@
 # Baseline M0–M10.2 — Verification Coverage
 
-- generated: 2026-09-25T12:10:52.803Z
-- git: a27424388c5e53ea7688cdbae9ccb12e6392139b
-- coverage: 77/77 requirements MAPPED (scenario or test) · 0 UNMAPPED · 9/22 UATs executable · 1 waiver(s)
+- generated: 2026-09-30T23:20:07.050Z
+- git: 3071e473ae126400dea63790b55242571e4d3882
+- coverage: 79/79 requirements MAPPED (scenario or test) · 0 UNMAPPED · 9/22 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -69,6 +69,9 @@
 ### M15 — Digital Publishing
 - 🟢 UAT-M15-01 — EXECUTABLE (scn-m15-01-001.yaml)
 - requirements MAPPED (6): REQ-M15-01, REQ-M15-02, REQ-M15-03, REQ-M15-04, REQ-M15-05, REQ-M15-06
+
+### M16 — Series Canon
+- requirements MAPPED (2): REQ-DOC-3, REQ-DOC-4
 
 ### M17 — Write-capable Control Plane
 - 🟢 UAT-M17-01 — EXECUTABLE (scn-m17-01-001.yaml)
