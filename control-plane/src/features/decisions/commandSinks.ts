@@ -71,8 +71,3 @@ export const downloadCommandSink: CommandSink = {
   isSupported: downloadIsSupported,
   write: downloadWrite,
 };
-
-/** FSA sink when the directory picker is available, else the download sink. */
-export function pickCommandSink(): CommandSink {
-  return fileSystemAccessCommandSink.isSupported() ? fileSystemAccessCommandSink : downloadCommandSink;
-}

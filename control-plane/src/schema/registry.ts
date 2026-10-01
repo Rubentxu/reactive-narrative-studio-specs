@@ -23,7 +23,7 @@ export const CP_WORKFLOW_ID = 'https://narrative.dev/schemas/cp-workflow.schema.
 export const CP_SCM_ID = 'https://narrative.dev/schemas/cp-scm.schema.json';
 export const CP_COSTS_ID = 'https://narrative.dev/schemas/cp-costs.schema.json';
 export const CP_APPROVALS_ID = 'https://narrative.dev/schemas/cp-approvals.schema.json';
-// NOTE: CP_DECISIONS_ID stub only — full schema file (cp-decisions.schema.json) is created in Block 3
+// NOTE: CP_DECISIONS_ID — full schema lives in specs/cp-decisions.schema.json.
 export const CP_DECISIONS_ID = 'https://narrative.dev/schemas/cp-decisions.schema.json';
 // M17 outbound artifact: decision-command records written by the /decisions view.
 // Deliberately NOT referenced from specs/control-plane.schema.json $defs — the
@@ -47,7 +47,7 @@ const BY_SCHEMA_CONST: Readonly<Record<string, string>> = {
   'control-plane/scm/v1': CP_SCM_ID,
   'control-plane/costs/v1': CP_COSTS_ID,
   'control-plane/approvals/v1': CP_APPROVALS_ID,
-  'control-plane/decisions/v1': CP_DECISIONS_ID, // stub — full schema in Block 3
+  'control-plane/decisions/v1': CP_DECISIONS_ID,
   'control-plane/commands/v1': CP_COMMANDS_ID, // M17 outbound artifact
   'control-plane-extension-config/v1': CONTROL_PLANE_EXT_ID,
 };
@@ -98,17 +98,22 @@ export function validate<T>(
 ): { valid: true; data: T } | { valid: false; schemaId: string; errors: object[] } {
   const dispatch = schemaIdFor(doc);
   if (!dispatch) {
-    // Try all registered schemas - return first validation error found
-    const allSchemaIds = Array.from(schemaById.keys());
-    for (const id of allSchemaIds) {
-      const validator = ajv.getSchema(id);
-      if (!validator) continue;
-      const valid = validator(doc);
-      if (!valid && validator.errors) {
-        return { valid: false, schemaId: id, errors: validator.errors };
-      }
-    }
-    return { valid: false, schemaId: '', errors: [] };
+    // Deterministic hard error (REQ-DEI-3): a document without a known `schema`
+    // const or `apiVersion` cannot be dispatched. The previous behavior iterated
+    // schemaById in insertion order and surfaced an arbitrary schema's errors —
+    // a non-deterministic diagnostic. Dispatch with schemaIdFor() first.
+    return {
+      valid: false,
+      schemaId: '',
+      errors: [
+        {
+          keyword: 'schema-undispatchable',
+          instancePath: '',
+          message:
+            'document has no known `schema` const or `apiVersion`; dispatch with schemaIdFor() before validate()',
+        },
+      ],
+    };
   }
   const validator = get(dispatch.id);
   const valid = validator(doc);

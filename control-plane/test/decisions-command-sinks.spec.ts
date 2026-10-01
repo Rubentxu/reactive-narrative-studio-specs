@@ -17,7 +17,6 @@ import { resolve, join } from 'node:path';
 import {
   fileSystemAccessCommandSink,
   downloadCommandSink,
-  pickCommandSink,
 } from '../src/features/decisions/commandSinks';
 import { buildCommandRecord } from '../src/features/decisions/record';
 import type { CommandRecord } from '../src/features/decisions/types';
@@ -135,20 +134,6 @@ describe('command sinks (M17)', () => {
       const serialized = await capturedBlob!.text();
       expect(serialized).not.toContain('\n');
       expect(JSON.parse(serialized)).toEqual(RECORD);
-    });
-  });
-
-  describe('pickCommandSink', () => {
-    it('returns the FSA sink when the directory picker is present', () => {
-      vi.stubGlobal('window', { showDirectoryPicker: vi.fn() });
-      expect(pickCommandSink()).toBe(fileSystemAccessCommandSink);
-    });
-
-    it('returns the download sink when the picker is absent', () => {
-      // Node env: no window at all → download fallback.
-      expect(pickCommandSink()).toBe(downloadCommandSink);
-      vi.stubGlobal('window', {}); // window without showDirectoryPicker
-      expect(pickCommandSink()).toBe(downloadCommandSink);
     });
   });
 
