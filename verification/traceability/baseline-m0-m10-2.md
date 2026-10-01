@@ -1,7 +1,7 @@
 # Baseline M0–M17 — Verification Coverage
 
-- generated: 2026-10-01T08:27:23.131Z
-- git: b9dd20b6be07359b357deb83044d868a0405be23
+- generated: 2026-10-01T09:05:37.664Z
+- git: 0b2f8383b37abaf0f6e8420064ae7ef82b8a5224
 - coverage: 83/83 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/23 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
