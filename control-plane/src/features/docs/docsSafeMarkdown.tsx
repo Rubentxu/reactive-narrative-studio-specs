@@ -12,7 +12,7 @@
  *   3. protocols.src = [http, https, data:image] — strips data: except image MIME
  *   4. attributes — explicit allow-list for
  *      a[href,className,data-entity-ref,data-capability-ref],
- *      img[src,alt,data-entity-ref], span[className,data-entity-ref] (survives sanitize)
+ *      img[src,alt] (survives sanitize)
  *
  * Blocks all 10 OWASP Markdown XSS vectors enumerated in REQ-DOC-2.
  *
@@ -30,7 +30,7 @@ import { entityLinkPlugin } from './entityLinkPlugin';
 // GFM-safe custom schema: defaultSchema + 4 deltas (Appendix B, D6)
 // Uses object-spread merge (NOT deepmerge — avoids adding a dep per correction note)
 // The attributes type is inferred from defaultSchema.attributes (Record<string, PropertyDefinition[] | false>)
-// We override a, img, and span (the latter for entityLinkPlugin nodes).
+// We override a and img (the former for entityLinkPlugin anchors).
 const customSchema = {
   ...defaultSchema,
   // DELTA 1: clobberPrefix to prevent id/name collision attacks
@@ -50,8 +50,7 @@ const customSchema = {
   attributes: {
     ...(defaultSchema.attributes ?? {}),
     a: ['href', 'className', 'data-entity-ref', 'data-capability-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
-    img: ['src', 'alt', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
-    span: ['className', 'data-entity-ref'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
+    img: ['src', 'alt'] as unknown as typeof defaultSchema.attributes extends Record<string, infer V> ? V : never,
   },
 } as typeof defaultSchema;
 
