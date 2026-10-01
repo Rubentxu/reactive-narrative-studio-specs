@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-09-30T23:20:07.050Z",
-  "gitSha": "3071e473ae126400dea63790b55242571e4d3882",
+  "generatedAt": "2026-10-01T08:27:23.131Z",
+  "gitSha": "b9dd20b6be07359b357deb83044d868a0405be23",
   "milestones": [
     {
       "id": "M0",
@@ -460,7 +460,9 @@
             "m13-comic-renderer/tasks.md",
             "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
-            "m10-1-creation-recipes/tasks.md"
+            "m10-1-creation-recipes/tasks.md",
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
           ],
           "scenarios": [
             "scn-m13-01-001.yaml"
@@ -813,7 +815,8 @@
             "m16-doc-entity-links/design.md",
             "m16-doc-entity-links/spec.md",
             "m10-2-1-crossref-render/design.md",
-            "m10-2-1-crossref-render/spec.md"
+            "m10-2-1-crossref-render/spec.md",
+            "debt-evidence-integrity/design.md"
           ],
           "scenarios": [
             "scn-m10-02-001.yaml"
@@ -974,10 +977,95 @@
           "id": "REQ-VAH-WAIVER",
           "sources": [
             "m10-2-1-baseline-audit/spec.md",
-            "m10-2-1-baseline-audit/tasks.md"
+            "m10-2-1-baseline-audit/tasks.md",
+            "debt-evidence-integrity/design.md"
           ],
           "scenarios": [],
           "testRefs": [
+            "verification/test/baseline-audit.spec.ts"
+          ],
+          "status": "MAPPED"
+        }
+      ]
+    },
+    {
+      "id": "M11",
+      "uats": [
+        {
+          "id": "UAT-M11-01",
+          "file": "uat/UAT-M11-01.md",
+          "milestone": "M11",
+          "scenarios": [
+            "scn-m11-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "REQ-M11-1",
+          "sources": [
+            "m11-human-reader-uat/spec.md",
+            "m11-human-reader-uat/tasks.md",
+            "m11-human-reader-uat/evidence/after-run-pass/artifacts/report.md",
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [
+            "scn-m11-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/human-reader.spec.ts",
+            "verification/test/baseline-audit.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M11-2",
+          "sources": [
+            "m11-human-reader-uat/spec.md",
+            "m11-human-reader-uat/tasks.md",
+            "m11-human-reader-uat/evidence/after-run-pass/artifacts/report.md"
+          ],
+          "scenarios": [
+            "scn-m11-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/human-reader.spec.ts",
+            "verification/test/baseline-audit.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M11-3",
+          "sources": [
+            "m11-human-reader-uat/spec.md",
+            "m11-human-reader-uat/tasks.md",
+            "m11-human-reader-uat/evidence/after-run-pass/artifacts/report.md"
+          ],
+          "scenarios": [
+            "scn-m11-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/human-reader.spec.ts",
+            "verification/test/baseline-audit.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M11-4",
+          "sources": [
+            "m11-human-reader-uat/spec.md",
+            "m11-human-reader-uat/tasks.md",
+            "m11-human-reader-uat/evidence/after-run-pass/artifacts/report.md",
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [
+            "scn-m11-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/human-reader.spec.ts",
             "verification/test/baseline-audit.spec.ts"
           ],
           "status": "MAPPED"
@@ -1221,7 +1309,9 @@
             "m16-cp-studio-search-docs/spec.md",
             "m16-cp-studio-search-docs/tasks.md",
             "m10-2-1-crossref-render/design.md",
-            "m10-2-1-crossref-render/spec.md"
+            "m10-2-1-crossref-render/spec.md",
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
           ],
           "scenarios": [],
           "testRefs": [
@@ -1464,11 +1554,11 @@
     }
   ],
   "coverage": {
-    "requirements": 79,
-    "mapped": 79,
+    "requirements": 83,
+    "mapped": 83,
     "unmapped": 0,
-    "uats": 22,
-    "executable": 9,
+    "uats": 23,
+    "executable": 10,
     "waived": 1
   }
 }
