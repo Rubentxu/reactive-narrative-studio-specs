@@ -12,6 +12,11 @@
 > Nota de identidad SDDK: los ciclos hasta v0.22.0 viven en el proyecto p-7c4aff45199a2069
 > (identidad por fallback seed); desde v0.23.0 la identidad canónica es p-de82af3e9774d9a0
 > (derivada del remote; checkout fijado con .sddk/project-pin.json).
+>
+> Ciclo deuda v0.23.1 (debt-evidence-integrity): M11 Human Reader UAT restaurado al
+> inventario de trazabilidad (+4 REQ PROVEN), guard de frescura del registry en `audit all`,
+> sha256 build-time en capability-catalog y dead code eliminado. `audit all`: PASS —
+> proven 83 / waived 0 / blocking 0.
 
 Milestones remain outcome-driven and UAT-gated.
 
