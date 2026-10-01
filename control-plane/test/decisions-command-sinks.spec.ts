@@ -8,7 +8,10 @@
  * reading the feature sources below).
  *
  * Requirements: REQ-M17-6 (filesystem write path: FSA preferred, download
- * fallback), REQ-M17-8 (no persistent backend: purity/no-fetch).
+ * fallback), REQ-M17-8 (no persistent backend: purity/no-fetch),
+ * REQ-DEI-4 (pickCommandSink removed — production-dead selection strategy;
+ * the composer owns the try/catch fallback), REQ-DEI-5 (both sinks delegate
+ * the download trigger to the shared lib/download.ts helper).
  */
 
 import { describe, it, expect, vi, afterEach } from 'vitest';

@@ -4,7 +4,8 @@
  * Requirements: REQ-CR-1 (deterministic panel rects, no overlap), REQ-CR-2
  * (layered SVG: art placeholders + lettering <text>, no <image>), REQ-CR-3
  * (template balloons/captions, editable text), REQ-CR-4 (store-mode CBZ with
- * pages + ComicInfo.xml, verifiable by bytes).
+ * pages + ComicInfo.xml, verifiable by bytes), REQ-DEI-6 (zip imports resolve
+ * to src/lib/store-zip after the back-compat shim removal).
  */
 
 import { describe, it, expect } from 'vitest';

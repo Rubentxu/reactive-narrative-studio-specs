@@ -5,6 +5,9 @@
  * as a browser download without touching the Control Plane projection store:
  * no useProjectionStore import, no fetch — pure DOM/blob interaction verified
  * here with injected fakes over jsdom-like DOM stubs.
+ *
+ * REQ-DEI-5: the download trigger is the shared lib/download.ts helper — this
+ * spec exercises the recipes sink on top of it after the dedup.
  */
 
 import { describe, it, expect, vi, afterEach } from 'vitest';
