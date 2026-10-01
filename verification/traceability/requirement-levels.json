@@ -195,6 +195,10 @@
     "level": "fitness",
     "rationale": "Referencia cruzada en prosa: propiedad documental verificada por test determinista."
   },
+  "REQ-CP-008": {
+    "level": "fitness",
+    "rationale": "Contrato cross-feature explicito de claves reservadas (METADATA_RESERVED_KEYS): estructura compartida entre MetadataCard y m16EntityBridge sin comportamiento runtime nuevo; lo prueban los test refs de componente (capability-doc-card.spec.ts, skip-list observable) y el test que fija el conjunto (metadata-reserved-keys.spec.ts)."
+  },
   "REQ-CLI-001": {
     "level": "fitness",
     "rationale": "Existencia y cabecera del schema (2020-12 + $id): verificación estructural determinista por test."
