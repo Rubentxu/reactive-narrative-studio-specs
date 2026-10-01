@@ -1,5 +1,18 @@
 # Roadmap — Updated
 
+> **ESTADO: COMPLETADO (2026-10-01, v0.23.0).** Todos los hitos adoptados están
+> implementados, integrados y verificados: M10→M15 + cierre de trazabilidad (v0.11.0–v0.20.0),
+> M17 Write-capable Control Plane (v0.21.0), cierre del waiver de cross-references (v0.22.0)
+> y cierre de la deuda m16 DOC-3/DOC-4 (v0.23.0 — entity refs navegables a /entity/).
+> `audit all`: PASS — proven 79 / waived 0 / blocking 0. Canónico: 11/11 escenarios PASS.
+> Backlog SDDK: sin ítems vivos (DOC-3/4 promovidos y cerrados en el ciclo
+> p-de82af3e9774d9a0/m16-doc-entity-links). **M16 Series Canon** permanece como sección
+> condicional del roadmap ("solo con demanda multi-libro real") — es un deferral del propio
+> roadmap, no trabajo pendiente. Tags v0.10.0–v0.23.0 locales (sin push autorizado).
+> Nota de identidad SDDK: los ciclos hasta v0.22.0 viven en el proyecto p-7c4aff45199a2069
+> (identidad por fallback seed); desde v0.23.0 la identidad canónica es p-de82af3e9774d9a0
+> (derivada del remote; checkout fijado con .sddk/project-pin.json).
+
 Milestones remain outcome-driven and UAT-gated.
 
 ## M0–M9
