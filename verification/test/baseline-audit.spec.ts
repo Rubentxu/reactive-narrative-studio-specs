@@ -122,6 +122,57 @@ describe('baseline M0-M10.2 (H8)', () => {
   }, 120_000);
 });
 
+// Requirements: REQ-DEI-1 — a milestone without a label must not silently drop
+// out of the canonical inventory: M11 Human Reader UAT is restored with its UAT
+// doc, its executable scenario and its individually-owned requirements.
+describe('traceability inventory — M11 (REQ-DEI-1)', () => {
+  it('M11 is in the inventory with its UAT and executable scenario', async () => {
+    const { buildRegistry } = await import('../src/traceability/build.ts');
+    const registry = await buildRegistry(REPO_ROOT);
+    const m11 = registry.milestones.find((m) => m.id === 'M11');
+    expect(m11).toBeDefined();
+    const uat = m11?.uats.find((u) => u.id === 'UAT-M11-01');
+    expect(uat).toBeDefined();
+    expect(uat?.file).toBe('uat/UAT-M11-01.md');
+    expect(uat?.status).toBe('EXECUTABLE');
+    expect(uat?.scenarios).toContain('scn-m11-01-001.yaml');
+  }, 120_000);
+
+  it('REQ-M11-1..4 are mapped via the scenario; REQ-M11-5/6 stay out (carry-forward INCs)', async () => {
+    const { buildRegistry } = await import('../src/traceability/build.ts');
+    const registry = await buildRegistry(REPO_ROOT);
+    const m11 = registry.milestones.find((m) => m.id === 'M11');
+    for (const reqId of ['REQ-M11-1', 'REQ-M11-2', 'REQ-M11-3', 'REQ-M11-4']) {
+      const req = m11?.requirements.find((r) => r.id === reqId);
+      expect(req?.status).toBe('MAPPED');
+      expect(req?.scenarios).toEqual(['scn-m11-01-001.yaml']);
+    }
+    expect(m11?.requirements.some((r) => r.id === 'REQ-M11-5' || r.id === 'REQ-M11-6')).toBe(false);
+  }, 120_000);
+
+  it('restoring M11 creates no broken references', async () => {
+    const { buildRegistry } = await import('../src/traceability/build.ts');
+    const registry = await buildRegistry(REPO_ROOT);
+    const m11Related = registry.brokenReferences.filter(
+      (b) => b.includes('M11') || b.includes('UAT-M11') || b.includes('REQ-M11'),
+    );
+    expect(m11Related).toEqual([]);
+  }, 120_000);
+
+  it('coverage/baseline titles derive from the real milestone range (no hardcoded M0–M10.2)', async () => {
+    const { buildRegistry, renderCoverageMatrix, renderBaseline } = await import('../src/traceability/build.ts');
+    const registry = await buildRegistry(REPO_ROOT);
+    const matrix = renderCoverageMatrix(registry);
+    const baseline = renderBaseline(registry);
+    expect(matrix).not.toContain('M0–M10.2');
+    expect(baseline).not.toContain('M0–M10.2');
+    expect(matrix).toContain('M0–');
+    expect(baseline).toContain('M0–');
+    expect(matrix).toContain('## M11 — Human Reader UAT');
+    expect(baseline).toContain('### M11 — Human Reader UAT');
+  }, 120_000);
+});
+
 describe('scenario SCN-M10-02-001 shape', () => {
   it('validates and navigates all six kinds with honest claims', async () => {
     const { loadScenario } = await import('../src/scenario/loader.ts');
