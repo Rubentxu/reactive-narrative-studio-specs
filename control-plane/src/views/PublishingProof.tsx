@@ -14,19 +14,7 @@ import { adaptChapterToSequentialIr } from '../features/sequential-art/adapter';
 import { COMIC_PROFILE } from '../features/comic-renderer/types';
 import { buildEpubReflowable, buildEpubFixedLayout, validateEpub } from '../features/epub';
 import type { EpubMetadata, ValidationResult } from '../features/epub/types';
-
-function downloadBlob(bytes: BlobPart, filename: string, type: string): void {
-  const blob = new Blob([bytes], { type });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement('a');
-  anchor.href = url;
-  anchor.download = filename;
-  anchor.style.display = 'none';
-  document.body.appendChild(anchor);
-  anchor.click();
-  document.body.removeChild(anchor);
-  setTimeout(() => URL.revokeObjectURL(url), 10_000);
-}
+import { triggerDownload } from '../lib/download';
 
 const EPUB_MIME = 'application/epub+zip';
 
@@ -73,11 +61,11 @@ export function PublishingProof(): React.ReactElement {
   const fxlValidation = useMemo(() => validateEpub(fxl), [fxl]);
 
   const downloadReflowable = (): void => {
-    downloadBlob(reflowable as unknown as BlobPart, 'book-reflowable.epub', EPUB_MIME);
+    triggerDownload(reflowable as unknown as BlobPart, 'book-reflowable.epub', EPUB_MIME);
     setLastDownload('book-reflowable.epub');
   };
   const downloadFxl = (): void => {
-    downloadBlob(fxl as unknown as BlobPart, 'book-fxl.epub', EPUB_MIME);
+    triggerDownload(fxl as unknown as BlobPart, 'book-fxl.epub', EPUB_MIME);
     setLastDownload('book-fxl.epub');
   };
 

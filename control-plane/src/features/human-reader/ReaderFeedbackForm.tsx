@@ -21,6 +21,7 @@ import {
 } from './types';
 import { buildEntry, roundReportToJsonl } from './feedbackSerializer';
 import { getOrCreateReaderId, newRoundId } from './readerId';
+import { triggerDownload } from '../../lib/download';
 
 interface FormState {
   ageBracket: AgeBracket | '';
@@ -67,16 +68,7 @@ export function ReaderFeedbackForm(): React.ReactElement {
 
     const jsonl = roundReportToJsonl([entry]);
     const filename = `reader-uat-${roundId}.jsonl`;
-    const blob = new Blob([jsonl], { type: 'application/x-ndjson' });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = filename;
-    anchor.style.display = 'none';
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-    setTimeout(() => URL.revokeObjectURL(url), 10_000);
+    triggerDownload(jsonl, filename, 'application/x-ndjson');
 
     setLastDownload({ filename, jsonl });
   };

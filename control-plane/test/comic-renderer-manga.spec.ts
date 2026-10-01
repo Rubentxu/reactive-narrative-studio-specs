@@ -14,7 +14,7 @@ import { COMIC_PROFILE, MANGA_PROFILE } from '../src/features/comic-renderer/typ
 import { computePanelRects, renderPageModel } from '../src/features/comic-renderer/layout';
 import { renderPageSvg } from '../src/features/comic-renderer/svg';
 import { buildCbz } from '../src/features/comic-renderer/cbz';
-import { readZipEntries } from '../src/features/comic-renderer/zip';
+import { readZipEntries } from '../src/lib/store-zip';
 
 const doc = adaptChapterToSequentialIr(SAMPLE_CHAPTER);
 

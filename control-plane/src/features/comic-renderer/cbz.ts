@@ -8,7 +8,7 @@
 import type { SequentialIrDoc } from '../sequential-art/types';
 import { renderPageSvg } from './svg';
 import type { PresentationProfile } from './types';
-import { buildZip, type ZipEntry } from './zip';
+import { buildZip, type ZipEntry } from '../../lib/store-zip';
 
 export interface ComicInfoInput {
   series: string;

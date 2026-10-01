@@ -11,6 +11,7 @@
  */
 
 import type { CommandRecord } from './types';
+import { triggerDownload } from '../../lib/download';
 
 export interface CommandWriteResult {
   fileName: string;
@@ -50,20 +51,7 @@ function downloadIsSupported(): boolean {
 
 function downloadWrite(record: CommandRecord): Promise<CommandWriteResult> {
   const json = JSON.stringify(record);
-  const blob = new Blob([json], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-
-  const anchor = document.createElement('a');
-  anchor.href = url;
-  anchor.download = `${record.id}.json`;
-  anchor.style.display = 'none';
-  document.body.appendChild(anchor);
-  anchor.click();
-  document.body.removeChild(anchor);
-
-  // Revoke after a short delay to allow the download to start
-  setTimeout(() => URL.revokeObjectURL(url), 10_000);
-
+  triggerDownload(json, `${record.id}.json`, 'application/json');
   return Promise.resolve({ fileName: `${record.id}.json`, mode: 'download' });
 }
 
