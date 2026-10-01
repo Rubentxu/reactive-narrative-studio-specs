@@ -1,7 +1,7 @@
 # Audit Gate — all
 
-- generated: 2026-10-01T09:07:58.085Z
-- git: 0b2f8383b37abaf0f6e8420064ae7ef82b8a5224
+- generated: 2026-10-01T10:36:37.795Z
+- git: 1b0afa1662d812825007d4340c3d358df8a13392
 - overall: **PASS** — proven 83 · waived 0 · blocking 0
 
 ## Proven

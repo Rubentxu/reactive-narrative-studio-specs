@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-01T09:07:58.085Z",
-  "gitSha": "0b2f8383b37abaf0f6e8420064ae7ef82b8a5224",
+  "generatedAt": "2026-10-01T10:36:37.795Z",
+  "gitSha": "1b0afa1662d812825007d4340c3d358df8a13392",
   "target": "all",
   "overall": "PASS",
   "blocking": [],
