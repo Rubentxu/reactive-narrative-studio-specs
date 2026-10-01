@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-01T10:47:17.461Z",
-  "gitSha": "18f018cf2916bad84f2d09a335a31f3c4eaf6c04",
+  "generatedAt": "2026-10-01T11:51:18.312Z",
+  "gitSha": "c901034b8b4712647060489bee5d287372ccfa72",
   "target": "all",
   "overall": "PASS",
   "blocking": [],
@@ -160,6 +160,18 @@
         "control-plane/test/cp-projection-schemas.spec.ts"
       ],
       "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CP-008",
+      "milestone": "M10",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/metadata-reserved-keys.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
     },
     {
       "id": "REQ-CR-1",
@@ -1247,6 +1259,18 @@
         "control-plane/test/cp-projection-schemas.spec.ts"
       ],
       "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CP-008",
+      "milestone": "M10",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/metadata-reserved-keys.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
     },
     {
       "id": "REQ-CR-1",

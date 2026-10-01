@@ -3,8 +3,9 @@
  *
  * Resolves the doc via entity's metadata.annotations['narrative.dev/source-path']
  * against the bundle.docs array (DocEntry[] = { path, body }[] per REQ-LOA-2).
- * Uses the existing isSafeRelativePath guard from SnapshotProjectSource.
- * Renders via safeReactMarkdown (REQ-DOC-1).
+ * Re-implements the SnapshotProjectSource isSafeRelativePath guard locally —
+ * the loader lives outside the docs feature boundary.
+ * Renders via docsSafeMarkdown (REQ-DOC-1).
  *
  * If the source-path annotation is absent, renders a documented empty state
  * without error. Path traversal attempts surface synthetic('path-traversal').
@@ -20,7 +21,9 @@ const PARENT_SEGMENT = '..';
 
 /**
  * Guards against path traversal attacks in docRef paths.
- * Reuses the existing SnapshotProjectSource guard per REQ-DOC-4.
+ * Re-implements the SnapshotProjectSource guard per REQ-DOC-4 — the loader
+ * lives outside the docs feature boundary (functional equivalents today; may
+ * diverge).
  */
 function isSafeDocPath(path: string): boolean {
   if (path.startsWith('/') || /^[a-zA-Z]:[\\/]/.test(path)) {
@@ -68,7 +71,7 @@ async function fetchDocPage(
  * DocTab renders narrative documentation for an entity.
  *
  * Looks for metadata.annotations['narrative.dev/source-path'] on the entity,
- * resolves it against bundle.docs, and renders via safeReactMarkdown.
+ * resolves it against bundle.docs, and renders via docsSafeMarkdown.
  */
 export function DocTab({ ctx }: { ctx: ExtensionContext }): React.ReactElement {
   const [docPage, setDocPage] = useState<DocPage | null>(null);
