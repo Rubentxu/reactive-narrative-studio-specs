@@ -47,7 +47,9 @@ export function capabilityEntryToCatalogEntity(entry: CapabilityEntry): CatalogE
       baseMetadata.purpose = entry.purpose;
       // Full SKILL.md markdown, rendered by the docs/capability card through
       // docsSafeMarkdown so [[Kind:ns/name]] cross-refs become anchors
-      // (REQ-CR-CAP-13). MetadataCard skips this key (no flat dump).
+      // (REQ-CR-CAP-13). 'content' ∈ METADATA_RESERVED_KEYS — the shared
+      // reserved-keys contract with MetadataCard (src/lib/metadata-reserved-keys,
+      // REQ-CP-008): injected here, skipped by the card's flat dump.
       baseMetadata.content = entry.content;
       break;
     case 'pack':

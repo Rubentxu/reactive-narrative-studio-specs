@@ -82,7 +82,7 @@ describe('CapabilityDocCard (REQ-CR-CAP-13)', () => {
   });
 });
 
-describe('MetadataCard content skip-list (REQ-CR-CAP-13 edge)', () => {
+describe('MetadataCard content skip-list (REQ-CR-CAP-13 edge, REQ-CP-008)', () => {
   it('does not dump the markdown content key as a flat metadata row', () => {
     const { container } = render(createElement(MetadataCard, { entity: skillEntity(SKILL_CONTENT) }));
     const text = container.textContent ?? '';
