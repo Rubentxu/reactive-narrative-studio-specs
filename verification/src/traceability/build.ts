@@ -30,7 +30,7 @@ export interface MilestoneRecord {
 }
 
 export interface BaselineGap {
-  kind: 'uat-without-scenario' | 'requirement-unmapped';
+  kind: 'uat-without-scenario' | 'requirement-unmapped' | 'requirement-unowned';
   ref: string;
   milestone: string;
   severity: 'HIGH' | 'MEDIUM' | 'LOW';
@@ -141,6 +141,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
       for (const match of text.matchAll(REQ_ID)) {
         if (isWildcardMatch(text, match)) continue;
         const id = match[0];
+        if (isPluralArtifact(id)) continue;
         const list = reqSources.get(id) ?? [];
         list.push(String(f));
         reqSources.set(id, [...new Set(list)]);
@@ -156,6 +157,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
     for (const match of text.matchAll(REQ_ID)) {
       if (isWildcardMatch(text, match)) continue;
       const id = match[0];
+      if (isPluralArtifact(id)) continue;
       const list = reqScenario.get(id) ?? [];
       list.push(file);
       reqScenario.set(id, [...new Set(list)]);
@@ -177,6 +179,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
       for (const match of text.matchAll(REQ_ID)) {
         if (isWildcardMatch(text, match)) continue;
         const id = match[0];
+        if (isPluralArtifact(id)) continue;
         const list = reqTests.get(id) ?? [];
         list.push(`${dir.replace(`${repoRoot}/`, '')}/${f}`);
         reqTests.set(id, [...new Set(list)]);
@@ -230,8 +233,21 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
     return { id, uats, requirements };
   });
 
-  // gaps / backlog (H8): UATs without executable scenario + UNMAPPED requirements
-  const gaps: BaselineGap[] = [];
+  // Silent-drop guard (M11/REQ-DOC/REQ-DEI defect class): a harvested
+  // requirement that belongs to no milestone would vanish from the inventory
+  // without a trace. Surface every unowned requirement as a gap.
+  const gaps: BaselineGap[] = findUnownedRequirements(reqSources, milestones).map(
+    (entry) =>
+      ({
+        kind: 'requirement-unowned',
+        ref: entry.reqId,
+        milestone: '(none)',
+        // LOW: these are historical declarations outside every milestone
+        // inventory (pre-M10 eras mostly) — visibility for triage, not alarm.
+        severity: 'LOW',
+        detail: `harvested from ${entry.sources.join(', ')} but no reqBelongsToMilestone area/override maps it to a milestone`,
+      }) satisfies BaselineGap,
+  );
   for (const milestone of milestones) {
     for (const uat of milestone.uats) {
       if (uat.status === 'MANUAL_ONLY') {
@@ -326,6 +342,8 @@ function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   if (milestone === 'M10' && area === 'CP') return true;
   if (milestone === 'M9' && area === 'CLI') return true;
   if (milestone === 'M10.2.1' && area.startsWith('VAH')) return true;
+  // DEI = debt-evidence-integrity cycle (v0.24.0): verification-harness integrity reqs.
+  if (milestone === 'M10.2.1' && area === 'DEI') return true;
   // Milestone-scoped requirement areas (M12+ cycles declare REQ-<MILESTONE>-n).
   if (milestone === 'M12' && area === 'M12') return true;
   if (milestone === 'M13' && area === 'M13') return true;
@@ -341,6 +359,23 @@ function milestoneRangeLabel(registry: TraceabilityRegistry): string {
   const first = populated[0]?.id;
   const last = populated[populated.length - 1]?.id;
   return first && last ? `${first}–${last}` : '(empty)';
+}
+
+/** Requirements harvested with sources but attached to no milestone (silent-drop class). */
+/** Bare single-segment matches ('REQ-DEI' from plural prose) are not requirement ids. */
+function isPluralArtifact(id: string): boolean {
+  return /^REQ-[A-Z0-9]+$/.test(id);
+}
+
+export function findUnownedRequirements(
+  reqSources: Map<string, string[]>,
+  milestones: MilestoneRecord[],
+): Array<{ reqId: string; sources: string[] }> {
+  const owned = new Set(milestones.flatMap((m) => m.requirements.map((r) => r.id)));
+  return [...reqSources.entries()]
+    .filter(([reqId]) => !owned.has(reqId))
+    .map(([reqId, sources]) => ({ reqId, sources }))
+    .sort((a, b) => a.reqId.localeCompare(b.reqId));
 }
 
 export function renderCoverageMatrix(registry: TraceabilityRegistry): string {
