@@ -15,24 +15,12 @@ import { SAMPLE_CHAPTER } from '../features/sequential-art/fixtures/sample-chapt
 import { COMIC_PROFILE, MANGA_PROFILE, type PresentationProfile, type PresentationProfileId } from '../features/comic-renderer/types';
 import { renderPageSvg } from '../features/comic-renderer/svg';
 import { buildCbz } from '../features/comic-renderer/cbz';
+import { triggerDownload } from '../lib/download';
 
 const PROFILES: Record<PresentationProfileId, PresentationProfile> = {
   comic: COMIC_PROFILE,
   manga: MANGA_PROFILE,
 };
-
-function downloadBlob(bytes: BlobPart, filename: string, type: string): void {
-  const blob = new Blob([bytes], { type });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement('a');
-  anchor.href = url;
-  anchor.download = filename;
-  anchor.style.display = 'none';
-  document.body.appendChild(anchor);
-  anchor.click();
-  document.body.removeChild(anchor);
-  setTimeout(() => URL.revokeObjectURL(url), 10_000);
-}
 
 export function ComicProof(): React.ReactElement {
   const doc = useMemo(() => adaptChapterToSequentialIr(SAMPLE_CHAPTER), []);
@@ -52,7 +40,7 @@ export function ComicProof(): React.ReactElement {
   }, [baseSvg, showArt, showLettering]);
 
   const downloadSvg = (): void => {
-    downloadBlob(svg, `comic-page-${String(pageIndex + 1).padStart(2, '0')}.svg`, 'image/svg+xml');
+    triggerDownload(svg, `comic-page-${String(pageIndex + 1).padStart(2, '0')}.svg`, 'image/svg+xml');
     setLastDownload(`comic-page-${String(pageIndex + 1).padStart(2, '0')}.svg`);
   };
 
@@ -62,7 +50,7 @@ export function ComicProof(): React.ReactElement {
       title: `${SAMPLE_CHAPTER.title} — ${profile.id} proof`,
       languageISO: 'es',
     });
-    downloadBlob(bytes as unknown as BlobPart, `comic-proof-${profile.id}.cbz`, 'application/vnd.comicbook+zip');
+    triggerDownload(bytes as unknown as BlobPart, `comic-proof-${profile.id}.cbz`, 'application/vnd.comicbook+zip');
     setLastDownload(`comic-proof-${profile.id}.cbz`);
   };
 

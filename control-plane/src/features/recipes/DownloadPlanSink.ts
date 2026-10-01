@@ -2,12 +2,14 @@
  * DownloadPlanSink — browser download fallback for Firefox/Safari.
  *
  * REQ-CR-9: Fallback when File System Access API (showDirectoryPicker) is unavailable.
- * Emits create-plan.json as a browser download via URL.createObjectURL + <a download>.
+ * Emits create-plan.json as a browser download through the shared
+ * triggerDownload helper (src/lib/download.ts).
  *
  * NEVER imports useProjectionStore — no state changes.
  */
 
 import type { CreatePlan } from './RecipePlanEmitter';
+import { triggerDownload } from '../../lib/download';
 
 export interface DownloadResult {
   downloadUrl: string;
@@ -28,21 +30,7 @@ function isSupported(): boolean {
 
 function write(plan: CreatePlan): Promise<DownloadResult> {
   const json = JSON.stringify(plan, null, 2);
-  const blob = new Blob([json], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-
-  // Trigger download
-  const anchor = document.createElement('a');
-  anchor.href = url;
-  anchor.download = 'create-plan.json';
-  anchor.style.display = 'none';
-  document.body.appendChild(anchor);
-  anchor.click();
-  document.body.removeChild(anchor);
-
-  // Revoke after a short delay to allow the download to start
-  setTimeout(() => URL.revokeObjectURL(url), 10_000);
-
+  const url = triggerDownload(json, 'create-plan.json', 'application/json');
   return Promise.resolve({ downloadUrl: url });
 }
 

@@ -2,10 +2,9 @@
  * capability-catalog parser functions
  *
  * All parsers are synchronous pure functions. No fetch, no async, no globals.
- * Each parser takes raw content and source path, returns typed CapabilityEntry.
- *
- * Note: sha256 computation uses Web Crypto API which is async. For synchronous
- * manifest building, sha256 is computed lazily and cached per content string.
+ * Each parser takes raw content, source path and the item's build-time sha256
+ * (computed by scripts/generate-capability-manifest.mjs, REQ-DEI-2) and returns
+ * a typed CapabilityEntry. Parsers carry the hash; they never compute it.
  */
 
 import { parse as parseYaml } from 'yaml';
@@ -92,41 +91,6 @@ export type CapabilityEntry =
   | ParsedRecipe;
 
 // ============================================================================
-// SHA-256 computation
-// ============================================================================
-
-/**
- * SHA-256 cache: maps content string to its hash.
- * Prevents redundant computation for identical content.
- */
-const sha256Cache = new Map<string, string>();
-
-/**
- * Compute SHA-256 hex digest of a string.
- * Uses Web Crypto API (async). Results are cached.
- */
-export async function computeSha256Async(content: string): Promise<string> {
-  const cached = sha256Cache.get(content);
-  if (cached) return cached;
-
-  const encoder = new TextEncoder();
-  const data = encoder.encode(content);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  sha256Cache.set(content, hash);
-  return hash;
-}
-
-/**
- * Compute SHA-256 synchronously for use in synchronous contexts.
- * Returns empty string if not yet computed (caller should await computeSha256Async).
- */
-export function computeSha256(content: string): string {
-  return sha256Cache.get(content) ?? '';
-}
-
-// ============================================================================
 // Skill parser
 // ============================================================================
 
@@ -134,7 +98,7 @@ export function computeSha256(content: string): string {
  * Parse a SKILL.md markdown file.
  * Extracts H1 title and first ## Purpose section paragraph.
  */
-export function parseSkill(content: string, path: string): ParsedSkill {
+export function parseSkill(content: string, path: string, sha256: string): ParsedSkill {
   const lines = content.split('\n');
 
   // Extract H1 title
@@ -187,7 +151,7 @@ export function parseSkill(content: string, path: string): ParsedSkill {
     purpose,
     content,
     path,
-    sha256: computeSha256(content),
+    sha256,
     origin: 'global',
   };
 }
@@ -203,8 +167,14 @@ export function parseSkill(content: string, path: string): ParsedSkill {
  * @param content - Raw markdown content
  * @param path - Source file path (used to derive namespace for recipe-scoped packs)
  * @param origin - 'global' or 'recipe:<recipe-id>'
+ * @param sha256 - Build-time hash carried from the manifest bundle
  */
-export function parsePack(content: string, path: string, origin: 'global' | `recipe:${string}` = 'global'): ParsedPack {
+export function parsePack(
+  content: string,
+  path: string,
+  origin: 'global' | `recipe:${string}` = 'global',
+  sha256: string,
+): ParsedPack {
   const lines = content.split('\n');
 
   // Extract H1 title (may have multiple # for headings)
@@ -263,7 +233,7 @@ export function parsePack(content: string, path: string, origin: 'global' | `rec
     name,
     description,
     path,
-    sha256: computeSha256(content),
+    sha256,
     origin,
   };
 }
@@ -278,8 +248,9 @@ export function parsePack(content: string, path: string, origin: 'global' | `rec
  *
  * @param yamlContent - Raw YAML content
  * @param path - Source file path
+ * @param sha256 - Build-time hash carried from the manifest bundle
  */
-export function parseProfile(yamlContent: string, path: string): ParsedProfile {
+export function parseProfile(yamlContent: string, path: string, sha256: string): ParsedProfile {
   const data = parseYaml(yamlContent) as Record<string, unknown>;
 
   // Extract fields
@@ -323,7 +294,7 @@ export function parseProfile(yamlContent: string, path: string): ParsedProfile {
     voice,
     guardrails,
     path,
-    sha256: computeSha256(yamlContent),
+    sha256,
   };
 }
 
@@ -336,8 +307,9 @@ export function parseProfile(yamlContent: string, path: string): ParsedProfile {
  *
  * @param jsonContent - Raw JSON content
  * @param path - Source file path
+ * @param sha256 - Build-time hash carried from the manifest bundle
  */
-export function parseWorkflow(jsonContent: string, path: string): ParsedWorkflow {
+export function parseWorkflow(jsonContent: string, path: string, sha256: string): ParsedWorkflow {
   const data = JSON.parse(jsonContent) as Record<string, unknown>;
 
   const workflowId = (data['workflowId'] as string) || '';
@@ -357,7 +329,7 @@ export function parseWorkflow(jsonContent: string, path: string): ParsedWorkflow
     model,
     description,
     path,
-    sha256: computeSha256(jsonContent),
+    sha256,
   };
 }
 
@@ -384,8 +356,9 @@ export function parseProvider(): ParsedProvider[] {
  *
  * @param yamlContent - Raw YAML content
  * @param path - Source file path
+ * @param sha256 - Build-time hash carried from the manifest bundle
  */
-export function parseRecipe(yamlContent: string, path: string): ParsedRecipe {
+export function parseRecipe(yamlContent: string, path: string, sha256: string): ParsedRecipe {
   const data = parseYaml(yamlContent) as Record<string, unknown>;
 
   const metadata = (data['metadata'] as Record<string, unknown>) || {};
@@ -404,6 +377,6 @@ export function parseRecipe(yamlContent: string, path: string): ParsedRecipe {
     title,
     description,
     path,
-    sha256: computeSha256(yamlContent),
+    sha256,
   };
 }

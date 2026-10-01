@@ -34,7 +34,6 @@ export {
   parseWorkflow,
   parseProvider,
   parseRecipe,
-  computeSha256,
 } from './parser';
 export type {
   ParsedSkill,

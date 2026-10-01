@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { loadScenario } from './scenario/loader.ts';
 import { ScenarioRunner } from './runner/scenario.ts';
 import { buildRegistry, renderCoverageMatrix, renderBaseline } from './traceability/build.ts';
-import { auditRequirements, milestoneRange, writeAuditArtifacts } from './audit/audit.ts';
+import { auditRequirements, checkRegistryFreshness, milestoneRange, writeAuditArtifacts } from './audit/audit.ts';
 import { verifyEvidenceBundle, verifyRetainedBundles } from './audit/integrity.ts';
 import { classifyFlakiness, renderFlakiness } from './audit/flakiness.ts';
 import { renderJUnitAggregate, type JUnitRunSummary } from './report/junit.ts';
@@ -148,6 +148,18 @@ async function runAudit(args: CliArgs): Promise<number> {
     ids = milestoneRange(from, to);
   } else if (sub === 'all') {
     const report = await auditRequirements(REPO_ROOT, VERIFICATION_ROOT, { all: true });
+    // REQ-DEI-7 freshness guard: refuse to emit audit evidence when the
+    // canonical registry on disk describes a different revision than HEAD —
+    // a stale PASS receipt is exactly the silent-degradation class this gate
+    // exists to prevent. No artifacts are written; fix with `traceability build`.
+    const freshness = await checkRegistryFreshness(VERIFICATION_ROOT, report.gitSha);
+    if (!freshness.fresh) {
+      console.error(
+        `registry.json on disk is stale (gitSha ${freshness.diskGitSha} ≠ HEAD ${report.gitSha}) — ` +
+          `run 'node verification/src/index.ts traceability build' on the committed tree, then re-run audit all`,
+      );
+      return 1;
+    }
     const { jsonPath, mdPath } = await writeAuditArtifacts(report, VERIFICATION_ROOT);
     console.log(`audit all → ${report.overall} (json: ${jsonPath}, md: ${mdPath})`);
     console.log(`  proven ${report.proven.length} · waived ${report.waived.length} · blocking ${report.blocking.length}`);

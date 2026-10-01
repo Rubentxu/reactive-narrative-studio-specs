@@ -78,6 +78,7 @@ const MILESTONE_LABELS: Record<string, string> = {
   'M10.1': 'Creation Recipes',
   'M10.2': 'Capability Catalog',
   'M10.2.1': 'Verification & Audit Harness',
+  M11: 'Human Reader UAT',
   M12: 'Sequential Art Core',
   M13: 'Comic Renderer',
   M14: 'Manga Profile',
@@ -106,7 +107,7 @@ export function milestoneOfUat(filename: string): string {
 }
 
 /**
- * Git-native traceability inventory for M0–M10.2 (H1):
+ * Git-native traceability inventory (H1), scoped by the declared milestones:
  * - UAT docs from uat/ (milestone inferred from the UAT id);
  * - REQ ids harvested from changes/ + docs/ spec prose;
  * - executable scenarios from verification/scenarios/*.yaml;
@@ -192,7 +193,7 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
 
   const brokenReferences: string[] = [];
 
-  // milestones M0..M10.2 (slice scope)
+  // milestones in MILESTONE_LABELS order (the inventory scope is the declared set)
   const milestoneIds = [...Object.keys(MILESTONE_LABELS)];
   const milestones: MilestoneRecord[] = milestoneIds.map((id) => {
     const uats: UatRecord[] = uatFiles
@@ -299,13 +300,17 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
 // Per-requirement owner overrides (checked before the area heuristic): areas
 // like DOC span cycles (m10.2.1 added REQ-DOC-5; m16-doc-entity-links closed
 // the REQ-DOC-3/4 debt items with a navigable anchor + source-path evidence),
-// so only individually-owned requirements get inventory visibility. The DOC
-// area has no heuristic mapping (and must not: CPS stays dead code to keep
-// REQ-CPS-* out of the inventory).
+// so only individually-owned requirements get inventory visibility. The DOC and
+// CPS areas have no heuristic mapping (and must not: an area rule for CPS would
+// pull REQ-CPS-* into the inventory as UNMAPPED).
 const REQ_MILESTONE_OVERRIDES: Record<string, string> = {
   'REQ-DOC-5': 'M10.2.1',
   'REQ-DOC-3': 'M16',
   'REQ-DOC-4': 'M16',
+  'REQ-M11-1': 'M11',
+  'REQ-M11-2': 'M11',
+  'REQ-M11-3': 'M11',
+  'REQ-M11-4': 'M11',
 };
 
 function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
@@ -314,15 +319,6 @@ function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   const override = REQ_MILESTONE_OVERRIDES[reqId];
   if (override) return milestone === override;
   const area = reqId.replace(/^REQ-/, '').replace(/-\d+.*$/, '');
-  const areaToMilestone: Record<string, string> = {
-    CR: 'M10.1',
-    'CR-CAP': 'M10.2',
-    CAP: 'M10.2',
-    CP: 'M10',
-    CPS: 'M16',
-    CEP: 'M10.2',
-    CLI: 'M9',
-  };
   if (milestone === 'M10.2' && area.startsWith('CR-CAP')) return true;
   if (milestone === 'M10.2' && (area === 'CAP' || area === 'CEP')) return true;
   if (milestone === 'M10.1' && area === 'CR') return true;
@@ -336,13 +332,20 @@ function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   if (milestone === 'M14' && area === 'M14') return true;
   if (milestone === 'M15' && area === 'M15') return true;
   if (milestone === 'M17' && area === 'M17') return true;
-  void areaToMilestone;
   return false;
+}
+
+/** Visible range label derived from the populated milestones (no hardcoded slice). */
+function milestoneRangeLabel(registry: TraceabilityRegistry): string {
+  const populated = registry.milestones.filter((m) => m.uats.length > 0 || m.requirements.length > 0);
+  const first = populated[0]?.id;
+  const last = populated[populated.length - 1]?.id;
+  return first && last ? `${first}–${last}` : '(empty)';
 }
 
 export function renderCoverageMatrix(registry: TraceabilityRegistry): string {
   const lines: string[] = [];
-  lines.push('# Traceability Coverage Matrix (M0–M10.2)');
+  lines.push(`# Traceability Coverage Matrix (${milestoneRangeLabel(registry)})`);
   lines.push('');
   lines.push(`- generated: ${registry.generatedAt}`);
   lines.push(`- git: ${registry.gitSha}`);
@@ -370,12 +373,12 @@ export function renderCoverageMatrix(registry: TraceabilityRegistry): string {
 }
 
 /**
- * Baseline M0–M10.2 (H8): per-milestone status, gaps/backlog and applied waivers.
+ * Baseline (H8): per-milestone status, gaps/backlog and applied waivers.
  * Regenerable from the registry — never rewrites history (VAH-019).
  */
 export function renderBaseline(registry: TraceabilityRegistry): string {
   const lines: string[] = [];
-  lines.push('# Baseline M0–M10.2 — Verification Coverage');
+  lines.push(`# Baseline ${milestoneRangeLabel(registry)} — Verification Coverage`);
   lines.push('');
   lines.push(`- generated: ${registry.generatedAt}`);
   lines.push(`- git: ${registry.gitSha}`);

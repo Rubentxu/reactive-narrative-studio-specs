@@ -219,6 +219,38 @@ export async function auditRequirements(
   };
 }
 
+export interface RegistryFreshness {
+  fresh: boolean;
+  diskGitSha: string;
+}
+
+/**
+ * REQ-DEI-7: the audit gate reads the registry it rebuilds in memory, but the
+ * canonical artifacts on disk (traceability/registry.json etc.) may describe a
+ * different revision — silent evidence degradation. This guard compares the
+ * committed registry's gitSha against the in-memory rebuild's gitSha (== HEAD).
+ * A malformed on-disk file is a hard error: silent downgrades would weaken the
+ * gate invisibly (same policy as loadRequirementLevels / loadWaivers). It never
+ * regenerates: the fix is an explicit `traceability build` on the committed tree.
+ */
+export async function checkRegistryFreshness(verificationRoot: string, headGitSha: string): Promise<RegistryFreshness> {
+  const path = join(verificationRoot, 'traceability', 'registry.json');
+  if (!existsSync(path)) {
+    return { fresh: false, diskGitSha: '(missing)' };
+  }
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(await readFile(path, 'utf8'));
+  } catch (err) {
+    throw new Error(`${path}: malformed registry.json (${err instanceof Error ? err.message : String(err)}) — run 'node verification/src/index.ts traceability build'`);
+  }
+  const diskGitSha = (parsed as { gitSha?: unknown }).gitSha;
+  if (typeof diskGitSha !== 'string' || diskGitSha.length === 0) {
+    throw new Error(`${path}: registry.json has no gitSha string — run 'node verification/src/index.ts traceability build'`);
+  }
+  return { fresh: diskGitSha === headGitSha, diskGitSha };
+}
+
 export function milestoneRange(from: string, to: string): string[] {
   const startIdx = MILESTONE_ORDER.indexOf(from);
   const endIdx = MILESTONE_ORDER.indexOf(to);

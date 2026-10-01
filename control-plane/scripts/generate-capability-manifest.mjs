@@ -13,8 +13,12 @@
  *     machine-independent; parseProfile derives the recipe namespace from
  *     path.includes('/recipes/') so the leading slash is load-bearing.
  *   - packs carry origin 'recipe:<recipe-dir>'.
+ *   - every item of skills/packs/profiles/workflows/recipes carries a build-time
+ *     'sha256' hex digest of its content (REQ-DEI-2) — the catalog surfaces it
+ *     as evidence; the runtime never computes hashes. Providers carry no sha
+ *     (DD-4 empty-state: no provider source exists yet).
  *   - deterministic: same tree → same bytes (sorted reads, stable ids,
- *     collections sorted by path).
+ *     collections sorted by path, node:crypto digests).
  *   - fail-fast: if the collection counts drift from the committed snapshot
  *     the script exits non-zero BEFORE vite build (counts are pinned by
  *     control-plane/test/fixtures/capability-manifest-snapshot.ts).
@@ -22,6 +26,7 @@
  * Usage: node scripts/generate-capability-manifest.mjs   (any cwd; wired into pnpm build)
  */
 
+import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';
 import { join, dirname, basename, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,6 +51,11 @@ function toRepoPath(absPath) {
   return '/' + relative(repoRoot, absPath).split('\\').join('/');
 }
 
+/** Build-time sha256 hex digest of file content (REQ-DEI-2). */
+function sha256Hex(content) {
+  return createHash('sha256').update(content, 'utf8').digest('hex');
+}
+
 /** Sorted directory entries that are directories (empty when the dir is absent). */
 function sortedDirs(dir) {
   if (!existsSync(dir)) return [];
@@ -66,10 +76,12 @@ const skills = [];
 for (const dir of sortedDirs(join(repoRoot, 'examples', 'skills'))) {
   const abs = join(repoRoot, 'examples', 'skills', dir, 'SKILL.md');
   if (!existsSync(abs)) continue;
+  const content = readFileSync(abs, 'utf8');
   skills.push({
     id: `skill-${dir}`,
     path: toRepoPath(abs),
-    content: readFileSync(abs, 'utf8'),
+    content,
+    sha256: sha256Hex(content),
   });
 }
 
@@ -79,10 +91,12 @@ for (const recipeDir of sortedDirs(join(repoRoot, 'recipes'))) {
   for (const packDir of sortedDirs(packsRoot)) {
     for (const file of sortedFiles(join(packsRoot, packDir), '.md')) {
       const abs = join(packsRoot, packDir, file);
+      const content = readFileSync(abs, 'utf8');
       packs.push({
         id: `pack-${basename(file, '.md')}`,
         path: toRepoPath(abs),
-        content: readFileSync(abs, 'utf8'),
+        content,
+        sha256: sha256Hex(content),
         origin: `recipe:${recipeDir}`,
       });
     }
@@ -92,20 +106,24 @@ for (const recipeDir of sortedDirs(join(repoRoot, 'recipes'))) {
 const profiles = [];
 for (const file of sortedFiles(join(repoRoot, 'examples'), '-profile.yaml')) {
   const abs = join(repoRoot, 'examples', file);
+  const content = readFileSync(abs, 'utf8');
   profiles.push({
     id: `profile-${basename(file, '.yaml')}`,
     path: toRepoPath(abs),
-    content: readFileSync(abs, 'utf8'),
+    content,
+    sha256: sha256Hex(content),
   });
 }
 for (const recipeDir of sortedDirs(join(repoRoot, 'recipes'))) {
   const profilesRoot = join(repoRoot, 'recipes', recipeDir, 'skeleton', 'profiles');
   for (const file of sortedFiles(profilesRoot, '.yaml')) {
     const abs = join(profilesRoot, file);
+    const content = readFileSync(abs, 'utf8');
     profiles.push({
       id: `profile-${basename(file, '.yaml')}`,
       path: toRepoPath(abs),
-      content: readFileSync(abs, 'utf8'),
+      content,
+      sha256: sha256Hex(content),
     });
   }
 }
@@ -113,10 +131,12 @@ for (const recipeDir of sortedDirs(join(repoRoot, 'recipes'))) {
 const workflows = [];
 for (const file of sortedFiles(join(repoRoot, 'control-plane', 'workflows', 'comfyui'), '.workflow.json')) {
   const abs = join(repoRoot, 'control-plane', 'workflows', 'comfyui', file);
+  const content = readFileSync(abs, 'utf8');
   workflows.push({
     id: `workflow-${basename(file, '.workflow.json')}`,
     path: toRepoPath(abs),
-    content: readFileSync(abs, 'utf8'),
+    content,
+    sha256: sha256Hex(content),
   });
 }
 
@@ -127,10 +147,12 @@ const recipes = [];
 for (const recipeDir of sortedDirs(join(repoRoot, 'recipes'))) {
   const abs = join(repoRoot, 'recipes', recipeDir, 'recipe.yaml');
   if (!existsSync(abs)) continue;
+  const content = readFileSync(abs, 'utf8');
   recipes.push({
     id: `recipe-${recipeDir}`,
     path: toRepoPath(abs),
-    content: readFileSync(abs, 'utf8'),
+    content,
+    sha256: sha256Hex(content),
   });
 }
 

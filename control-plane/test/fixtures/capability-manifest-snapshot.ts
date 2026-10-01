@@ -1,7 +1,8 @@
 /**
  * Capability catalog test fixtures
  *
- * Expected manifest at HEAD 364571c:
+ * Counts pinned by EXPECTED_COUNTS in control-plane/scripts/generate-capability-manifest.mjs;
+ * regenerate with `node scripts/generate-capability-manifest.mjs` (deterministic, build-time):
  * - skills: 3 (character-consistency, narrative-arc, scene-validator)
  * - packs: 4 (story_core, characters, editorial, visual_core)
  * - profiles: 2 (middle-grade-10-11 from examples, middle-grade-10-11 from recipe skeleton)

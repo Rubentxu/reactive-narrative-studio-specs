@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from 'vitest';
-import { validate } from '../src/schema/registry';
+import { validate, schemaIdFor } from '../src/schema/registry';
 import { loadFixtureText } from './support/fixtures';
 import { isSafeRelativePath, isAbsolutePath } from '../src/loader/SnapshotProjectSource';
 
@@ -8,6 +8,9 @@ describe('diagnostics', () => {
   describe('project-invalid-schema fixture', () => {
     it('validate returns ok: false with errors', () => {
       const doc = JSON.parse(loadFixtureText('project-invalid-schema/cp-project.missing-schema.json'));
+      // REQ-DEI-3: no `schema` const / `apiVersion` → undispatchable, not an
+      // arbitrary schema's errors from insertion-order fallback.
+      expect(schemaIdFor(doc)).toBeNull();
       const result = validate(doc);
       expect(result.valid).toBe(false);
     });
@@ -25,7 +28,7 @@ describe('diagnostics', () => {
       expect(result.errors.length).toBeGreaterThan(0);
       const err = result.errors[0] as any;
       expect(err.instancePath).toBeDefined();
-      expect(err.keyword).toBeDefined();
+      expect(err.keyword).toBe('schema-undispatchable');
       expect(err.message).toBeDefined();
     });
   });

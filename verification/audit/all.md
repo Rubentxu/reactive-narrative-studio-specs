@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-10-01T05:48:59.930Z
-- git: 306503d88065599b336e057f88e440b039b8d2db
-- overall: **PASS** — proven 79 · waived 0 · blocking 0
+- generated: 2026-10-01T08:27:24.139Z
+- git: b9dd20b6be07359b357deb83044d868a0405be23
+- overall: **PASS** — proven 83 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -62,6 +62,10 @@
 - ✅ REQ-VAH-STORE-IMMUTABILITY (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-VERIFICATION-LEVEL (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-WAIVER (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M11-1 (M11, functional) — scenario evidence: SCN-M11-01-001
+- ✅ REQ-M11-2 (M11, functional) — scenario evidence: SCN-M11-01-001
+- ✅ REQ-M11-3 (M11, functional) — scenario evidence: SCN-M11-01-001
+- ✅ REQ-M11-4 (M11, functional) — scenario evidence: SCN-M11-01-001
 - ✅ REQ-M14-01 (M14, functional) — scenario evidence: SCN-M14-01-001
 - ✅ REQ-M14-02 (M14, functional) — scenario evidence: SCN-M14-01-001
 - ✅ REQ-M14-03 (M14, functional) — scenario evidence: SCN-M14-01-001

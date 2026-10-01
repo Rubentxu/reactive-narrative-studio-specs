@@ -1,8 +1,8 @@
-# Baseline M0–M10.2 — Verification Coverage
+# Baseline M0–M17 — Verification Coverage
 
-- generated: 2026-09-30T23:20:07.050Z
-- git: 3071e473ae126400dea63790b55242571e4d3882
-- coverage: 79/79 requirements MAPPED (scenario or test) · 0 UNMAPPED · 9/22 UATs executable · 1 waiver(s)
+- generated: 2026-10-01T08:27:23.131Z
+- git: b9dd20b6be07359b357deb83044d868a0405be23
+- coverage: 83/83 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/23 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -55,6 +55,10 @@
 
 ### M10.2.1 — Verification & Audit Harness
 - requirements MAPPED (13): REQ-DOC-5, REQ-VAH-AUDIT-GATE, REQ-VAH-BASELINE, REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CI-ARTIFACTS, REQ-VAH-CROSSREF-RENDER, REQ-VAH-EVIDENCE-INTEGRITY, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-HARDENING, REQ-VAH-STORE-IMMUTABILITY, REQ-VAH-VERIFICATION-LEVEL, REQ-VAH-WAIVER
+
+### M11 — Human Reader UAT
+- 🟢 UAT-M11-01 — EXECUTABLE (scn-m11-01-001.yaml)
+- requirements MAPPED (4): REQ-M11-1, REQ-M11-2, REQ-M11-3, REQ-M11-4
 
 ### M12 — Sequential Art Core
 - 🟢 UAT-M12-01 — EXECUTABLE (scn-m12-01-001.yaml)
