@@ -17,7 +17,6 @@ import {
   parseWorkflow,
   parseProvider,
   parseRecipe,
-  computeSha256,
 } from './parser';
 import manifestData from './data/manifest-data.json';
 
@@ -53,7 +52,7 @@ function buildManifest(): CapabilityManifest {
   // Parse skills
   for (const item of manifestData.skills) {
     try {
-      const skill = parseSkill(item.content, item.path);
+      const skill = parseSkill(item.content, item.path, item.sha256);
       skills.push(skill);
     } catch (e) {
       console.warn(`[capability-catalog] Failed to parse skill at ${item.path}:`, e);
@@ -63,7 +62,7 @@ function buildManifest(): CapabilityManifest {
   // Parse packs (all from recipe skeletons for now)
   for (const item of manifestData.packs) {
     try {
-      const pack = parsePack(item.content, item.path, item.origin as 'global' | `recipe:${string}`);
+      const pack = parsePack(item.content, item.path, item.origin as 'global' | `recipe:${string}`, item.sha256);
       packs.push(pack);
     } catch (e) {
       console.warn(`[capability-catalog] Failed to parse pack at ${item.path}:`, e);
@@ -73,7 +72,7 @@ function buildManifest(): CapabilityManifest {
   // Parse profiles
   for (const item of manifestData.profiles) {
     try {
-      const profile = parseProfile(item.content, item.path);
+      const profile = parseProfile(item.content, item.path, item.sha256);
       profiles.push(profile);
     } catch (e) {
       console.warn(`[capability-catalog] Failed to parse profile at ${item.path}:`, e);
@@ -83,7 +82,7 @@ function buildManifest(): CapabilityManifest {
   // Parse workflows
   for (const item of manifestData.workflows) {
     try {
-      const workflow = parseWorkflow(item.content, item.path);
+      const workflow = parseWorkflow(item.content, item.path, item.sha256);
       workflows.push(workflow);
     } catch (e) {
       console.warn(`[capability-catalog] Failed to parse workflow at ${item.path}:`, e);
@@ -97,7 +96,7 @@ function buildManifest(): CapabilityManifest {
   // Parse recipes
   for (const item of manifestData.recipes) {
     try {
-      const recipe = parseRecipe(item.content, item.path);
+      const recipe = parseRecipe(item.content, item.path, item.sha256);
       recipes.push(recipe);
     } catch (e) {
       console.warn(`[capability-catalog] Failed to parse recipe at ${item.path}:`, e);
@@ -123,6 +122,3 @@ export const capabilityManifest: CapabilityManifest = buildManifest();
 export function loadManifest(): CapabilityManifest {
   return capabilityManifest;
 }
-
-// Re-export computeSha256 for external use (e.g., fixture generation)
-export { computeSha256 };

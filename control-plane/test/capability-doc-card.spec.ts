@@ -42,7 +42,8 @@ function skillEntity(content: string | undefined): CatalogEntity {
     namespace: 'default',
     name: 'character-consistency',
     path: '/examples/skills/character-consistency/SKILL.md',
-    sha256: '',
+    // Build-time manifest hash shape (REQ-DEI-2): hex-64, never empty.
+    sha256: 'a'.repeat(64),
     origin: 'global',
     purpose: 'Multi-layered validation framework.',
   };
