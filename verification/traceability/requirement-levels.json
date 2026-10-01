@@ -302,5 +302,37 @@
   "REQ-CR-CAP-13": {
     "level": "functional",
     "rationale": "El render markdown del campo descriptivo en la página de detalle de capacidades es comportamiento funcional de UI: exige veredicto PASS de SCN-M10-02-001 (sonda crossref.anchor-probe); solo testRefs sería PARTIALLY_VERIFIED (blocking)."
+  },
+  "REQ-DEI-1": {
+    "level": "fitness",
+    "rationale": "Inventario canónico: el restore de M11 se verifica por regeneración del registry y assertions del audit (baseline-audit.spec.ts) — no exige escenario E2E nuevo."
+  },
+  "REQ-DEI-2": {
+    "level": "fitness",
+    "rationale": "sha256 en build time: verificable por tests de parsers/fixtures (capability-parsers.spec.ts, capability-doc-card.spec.ts) y reproducibilidad del generador."
+  },
+  "REQ-DEI-3": {
+    "level": "fitness",
+    "rationale": "Determinismo de validate y ausencia de comentarios falsos: tests de componente (loader.diagnostics.spec.ts) + inspección estática."
+  },
+  "REQ-DEI-4": {
+    "level": "fitness",
+    "rationale": "Eliminación de pickCommandSink: pureza del módulo verificada por tests de sinks (decisions-command-sinks.spec.ts) tras la extracción."
+  },
+  "REQ-DEI-5": {
+    "level": "fitness",
+    "rationale": "Helper único triggerDownload: tests de sinks/vistas con globals stubbeados; un solo sitio que mantener."
+  },
+  "REQ-DEI-6": {
+    "level": "fitness",
+    "rationale": "Limpieza menor (shim zip, mapa muerto, comentario de fixture): verificación estática y tests de comic-renderer sin cambio de comportamiento."
+  },
+  "REQ-DEI-7": {
+    "level": "fitness",
+    "rationale": "Guard de frescura del registry: tests dedicados de frontera (registry-freshness.spec.ts, semántica de contenido); el audit all lo ejecuta en cada pasada."
+  },
+  "REQ-DEI-8": {
+    "level": "fitness",
+    "rationale": "Guard de requisitos sin dueño: helper puro testeado (unowned-requirements.spec.ts) + gaps visibles en el registry."
   }
 }

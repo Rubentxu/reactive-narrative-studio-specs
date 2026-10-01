@@ -1,8 +1,8 @@
 # Baseline M0–M17 — Verification Coverage
 
-- generated: 2026-10-01T09:05:37.664Z
-- git: 0b2f8383b37abaf0f6e8420064ae7ef82b8a5224
-- coverage: 83/83 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/23 UATs executable · 1 waiver(s)
+- generated: 2026-10-01T10:46:57.409Z
+- git: ba6fc1fb106f693a18a4a43943a968508e2175fc
+- coverage: 91/91 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/23 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -54,7 +54,7 @@
 - requirements MAPPED (17): REQ-CEP-1, REQ-CEP-2, REQ-CEP-3, REQ-CEP-4, REQ-CR-CAP-1, REQ-CR-CAP-10, REQ-CR-CAP-11, REQ-CR-CAP-12, REQ-CR-CAP-13, REQ-CR-CAP-2, REQ-CR-CAP-3, REQ-CR-CAP-4, REQ-CR-CAP-5, REQ-CR-CAP-6, REQ-CR-CAP-7, REQ-CR-CAP-8, REQ-CR-CAP-9
 
 ### M10.2.1 — Verification & Audit Harness
-- requirements MAPPED (13): REQ-DOC-5, REQ-VAH-AUDIT-GATE, REQ-VAH-BASELINE, REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CI-ARTIFACTS, REQ-VAH-CROSSREF-RENDER, REQ-VAH-EVIDENCE-INTEGRITY, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-HARDENING, REQ-VAH-STORE-IMMUTABILITY, REQ-VAH-VERIFICATION-LEVEL, REQ-VAH-WAIVER
+- requirements MAPPED (21): REQ-DEI-1, REQ-DEI-2, REQ-DEI-3, REQ-DEI-4, REQ-DEI-5, REQ-DEI-6, REQ-DEI-7, REQ-DEI-8, REQ-DOC-5, REQ-VAH-AUDIT-GATE, REQ-VAH-BASELINE, REQ-VAH-BOOTSTRAP, REQ-VAH-BROWSER-AUDIT, REQ-VAH-CI-ARTIFACTS, REQ-VAH-CROSSREF-RENDER, REQ-VAH-EVIDENCE-INTEGRITY, REQ-VAH-FITNESS-SEPARATION, REQ-VAH-HARDENING, REQ-VAH-STORE-IMMUTABILITY, REQ-VAH-VERIFICATION-LEVEL, REQ-VAH-WAIVER
 
 ### M11 — Human Reader UAT
 - 🟢 UAT-M11-01 — EXECUTABLE (scn-m11-01-001.yaml)
@@ -95,6 +95,114 @@
 - [MEDIUM] uat-without-scenario: UAT-M7-01 (M7) — UAT doc exists but no executable scenario links it yet
 - [MEDIUM] uat-without-scenario: UAT-M8-01 (M8) — UAT doc exists but no executable scenario links it yet
 - [MEDIUM] uat-without-scenario: UAT-M9-01 (M9) — UAT doc exists but no executable scenario links it yet
+- [LOW] requirement-unowned: REQ-CPS-1 ((none)) — harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-CPS-2 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-CPS-3 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DEC-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, 19-ROADMAP.md, 27-GLOSSARY.md, 32-NARRATIVE-DOCS-SEARCH.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DEC-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DEC-3 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DOC-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DOC-2 ((none)) — harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EVT-001 ((none)) — harvested from spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EVT-002 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EVT-003 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EVT-004 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EVT-005 ((none)) — harvested from spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EXR-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md, 27-GLOSSARY.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EXR-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EXR-3 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EXT-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-EXT-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-FEX-1 ((none)) — harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-FEX-2 ((none)) — harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-FEX-3 ((none)) — harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-GFC-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-GFC-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-GFC-3 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-GFC-4 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-GFC-5 ((none)) — harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-GFC-6 ((none)) — harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-INV-001 ((none)) — harvested from spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-INV-002 ((none)) — harvested from spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-INV-003 ((none)) — harvested from spec-completion/design.md, spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-INV-004 ((none)) — harvested from spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-INV-005 ((none)) — harvested from spec-completion/design.md, spec-completion/tasks.md, spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-LOA-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-LOA-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-M11-5 ((none)) — harvested from m11-human-reader-uat/spec.md, m11-human-reader-uat/tasks.md, debt-evidence-integrity/design.md, debt-evidence-integrity/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-M11-6 ((none)) — harvested from m11-human-reader-uat/spec.md, m11-human-reader-uat/tasks.md, debt-evidence-integrity/design.md, debt-evidence-integrity/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-MP-1 ((none)) — harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-MP-2 ((none)) — harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, 27-GLOSSARY.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-MP-3 ((none)) — harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-MP-4 ((none)) — harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-MP-5 ((none)) — harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-MP-6 ((none)) — harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PAC-1 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PAC-2 ((none)) — harvested from debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PAC-3 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PLP-1 ((none)) — harvested from m16-cp-studio-search-docs/spec.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PLP-2 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PLP-3 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PLP-4 ((none)) — harvested from m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PLP-5 ((none)) — harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PROJ-VAL-001 ((none)) — harvested from spec-completion/design.md, spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PROJ-VAL-002 ((none)) — harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PROJ-VAL-003 ((none)) — harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PROJ-VAL-004 ((none)) — harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PROJ-VAL-005 ((none)) — harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-PROJ-VAL-006 ((none)) — harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-RDP-1 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-RDP-2 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-RDP-3 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-RDP-4 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md, cp-foundation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-RDP-5 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-RDP-6 ((none)) — harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-ROU-02 ((none)) — harvested from m16-cp-studio-search-docs/design.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-ROU-03 ((none)) — harvested from m16-cp-studio-search-docs/design.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-ROU-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-ROU-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-ROU-3 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SA-1 ((none)) — harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SA-2 ((none)) — harvested from m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SA-3 ((none)) — harvested from m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SA-4 ((none)) — harvested from m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SA-5 ((none)) — harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SA-6 ((none)) — harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SA-7 ((none)) — harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SAS-1 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SAS-2 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SAS-3 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SAS-4 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SAS-5 ((none)) — harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SAS-6 ((none)) — harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SAS-7 ((none)) — harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SID-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SID-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SID-3 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SID-4 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SKILL-001 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SKILL-002 ((none)) — harvested from spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SKILL-003 ((none)) — harvested from spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SKILL-004 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SVP-1 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SVP-2 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-SVP-3 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-TC-01 ((none)) — harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-TC-02 ((none)) — harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-TC-03 ((none)) — harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-TC-04 ((none)) — harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-TC-05 ((none)) — harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-TC-06 ((none)) — harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VAULT-001 ((none)) — harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VAULT-002 ((none)) — harvested from spec-completion/test-plan.md, spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VAULT-003 ((none)) — harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VAULT-004 ((none)) — harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VAULT-005 ((none)) — harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VOCAB-001 ((none)) — harvested from spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VOCAB-002 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VOCAB-003 ((none)) — harvested from spec-completion/design.md, spec-completion/tasks.md, spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VOCAB-004 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-VOCAB-005 ((none)) — harvested from spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
 
 ## Waivers
 - WVR-M10-2-1-002 — requirement REQ-VAH-STORE-IMMUTABILITY — Projection-store non-mutation is proven at component level (round-trip no-op deep-equal pre/post route mount). It is not reachable black-box in the browser without test hooks (TEST_MODE is prohibited by the change spec), so the functional scenario explicitly does not claim it. (scope: M10.2 read-only catalog invariant (m10 no-write); owner: m10.2.1-baseline-audit cycle)

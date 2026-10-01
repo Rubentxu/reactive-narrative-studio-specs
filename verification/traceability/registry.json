@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-10-01T09:05:37.664Z",
-  "gitSha": "0b2f8383b37abaf0f6e8420064ae7ef82b8a5224",
+  "generatedAt": "2026-10-01T10:46:57.409Z",
+  "gitSha": "ba6fc1fb106f693a18a4a43943a968508e2175fc",
   "milestones": [
     {
       "id": "M0",
@@ -810,6 +810,104 @@
       "uats": [],
       "requirements": [
         {
+          "id": "REQ-DEI-1",
+          "sources": [
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/baseline-audit.spec.ts",
+            "verification/test/unowned-requirements.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DEI-2",
+          "sources": [
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/capability-doc-card.spec.ts",
+            "control-plane/test/capability-parsers.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DEI-3",
+          "sources": [
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/loader.diagnostics.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DEI-4",
+          "sources": [
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/decisions-command-sinks.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DEI-5",
+          "sources": [
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/decisions-command-sinks.spec.ts",
+            "control-plane/test/recipe-sinks.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DEI-6",
+          "sources": [
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DEI-7",
+          "sources": [
+            "debt-evidence-integrity/design.md",
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/registry-freshness.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-DEI-8",
+          "sources": [
+            "debt-evidence-integrity/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "verification/test/unowned-requirements.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
           "id": "REQ-DOC-5",
           "sources": [
             "m16-doc-entity-links/design.md",
@@ -1016,7 +1114,8 @@
           ],
           "testRefs": [
             "control-plane/test/human-reader.spec.ts",
-            "verification/test/baseline-audit.spec.ts"
+            "verification/test/baseline-audit.spec.ts",
+            "verification/test/unowned-requirements.spec.ts"
           ],
           "status": "MAPPED"
         },
@@ -1315,7 +1414,8 @@
           ],
           "scenarios": [],
           "testRefs": [
-            "control-plane/test/entity-link-render.spec.ts"
+            "control-plane/test/entity-link-render.spec.ts",
+            "verification/test/unowned-requirements.spec.ts"
           ],
           "status": "MAPPED"
         },
@@ -1357,7 +1457,8 @@
           ],
           "scenarios": [],
           "testRefs": [
-            "control-plane/test/cp-commands-schema.spec.ts"
+            "control-plane/test/cp-commands-schema.spec.ts",
+            "verification/test/unowned-requirements.spec.ts"
           ],
           "status": "MAPPED"
         },
@@ -1462,6 +1563,762 @@
   ],
   "gaps": [
     {
+      "kind": "requirement-unowned",
+      "ref": "REQ-CPS-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-CPS-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-CPS-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-DEC-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, 19-ROADMAP.md, 27-GLOSSARY.md, 32-NARRATIVE-DOCS-SEARCH.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-DEC-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-DEC-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-DOC-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-DOC-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EVT-001",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EVT-002",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EVT-003",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EVT-004",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EVT-005",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EXR-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md, 27-GLOSSARY.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EXR-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EXR-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EXT-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-EXT-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-FEX-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-FEX-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-FEX-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-GFC-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-GFC-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-GFC-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-GFC-4",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-GFC-5",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-GFC-6",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-INV-001",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-INV-002",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-INV-003",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/design.md, spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-INV-004",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-INV-005",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/design.md, spec-completion/tasks.md, spec-completion/specs/invariant-protection/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-LOA-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-LOA-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-M11-5",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m11-human-reader-uat/spec.md, m11-human-reader-uat/tasks.md, debt-evidence-integrity/design.md, debt-evidence-integrity/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-M11-6",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m11-human-reader-uat/spec.md, m11-human-reader-uat/tasks.md, debt-evidence-integrity/design.md, debt-evidence-integrity/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-MP-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-MP-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, 27-GLOSSARY.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-MP-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-MP-4",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-MP-5",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md, m10-3-multi-project-studio/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-MP-6",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-3-multi-project-studio/spec.md, m10-3-multi-project-studio/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PAC-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PAC-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PAC-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PLP-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/spec.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PLP-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PLP-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PLP-4",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PLP-5",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PROJ-VAL-001",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/design.md, spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PROJ-VAL-002",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PROJ-VAL-003",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PROJ-VAL-004",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PROJ-VAL-005",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-PROJ-VAL-006",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/project-validation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-RDP-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-RDP-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-RDP-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-RDP-4",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md, cp-foundation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-RDP-5",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-RDP-6",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from debt-resolution-process/design.md, debt-resolution-process/spec.md, debt-resolution-process/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-ROU-02",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-ROU-03",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-ROU-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-ROU-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-ROU-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SA-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SA-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SA-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SA-4",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SA-5",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SA-6",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md, m12-sequential-art-core/evidence/after-run-pass/artifacts/report.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SA-7",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m12-sequential-art-core/design.md, m12-sequential-art-core/spec.md, m12-sequential-art-core/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SAS-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SAS-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SAS-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SAS-4",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SAS-5",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/design.md, cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SAS-6",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SAS-7",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-catalog-entities/spec.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SID-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SID-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SID-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SID-4",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SKILL-001",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/tasks.md, spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SKILL-002",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SKILL-003",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SKILL-004",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/tasks.md, spec-completion/specs/skill-template-evaluation/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SVP-1",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SVP-2",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-SVP-3",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-TC-01",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-TC-02",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-TC-03",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-TC-04",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-TC-05",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-TC-06",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from m10-traceability-closure/spec.md, m10-traceability-closure/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VAULT-001",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VAULT-002",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/test-plan.md, spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VAULT-003",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VAULT-004",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VAULT-005",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/vault-correctness/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VOCAB-001",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VOCAB-002",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/tasks.md, spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VOCAB-003",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/design.md, spec-completion/tasks.md, spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VOCAB-004",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/tasks.md, spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-VOCAB-005",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from spec-completion/specs/overlay-vocabulary/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
       "kind": "uat-without-scenario",
       "ref": "UAT-M0-01",
       "milestone": "M0",
@@ -1554,8 +2411,8 @@
     }
   ],
   "coverage": {
-    "requirements": 83,
-    "mapped": 83,
+    "requirements": 91,
+    "mapped": 91,
     "unmapped": 0,
     "uats": 23,
     "executable": 10,

@@ -142,3 +142,24 @@
 3. Batería afectada de control-plane en verde (`tsc` + los 8 specs de la exploración §8: capability-parsers, capability-doc-card, capability-cross-ref, recipe-sinks, decisions-command-sinks, docs-sanitization, comic-renderer, comic-renderer-manga) + los 3 specs portados de registry (loader.diagnostics, schema-fixtures, decision-projection.schema-fixtures) + batería de verification/test.
 4. `traceability build` + `audit all` regenerados sobre el árbol final commiteado: `overall: PASS — proven 83 · waived 0 · blocking 0`, 0 UNMAPPED; M11 visible en matrix/baseline con UAT-M11-01 EXECUTABLE; guard de REQ-DEI-7 sin señal de divergencia.
 5. Sin features nuevas: fix/refactor/test/chore → v0.23.1 (tagging y release conforme al procedimiento del orquestador).
+
+---
+
+## Addendum (post-release, folded into v0.24.0 before archive)
+
+### REQ-DEI-8 — Silent-drop guard: harvested requirements without a milestone owner surface as gaps
+
+**Nivel**: `fitness` (test refs: `verification/test/unowned-requirements.spec.ts`).
+
+**Afirmación**: `buildRegistry` SHALL emitir un gap `requirement-unowned` (severidad LOW) por
+cada requisito cosechado desde changes/docs que `reqBelongsToMilestone` no adjudique a ningún
+milestone — la clase de caída silenciosa que afectó a M11 (REQ-M11-*), REQ-DOC-3/4 y a los
+propios REQ-DEI-*. Además, la cosecha SHALL ignorar artefactos de prosa plural
+(`/^REQ-[A-Z0-9]+$/` en un solo segmento, p. ej. «los REQ-DEI se declaran») para no fabricar
+requisitos falsos.
+
+**Origen**: defecto detectado al regenerar la trazabilidad tras el fix del guard REQ-DEI-7 —
+su semántica original (igualdad exacta de gitSha) era insatisfiable por auto-referencia (un
+commit no puede contener su propio sha); la versión corregida compara contenido con la
+reconstrucción en HEAD ignorando campos volátiles (`gitSha`, `generatedAt`), y la primera
+regeneración con visibilidad completa destapó los 114 requisitos históricos sin dueño.

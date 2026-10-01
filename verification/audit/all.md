@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-10-01T10:36:37.795Z
-- git: 1b0afa1662d812825007d4340c3d358df8a13392
-- overall: **PASS** — proven 83 · waived 0 · blocking 0
+- generated: 2026-10-01T10:46:58.326Z
+- git: ba6fc1fb106f693a18a4a43943a968508e2175fc
+- overall: **PASS** — proven 91 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -49,6 +49,14 @@
 - ✅ REQ-CR-CAP-7 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-8 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-9 (M10.2, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DEI-1 (M10.2.1, fitness) — fitness level: 2 test ref(s)
+- ✅ REQ-DEI-2 (M10.2.1, fitness) — fitness level: 2 test ref(s)
+- ✅ REQ-DEI-3 (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DEI-4 (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DEI-5 (M10.2.1, fitness) — fitness level: 2 test ref(s)
+- ✅ REQ-DEI-6 (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DEI-7 (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DEI-8 (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-DOC-5 (M10.2.1, fitness) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-VAH-AUDIT-GATE (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-BASELINE (M10.2.1, fitness) — fitness level: 1 test ref(s)
@@ -78,9 +86,9 @@
 - ✅ REQ-M15-04 (M15, functional) — scenario evidence: SCN-M15-01-001
 - ✅ REQ-M15-05 (M15, functional) — scenario evidence: SCN-M15-01-001
 - ✅ REQ-M15-06 (M15, functional) — scenario evidence: SCN-M15-01-001
-- ✅ REQ-DOC-3 (M16, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DOC-3 (M16, fitness) — fitness level: 2 test ref(s)
 - ✅ REQ-DOC-4 (M16, fitness) — fitness level: 1 test ref(s)
-- ✅ REQ-M17-1 (M17, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M17-1 (M17, fitness) — fitness level: 2 test ref(s)
 - ✅ REQ-M17-2 (M17, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-M17-3 (M17, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-M17-4 (M17, fitness) — fitness level: 1 test ref(s)
