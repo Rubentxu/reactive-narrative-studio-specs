@@ -1,8 +1,8 @@
 # Baseline M0–M17 — Verification Coverage
 
-- generated: 2026-10-01T10:46:57.409Z
-- git: ba6fc1fb106f693a18a4a43943a968508e2175fc
-- coverage: 91/91 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/23 UATs executable · 1 waiver(s)
+- generated: 2026-10-01T11:51:11.603Z
+- git: c901034b8b4712647060489bee5d287372ccfa72
+- coverage: 92/92 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/23 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -42,7 +42,7 @@
 - ⚪ UAT-M10-02-catalog-entity-pages — MANUAL_ONLY
 - ⚪ UAT-M10-03-local-search-docs — MANUAL_ONLY
 - 🟢 UAT-M10-05-multi-project-catalog — EXECUTABLE (scn-m10-05-001.yaml)
-- requirements MAPPED (7): REQ-CP-001, REQ-CP-002, REQ-CP-003, REQ-CP-004, REQ-CP-005, REQ-CP-006, REQ-CP-007
+- requirements MAPPED (8): REQ-CP-001, REQ-CP-002, REQ-CP-003, REQ-CP-004, REQ-CP-005, REQ-CP-006, REQ-CP-007, REQ-CP-008
 
 ### M10.1 — Creation Recipes
 - 🟢 UAT-M10-04-creation-recipe — EXECUTABLE (scn-m10-04-001.yaml)
@@ -101,8 +101,9 @@
 - [LOW] requirement-unowned: REQ-DEC-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, 19-ROADMAP.md, 27-GLOSSARY.md, 32-NARRATIVE-DOCS-SEARCH.md but no reqBelongsToMilestone area/override maps it to a milestone
 - [LOW] requirement-unowned: REQ-DEC-2 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
 - [LOW] requirement-unowned: REQ-DEC-3 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone
-- [LOW] requirement-unowned: REQ-DOC-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
-- [LOW] requirement-unowned: REQ-DOC-2 ((none)) — harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DOC-1 ((none)) — harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md, backlog-contract-hygiene/design.md, backlog-contract-hygiene/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DOC-2 ((none)) — harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md, backlog-contract-hygiene/design.md, backlog-contract-hygiene/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
+- [LOW] requirement-unowned: REQ-DOC-6 ((none)) — harvested from backlog-contract-hygiene/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
 - [LOW] requirement-unowned: REQ-EVT-001 ((none)) — harvested from spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
 - [LOW] requirement-unowned: REQ-EVT-002 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone
 - [LOW] requirement-unowned: REQ-EVT-003 ((none)) — harvested from spec-completion/tasks.md, spec-completion/specs/event-schema/spec.md but no reqBelongsToMilestone area/override maps it to a milestone

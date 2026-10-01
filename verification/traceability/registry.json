@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-10-01T10:46:57.409Z",
-  "gitSha": "ba6fc1fb106f693a18a4a43943a968508e2175fc",
+  "generatedAt": "2026-10-01T11:51:11.603Z",
+  "gitSha": "c901034b8b4712647060489bee5d287372ccfa72",
   "milestones": [
     {
       "id": "M0",
@@ -258,7 +258,9 @@
           "sources": [
             "spec-completion/design.md",
             "spec-completion/specs/control-plane-projections/spec.md",
-            "m10-traceability-closure/spec.md"
+            "m10-traceability-closure/spec.md",
+            "backlog-contract-hygiene/design.md",
+            "backlog-contract-hygiene/spec.md"
           ],
           "scenarios": [],
           "testRefs": [
@@ -328,11 +330,25 @@
           "id": "REQ-CP-007",
           "sources": [
             "spec-completion/tasks.md",
-            "spec-completion/specs/control-plane-projections/spec.md"
+            "spec-completion/specs/control-plane-projections/spec.md",
+            "backlog-contract-hygiene/design.md"
           ],
           "scenarios": [],
           "testRefs": [
             "control-plane/test/cp-projection-schemas.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CP-008",
+          "sources": [
+            "backlog-contract-hygiene/design.md",
+            "backlog-contract-hygiene/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/capability-doc-card.spec.ts",
+            "control-plane/test/metadata-reserved-keys.spec.ts"
           ],
           "status": "MAPPED"
         }
@@ -679,7 +695,9 @@
             "m16-doc-entity-links/design.md",
             "m16-doc-entity-links/spec.md",
             "m10-2-1-crossref-render/design.md",
-            "m10-2-1-crossref-render/spec.md"
+            "m10-2-1-crossref-render/spec.md",
+            "backlog-contract-hygiene/design.md",
+            "backlog-contract-hygiene/spec.md"
           ],
           "scenarios": [
             "scn-m10-02-001.yaml"
@@ -899,7 +917,9 @@
         {
           "id": "REQ-DEI-8",
           "sources": [
-            "debt-evidence-integrity/spec.md"
+            "debt-evidence-integrity/spec.md",
+            "backlog-contract-hygiene/design.md",
+            "backlog-contract-hygiene/spec.md"
           ],
           "scenarios": [],
           "testRefs": [
@@ -914,7 +934,9 @@
             "m16-doc-entity-links/spec.md",
             "m10-2-1-crossref-render/design.md",
             "m10-2-1-crossref-render/spec.md",
-            "debt-evidence-integrity/design.md"
+            "debt-evidence-integrity/design.md",
+            "backlog-contract-hygiene/design.md",
+            "backlog-contract-hygiene/spec.md"
           ],
           "scenarios": [
             "scn-m10-02-001.yaml"
@@ -1410,7 +1432,8 @@
             "m10-2-1-crossref-render/design.md",
             "m10-2-1-crossref-render/spec.md",
             "debt-evidence-integrity/design.md",
-            "debt-evidence-integrity/spec.md"
+            "debt-evidence-integrity/spec.md",
+            "backlog-contract-hygiene/spec.md"
           ],
           "scenarios": [],
           "testRefs": [
@@ -1426,7 +1449,9 @@
             "m16-doc-entity-links/spec.md",
             "m16-cp-studio-search-docs/design.md",
             "m16-cp-studio-search-docs/spec.md",
-            "m16-cp-studio-search-docs/tasks.md"
+            "m16-cp-studio-search-docs/tasks.md",
+            "backlog-contract-hygiene/design.md",
+            "backlog-contract-hygiene/spec.md"
           ],
           "scenarios": [],
           "testRefs": [
@@ -1609,14 +1634,21 @@
       "ref": "REQ-DOC-1",
       "milestone": "(none)",
       "severity": "LOW",
-      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+      "detail": "harvested from m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md, backlog-contract-hygiene/design.md, backlog-contract-hygiene/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
     },
     {
       "kind": "requirement-unowned",
       "ref": "REQ-DOC-2",
       "milestone": "(none)",
       "severity": "LOW",
-      "detail": "harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+      "detail": "harvested from m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, m16-cp-studio-search-docs/design.md, m16-cp-studio-search-docs/spec.md, m16-cp-studio-search-docs/tasks.md, m10-2-1-crossref-render/design.md, m10-2-1-crossref-render/spec.md, backlog-contract-hygiene/design.md, backlog-contract-hygiene/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
+    },
+    {
+      "kind": "requirement-unowned",
+      "ref": "REQ-DOC-6",
+      "milestone": "(none)",
+      "severity": "LOW",
+      "detail": "harvested from backlog-contract-hygiene/spec.md but no reqBelongsToMilestone area/override maps it to a milestone"
     },
     {
       "kind": "requirement-unowned",
@@ -2411,8 +2443,8 @@
     }
   ],
   "coverage": {
-    "requirements": 91,
-    "mapped": 91,
+    "requirements": 92,
+    "mapped": 92,
     "unmapped": 0,
     "uats": 23,
     "executable": 10,
