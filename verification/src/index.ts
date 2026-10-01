@@ -149,13 +149,16 @@ async function runAudit(args: CliArgs): Promise<number> {
   } else if (sub === 'all') {
     const report = await auditRequirements(REPO_ROOT, VERIFICATION_ROOT, { all: true });
     // REQ-DEI-7 freshness guard: refuse to emit audit evidence when the
-    // canonical registry on disk describes a different revision than HEAD —
-    // a stale PASS receipt is exactly the silent-degradation class this gate
-    // exists to prevent. No artifacts are written; fix with `traceability build`.
-    const freshness = await checkRegistryFreshness(VERIFICATION_ROOT, report.gitSha);
+    // canonical registry on disk no longer matches a rebuild at HEAD — a stale
+    // PASS receipt is exactly the silent-degradation class this gate exists to
+    // prevent. Content comparison (provenance fields ignored: the regen commit
+    // can never contain its own sha). No artifacts are written; fix with
+    // `traceability build`.
+    const headRegistry = await buildRegistry(REPO_ROOT);
+    const freshness = await checkRegistryFreshness(VERIFICATION_ROOT, headRegistry);
     if (!freshness.fresh) {
       console.error(
-        `registry.json on disk is stale (gitSha ${freshness.diskGitSha} ≠ HEAD ${report.gitSha}) — ` +
+        `registry.json on disk is stale (content differs from a rebuild at HEAD ${report.gitSha}; last regen at ${freshness.diskGitSha}) — ` +
           `run 'node verification/src/index.ts traceability build' on the committed tree, then re-run audit all`,
       );
       return 1;

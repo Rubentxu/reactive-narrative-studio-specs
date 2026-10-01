@@ -227,13 +227,21 @@ export interface RegistryFreshness {
 /**
  * REQ-DEI-7: the audit gate reads the registry it rebuilds in memory, but the
  * canonical artifacts on disk (traceability/registry.json etc.) may describe a
- * different revision — silent evidence degradation. This guard compares the
- * committed registry's gitSha against the in-memory rebuild's gitSha (== HEAD).
- * A malformed on-disk file is a hard error: silent downgrades would weaken the
- * gate invisibly (same policy as loadRequirementLevels / loadWaivers). It never
- * regenerates: the fix is an explicit `traceability build` on the committed tree.
+ * different revision — silent evidence degradation. A malformed on-disk file is
+ * a hard error: silent downgrades would weaken the gate invisibly (same policy
+ * as loadRequirementLevels / loadWaivers). It never regenerates: the fix is an
+ * explicit `traceability build` on the committed tree.
+ *
+ * Amended (post-v0.24.0 defect): the original guard compared the disk gitSha
+ * against HEAD exactly — an unsatisfiable invariant, since the regeneration
+ * commit can never contain its own hash (regen on X records X; committing it
+ * creates Y ≠ X). Freshness therefore means CONTENT equality between the
+ * committed registry and an in-memory rebuild at HEAD, ignoring the volatile
+ * provenance fields (gitSha records where the last regen ran; generatedAt is a
+ * timestamp). Content drift — a requirement, milestone or coverage change at
+ * HEAD — still fails the gate and forces an explicit regeneration.
  */
-export async function checkRegistryFreshness(verificationRoot: string, headGitSha: string): Promise<RegistryFreshness> {
+export async function checkRegistryFreshness(verificationRoot: string, headRegistry: TraceabilityRegistry): Promise<RegistryFreshness> {
   const path = join(verificationRoot, 'traceability', 'registry.json');
   if (!existsSync(path)) {
     return { fresh: false, diskGitSha: '(missing)' };
@@ -248,7 +256,22 @@ export async function checkRegistryFreshness(verificationRoot: string, headGitSh
   if (typeof diskGitSha !== 'string' || diskGitSha.length === 0) {
     throw new Error(`${path}: registry.json has no gitSha string — run 'node verification/src/index.ts traceability build'`);
   }
-  return { fresh: diskGitSha === headGitSha, diskGitSha };
+  const stripVolatile = (registry: Record<string, unknown>): Record<string, unknown> => {
+    const { gitSha: _gitSha, generatedAt: _generatedAt, ...content } = registry;
+    return content;
+  };
+  const diskContent = stableStringify(stripVolatile(parsed as Record<string, unknown>));
+  const headContent = stableStringify(stripVolatile(headRegistry as unknown as Record<string, unknown>));
+  return { fresh: diskContent === headContent, diskGitSha };
+}
+
+/** Deterministic JSON text (sorted keys, recursive) for content equality. */
+function stableStringify(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
+  const record = value as Record<string, unknown>;
+  const keys = Object.keys(record).sort();
+  return `{${keys.map((k) => `${JSON.stringify(k)}:${stableStringify(record[k])}`).join(',')}}`;
 }
 
 export function milestoneRange(from: string, to: string): string[] {
