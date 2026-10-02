@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-10-02T07:17:55.007Z",
-  "gitSha": "70c33b4f3664342a9f48cff23976f12a819a9740",
+  "generatedAt": "2026-10-02T20:27:26.096Z",
+  "gitSha": "362fc80c7ff53b3860ff32a1b1556172076c62be",
   "milestones": [
     {
       "id": "M0",
@@ -1646,6 +1646,47 @@
           "status": "MAPPED"
         }
       ]
+    },
+    {
+      "id": "M18",
+      "uats": [
+        {
+          "id": "UAT-CIN-01-shotplan",
+          "file": "uat/UAT-CIN-01-shotplan.md",
+          "milestone": "M18",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        },
+        {
+          "id": "UAT-CIN-02-blender-headless",
+          "file": "uat/UAT-CIN-02-blender-headless.md",
+          "milestone": "M18",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        },
+        {
+          "id": "UAT-CIN-03-playblast",
+          "file": "uat/UAT-CIN-03-playblast.md",
+          "milestone": "M18",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        },
+        {
+          "id": "UAT-CIN-04-provider-port",
+          "file": "uat/UAT-CIN-04-provider-port.md",
+          "milestone": "M18",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        },
+        {
+          "id": "UAT-CIN-05-approval",
+          "file": "uat/UAT-CIN-05-approval.md",
+          "milestone": "M18",
+          "scenarios": [],
+          "status": "MANUAL_ONLY"
+        }
+      ],
+      "requirements": []
     }
   ],
   "brokenReferences": [],
@@ -2509,13 +2550,48 @@
       "milestone": "M10",
       "severity": "HIGH",
       "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-CIN-01-shotplan",
+      "milestone": "M18",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-CIN-02-blender-headless",
+      "milestone": "M18",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-CIN-03-playblast",
+      "milestone": "M18",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-CIN-04-provider-port",
+      "milestone": "M18",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
+    },
+    {
+      "kind": "uat-without-scenario",
+      "ref": "UAT-CIN-05-approval",
+      "milestone": "M18",
+      "severity": "MEDIUM",
+      "detail": "UAT doc exists but no executable scenario links it yet"
     }
   ],
   "coverage": {
     "requirements": 96,
     "mapped": 96,
     "unmapped": 0,
-    "uats": 23,
+    "uats": 28,
     "executable": 10,
     "waived": 1
   }

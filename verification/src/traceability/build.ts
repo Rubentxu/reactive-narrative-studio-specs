@@ -85,6 +85,7 @@ const MILESTONE_LABELS: Record<string, string> = {
   M15: 'Digital Publishing',
   M16: 'Series Canon',
   M17: 'Write-capable Control Plane',
+  M18: 'Cinematic Narrative & Generative Video', // candidate — precondition SPK-VIDEO-01 PASS (docs/evolutives/SPK-VIDEO-01.md)
 };
 
 /** Canonical milestone order for range audits. */
@@ -98,6 +99,7 @@ export function milestoneOfUat(filename: string): string {
     ['UAT-M10-04', 'M10.1'],
     ['UAT-M10-06', 'M10.2'],
     ['UAT-M10-07', 'M10.1'],
+    ['UAT-CIN', 'M18'], // M18 overlay UATs (candidate milestone)
   ];
   for (const [prefix, milestone] of overrides) {
     if (id.startsWith(prefix)) return milestone;
@@ -174,7 +176,10 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
   const generatedAt = new Date().toISOString();
 
   const uatDir = join(repoRoot, 'uat');
-  const uatFiles = (await readdir(uatDir)).filter((f) => /^UAT-M\d+.*\.md$/.test(f));
+  // Widen from /^UAT-M\d+/: candidate milestones use non-numeric series ids
+  // (e.g. UAT-CIN-* for M18) — milestoneOfUat routes them; UNKNOWN ids are
+  // dropped by the per-milestone filter and surfaced via dispositions.
+  const uatFiles = (await readdir(uatDir)).filter((f) => /^UAT-[A-Z][A-Z0-9.]*-.*\.md$/.test(f));
 
   const scenariosDir = join(repoRoot, 'verification', 'scenarios');
   let scenarioFiles: string[] = [];

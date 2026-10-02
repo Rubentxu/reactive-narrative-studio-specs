@@ -1,8 +1,8 @@
-# Baseline M0–M17 — Verification Coverage
+# Baseline M0–M18 — Verification Coverage
 
-- generated: 2026-10-02T07:17:55.007Z
-- git: 70c33b4f3664342a9f48cff23976f12a819a9740
-- coverage: 96/96 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/23 UATs executable · 1 waiver(s)
+- generated: 2026-10-02T20:27:26.096Z
+- git: 362fc80c7ff53b3860ff32a1b1556172076c62be
+- coverage: 96/96 requirements MAPPED (scenario or test) · 0 UNMAPPED · 10/28 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -81,6 +81,13 @@
 - 🟢 UAT-M17-01 — EXECUTABLE (scn-m17-01-001.yaml)
 - requirements MAPPED (8): REQ-M17-1, REQ-M17-2, REQ-M17-3, REQ-M17-4, REQ-M17-5, REQ-M17-6, REQ-M17-7, REQ-M17-8
 
+### M18 — Cinematic Narrative & Generative Video
+- ⚪ UAT-CIN-01-shotplan — MANUAL_ONLY
+- ⚪ UAT-CIN-02-blender-headless — MANUAL_ONLY
+- ⚪ UAT-CIN-03-playblast — MANUAL_ONLY
+- ⚪ UAT-CIN-04-provider-port — MANUAL_ONLY
+- ⚪ UAT-CIN-05-approval — MANUAL_ONLY
+
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet
 - [HIGH] uat-without-scenario: UAT-M10-02-catalog-entity-pages (M10) — UAT doc exists but no executable scenario links it yet
@@ -95,6 +102,11 @@
 - [MEDIUM] uat-without-scenario: UAT-M7-01 (M7) — UAT doc exists but no executable scenario links it yet
 - [MEDIUM] uat-without-scenario: UAT-M8-01 (M8) — UAT doc exists but no executable scenario links it yet
 - [MEDIUM] uat-without-scenario: UAT-M9-01 (M9) — UAT doc exists but no executable scenario links it yet
+- [MEDIUM] uat-without-scenario: UAT-CIN-01-shotplan (M18) — UAT doc exists but no executable scenario links it yet
+- [MEDIUM] uat-without-scenario: UAT-CIN-02-blender-headless (M18) — UAT doc exists but no executable scenario links it yet
+- [MEDIUM] uat-without-scenario: UAT-CIN-03-playblast (M18) — UAT doc exists but no executable scenario links it yet
+- [MEDIUM] uat-without-scenario: UAT-CIN-04-provider-port (M18) — UAT doc exists but no executable scenario links it yet
+- [MEDIUM] uat-without-scenario: UAT-CIN-05-approval (M18) — UAT doc exists but no executable scenario links it yet
 - [LOW] requirement-unowned: REQ-CPS-1 ((none)) — harvested from unowned-disposition/design.md, unowned-disposition/spec.md, m16-doc-entity-links/design.md, m16-doc-entity-links/spec.md, cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md, cp-catalog-entities/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone; disposition: deliberate-inventory-exclusion (exclusion deliberada del inventario (build.ts:315-321): una regla de area CPS pondria REQ-CPS-* como UNMAPPED; el control de REQ-CPS-1..3 son los AC-14.1..14.3 de cp-foundation) — see verification/traceability/requirement-dispositions.md
 - [LOW] requirement-unowned: REQ-CPS-2 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone; disposition: deliberate-inventory-exclusion (exclusion deliberada del inventario (build.ts:315-321): una regla de area CPS pondria REQ-CPS-* como UNMAPPED; el control de REQ-CPS-1..3 son los AC-14.1..14.3 de cp-foundation) — see verification/traceability/requirement-dispositions.md
 - [LOW] requirement-unowned: REQ-CPS-3 ((none)) — harvested from cp-foundation/design.md, cp-foundation/spec.md, cp-foundation/tasks.md but no reqBelongsToMilestone area/override maps it to a milestone; disposition: deliberate-inventory-exclusion (exclusion deliberada del inventario (build.ts:315-321): una regla de area CPS pondria REQ-CPS-* como UNMAPPED; el control de REQ-CPS-1..3 son los AC-14.1..14.3 de cp-foundation) — see verification/traceability/requirement-dispositions.md
