@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-10-01T12:07:32.897Z
-- git: d4960c3be1a6d8a30f5466af9f67809fd47cd789
-- overall: **PASS** — proven 92 · waived 0 · blocking 0
+- generated: 2026-10-02T06:52:17.556Z
+- git: cb8a4425e3d31db089ff4405a6d375334986d5ff
+- overall: **PASS** — proven 96 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -51,13 +51,15 @@
 - ✅ REQ-CR-CAP-8 (M10.2, functional) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-CR-CAP-9 (M10.2, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-DEI-1 (M10.2.1, fitness) — fitness level: 2 test ref(s)
+- ✅ REQ-DEI-10 (M10.2.1, fitness) — fitness level: 2 test ref(s)
 - ✅ REQ-DEI-2 (M10.2.1, fitness) — fitness level: 2 test ref(s)
 - ✅ REQ-DEI-3 (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-DEI-4 (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-DEI-5 (M10.2.1, fitness) — fitness level: 2 test ref(s)
 - ✅ REQ-DEI-6 (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-DEI-7 (M10.2.1, fitness) — fitness level: 1 test ref(s)
-- ✅ REQ-DEI-8 (M10.2.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-DEI-8 (M10.2.1, fitness) — fitness level: 2 test ref(s)
+- ✅ REQ-DEI-9 (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-DOC-5 (M10.2.1, fitness) — scenario evidence: SCN-M10-02-001
 - ✅ REQ-VAH-AUDIT-GATE (M10.2.1, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-VAH-BASELINE (M10.2.1, fitness) — fitness level: 1 test ref(s)
@@ -75,6 +77,8 @@
 - ✅ REQ-M11-2 (M11, functional) — scenario evidence: SCN-M11-01-001
 - ✅ REQ-M11-3 (M11, functional) — scenario evidence: SCN-M11-01-001
 - ✅ REQ-M11-4 (M11, functional) — scenario evidence: SCN-M11-01-001
+- ✅ REQ-M11-5 (M11, fitness) — fitness level: 4 test ref(s)
+- ✅ REQ-M11-6 (M11, functional) — scenario evidence: SCN-M11-01-001
 - ✅ REQ-M14-01 (M14, functional) — scenario evidence: SCN-M14-01-001
 - ✅ REQ-M14-02 (M14, functional) — scenario evidence: SCN-M14-01-001
 - ✅ REQ-M14-03 (M14, functional) — scenario evidence: SCN-M14-01-001

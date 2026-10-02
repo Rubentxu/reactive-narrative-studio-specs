@@ -57,7 +57,7 @@ describe('extension-isolation', () => {
   it('no cross-folder imports exist in feature source tree', () => {
     const featuresDir = 'src/features';
     // Match any import referencing another feature folder (cross-folder)
-    // Extended to include docs, capability-catalog, recipes and human-reader (M11/INC-008)
+    // Extended to include docs, capability-catalog, recipes and human-reader (M11/INC-008) — REQ-M11-5
     const grepResult = execSync(
       `grep -rE 'from.*features/story/|from.*features/visual/|from.*features/catalog/|from.*features/continuity/|from.*features/docs/|from.*features/capability-catalog/|from.*features/recipes/|from.*features/human-reader/' ${featuresDir}/ 2>/dev/null || true`,
       { encoding: 'utf8' }

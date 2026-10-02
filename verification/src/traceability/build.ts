@@ -106,6 +106,62 @@ export function milestoneOfUat(filename: string): string {
   return match?.[1] ?? 'UNKNOWN';
 }
 
+// Closed taxonomy of dispositions for `requirement-unowned` gaps (REQ-DEI-9):
+// harvested prose that no area/override maps to the inventory. A typo would
+// enrich a gap with a disposition that does not exist — the loader rejects any
+// key outside this set.
+export const DISPOSITION_KEYS = [
+  'cycle-prose-unmapped',
+  'deliberate-inventory-exclusion',
+  'implemented-out-of-inventory',
+  'mapped-with-evidence',
+] as const;
+
+export interface DispositionEntry {
+  disposition: (typeof DISPOSITION_KEYS)[number];
+  note: string;
+}
+
+const DISPOSITIONS_FILE = 'requirement-dispositions.json';
+
+/**
+ * Area disposition map (REQ-DEI-9): area → {disposition, note}. Unlike
+ * loadRequirementLevels (audit.ts), a missing file is a HARD error: once
+ * REQ-DEI-9 exists, the map is mandatory guard infrastructure and a silent
+ * absence would degrade the guard invisibly. The file lives in
+ * verification/traceability/ — outside the harvested trees (build.ts:151-152),
+ * so it never becomes a requirement source itself.
+ */
+export async function loadRequirementDispositions(repoRoot: string): Promise<Map<string, DispositionEntry>> {
+  const path = join(repoRoot, 'verification', 'traceability', DISPOSITIONS_FILE);
+  let raw: string;
+  try {
+    raw = await readFile(path, 'utf8');
+  } catch {
+    throw new Error(`${path}: ${DISPOSITIONS_FILE} is missing — REQ-DEI-9 requires the area disposition map`);
+  }
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(`${path}: malformed ${DISPOSITIONS_FILE} (${err instanceof Error ? err.message : String(err)})`);
+  }
+  const out = new Map<string, DispositionEntry>();
+  for (const [area, rawEntry] of Object.entries(parsed as Record<string, unknown>)) {
+    const cfg = rawEntry as Record<string, unknown>;
+    if (!DISPOSITION_KEYS.includes(cfg.disposition as (typeof DISPOSITION_KEYS)[number])) {
+      throw new Error(
+        `${path}: area ${area} has invalid disposition "${String(cfg.disposition)}" (expected one of: ${DISPOSITION_KEYS.join('|')})`,
+      );
+    }
+    if (typeof cfg.note !== 'string' || cfg.note.trim().length === 0) {
+      throw new Error(`${path}: area ${area} needs a non-empty note`);
+    }
+    out.set(area, { disposition: cfg.disposition as DispositionEntry['disposition'], note: cfg.note });
+  }
+  return out;
+}
+
 /**
  * Git-native traceability inventory (H1), scoped by the declared milestones:
  * - UAT docs from uat/ (milestone inferred from the UAT id);
@@ -233,6 +289,11 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
     return { id, uats, requirements };
   });
 
+  // Area disposition map (REQ-DEI-9): enriches the detail of every
+  // `requirement-unowned` gap whose area has an entry. Missing/malformed map
+  // is a hard error (see loadRequirementDispositions).
+  const dispositions = await loadRequirementDispositions(repoRoot);
+
   // Silent-drop guard (M11/REQ-DOC/REQ-DEI defect class): a harvested
   // requirement that belongs to no milestone would vanish from the inventory
   // without a trace. Surface every unowned requirement as a gap.
@@ -242,10 +303,10 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
         kind: 'requirement-unowned',
         ref: entry.reqId,
         milestone: '(none)',
-        // LOW: these are historical declarations outside every milestone
-        // inventory (pre-M10 eras mostly) — visibility for triage, not alarm.
+        // LOW: visibility for triage, not alarm — each area's disposition is
+        // documented in verification/traceability/requirement-dispositions.md.
         severity: 'LOW',
-        detail: `harvested from ${entry.sources.join(', ')} but no reqBelongsToMilestone area/override maps it to a milestone`,
+        detail: unownedGapDetail(entry, dispositions),
       }) satisfies BaselineGap,
   );
   for (const milestone of milestones) {
@@ -318,7 +379,9 @@ export async function buildRegistry(repoRoot: string): Promise<TraceabilityRegis
 // the REQ-DOC-3/4 debt items with a navigable anchor + source-path evidence),
 // so only individually-owned requirements get inventory visibility. The DOC and
 // CPS areas have no heuristic mapping (and must not: an area rule for CPS would
-// pull REQ-CPS-* into the inventory as UNMAPPED).
+// pull REQ-CPS-* into the inventory as UNMAPPED). Every unmapped area's
+// disposition (incl. DOC and CPS) is documented in
+// verification/traceability/requirement-dispositions.md (REQ-DEI-9).
 const REQ_MILESTONE_OVERRIDES: Record<string, string> = {
   'REQ-DOC-5': 'M10.2.1',
   'REQ-DOC-3': 'M16',
@@ -327,14 +390,24 @@ const REQ_MILESTONE_OVERRIDES: Record<string, string> = {
   'REQ-M11-2': 'M11',
   'REQ-M11-3': 'M11',
   'REQ-M11-4': 'M11',
+  // REQ-M11-5/6 mapped with real evidence (INC-008/INC-015 test refs and the
+  // retained PASS verdict of SCN-M11-01-001) — cycle unowned-disposition
+  // (REQ-DEI-10), exercising the orchestrator property DEBT-DEI-1.
+  'REQ-M11-5': 'M11',
+  'REQ-M11-6': 'M11',
 };
 
-function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
+/** Area segment of a requirement id: REQ-PROJ-VAL-6 → PROJ-VAL. */
+export function areaOfRequirement(reqId: string): string {
+  return reqId.replace(/^REQ-/, '').replace(/-\d+.*$/, '');
+}
+
+export function reqBelongsToMilestone(reqId: string, milestone: string): boolean {
   // PRAGMATIC heuristic for the inventory: REQ-<AREA>-* maps to the milestone that
   // owns the area. Areas are matched against milestone ids present in changes/.
   const override = REQ_MILESTONE_OVERRIDES[reqId];
   if (override) return milestone === override;
-  const area = reqId.replace(/^REQ-/, '').replace(/-\d+.*$/, '');
+  const area = areaOfRequirement(reqId);
   if (milestone === 'M10.2' && area.startsWith('CR-CAP')) return true;
   if (milestone === 'M10.2' && (area === 'CAP' || area === 'CEP')) return true;
   if (milestone === 'M10.1' && area === 'CR') return true;
@@ -376,6 +449,23 @@ export function findUnownedRequirements(
     .filter(([reqId]) => !owned.has(reqId))
     .map(([reqId, sources]) => ({ reqId, sources }))
     .sort((a, b) => a.reqId.localeCompare(b.reqId));
+}
+
+/**
+ * Detail of a `requirement-unowned` gap (REQ-DEI-9): the base prose plus the
+ * area's disposition when the map has an entry for it. Areas without an entry
+ * keep the bare detail — the REQ-DEI-8 guard keeps its meaning. Exported pure
+ * so the suffix is testable without the real repo (findUnownedRequirements
+ * itself stays untouched).
+ */
+export function unownedGapDetail(
+  entry: { reqId: string; sources: string[] },
+  dispositions: Map<string, DispositionEntry>,
+): string {
+  const base = `harvested from ${entry.sources.join(', ')} but no reqBelongsToMilestone area/override maps it to a milestone`;
+  const disposition = dispositions.get(areaOfRequirement(entry.reqId));
+  if (!disposition) return base;
+  return `${base}; disposition: ${disposition.disposition} (${disposition.note}) — see verification/traceability/requirement-dispositions.md`;
 }
 
 export function renderCoverageMatrix(registry: TraceabilityRegistry): string {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-01T12:07:32.897Z",
-  "gitSha": "d4960c3be1a6d8a30f5466af9f67809fd47cd789",
+  "generatedAt": "2026-10-02T06:52:17.556Z",
+  "gitSha": "cb8a4425e3d31db089ff4405a6d375334986d5ff",
   "target": "all",
   "overall": "PASS",
   "blocking": [],
@@ -547,6 +547,18 @@
       "detail": "fitness level: 2 test ref(s)"
     },
     {
+      "id": "REQ-DEI-10",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
       "id": "REQ-DEI-2",
       "milestone": "M10.2.1",
       "level": "fitness",
@@ -621,7 +633,19 @@
       "status": "PROVEN",
       "scenarioRefs": [],
       "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts",
         "verification/test/unowned-requirements.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-9",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts"
       ],
       "detail": "fitness level: 1 test ref(s)"
     },
@@ -792,6 +816,7 @@
       "testRefs": [
         "control-plane/test/human-reader.spec.ts",
         "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts",
         "verification/test/unowned-requirements.spec.ts"
       ],
       "detail": "scenario evidence: SCN-M11-01-001"
@@ -835,6 +860,34 @@
       "testRefs": [
         "control-plane/test/human-reader.spec.ts",
         "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M11-01-001"
+    },
+    {
+      "id": "REQ-M11-5",
+      "milestone": "M11",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/extension-isolation.spec.ts",
+        "tools/validate-recipes/tests/test_validate.py",
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 4 test ref(s)"
+    },
+    {
+      "id": "REQ-M11-6",
+      "milestone": "M11",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m11-01-001.yaml"
+      ],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
       ],
       "detail": "scenario evidence: SCN-M11-01-001"
     },
@@ -1646,6 +1699,18 @@
       "detail": "fitness level: 2 test ref(s)"
     },
     {
+      "id": "REQ-DEI-10",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
       "id": "REQ-DEI-2",
       "milestone": "M10.2.1",
       "level": "fitness",
@@ -1720,7 +1785,19 @@
       "status": "PROVEN",
       "scenarioRefs": [],
       "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts",
         "verification/test/unowned-requirements.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-9",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts"
       ],
       "detail": "fitness level: 1 test ref(s)"
     },
@@ -1891,6 +1968,7 @@
       "testRefs": [
         "control-plane/test/human-reader.spec.ts",
         "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts",
         "verification/test/unowned-requirements.spec.ts"
       ],
       "detail": "scenario evidence: SCN-M11-01-001"
@@ -1934,6 +2012,34 @@
       "testRefs": [
         "control-plane/test/human-reader.spec.ts",
         "verification/test/baseline-audit.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M11-01-001"
+    },
+    {
+      "id": "REQ-M11-5",
+      "milestone": "M11",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/extension-isolation.spec.ts",
+        "tools/validate-recipes/tests/test_validate.py",
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 4 test ref(s)"
+    },
+    {
+      "id": "REQ-M11-6",
+      "milestone": "M11",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m11-01-001.yaml"
+      ],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
       ],
       "detail": "scenario evidence: SCN-M11-01-001"
     },

@@ -30,7 +30,7 @@ jobs:
 
       - name: Python tests + recipe/profile validators
         run: |
-          PYTHONPATH=tools:tools/narrative-cli pytest tools/narrative_recipes/tests tools/narrative-cli/tests -q
+          PYTHONPATH=tools:tools/narrative-cli pytest tools/narrative_recipes/tests tools/narrative-cli/tests tools/validate-recipes/tests -q
           python3 tools/validate-recipes/validate.py
           python3 tools/validate-profiles/validate.py
 

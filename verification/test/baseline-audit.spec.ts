@@ -138,7 +138,7 @@ describe('traceability inventory — M11 (REQ-DEI-1)', () => {
     expect(uat?.scenarios).toContain('scn-m11-01-001.yaml');
   }, 120_000);
 
-  it('REQ-M11-1..4 are mapped via the scenario; REQ-M11-5/6 stay out (carry-forward INCs)', async () => {
+  it('REQ-M11-1..4/6 map via the scenario; REQ-M11-5 maps via INC test refs (REQ-DEI-10)', async () => {
     const { buildRegistry } = await import('../src/traceability/build.ts');
     const registry = await buildRegistry(REPO_ROOT);
     const m11 = registry.milestones.find((m) => m.id === 'M11');
@@ -147,7 +147,17 @@ describe('traceability inventory — M11 (REQ-DEI-1)', () => {
       expect(req?.status).toBe('MAPPED');
       expect(req?.scenarios).toEqual(['scn-m11-01-001.yaml']);
     }
-    expect(m11?.requirements.some((r) => r.id === 'REQ-M11-5' || r.id === 'REQ-M11-6')).toBe(false);
+    // REQ-M11-6 mapped with real evidence: scn-m11-01-001.yaml now cites it
+    // (cycle unowned-disposition, REQ-DEI-10) and the retained PASS verdict covers it.
+    const m116 = m11?.requirements.find((r) => r.id === 'REQ-M11-6');
+    expect(m116?.status).toBe('MAPPED');
+    expect(m116?.scenarios).toEqual(['scn-m11-01-001.yaml']);
+    // REQ-M11-5 mapped with real evidence: INC-008/INC-015 component test refs
+    // (fitness level, requirement-levels.json) — no scenario of its own.
+    const m115 = m11?.requirements.find((r) => r.id === 'REQ-M11-5');
+    expect(m115?.status).toBe('MAPPED');
+    expect(m115?.scenarios).toEqual([]);
+    expect(m115?.testRefs.length).toBeGreaterThan(0);
   }, 120_000);
 
   it('restoring M11 creates no broken references', async () => {
