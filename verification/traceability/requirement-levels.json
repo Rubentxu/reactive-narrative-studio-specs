@@ -338,5 +338,13 @@
   "REQ-DEI-8": {
     "level": "fitness",
     "rationale": "Guard de requisitos sin dueño: helper puro testeado (unowned-requirements.spec.ts) + gaps visibles en el registry."
+  },
+  "REQ-DEI-9": {
+    "level": "fitness",
+    "rationale": "Enriquecimiento del detail del gap y loader del mapa de disposiciones: funciones puras del generador de trazabilidad, verificadas por tests de componente y por la regeneración auditada; sin escenario E2E nuevo."
+  },
+  "REQ-DEI-10": {
+    "level": "fitness",
+    "rationale": "Mapeo de inventario verificado por tests de reqBelongsToMilestone y por la regeneración auditada del registry y del audit gate; reutiliza el veredicto PASS vigente de SCN-M11-01-001 sin escenario nuevo."
   }
 }
