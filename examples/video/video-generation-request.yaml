@@ -1,0 +1,12 @@
+shotId: SC12-SH03
+prompt: >
+  Cinematic tracking shot derived from the approved ShotPlan.
+  Preserve subject path and camera timing.
+motionReference: artifacts/SC12-SH03/playblast.mp4
+styleReferences: [visual-bible/noir-rainy-city.png]
+characterReferences: [characters/maya/approved-front.png]
+durationSeconds: 6
+aspectRatio: "16:9"
+budget:
+  maxAttempts: 2
+  maxCredits: 40

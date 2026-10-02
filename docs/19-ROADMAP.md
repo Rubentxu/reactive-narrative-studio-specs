@@ -288,6 +288,27 @@ searchable in stored bytes).
 - Structural conformance only — no epubcheck/JVM claim; third-party reader
   rendering quality is explicitly out of the proof.
 
+## M18 — Cinematic Narrative & Generative Video (candidate)
+
+Adopted from the operator overlay (docs/reactive-narrative-studio-openspec-evolutives,
+OVERLAY-MANIFEST.json). **Precondition: SPK-VIDEO-01 PASS** (docs/evolutives/SPK-VIDEO-01.md) —
+M18 completo MUST NOT start before the spike passes (CIN-022).
+
+```text
+M18.1 Shot Planning          (ShotPlan/SequencePlan source of truth — CIN-001..005, 028)
+M18.2 Blender Previz         (ShotPlan→bpy generator, headless driver — CIN-006..010)
+M18.3 Motion Reference       (playblast as motion reference)
+M18.4 Video Providers        (provider-neutral port, capability discovery, budget/opt-in — CIN-011..014, 019..021)
+M18.5 Video QA               (deterministic + machine + human layers, approval — CIN-017/018/030)
+M18.6 Timeline / Editing     (future)
+M18.7 Publishing             (future)
+```
+
+Status model: planned -> in_progress -> implemented -> verification_pending -> uat_pending ->
+audit_pending -> done (docs/evolutives/ROADMAP-DELTA.md). The live A/B spike execution requires
+operator opt-in + provider credentials (CIN-013/014); the deterministic foundation (spike prep)
+does not.
+
 ## M16 — Series Canon
 
 Add future catalog hierarchy only now:
