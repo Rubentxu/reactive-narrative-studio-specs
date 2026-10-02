@@ -1,6 +1,6 @@
 id: SCN-M11-01-001
 uat: UAT-M11-01
-requirements: [REQ-M11-1, REQ-M11-2, REQ-M11-3, REQ-M11-4]
+requirements: [REQ-M11-1, REQ-M11-2, REQ-M11-3, REQ-M11-4, REQ-M11-6]
 claims:
   proves:
     - Una ronda de UAT de lector humano se completa con el formulario anónimo de /reader-uat; ningún campo PII es requerido (un submit completamente vacío produce una entrada válida); el round-report JSONL descargado lleva ids anónimos, marcador human-reader (separado de paneles sintéticos, ADR-019) y el enlace a la decisión de revisión (revisionImpact + manuscriptRevision); no se crea ninguna base de datos.
