@@ -1,0 +1,26 @@
+id: SCN-CIN-03-001
+uat: UAT-CIN-03-playblast
+requirements: [REQ-CIN-6]
+claims:
+  proves:
+    - El playblast renderiza headless la escena derivada en engine workbench a 640x360, contenedor FFMPEG codec H264, sobre el rango completo de frames del plan, y produce un mp4 no vacio con nombre de rango.
+    - El mp4 queda registrado en la metadata y en la provenance con su hash real, y los parametros de render declarados coinciden con los ejecutados.
+  doesNotProve:
+    - Calidad visual del render ni fidelidad entre engines (sin oracle de pixeles en este ciclo).
+    - Determinismo byte del mp4 entre ejecuciones o maquinas (el encoder puede variar; el hash es identidad de provenance).
+steps:
+  - { id: ws.prepare, driver: filesystem, action: temp-workspace, params: { prefix: cin03 } }
+  - { id: cinematic.playblast, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools/cinematic']; sys.argv = ['cinematic', 'playblast', '--shot-plan', 'examples/video/shot-plan.yaml', '--out', '{{ws.prepare.dir}}', '--json']; from cinematic.cli import main; main()"], cwd: ., timeoutMs: 600000, envAllowlist: [PATH, HOME, BLENDER_BIN] } }
+  - { id: playblast.assert, driver: process, action: run, params: { cmd: python3, args: ["-c", "import hashlib, json, os, sys; import jsonschema; ws = sys.argv[1]; metadata = json.load(open(os.path.join(ws, 'scene-metadata.json'))); jsonschema.validate(metadata, json.load(open('specs/scene-metadata.schema.json'))); render = metadata['render']; assert render['engine'] == 'BLENDER_WORKBENCH'; assert render['resolution'] == {'width': 640, 'height': 360}; assert render['container'] == 'FFMPEG' and render['codec'] == 'H264'; assert metadata['fps'] == 24 and metadata['frame_start'] == 1 and metadata['frame_end'] == 144; mp4_rel = 'playblast0001-0144.mp4'; mp4_paths = [o['path'] for o in metadata['outputs'] if o['path'] == mp4_rel]; assert mp4_paths, metadata['outputs']; mp4 = os.path.join(ws, mp4_rel); assert os.path.isfile(mp4) and os.path.getsize(mp4) > 0; rehash = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest(); assert rehash(mp4) == [o for o in metadata['outputs'] if o['path'] == mp4_rel][0]['sha256']; provenance = json.load(open(os.path.join(ws, 'provenance.json'))); assert mp4_rel in {o['path'] for o in provenance['outputs']}; sys.exit(0)", "{{ws.prepare.dir}}"], cwd: ., timeoutMs: 60000, envAllowlist: [PATH, HOME] } }
+oracles:
+  - id: playblast.succeeds
+    type: process
+    config:
+      step: cinematic.playblast
+      exitCode: 0
+  - id: playblast.artifact-registered
+    type: process
+    config:
+      step: playblast.assert
+      exitCode: 0
+      stderrEmpty: true

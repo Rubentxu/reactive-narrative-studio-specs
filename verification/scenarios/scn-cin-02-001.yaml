@@ -1,0 +1,27 @@
+id: SCN-CIN-02-001
+uat: UAT-CIN-02-blender-headless
+requirements: [REQ-CIN-2, REQ-CIN-3, REQ-CIN-4, REQ-CIN-5, REQ-CIN-10]
+claims:
+  proves:
+    - El script generado a partir del ShotPlan canonico se ejecuta en Blender headless real (background, factory-startup) dentro de un workspace efimero con env allowlist y termina con exit 0 produciendo metadata parseable y consistente.
+    - La metadata y la provenance validan contra sus schemas cerrados; cada hash registrado coincide con los bytes reales de los ficheros, incluida la cadena completa ShotPlan-script-metadata-outputs.
+    - El script generado se conserva como evidence y no contiene rutas absolutas del host.
+  doesNotProve:
+    - Fidelidad visual del render (eso corresponde al playblast de SCN-CIN-03-001).
+    - El camino del provider de video (SCN-CIN-04-001).
+steps:
+  - { id: ws.prepare, driver: filesystem, action: temp-workspace, params: { prefix: cin02 } }
+  - { id: cinematic.run-scene, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools/cinematic']; sys.argv = ['cinematic', 'run', '--shot-plan', 'examples/video/shot-plan.yaml', '--out', '{{ws.prepare.dir}}', '--mode', 'scene', '--json']; from cinematic.cli import main; main()"], cwd: ., timeoutMs: 600000, envAllowlist: [PATH, HOME, BLENDER_BIN] } }
+  - { id: artifacts.assert, driver: process, action: run, params: { cmd: python3, args: ["-c", "import hashlib, json, os, sys; import jsonschema, yaml; ws = sys.argv[1]; schema_dir = 'specs'; metadata = json.load(open(os.path.join(ws, 'scene-metadata.json'))); jsonschema.validate(metadata, json.load(open(os.path.join(schema_dir, 'scene-metadata.schema.json')))); assert metadata['fps'] == 24 and metadata['fps_base'] == 1.0; assert metadata['frame_start'] == 1 and metadata['frame_end'] == 144; assert metadata['camera']['lensMm'] == 50.0 and metadata['shotId'] == 'SC12-SH03'; provenance = json.load(open(os.path.join(ws, 'provenance.json'))); jsonschema.validate(provenance, json.load(open(os.path.join(schema_dir, 'provenance.schema.json')))); rehash = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest(); plan_sha = rehash('examples/video/shot-plan.yaml'); assert provenance['shotPlan']['sha256'] == plan_sha, 'shot plan hash'; script_rel = provenance['generatedScript']['path']; assert os.path.isfile(os.path.join(ws, script_rel)), 'script conserved'; assert rehash(os.path.join(ws, script_rel)) == provenance['generatedScript']['sha256'], 'script hash'; assert rehash(os.path.join(ws, provenance['sceneMetadata']['path'])) == provenance['sceneMetadata']['sha256'], 'metadata hash'; declared = {o['path'] for o in metadata['outputs']}; proven = {o['path'] for o in provenance['outputs']}; assert declared == proven, (declared, proven); assert all(os.path.isfile(os.path.join(ws, o['path'])) and rehash(os.path.join(ws, o['path'])) == o['sha256'] for o in metadata['outputs']), 'output hashes'; script_text = open(os.path.join(ws, script_rel)).read(); assert '/home/' not in script_text, 'no host paths'; sys.exit(0)", "{{ws.prepare.dir}}"], cwd: ., timeoutMs: 60000, envAllowlist: [PATH, HOME] } }
+oracles:
+  - id: run.scene-succeeds
+    type: process
+    config:
+      step: cinematic.run-scene
+      exitCode: 0
+  - id: artifacts.metadata-provenance-script
+    type: process
+    config:
+      step: artifacts.assert
+      exitCode: 0
+      stderrEmpty: true

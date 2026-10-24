@@ -1,0 +1,21 @@
+# Negative fixture: an otherwise valid plan with two simultaneous violations.
+# The unknown field breaks schema closure and the camera segments leave a
+# one-frame gap. The typed rejection names both.
+id: SC12-SH03
+sceneRef: SC12
+sequenceRef: SEQ04
+durationSeconds: 6
+fps: 24
+notes: extra field not in the contract
+subjects:
+  - id: maya
+    representation: capsule
+    action: walk
+    start: [0, -8, 0]
+    end: [0, 6, 0]
+camera:
+  lensMm: 50
+  segments:
+    - { frames: [1, 48], move: tracking_backward, height: 0.45 }
+    - { frames: [50, 96], move: tracking_backward, height: 1.20 }
+    - { frames: [97, 144], move: crane_up, heightFrom: 1.20, heightTo: 5.00 }

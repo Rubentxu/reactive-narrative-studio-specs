@@ -1,12 +1,143 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-09-25T11:43:42.823Z",
-  "gitSha": "d373a8a1656c0af744135ef0d673a0f5d4f0b7c0",
+  "generatedAt": "2026-10-24T14:01:54.262Z",
+  "gitSha": "e394caab137b730c9856aa71a8e55eefaee47078",
   "target": "milestone M10.2.1",
   "overall": "PASS",
   "blocking": [],
   "waived": [],
   "proven": [
+    {
+      "id": "REQ-DEI-1",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/unowned-requirements.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-10",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-2",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-3",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/loader.diagnostics.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-4",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-5",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts",
+        "control-plane/test/recipe-sinks.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-6",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-7",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/registry-freshness.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-8",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts",
+        "verification/test/unowned-requirements.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-9",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DOC-5",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts",
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/docs-sanitization.spec.ts",
+        "control-plane/test/entity-link-render.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
+    },
     {
       "id": "REQ-VAH-AUDIT-GATE",
       "milestone": "M10.2.1",
@@ -149,6 +280,137 @@
     }
   ],
   "requirements": [
+    {
+      "id": "REQ-DEI-1",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/unowned-requirements.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-10",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/baseline-audit.spec.ts",
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-2",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/capability-parsers.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-3",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/loader.diagnostics.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-4",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-5",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/decisions-command-sinks.spec.ts",
+        "control-plane/test/recipe-sinks.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-6",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-7",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/registry-freshness.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-8",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts",
+        "verification/test/unowned-requirements.spec.ts"
+      ],
+      "detail": "fitness level: 2 test ref(s)"
+    },
+    {
+      "id": "REQ-DEI-9",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "verification/test/requirement-dispositions.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-DOC-5",
+      "milestone": "M10.2.1",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m10-02-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/capability-cross-ref.spec.ts",
+        "control-plane/test/capability-doc-card.spec.ts",
+        "control-plane/test/docs-sanitization.spec.ts",
+        "control-plane/test/entity-link-render.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M10-02-001"
+    },
     {
       "id": "REQ-VAH-AUDIT-GATE",
       "milestone": "M10.2.1",

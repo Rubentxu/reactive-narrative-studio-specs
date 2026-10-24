@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-10-02T20:27:26.096Z",
-  "gitSha": "362fc80c7ff53b3860ff32a1b1556172076c62be",
+  "generatedAt": "2026-10-24T14:00:24.008Z",
+  "gitSha": "e394caab137b730c9856aa71a8e55eefaee47078",
   "milestones": [
     {
       "id": "M0",
@@ -137,6 +137,7 @@
           "sources": [
             "spec-completion/tasks.md",
             "spec-completion/specs/narrative-init-cli/spec.md",
+            "m18-spike-prep/spec.md",
             "m10-traceability-closure/spec.md"
           ],
           "scenarios": [],
@@ -1078,6 +1079,7 @@
         {
           "id": "REQ-VAH-FITNESS-SEPARATION",
           "sources": [
+            "m18-spike-prep/spec.md",
             "m10-2-1-crossref-render/spec.md",
             "m10-2-1-baseline-audit/spec.md",
             "m10-2-1-baseline-audit/tasks.md"
@@ -1103,6 +1105,8 @@
         {
           "id": "REQ-VAH-STORE-IMMUTABILITY",
           "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md",
             "m10-2-1-baseline-audit/spec.md"
           ],
           "scenarios": [],
@@ -1654,29 +1658,37 @@
           "id": "UAT-CIN-01-shotplan",
           "file": "uat/UAT-CIN-01-shotplan.md",
           "milestone": "M18",
-          "scenarios": [],
-          "status": "MANUAL_ONLY"
+          "scenarios": [
+            "scn-cin-01-001.yaml"
+          ],
+          "status": "EXECUTABLE"
         },
         {
           "id": "UAT-CIN-02-blender-headless",
           "file": "uat/UAT-CIN-02-blender-headless.md",
           "milestone": "M18",
-          "scenarios": [],
-          "status": "MANUAL_ONLY"
+          "scenarios": [
+            "scn-cin-02-001.yaml"
+          ],
+          "status": "EXECUTABLE"
         },
         {
           "id": "UAT-CIN-03-playblast",
           "file": "uat/UAT-CIN-03-playblast.md",
           "milestone": "M18",
-          "scenarios": [],
-          "status": "MANUAL_ONLY"
+          "scenarios": [
+            "scn-cin-03-001.yaml"
+          ],
+          "status": "EXECUTABLE"
         },
         {
           "id": "UAT-CIN-04-provider-port",
           "file": "uat/UAT-CIN-04-provider-port.md",
           "milestone": "M18",
-          "scenarios": [],
-          "status": "MANUAL_ONLY"
+          "scenarios": [
+            "scn-cin-04-001.yaml"
+          ],
+          "status": "EXECUTABLE"
         },
         {
           "id": "UAT-CIN-05-approval",
@@ -1686,7 +1698,171 @@
           "status": "MANUAL_ONLY"
         }
       ],
-      "requirements": []
+      "requirements": [
+        {
+          "id": "REQ-CIN-1",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-01-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_shotplan.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-10",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-02-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_drive.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-11",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "tools/cinematic/tests/test_structure.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-12",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "tools/cinematic/tests/test_spike.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-2",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-02-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_blender_gen.py",
+            "tools/cinematic/tests/test_drive.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-3",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-02-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_drive.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-4",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-02-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_run_artifacts.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-5",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-02-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_run_artifacts.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-6",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-03-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-7",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-04-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_providers.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-8",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-04-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_providers.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-9",
+          "sources": [
+            "m18-spike-prep/design.md",
+            "m18-spike-prep/spec.md"
+          ],
+          "scenarios": [
+            "scn-cin-04-001.yaml"
+          ],
+          "testRefs": [
+            "tools/cinematic/tests/test_budget_gate.py"
+          ],
+          "status": "MAPPED"
+        }
+      ]
     }
   ],
   "brokenReferences": [],
@@ -2553,34 +2729,6 @@
     },
     {
       "kind": "uat-without-scenario",
-      "ref": "UAT-CIN-01-shotplan",
-      "milestone": "M18",
-      "severity": "MEDIUM",
-      "detail": "UAT doc exists but no executable scenario links it yet"
-    },
-    {
-      "kind": "uat-without-scenario",
-      "ref": "UAT-CIN-02-blender-headless",
-      "milestone": "M18",
-      "severity": "MEDIUM",
-      "detail": "UAT doc exists but no executable scenario links it yet"
-    },
-    {
-      "kind": "uat-without-scenario",
-      "ref": "UAT-CIN-03-playblast",
-      "milestone": "M18",
-      "severity": "MEDIUM",
-      "detail": "UAT doc exists but no executable scenario links it yet"
-    },
-    {
-      "kind": "uat-without-scenario",
-      "ref": "UAT-CIN-04-provider-port",
-      "milestone": "M18",
-      "severity": "MEDIUM",
-      "detail": "UAT doc exists but no executable scenario links it yet"
-    },
-    {
-      "kind": "uat-without-scenario",
       "ref": "UAT-CIN-05-approval",
       "milestone": "M18",
       "severity": "MEDIUM",
@@ -2588,11 +2736,11 @@
     }
   ],
   "coverage": {
-    "requirements": 96,
-    "mapped": 96,
+    "requirements": 108,
+    "mapped": 108,
     "unmapped": 0,
     "uats": 28,
-    "executable": 10,
+    "executable": 14,
     "waived": 1
   }
 }

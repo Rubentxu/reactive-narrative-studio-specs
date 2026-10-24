@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-10-02T20:26:30.927Z
-- git: 362fc80c7ff53b3860ff32a1b1556172076c62be
-- overall: **PASS** — proven 96 · waived 0 · blocking 0
+- generated: 2026-10-24T14:00:25.140Z
+- git: e394caab137b730c9856aa71a8e55eefaee47078
+- overall: **PASS** — proven 108 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -101,3 +101,15 @@
 - ✅ REQ-M17-6 (M17, functional) — scenario evidence: SCN-M17-01-001
 - ✅ REQ-M17-7 (M17, functional) — scenario evidence: SCN-M17-01-001
 - ✅ REQ-M17-8 (M17, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CIN-1 (M18, functional) — scenario evidence: SCN-CIN-01-001
+- ✅ REQ-CIN-10 (M18, fitness) — scenario evidence: SCN-CIN-02-001
+- ✅ REQ-CIN-11 (M18, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CIN-12 (M18, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CIN-2 (M18, functional) — scenario evidence: SCN-CIN-02-001
+- ✅ REQ-CIN-3 (M18, functional) — scenario evidence: SCN-CIN-02-001
+- ✅ REQ-CIN-4 (M18, functional) — scenario evidence: SCN-CIN-02-001
+- ✅ REQ-CIN-5 (M18, functional) — scenario evidence: SCN-CIN-02-001
+- ✅ REQ-CIN-6 (M18, functional) — scenario evidence: SCN-CIN-03-001
+- ✅ REQ-CIN-7 (M18, functional) — scenario evidence: SCN-CIN-04-001
+- ✅ REQ-CIN-8 (M18, functional) — scenario evidence: SCN-CIN-04-001
+- ✅ REQ-CIN-9 (M18, functional) — scenario evidence: SCN-CIN-04-001
