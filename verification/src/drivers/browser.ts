@@ -114,23 +114,27 @@ export class PreviewServer {
 
   async start(repoRoot: string, port = 4173): Promise<void> {
     const { spawn } = await import('node:child_process');
-    this.child = spawn('pnpm', ['preview', '--port', String(port), '--strictPort'], {
+    this.child = spawn('pnpm', ['preview', '--port', String(port), '--strictPort', '--host', '127.0.0.1'], {
       cwd: join2(repoRoot, 'control-plane'),
       env: { PATH: process.env.PATH ?? '', HOME: process.env.HOME ?? '' },
-      stdio: 'ignore',
+      stdio: ['ignore', 'ignore', 'pipe'],
       detached: true,
+    });
+    let stderrTail = '';
+    this.child.stderr?.on('data', (chunk: Buffer) => {
+      stderrTail = (stderrTail + chunk.toString('utf8')).slice(-2000);
     });
     const deadline = Date.now() + 60_000;
     while (Date.now() < deadline) {
       try {
-        const res = await fetch(`http://localhost:${port}/`);
+        const res = await fetch(`http://127.0.0.1:${port}/`);
         if (res.ok) return;
       } catch {
         // not ready yet
       }
       await new Promise((r) => setTimeout(r, 500));
     }
-    throw new Error(`preview server did not become ready on port ${port}`);
+    throw new Error(`preview server did not become ready on port ${port} | stderr tail: ${stderrTail}`);
   }
 
   async stop(): Promise<void> {

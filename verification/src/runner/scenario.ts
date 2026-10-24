@@ -64,7 +64,7 @@ export class ScenarioRunner {
 
     const stepOutputs = new Map<string, Record<string, unknown>>();
     const browser = new BrowserDriver(run, {
-      baseURL: 'http://localhost:4173',
+      baseURL: 'http://127.0.0.1:4173',
       headless: this.config.headless ?? true,
     });
     const preview = new PreviewServer();
