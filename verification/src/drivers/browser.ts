@@ -116,7 +116,14 @@ export class PreviewServer {
     const { spawn } = await import('node:child_process');
     this.child = spawn('pnpm', ['preview', '--port', String(port), '--strictPort', '--host', '127.0.0.1'], {
       cwd: join2(repoRoot, 'control-plane'),
-      env: { PATH: process.env.PATH ?? '', HOME: process.env.HOME ?? '' },
+      env: {
+        PATH: process.env.PATH ?? '',
+        HOME: process.env.HOME ?? '',
+        // The preview server must serve the build, never re-validate the
+        // install: a dependency-status probe fails under a minimal
+        // environment and would kill the server before it binds.
+        npm_config_verify_deps_before_run: 'false',
+      },
       stdio: ['ignore', 'pipe', 'pipe'],
       detached: true,
     });
