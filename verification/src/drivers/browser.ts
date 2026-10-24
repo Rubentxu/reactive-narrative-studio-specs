@@ -1,5 +1,6 @@
 import type { Browser, BrowserContext, Page } from 'playwright';
 import { chromium } from 'playwright';
+import { existsSync } from 'node:fs';
 import type { RunContext } from '../evidence/store.ts';
 
 export interface BrowserDriverConfig {
@@ -114,16 +115,17 @@ export class PreviewServer {
 
   async start(repoRoot: string, port = 4173): Promise<void> {
     const { spawn } = await import('node:child_process');
-    this.child = spawn('pnpm', ['preview', '--port', String(port), '--strictPort', '--host', '127.0.0.1'], {
+    // Invoke the bundler's CLI directly with the harness's own runtime:
+    // going through the package-manager script runner adds a dependency
+    // status probe that can fail (or trigger an install) in minimal
+    // environments, which is exactly what a preview server must never do.
+    const viteCli = join2(repoRoot, 'control-plane/node_modules/vite/bin/vite.js');
+    if (!existsSync(viteCli)) {
+      throw new Error(`preview server needs the built control plane with its dependencies installed: ${viteCli} is missing`);
+    }
+    this.child = spawn(process.execPath, [viteCli, 'preview', '--port', String(port), '--strictPort', '--host', '127.0.0.1'], {
       cwd: join2(repoRoot, 'control-plane'),
-      env: {
-        PATH: process.env.PATH ?? '',
-        HOME: process.env.HOME ?? '',
-        // The preview server must serve the build, never re-validate the
-        // install: a dependency-status probe fails under a minimal
-        // environment and would kill the server before it binds.
-        npm_config_verify_deps_before_run: 'false',
-      },
+      env: { PATH: process.env.PATH ?? '', HOME: process.env.HOME ?? '' },
       stdio: ['ignore', 'pipe', 'pipe'],
       detached: true,
     });
