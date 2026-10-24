@@ -28,6 +28,13 @@ jobs:
       - name: Python deps
         run: pip install pytest pyyaml jsonschema click pydantic
 
+      - name: Install Blender system libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libegl1 libgl1 libx11-6 libxi6 libxxf86vm1 libxfixes3 \
+            libxrender1 libxkbcommon0 libsm6 libice6
+
       - name: Cache Blender 4.5.3 LTS
         id: blender-cache
         uses: actions/cache@v4
