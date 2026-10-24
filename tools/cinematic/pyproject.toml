@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cinematic"
+version = "0.1.0"
+description = "Deterministic shot plan to Blender previz, headless driver, and provider-neutral video generation port"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "click==8.3.3",
+  "pyyaml==6.0.3",
+  "jsonschema==4.23.0",
+]
+
+[project.scripts]
+cinematic = "cinematic.cli:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.1.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cinematic*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
