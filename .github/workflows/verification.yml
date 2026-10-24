@@ -28,9 +28,27 @@ jobs:
       - name: Python deps
         run: pip install pytest pyyaml jsonschema click pydantic
 
+      - name: Cache Blender 4.5.3 LTS
+        id: blender-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/opt/blender-4.5.3-linux-x64
+          key: blender-4.5.3-linux-x64-v1
+
+      - name: Install Blender 4.5.3 LTS
+        if: steps.blender-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.local/opt
+          curl -fsSL https://download.blender.org/release/Blender4.5/blender-4.5.3-linux-x64.tar.xz -o /tmp/blender.tar.xz
+          tar -xJf /tmp/blender.tar.xz -C ~/.local/opt
+          rm /tmp/blender.tar.xz
+
+      - name: Export Blender binary
+        run: echo "BLENDER_BIN=$HOME/.local/opt/blender-4.5.3-linux-x64/blender" >> "$GITHUB_ENV"
+
       - name: Python tests + recipe/profile validators
         run: |
-          PYTHONPATH=tools:tools/narrative-cli pytest tools/narrative_recipes/tests tools/narrative-cli/tests tools/validate-recipes/tests -q
+          PYTHONPATH=tools:tools/narrative-cli pytest tools/narrative_recipes/tests tools/narrative-cli/tests tools/validate-recipes/tests tools/cinematic/tests -q
           python3 tools/validate-recipes/validate.py
           python3 tools/validate-profiles/validate.py
 
