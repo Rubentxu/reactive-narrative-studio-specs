@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/shot-plan.schema.json",
+  "title": "ShotPlan",
+  "description": "Deterministic shot plan contract. Aligned field-by-field with examples/video/shot-plan.yaml. Closed contract: extending it requires a deliberate schema change.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "sceneRef", "sequenceRef", "durationSeconds", "fps", "subjects", "camera"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+$",
+      "description": "Stable shot identity."
+    },
+    "sceneRef": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Scene link."
+    },
+    "sequenceRef": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Sequence link."
+    },
+    "durationSeconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "fps": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "subjects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "representation", "action", "start", "end"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "representation": {
+            "enum": ["capsule", "sphere", "cube"],
+            "description": "Blocking representation, mapped to a Blender primitive by the scene generator."
+          },
+          "action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          },
+          "end": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lensMm", "segments"],
+      "properties": {
+        "lensMm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["frames", "move"],
+            "properties": {
+              "frames": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "[start, end]; ordering and full coverage of [1, durationSeconds*fps] is enforced by the semantic validator."
+              },
+              "move": {
+                "enum": ["static", "tracking_backward", "crane_up"]
+              },
+              "height": {
+                "type": "number"
+              },
+              "heightFrom": {
+                "type": "number"
+              },
+              "heightTo": {
+                "type": "number"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "move": {
+                      "enum": ["static", "tracking_backward"]
+                    }
+                  },
+                  "required": ["move"]
+                },
+                "then": {
+                  "required": ["height"]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "move": {
+                      "enum": ["crane_up"]
+                    }
+                  },
+                  "required": ["move"]
+                },
+                "then": {
+                  "required": ["heightFrom", "heightTo"]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "styleReferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "characterReferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/video-generation-request.schema.json",
+  "title": "VideoGenerationRequest",
+  "description": "Provider-neutral video generation request contract. Aligned with examples/video/video-generation-request.yaml. The budget object is REQUIRED: no automated generation without an explicit budget.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["shotId", "prompt", "durationSeconds", "aspectRatio", "budget"],
+  "properties": {
+    "shotId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "motionReference": {
+      "type": "string",
+      "description": "Optional workspace-relative reference clip (e.g. the variant-A playblast of the spike)."
+    },
+    "styleReferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "characterReferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "durationSeconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "aspectRatio": {
+      "type": "string",
+      "pattern": "^[0-9]+:[0-9]+$"
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxAttempts", "maxCredits"],
+      "properties": {
+        "maxAttempts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxCredits": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    }
+  }
+}

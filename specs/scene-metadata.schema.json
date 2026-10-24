@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/scene-metadata.schema.json",
+  "title": "SceneMetadata",
+  "description": "Execution metadata emitted by the generated Blender script at the end of a successful run. A run counts as successful only when the script exits cleanly AND this document parses and validates. Closed contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "shotId", "mode", "fps", "fps_base", "frame_start", "frame_end", "camera", "objects", "render", "outputs"],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "shotId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "enum": ["scene", "playblast"]
+    },
+    "fps": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "fps_base": {
+      "const": 1.0
+    },
+    "frame_start": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "frame_end": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lensMm", "segments"],
+      "properties": {
+        "lensMm": {
+          "type": "number"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["frames", "move"],
+            "properties": {
+              "frames": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "move": {
+                "enum": ["static", "tracking_backward", "crane_up"]
+              },
+              "height": {
+                "type": "number"
+              },
+              "heightFrom": {
+                "type": "number"
+              },
+              "heightTo": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine", "resolution", "container", "codec"],
+      "properties": {
+        "engine": {
+          "const": "BLENDER_WORKBENCH"
+        },
+        "resolution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width", "height"],
+          "properties": {
+            "width": {
+              "const": 640
+            },
+            "height": {
+              "const": 360
+            }
+          }
+        },
+        "container": {
+          "const": "FFMPEG"
+        },
+        "codec": {
+          "const": "H264"
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._/-]+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

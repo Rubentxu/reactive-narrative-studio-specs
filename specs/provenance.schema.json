@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/provenance.schema.json",
+  "title": "Provenance",
+  "description": "Derivation chain of a deterministic execution: the input shot plan, the generated Blender script, the emitted metadata, and every output artifact, each identified by path and content hash. Paths are given as handed to the CLI for inputs and workspace-relative for workspace artifacts. Closed contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "shotPlan", "generatedScript", "sceneMetadata", "outputs"],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "shotPlan": {
+      "$ref": "#/$defs/artifact"
+    },
+    "generatedScript": {
+      "$ref": "#/$defs/artifact"
+    },
+    "sceneMetadata": {
+      "$ref": "#/$defs/artifact"
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}
