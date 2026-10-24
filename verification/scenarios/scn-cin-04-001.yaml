@@ -1,0 +1,32 @@
+id: SCN-CIN-04-001
+uat: UAT-CIN-04-provider-port
+requirements: [REQ-CIN-7, REQ-CIN-8, REQ-CIN-9]
+claims:
+  proves:
+    - El camino provider real de la CLI responde capabilities y genera a traves del puerto con resultado tipado, presupuesto respetado (attempts <= 2, coste <= 40), artifact hasheado y registro provider-neutral del run.
+    - La solicitud live sin opt-in produce denegacion tipada con exit 7, sin invocar provider alguno (providerInvoked false), y queda registrada como las demas ejecuciones.
+  doesNotProve:
+    - Ningun adapter real de vendor: la generacion live queda reservada al operador con credenciales y opt-in explicitos.
+    - El ciclo poll/fetchArtifact contra un proveedor real ni la compilacion de prompt.
+steps:
+  - { id: ws.prepare, driver: filesystem, action: temp-workspace, params: { prefix: cin04 } }
+  - { id: provider.fake-generate, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools/cinematic']; sys.argv = ['cinematic', 'generate-video', '--request', 'examples/video/video-generation-request.yaml', '--out', sys.argv[1], '--json']; from cinematic.cli import main; main()", "{{ws.prepare.dir}}/fake"], cwd: ., timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
+  - { id: provider.live-denied, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools/cinematic']; sys.argv = ['cinematic', 'generate-video', '--request', 'examples/video/video-generation-request.yaml', '--out', sys.argv[1], '--live', '--json']; from cinematic.cli import main; main()", "{{ws.prepare.dir}}/denied"], cwd: ., timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
+  - { id: provider.assert, driver: process, action: run, params: { cmd: python3, args: ["-c", "import hashlib, json, os, sys; ws = sys.argv[1]; result = json.load(open(os.path.join(ws, 'fake', 'provider-result.json'))); assert result['status'] == 'success', result; assert result['providerId'] == 'fake' and result['receipt']; assert 1 <= result['attempts'] <= 2 and result['costCredits'] <= 40.0; artifact = result['artifact']; assert os.path.isfile(artifact['path']); rehash = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest(); assert rehash(artifact['path']) == artifact['sha256']; provenance = json.load(open(os.path.join(ws, 'fake', 'provider-provenance.json'))); assert len(provenance['attempts']) == result['attempts']; assert provenance['request']['sha256'] == rehash('examples/video/video-generation-request.yaml'); denial = json.load(open(os.path.join(ws, 'denied', 'provider-result.json'))); assert denial['status'] == 'failure' and denial['reason'] == 'LIVE_NOT_ENABLED' and denial['providerInvoked'] is False; sys.exit(0)", "{{ws.prepare.dir}}"], cwd: ., timeoutMs: 60000, envAllowlist: [PATH, HOME] } }
+oracles:
+  - id: fake.generate-succeeds
+    type: process
+    config:
+      step: provider.fake-generate
+      exitCode: 0
+  - id: live.denied-without-opt-in
+    type: process
+    config:
+      step: provider.live-denied
+      exitCode: 7
+  - id: provider.typed-results
+    type: process
+    config:
+      step: provider.assert
+      exitCode: 0
+      stderrEmpty: true

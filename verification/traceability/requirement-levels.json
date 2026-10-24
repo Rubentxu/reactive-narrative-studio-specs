@@ -346,5 +346,53 @@
   "REQ-DEI-10": {
     "level": "fitness",
     "rationale": "Mapeo de inventario verificado por tests de reqBelongsToMilestone y por la regeneración auditada del registry y del audit gate; reutiliza el veredicto PASS vigente de SCN-M11-01-001 sin escenario nuevo."
+  },
+  "REQ-CIN-1": {
+    "level": "functional",
+    "rationale": "La validacion del contrato ShotPlan es comportamiento de frontera: SCN-CIN-01-001 ejercita el CLI real con aceptacion, rechazo tipado y determinismo."
+  },
+  "REQ-CIN-2": {
+    "level": "functional",
+    "rationale": "La derivacion ShotPlan a bpy la ejecuta Blender headless real en SCN-CIN-02-001; el determinismo byte-identico se anade por pytest."
+  },
+  "REQ-CIN-3": {
+    "level": "functional",
+    "rationale": "El sandbox (workspace efimero, env allowlist, timeout) se ejercita en la ejecucion real de SCN-CIN-02-001; la denegacion por binario no resuelto, por pytest."
+  },
+  "REQ-CIN-4": {
+    "level": "functional",
+    "rationale": "scene-metadata.json emitida por Blender real se valida contra su schema cerrado y se re-hashea en SCN-CIN-02-001."
+  },
+  "REQ-CIN-5": {
+    "level": "functional",
+    "rationale": "provenance.json cubre la cadena real ShotPlan-script-metadata-outputs y sus hashes se verifican byte a byte en SCN-CIN-02-001."
+  },
+  "REQ-CIN-6": {
+    "level": "functional",
+    "rationale": "El playblast produce el mp4 real con nombre de rango, hasheado y registrado; SCN-CIN-03-001 lo demuestra con Blender headless."
+  },
+  "REQ-CIN-7": {
+    "level": "functional",
+    "rationale": "El puerto VideoProvider con capabilities-generate y fallo tipado se ejercita por el camino CLI del driver en SCN-CIN-04-001."
+  },
+  "REQ-CIN-8": {
+    "level": "functional",
+    "rationale": "El FakeProvider con budget, coste y attempts contabilizados se ejercita en SCN-CIN-04-001 y por pytest de presupuesto."
+  },
+  "REQ-CIN-9": {
+    "level": "functional",
+    "rationale": "La denegacion live sin opt-in, con cero invocaciones al provider, es parte del camino CLI ejecutado en SCN-CIN-04-001."
+  },
+  "REQ-CIN-10": {
+    "level": "fitness",
+    "rationale": "Propiedad de conservacion del script como evidence: asercion estructural de pytest y artifacts de SCN-CIN-02-001; no requiere escenario propio."
+  },
+  "REQ-CIN-11": {
+    "level": "fitness",
+    "rationale": "Invariante estructural (schemas cerrados, core sin engine ni vendor SDKs) del mismo tipo que otras invariantes fitness del repo; verificable por testRefs."
+  },
+  "REQ-CIN-12": {
+    "level": "fitness",
+    "rationale": "El runner dry-run es orquestacion de piezas ya verificadas con contrato de metricas verificable por pytest; el veredicto A/B live es del operador."
   }
 }

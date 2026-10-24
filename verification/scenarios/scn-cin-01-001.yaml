@@ -1,0 +1,30 @@
+id: SCN-CIN-01-001
+uat: UAT-CIN-01-shotplan
+requirements: [REQ-CIN-1]
+claims:
+  proves:
+    - El CLI real valida el ShotPlan canonico del operador (exit 0, salida JSON estable) y rechaza la fixture invalida con errores tipados que nombran cada violacion (campo desconocido y hueco de segmentos).
+    - Validar el mismo documento dos veces produce stdout byte-identico y el mismo exit code.
+  doesNotProve:
+    - Que Blender acepte el plan (eso lo demuestra SCN-CIN-02-001 con ejecucion headless real).
+    - Compilacion de prompt ni constraints de QA (fases posteriores de M18).
+steps:
+  - { id: validate.positive, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools/cinematic']; sys.argv = ['cinematic', 'validate', 'examples/video/shot-plan.yaml', '--json']; from cinematic.cli import main; main()"], cwd: ., timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
+  - { id: validate.positive.repeat, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools/cinematic']; sys.argv = ['cinematic', 'validate', 'examples/video/shot-plan.yaml', '--json']; from cinematic.cli import main; main()"], cwd: ., timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
+  - { id: validate.negative, driver: process, action: run, params: { cmd: python3, args: ["-c", "import sys; sys.path[0:0] = ['tools/cinematic']; sys.argv = ['cinematic', 'validate', 'tools/cinematic/tests/fixtures/shot-plan-invalid.yaml', '--json']; from cinematic.cli import main; main()"], cwd: ., timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
+oracles:
+  - id: validate.accepts-canonical
+    type: process
+    config:
+      step: validate.positive
+      exitCode: 0
+  - id: validate.deterministic
+    type: file-content
+    config:
+      expectedArtifact: process.validate.positive.stdout.txt
+      actualArtifact: process.validate.positive.repeat.stdout.txt
+  - id: validate.rejects-invalid
+    type: process
+    config:
+      step: validate.negative
+      exitCode: 1

@@ -428,6 +428,9 @@ export function reqBelongsToMilestone(reqId: string, milestone: string): boolean
   if (milestone === 'M14' && area === 'M14') return true;
   if (milestone === 'M15' && area === 'M15') return true;
   if (milestone === 'M17' && area === 'M17') return true;
+  // Cinematic narrative: REQ-CIN-* is owned by M18 (deterministic previz, video
+  // provider port, A/B spike). Future REQ-CIN ids fall under the same owner.
+  if (milestone === 'M18' && area === 'CIN') return true;
   return false;
 }
 
