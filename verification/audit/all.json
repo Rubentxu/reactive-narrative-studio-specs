@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-02T20:26:30.927Z",
-  "gitSha": "362fc80c7ff53b3860ff32a1b1556172076c62be",
+  "generatedAt": "2026-10-24T14:00:25.140Z",
+  "gitSha": "e394caab137b730c9856aa71a8e55eefaee47078",
   "target": "all",
   "overall": "PASS",
   "blocking": [],
@@ -1156,6 +1156,157 @@
         "control-plane/test/decisions-command-sinks.spec.ts"
       ],
       "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-1",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-01-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_shotplan.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-01-001"
+    },
+    {
+      "id": "REQ-CIN-10",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_drive.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-11",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_structure.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-12",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_spike.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-2",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_blender_gen.py",
+        "tools/cinematic/tests/test_drive.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-3",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_drive.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-4",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_run_artifacts.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-5",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_run_artifacts.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-6",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-03-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-CIN-03-001"
+    },
+    {
+      "id": "REQ-CIN-7",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-04-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_providers.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-04-001"
+    },
+    {
+      "id": "REQ-CIN-8",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-04-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_providers.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-04-001"
+    },
+    {
+      "id": "REQ-CIN-9",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-04-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_budget_gate.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-04-001"
     }
   ],
   "requirements": [
@@ -2308,6 +2459,157 @@
         "control-plane/test/decisions-command-sinks.spec.ts"
       ],
       "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-1",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-01-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_shotplan.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-01-001"
+    },
+    {
+      "id": "REQ-CIN-10",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_drive.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-11",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_structure.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-12",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_spike.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-2",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_blender_gen.py",
+        "tools/cinematic/tests/test_drive.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-3",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_drive.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-4",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_run_artifacts.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-5",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-02-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_run_artifacts.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-6",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-03-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-CIN-03-001"
+    },
+    {
+      "id": "REQ-CIN-7",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-04-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_providers.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-04-001"
+    },
+    {
+      "id": "REQ-CIN-8",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-04-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_providers.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-04-001"
+    },
+    {
+      "id": "REQ-CIN-9",
+      "milestone": "M18",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-cin-04-001.yaml"
+      ],
+      "testRefs": [
+        "tools/cinematic/tests/test_budget_gate.py"
+      ],
+      "detail": "scenario evidence: SCN-CIN-04-001"
     }
   ]
 }
