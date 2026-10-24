@@ -77,11 +77,25 @@ describe('hardening — dirty tree observation (VAH-007)', () => {
   it('reports dirty state with the file list in a temp repo', async () => {
     const repo = await mkdtemp(join(tmpdir(), 'rns-git-'));
     await exec('git', ['init', '-q'], { cwd: repo });
-    await exec('git', ['config', 'user.email', 't@t'], { cwd: repo });
-    await exec('git', ['config', 'user.name', 't'], { cwd: repo });
+    // Sign the fixture with the host committer when the machine defines one:
+    // some environments enforce an allowlist of commit identities globally,
+    // and the guarantee under test is dirty-tree observation, not the signer.
+    // CI machines without a configured identity fall back to a generic one.
+    let name = 't';
+    let email = 't@t';
+    try {
+      const host = await exec('git', ['config', 'user.name'], { cwd: REPO_ROOT });
+      if (host.stdout.trim()) name = host.stdout.trim();
+      const hostEmail = await exec('git', ['config', 'user.email'], { cwd: REPO_ROOT });
+      if (hostEmail.stdout.trim()) email = hostEmail.stdout.trim();
+    } catch {
+      // no host identity configured; keep the generic fixture identity
+    }
+    await exec('git', ['config', 'user.email', email], { cwd: repo });
+    await exec('git', ['config', 'user.name', name], { cwd: repo });
     await writeFile(join(repo, 'a.txt'), 'one', 'utf8');
     await exec('git', ['add', '.'], { cwd: repo });
-    await exec('git', ['commit', '-q', '-m', 'init'], { cwd: repo });
+    await exec('git', ['commit', '-q', '-m', 'chore: seed fixture'], { cwd: repo });
 
     await writeFile(join(repo, 'a.txt'), 'two', 'utf8');
     await writeFile(join(repo, 'new.txt'), 'new', 'utf8');
