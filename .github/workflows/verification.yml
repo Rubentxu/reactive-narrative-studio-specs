@@ -65,6 +65,7 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm exec tsc --noEmit
           pnpm test
+          pnpm build
 
       - name: Harness gates
         working-directory: verification
