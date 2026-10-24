@@ -117,12 +117,22 @@ export class PreviewServer {
     this.child = spawn('pnpm', ['preview', '--port', String(port), '--strictPort', '--host', '127.0.0.1'], {
       cwd: join2(repoRoot, 'control-plane'),
       env: { PATH: process.env.PATH ?? '', HOME: process.env.HOME ?? '' },
-      stdio: ['ignore', 'ignore', 'pipe'],
+      stdio: ['ignore', 'pipe', 'pipe'],
       detached: true,
     });
-    let stderrTail = '';
-    this.child.stderr?.on('data', (chunk: Buffer) => {
-      stderrTail = (stderrTail + chunk.toString('utf8')).slice(-2000);
+    let tail = '';
+    const capture = (chunk: Buffer) => {
+      tail = (tail + chunk.toString('utf8')).slice(-2000);
+    };
+    this.child.stdout?.on('data', capture);
+    this.child.stderr?.on('data', capture);
+    let spawnError = '';
+    this.child.on('error', (err: Error) => {
+      spawnError = String(err);
+    });
+    let exitInfo = '';
+    this.child.on('exit', (code, signal) => {
+      exitInfo = `exited code=${code} signal=${signal}`;
     });
     const deadline = Date.now() + 60_000;
     while (Date.now() < deadline) {
@@ -134,7 +144,10 @@ export class PreviewServer {
       }
       await new Promise((r) => setTimeout(r, 500));
     }
-    throw new Error(`preview server did not become ready on port ${port} | stderr tail: ${stderrTail}`);
+    const detail = [spawnError && `spawn error: ${spawnError}`, exitInfo && exitInfo, tail && `output tail: ${tail}`]
+      .filter(Boolean)
+      .join(' | ');
+    throw new Error(`preview server did not become ready on port ${port}${detail ? ` | ${detail}` : ''}`);
   }
 
   async stop(): Promise<void> {
