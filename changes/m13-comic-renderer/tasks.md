@@ -29,9 +29,9 @@ B2  Docs + receipts + cierre SDDK
 
 | REQ | Tasks | AC |
 |---|---|---|
-| REQ-CR-1 | T0.1, T0.2 | AC-1 |
-| REQ-CR-2 | T0.1, T0.2, T1.3 | AC-1, AC-3 |
-| REQ-CR-3 | T0.1, T0.2, T1.3 | AC-1, AC-3 |
-| REQ-CR-4 | T0.1, T0.2, T1.3 | AC-2 |
-| REQ-CR-5 | T1.1, T1.3 | AC-3 |
-| REQ-CR-6 | T1.2, T1.3 | AC-2, AC-3 |
+| REQ-M13-1 | T0.1, T0.2 | AC-1 |
+| REQ-M13-2 | T0.1, T0.2, T1.3 | AC-1, AC-3 |
+| REQ-M13-3 | T0.1, T0.2, T1.3 | AC-1, AC-3 |
+| REQ-M13-4 | T0.1, T0.2, T1.3 | AC-2 |
+| REQ-M13-5 | T1.1, T1.3 | AC-3 |
+| REQ-M13-6 | T1.2, T1.3 | AC-2, AC-3 |

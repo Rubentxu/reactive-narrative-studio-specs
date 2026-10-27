@@ -1,6 +1,6 @@
 id: SCN-M13-01-001
 uat: UAT-M13-01
-requirements: [REQ-CR-2, REQ-CR-3, REQ-CR-4, REQ-CR-5, REQ-CR-6]
+requirements: [REQ-M13-2, REQ-M13-3, REQ-M13-4, REQ-M13-5, REQ-M13-6]
 claims:
   proves:
     - El comic proof se compone por capas: art-layer con slots placeholder etiquetados por shotRef (sin texto narrativo) y lettering-layer con todo el diálogo como nodos de texto editables; los toggles de capa prueban la separación.
