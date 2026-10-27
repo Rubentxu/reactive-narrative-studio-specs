@@ -51,6 +51,9 @@ export function resolveProjectIdentity(bundle: ProjectionBundle, fallbackLabel: 
   return { projectId, title };
 }
 
+// Monotonic sequence for load requests: see loadFrom.
+let loadRequestSeq = 0;
+
 export const useProjectionStore = create<ProjectionState>((set, get) => ({
   status: 'empty',
   bundle: null,
@@ -61,8 +64,15 @@ export const useProjectionStore = create<ProjectionState>((set, get) => ({
   activeProjectId: null,
 
   async loadFrom(source, projectId) {
+    // Only the most recently initiated load may write state: an earlier
+    // request that resolves late is discarded instead of replacing the
+    // project the user actually asked for last.
+    const requestSeq = ++loadRequestSeq;
     set({ status: 'loading' });
     const result = await source.load(projectId);
+    if (requestSeq !== loadRequestSeq) {
+      return { projectId, title: projectId };
+    }
     if (result.ok) {
       const { projectId: realId, title } = resolveProjectIdentity(result.data.bundle, projectId);
       const loaded: LoadedProject = {

@@ -40,9 +40,18 @@ async function write(
 
   // Write each skeleton file — RENDERED content from the plan (PR-2, M10.2.1);
   // falls back to the caller-provided map only for plans without content.
+  // Skeleton paths may span directories, so each parent segment is resolved
+  // (created on demand) before the file itself: the File System Access API
+  // takes a file NAME, never a path.
   for (const entry of plan.skeleton) {
     const content = entry.content ?? skeletonContents[entry.path] ?? '';
-    const handle = await dirHandle.getFileHandle(entry.path, { create: true });
+    const segments = entry.path.split('/').filter((part) => part.length > 0);
+    const fileName = segments.pop()!;
+    let scope = dirHandle;
+    for (const directory of segments) {
+      scope = await scope.getDirectoryHandle(directory, { create: true });
+    }
+    const handle = await scope.getFileHandle(fileName, { create: true });
     const writable = await handle.createWritable();
     // Normalize line endings to LF, UTF-8
     const normalized = content.replace(/\r\n/g, '\n');
