@@ -1,6 +1,6 @@
 id: SCN-M10-04-001
 uat: UAT-M10-04
-requirements: [REQ-RECIPE-EQUIVALENCE]
+requirements: [REQ-CR-6, REQ-RECIPE-EQUIVALENCE]
 claims:
   proves:
     - CLI/Python y Control Plane/TypeScript producen planes de creación semánticamente equivalentes en los campos recipe-owned (manifest, skeleton con contenidos renderizados, perfiles, packs, skills, publishing targets), ejecutando ambos productores reales.

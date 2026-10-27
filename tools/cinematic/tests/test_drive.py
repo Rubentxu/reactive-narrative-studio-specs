@@ -4,6 +4,7 @@ Requirements: REQ-CIN-2, REQ-CIN-3, REQ-CIN-10
 """
 
 import hashlib
+import json
 import subprocess
 from pathlib import Path
 
@@ -69,6 +70,37 @@ def test_injected_failure_exits_nonzero_with_traceback(tmp_path):
     assert completed.returncode != 0
     assert "injected" in completed.stderr
     assert "RuntimeError" in completed.stderr
+
+
+def test_stale_metadata_from_a_previous_run_never_satisfies_the_marker(tmp_path):
+    workspace = tmp_path / "ws"
+    workspace.mkdir()
+    (workspace / "scene-metadata.json").write_text(
+        json.dumps({"version": 1, "shotId": "GHOST", "mode": "scene", "fps": 12,
+                    "fps_base": 1.0, "frame_start": 1, "frame_end": 2,
+                    "camera": {"lensMm": 50, "segments": []},
+                    "objects": ["ghost"], "render": {"engine": "BLENDER_WORKBENCH",
+                    "resolution": {"width": 640, "height": 360}, "container": "FFMPEG",
+                    "codec": "H264"}, "outputs": [{"path": "ghost.blend", "sha256": "0" * 64}]}),
+        encoding="utf-8",
+    )
+    report = run_scene(EXAMPLE, workspace, mode="scene")
+    assert report.ok
+    assert report.metadata["shotId"] == "SC12-SH03"
+    assert report.metadata["fps"] == 24
+
+
+def test_driver_rejects_declared_outputs_that_do_not_match_their_bytes(tmp_path):
+    from cinematic import drive
+
+    workspace = tmp_path / "ws"
+    report = run_scene(EXAMPLE, workspace, mode="scene")
+    assert report.ok
+    (workspace / "scene.blend").write_bytes(b"tampered after the fact")
+    metadata = json.loads((workspace / "scene-metadata.json").read_text(encoding="utf-8"))
+    assert drive._outputs_match(workspace, metadata) is False
+    (workspace / "scene.blend").write_bytes(Path(workspace / "scene.blend").read_bytes()[:-8])
+    assert drive._outputs_match(workspace, metadata) is False
 
 
 def test_script_is_conserved_and_referenced_by_provenance(tmp_path):

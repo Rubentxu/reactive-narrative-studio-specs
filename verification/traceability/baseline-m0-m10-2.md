@@ -1,8 +1,8 @@
 # Baseline M0–M18 — Verification Coverage
 
-- generated: 2026-10-27T21:26:27.407Z
-- git: f587f219ed0c027c78132743565307ff90fd01e2
-- coverage: 116/116 requirements MAPPED (scenario or test) · 0 UNMAPPED · 14/28 UATs executable · 1 waiver(s)
+- generated: 2026-10-27T22:37:36.662Z
+- git: a0988bc943dc0212a3a29edb3b952446f75046b1
+- coverage: 122/122 requirements MAPPED (scenario or test) · 0 UNMAPPED · 14/28 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -65,6 +65,7 @@
 
 ### M13 — Comic Renderer
 - 🟢 UAT-M13-01 — EXECUTABLE (scn-m13-01-001.yaml)
+- requirements MAPPED (6): REQ-M13-1, REQ-M13-2, REQ-M13-3, REQ-M13-4, REQ-M13-5, REQ-M13-6
 
 ### M14 — Manga Profile
 - 🟢 UAT-M14-01 — EXECUTABLE (scn-m14-01-001.yaml)

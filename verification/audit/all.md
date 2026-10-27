@@ -1,8 +1,8 @@
 # Audit Gate — all
 
-- generated: 2026-10-27T21:26:28.560Z
-- git: f587f219ed0c027c78132743565307ff90fd01e2
-- overall: **PASS** — proven 116 · waived 0 · blocking 0
+- generated: 2026-10-27T22:37:37.842Z
+- git: a0988bc943dc0212a3a29edb3b952446f75046b1
+- overall: **PASS** — proven 122 · waived 0 · blocking 0
 
 ## Proven
 - ✅ REQ-CLI-001 (M9, fitness) — fitness level: 1 test ref(s)
@@ -20,15 +20,15 @@
 - ✅ REQ-CP-006 (M10, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-CP-007 (M10, fitness) — fitness level: 1 test ref(s)
 - ✅ REQ-CP-008 (M10, fitness) — fitness level: 2 test ref(s)
-- ✅ REQ-CR-1 (M10.1, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-CR-1 (M10.1, functional) — scenario evidence: SCN-M10-01-001
 - ✅ REQ-CR-10 (M10.1, functional) — scenario evidence: SCN-M10-01-001
 - ✅ REQ-CR-11 (M10.1, functional) — scenario evidence: SCN-M10-01-001
 - ✅ REQ-CR-12 (M10.1, functional) — scenario evidence: SCN-M10-01-001
-- ✅ REQ-CR-2 (M10.1, functional) — scenario evidence: SCN-M13-01-001
-- ✅ REQ-CR-3 (M10.1, functional) — scenario evidence: SCN-M13-01-001
-- ✅ REQ-CR-4 (M10.1, functional) — scenario evidence: SCN-M13-01-001
-- ✅ REQ-CR-5 (M10.1, functional) — scenario evidence: SCN-M13-01-001
-- ✅ REQ-CR-6 (M10.1, functional) — scenario evidence: SCN-M13-01-001
+- ✅ REQ-CR-2 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-3 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-4 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-5 (M10.1, functional) — scenario evidence: SCN-M10-01-001
+- ✅ REQ-CR-6 (M10.1, functional) — scenario evidence: SCN-M10-04-001
 - ✅ REQ-CR-7 (M10.1, functional) — scenario evidence: SCN-M10-01-001
 - ✅ REQ-CR-8 (M10.1, functional) — scenario evidence: SCN-M10-01-001
 - ✅ REQ-CR-9 (M10.1, fitness) — fitness level: 1 test ref(s)
@@ -79,6 +79,12 @@
 - ✅ REQ-M11-4 (M11, functional) — scenario evidence: SCN-M11-01-001
 - ✅ REQ-M11-5 (M11, fitness) — fitness level: 4 test ref(s)
 - ✅ REQ-M11-6 (M11, functional) — scenario evidence: SCN-M11-01-001
+- ✅ REQ-M13-1 (M13, fitness) — fitness level: 1 test ref(s)
+- ✅ REQ-M13-2 (M13, functional) — scenario evidence: SCN-M13-01-001
+- ✅ REQ-M13-3 (M13, functional) — scenario evidence: SCN-M13-01-001
+- ✅ REQ-M13-4 (M13, functional) — scenario evidence: SCN-M13-01-001
+- ✅ REQ-M13-5 (M13, functional) — scenario evidence: SCN-M13-01-001
+- ✅ REQ-M13-6 (M13, functional) — scenario evidence: SCN-M13-01-001
 - ✅ REQ-M14-01 (M14, functional) — scenario evidence: SCN-M14-01-001
 - ✅ REQ-M14-02 (M14, functional) — scenario evidence: SCN-M14-01-001
 - ✅ REQ-M14-03 (M14, functional) — scenario evidence: SCN-M14-01-001

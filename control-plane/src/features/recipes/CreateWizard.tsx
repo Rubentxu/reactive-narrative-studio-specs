@@ -32,6 +32,7 @@ interface WizardState {
   lockData: Record<string, unknown> | null;
   parametersSchema: Record<string, unknown> | null;
   status: 'idle' | 'loading' | 'ready' | 'submitting' | 'done' | 'error';
+  outcome: 'written' | 'plan-only' | null;
   error: string | null;
   info: string | null;
 }
@@ -89,6 +90,7 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
     lockData: null,
     parametersSchema: null,
     status: 'idle',
+    outcome: null,
     error: null,
     info: null,
   });
@@ -154,14 +156,21 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
 
       // Prefer the File System Access sink; if the picker cannot be completed
       // (unsupported, user abort, headless), fall back to the plan download.
+      // The two outcomes are distinct results: only a real directory write
+      // created the project, a download merely staged the plan for the CLI.
       try {
         await fileSystemAccessSink.write(plan, renderedSkeleton);
+        setState(s => ({ ...s, status: 'done', outcome: 'written' }));
       } catch (sinkErr) {
         await downloadPlanSink.write(plan);
         const reason = sinkErr instanceof Error ? sinkErr.message : String(sinkErr);
-        setState(s => ({ ...s, info: `Directory access unavailable (${reason}); create-plan.json downloaded instead.` }));
+        setState(s => ({
+          ...s,
+          status: 'done',
+          outcome: 'plan-only',
+          info: `Directory access unavailable (${reason}); create-plan.json downloaded instead.`,
+        }));
       }
-      setState(s => ({ ...s, status: 'done' }));
     } catch (err) {
       setState(s => ({
         ...s,
@@ -184,8 +193,20 @@ export function CreateWizard({ recipeId = 'middle-grade-illustrated' }: { recipe
   if (state.status === 'done') {
     return (
       <div className="create-wizard-done">
-        <h2>Project created!</h2>
-        <p>Your project has been created successfully.</p>
+        {state.outcome === 'written' ? (
+          <>
+            <h2>Project created!</h2>
+            <p>Your project has been written to the chosen directory.</p>
+          </>
+        ) : (
+          <>
+            <h2>Create-plan downloaded</h2>
+            <p>
+              The project was not written; run the downloaded create-plan.json
+              through the CLI to create it.
+            </p>
+          </>
+        )}
         {state.info && <p className="create-wizard-info">{state.info}</p>}
         <button onClick={() => setState(s => ({ ...s, status: 'ready', title: '', projectId: '' }))}>
           Create another

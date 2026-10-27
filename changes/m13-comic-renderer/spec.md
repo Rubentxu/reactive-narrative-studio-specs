@@ -13,12 +13,12 @@ Renderer de cómic sobre SequentialArtIR: plantillas de panel, composición por 
 
 | REQ | Enunciado |
 |---|---|
-| REQ-CR-1 | El renderer MUST calcular rects de panel deterministas desde el layout grid de cada página (filas×columnas, márgenes y gutters del perfil), sin solapes entre panels. |
-| REQ-CR-2 | El render de página MUST ser un SVG con **capas explícitas**: `art-layer` (slots placeholder etiquetados con shotRef, sin texto) y `lettering-layer` (balones/captions como `<text>` editable, sin contenido gráfico). |
-| REQ-CR-3 | Balones y captions MUST colocarse con plantilla determinista (sin solaparse entre sí dentro del panel), y TODO el diálogo MUST existir como nodos de texto (nunca rasterizado ni dentro de imágenes). |
-| REQ-CR-4 | El export CBZ MUST contener una página SVG por página del IR + `ComicInfo.xml` (serie, título, count), generado sin dependencias nuevas (ZIP store-mode) y sin fetch. |
-| REQ-CR-5 | La página `/comic` MUST mostrar la previsualización por capas con toggles de capa (art/lettering) que prueben la separación, y MUST exponer la descarga del proof. |
-| REQ-CR-6 | `uat/UAT-M13-01.md` MUST existir y ser ejecutable (`SCN-M13-01-001`): previsualización por capas + CBZ descargado con páginas SVG verificables (texto de diálogo presente por bytes) y `ComicInfo.xml`. |
+| REQ-M13-1 | El renderer MUST calcular rects de panel deterministas desde el layout grid de cada página (filas×columnas, márgenes y gutters del perfil), sin solapes entre panels. |
+| REQ-M13-2 | El render de página MUST ser un SVG con **capas explícitas**: `art-layer` (slots placeholder etiquetados con shotRef, sin texto) y `lettering-layer` (balones/captions como `<text>` editable, sin contenido gráfico). |
+| REQ-M13-3 | Balones y captions MUST colocarse con plantilla determinista (sin solaparse entre sí dentro del panel), y TODO el diálogo MUST existir como nodos de texto (nunca rasterizado ni dentro de imágenes). |
+| REQ-M13-4 | El export CBZ MUST contener una página SVG por página del IR + `ComicInfo.xml` (serie, título, count), generado sin dependencias nuevas (ZIP store-mode) y sin fetch. |
+| REQ-M13-5 | La página `/comic` MUST mostrar la previsualización por capas con toggles de capa (art/lettering) que prueben la separación, y MUST exponer la descarga del proof. |
+| REQ-M13-6 | `uat/UAT-M13-01.md` MUST existir y ser ejecutable (`SCN-M13-01-001`): previsualización por capas + CBZ descargado con páginas SVG verificables (texto de diálogo presente por bytes) y `ComicInfo.xml`. |
 
 ## Criterios de aceptación
 

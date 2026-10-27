@@ -66,6 +66,19 @@ class RunReport:
     blender_stderr_tail: str
 
 
+def _outputs_match(out_dir: Path, metadata: dict[str, Any]) -> bool:
+    """Every declared output must exist and hash to its recorded digest."""
+
+    try:
+        for output in metadata["outputs"]:
+            artifact = out_dir / output["path"]
+            if not artifact.is_file() or _sha256(artifact) != output["sha256"]:
+                return False
+    except (KeyError, OSError):
+        return False
+    return True
+
+
 def _validate_metadata(document: Any) -> bool:
     schema_path = specs_dir() / "scene-metadata.schema.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
@@ -124,6 +137,11 @@ def run_scene(
 
     out_path = Path(out_dir)
     out_path.mkdir(parents=True, exist_ok=True)
+    # A reused workspace must not be able to satisfy the success marker with
+    # leftovers: the previous run's metadata and provenance are removed before
+    # execution, so the metadata that exists at the end can only be this run's.
+    for stale in (METADATA_NAME, PROVENANCE_NAME):
+        (out_path / stale).unlink(missing_ok=True)
     script = generate_scene_script(document, mode=mode)
     script_path = out_path / SCRIPT_NAME
     script_path.write_text(script, encoding="utf-8")
@@ -147,7 +165,7 @@ def run_scene(
     if metadata_path.is_file():
         try:
             candidate = json.loads(metadata_path.read_text(encoding="utf-8"))
-            if _validate_metadata(candidate) and all((out_path / o["path"]).is_file() for o in candidate["outputs"]):
+            if _validate_metadata(candidate) and _outputs_match(out_path, candidate):
                 metadata = candidate
         except (json.JSONDecodeError, KeyError):
             metadata = None
