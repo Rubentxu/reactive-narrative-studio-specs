@@ -69,9 +69,13 @@ la fundación determinista no lo requiere)
   Transversales: CIN-022 ⏸ (spike live = decisión del operador, precondición
   de M18 completo) · CIN-023 ✅ (dry-run sin veredicto ni claims de ahorro)
   · CIN-026 ✅ (MCP opcional, nada del headless lo requiere) · CIN-027 ✅
-  (core sin bpy, engine sustituible estructuralmente) · CIN-016 ❌ prompt
-  compiler (anatomía 8 secciones especificada en seedance-blocking) · paridad
-  cross-runtime de veredictos: v0.28.0 (oracle byte-idéntico en SCN-CIN-05-001)
+  (core sin bpy, engine sustituible estructuralmente) · CIN-016 ✅ compilador
+  de prompt desde el ShotPlan (v0.29.0: 8 secciones, números duros del modelo
+  geométrico, salida determinista) · paridad cross-runtime de veredictos:
+  v0.28.0 (oracle byte-idéntico en SCN-CIN-05-001) · CIN-018 ✅ y CIN-030 ✅
+  registro de aprobación explícita (v0.29.0: solo tomas validadas se promocionan)
+  · CIN-017 🔶 (determinista capturada en el registro; capa machine-assisted
+  pendiente)
 ```
 
 ## Status model

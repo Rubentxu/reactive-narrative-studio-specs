@@ -247,6 +247,53 @@ def spike_dry(shot_plan: Path, out: Path, as_json: bool) -> None:
     _exit(exit_codes.EXIT_SUCCESS)
 
 
+@cli.command("prompt")
+@click.option("--shot-plan", type=click.Path(exists=True, path_type=Path), required=True)
+@click.option("--json", "as_json", is_flag=True, help="JSON output")
+def prompt(shot_plan: Path, as_json: bool) -> None:
+    """Compile the eight-section video prompt from a validated shot plan."""
+
+    from cinematic.prompt import compile_prompt
+    from cinematic.shotplan import validate_shot_plan_file
+
+    document, violations = validate_shot_plan_file(shot_plan)
+    if violations:
+        for violation in violations:
+            emit_error(f"{violation.path}: {violation.message}")
+        _exit(exit_codes.EXIT_VALIDATION_ERROR)
+
+    text = compile_prompt(document)
+    if as_json:
+        emit({"prompt": text, "shotId": str(document["id"])})
+    else:
+        sys.stdout.write(text)
+    _exit(exit_codes.EXIT_SUCCESS)
+
+
+@cli.command("approve")
+@click.option("--shot-plan", type=click.Path(exists=True, path_type=Path), required=True)
+@click.option("--out", type=click.Path(path_type=Path), required=True)
+@click.option("--decision", type=click.Choice(["approved", "rejected"]), required=True)
+@click.option("--rationale", required=True, help="Why this decision was made")
+@click.option("--decided-by", required=True, help="Who made the decision")
+@click.option("--decided-at", default=None, help="Decision instant (RFC 3339); defaults to now")
+@click.option("--json", "as_json", is_flag=True, help="JSON output")
+def approve(shot_plan: Path, out: Path, decision: str, rationale: str, decided_by: str, decided_at: str | None, as_json: bool) -> None:
+    """Record an explicit human approval for a validated shot plan."""
+
+    from cinematic.approval import ApprovalError, build_approval_record, write_approval_record
+
+    try:
+        record = build_approval_record(shot_plan, decision, rationale, decided_by, decided_at)
+        written = write_approval_record(out, record)
+    except ApprovalError as exc:
+        emit_error(str(exc))
+        _exit(exit_codes.EXIT_VALIDATION_ERROR)
+    if as_json:
+        emit({"record": str(written), "shotPlanSha256": record["shotPlan"]["sha256"]})
+    _exit(exit_codes.EXIT_SUCCESS)
+
+
 def main() -> None:
     """Entry point that maps click failures to typed exit codes."""
 

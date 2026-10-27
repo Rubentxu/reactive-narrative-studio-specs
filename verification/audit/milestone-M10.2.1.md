@@ -1,7 +1,7 @@
 # Audit Gate — milestone M10.2.1
 
-- generated: 2026-10-27T18:22:28.606Z
-- git: bd78dddad75a2a14942ab1697e12208287244dd6
+- generated: 2026-10-27T21:10:30.532Z
+- git: 6c7744568558afd926d67a301bf7454a5309612b
 - overall: **PASS** — proven 23 · waived 0 · blocking 0
 
 ## Proven

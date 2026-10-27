@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-10-27T18:22:26.377Z",
-  "gitSha": "bd78dddad75a2a14942ab1697e12208287244dd6",
+  "generatedAt": "2026-10-27T21:10:28.246Z",
+  "gitSha": "6c7744568558afd926d67a301bf7454a5309612b",
   "milestones": [
     {
       "id": "M0",
@@ -1813,6 +1813,30 @@
           "status": "MAPPED"
         },
         {
+          "id": "REQ-CIN-18",
+          "sources": [
+            "m18-prompt-approval/design.md",
+            "m18-prompt-approval/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "tools/cinematic/tests/test_prompt.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-CIN-19",
+          "sources": [
+            "m18-prompt-approval/design.md",
+            "m18-prompt-approval/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "tools/cinematic/tests/test_approval.py"
+          ],
+          "status": "MAPPED"
+        },
+        {
           "id": "REQ-CIN-2",
           "sources": [
             "m18-spike-prep/design.md",
@@ -2797,8 +2821,8 @@
     }
   ],
   "coverage": {
-    "requirements": 113,
-    "mapped": 113,
+    "requirements": 115,
+    "mapped": 115,
     "unmapped": 0,
     "uats": 28,
     "executable": 14,
