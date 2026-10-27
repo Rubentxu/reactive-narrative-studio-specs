@@ -81,7 +81,7 @@ export function Cinematic(): React.ReactElement {
             </div>
           )}
           {outcome.parseError === null && totalViolations === 0 && planText.length > 0 && (
-            <p className="cinematic-status" data-testid="cinematic-status">Plan valid — ready for previz.</p>
+            <p className="cinematic-status cinematic-status-ready" data-testid="cinematic-status">Plan valid — ready for previz.</p>
           )}
           {totalViolations === 0 && planText.length === 0 && (
             <p className="cinematic-status" data-testid="cinematic-status">Load a sample or paste a shot plan, then validate.</p>
