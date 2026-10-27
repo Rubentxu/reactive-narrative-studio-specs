@@ -129,7 +129,12 @@ def _semantic_violations(document: dict[str, Any]) -> list[Violation]:
 def validate_shot_plan(document: dict[str, Any]) -> list[Violation]:
     """Validate a parsed shot plan; returns an empty list when valid."""
 
-    return _schema_violations(document) + _semantic_violations(document)
+    from cinematic.camera import evaluate_camera_gates
+
+    violations = _schema_violations(document) + _semantic_violations(document)
+    if not violations:
+        violations += evaluate_camera_gates(document)
+    return violations
 
 
 def validate_shot_plan_file(path: str | Path) -> tuple[dict[str, Any] | None, list[Violation]]:

@@ -30,6 +30,10 @@
       "type": "integer",
       "minimum": 1
     },
+    "rig": {
+      "enum": ["gimbal", "tripod", "steadicam", "dolly", "crane"],
+      "description": "Camera rig whose physical limits the plan is validated against (default: gimbal)."
+    },
     "subjects": {
       "type": "array",
       "minItems": 1,

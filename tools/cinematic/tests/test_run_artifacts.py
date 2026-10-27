@@ -34,7 +34,7 @@ def test_metadata_matches_contract_and_plan(tmp_path):
     assert report.metadata["frame_end"] == 144
     assert report.metadata["camera"]["lensMm"] == 50.0
     assert report.metadata["shotId"] == "SC12-SH03"
-    assert report.metadata["objects"] == ["maya", "CIN_CAMERA"]
+    assert report.metadata["objects"] == ["maya", "CIN_CAMERA", "CIN_TARGET"]
 
 
 def test_declared_outputs_exist_and_match_their_hashes(tmp_path):

@@ -1,9 +1,11 @@
 """Deterministic generation of the Blender scene script from a shot plan.
 
 The generator is a pure function: the same validated plan always yields a
-byte-identical script (fixed float formatting, sorted emission, no host paths,
-no clocks, no randomness). The generated script builds the blocking geometry
-and camera, saves the scene, optionally renders a workbench playblast, and
+byte-identical script (fixed float formatting, no host paths, no clocks, no
+randomness). Camera keyframes come from the shared geometric model, so what the
+validator gates and what the scene executes are the same arithmetic. The
+generated script builds the blocking geometry, follows the primary subject with
+an aimed target, saves the scene, optionally renders a workbench playblast, and
 writes the execution metadata at the very end — a run is only successful when
 the metadata file exists and validates.
 """
@@ -12,27 +14,27 @@ from __future__ import annotations
 
 from typing import Any
 
+from cinematic.camera import camera_position, frame_end_of, subject_center
+
 _REPRESENTATION_TO_PRIMITIVE = {
     "capsule": "uv_sphere",
     "sphere": "uv_sphere",
     "cube": "cube",
 }
 
-_CAMERA_BACK_OFFSET = 4.0
 _CAMERA_NAME = "CIN_CAMERA"
-_CAMERA_ROTATION = "(1.5707963267948966, 0.0, 3.141592653589793)"
+_TARGET_NAME = "CIN_TARGET"
 
 _SCRIPT_TEMPLATE = '''\
 """Scene generated from a validated shot plan.
 
-Builds the blocking geometry and camera, saves the scene file, and writes the
-execution metadata describing what was created. All work happens inside the
-current working directory.
+Builds the blocking geometry, the followed camera target, and the camera, then
+saves the scene file and writes the execution metadata describing what was
+created. All work happens inside the current working directory.
 """
 
 import hashlib
 import json
-import math
 import sys
 import traceback
 
@@ -43,10 +45,12 @@ FPS_BASE = 1.0
 FRAME_START = 1
 FRAME_END = {frame_end}
 CAMERA_LENS_MM = {lens_mm:.6f}
-CAMERA_BACK_OFFSET = {back_offset:.6f}
 CAMERA_NAME = {camera_name!r}
+TARGET_NAME = {target_name!r}
 SUBJECTS = {subjects}
 SEGMENTS = {segments}
+CAMERA_KEYFRAMES = {camera_keyframes}
+TARGET_KEYFRAMES = {target_keyframes}
 
 RENDER_ENGINE = "BLENDER_WORKBENCH"
 RENDER_WIDTH = 640
@@ -61,15 +65,10 @@ def _sha256_of(path):
     return digest.hexdigest()
 
 
-def _camera_position(segment, frame_start, frame_end):
-    f0, f1 = segment["frames"]
-    t = 0.0 if f1 == f0 else min(max((frame_start - f0) / (f1 - f0), 0.0), 1.0)
-    move = segment["move"]
-    if move == "crane_up":
-        height = segment["heightFrom"] + (segment["heightTo"] - segment["heightFrom"]) * t
-    else:
-        height = segment["height"]
-    return (-CAMERA_BACK_OFFSET, 0.0, height)
+def _apply_linear(obj):
+    for fcurve in obj.animation_data.action.fcurves:
+        for keyframe in fcurve.keyframe_points:
+            keyframe.interpolation = "LINEAR"
 
 
 def build_scene():
@@ -94,28 +93,29 @@ def build_scene():
         obj.keyframe_insert(data_path="location", frame=FRAME_START)
         obj.location = subject["end"]
         obj.keyframe_insert(data_path="location", frame=FRAME_END)
-        for fcurve in obj.animation_data.action.fcurves:
-            for keyframe in fcurve.keyframe_points:
-                keyframe.interpolation = "LINEAR"
+        _apply_linear(obj)
+
+    target = bpy.data.objects.new(TARGET_NAME, None)
+    scene.collection.objects.link(target)
+    for entry in TARGET_KEYFRAMES:
+        target.location = entry["pos"]
+        target.keyframe_insert(data_path="location", frame=entry["frame"])
+    _apply_linear(target)
 
     camera_data = bpy.data.cameras.new(CAMERA_NAME)
     camera_data.lens = CAMERA_LENS_MM
     camera = bpy.data.objects.new(CAMERA_NAME, camera_data)
     scene.collection.objects.link(camera)
     scene.camera = camera
-    camera.rotation_euler = {camera_rotation}
-    for segment in SEGMENTS:
-        f0, f1 = segment["frames"]
-        x, y, height = _camera_position(segment, f0, f0)
-        camera.location = (x, y, height)
-        camera.keyframe_insert(data_path="location", frame=f0)
-        if f1 != f0:
-            x, y, height = _camera_position(segment, f1, f1)
-            camera.location = (x, y, height)
-            camera.keyframe_insert(data_path="location", frame=f1)
-    for fcurve in camera.animation_data.action.fcurves:
-        for keyframe in fcurve.keyframe_points:
-            keyframe.interpolation = "LINEAR"
+    for entry in CAMERA_KEYFRAMES:
+        camera.location = entry["pos"]
+        camera.keyframe_insert(data_path="location", frame=entry["frame"])
+    _apply_linear(camera)
+
+    track = camera.constraints.new(type="TRACK_TO")
+    track.target = target
+    track.track_axis = "TRACK_NEGATIVE_Z"
+    track.up_axis = "UP_Y"
 
     return scene
 
@@ -157,7 +157,7 @@ def write_metadata():
         "frame_start": FRAME_START,
         "frame_end": FRAME_END,
         "camera": {{"lensMm": CAMERA_LENS_MM, "segments": SEGMENTS}},
-        "objects": [s["id"] for s in SUBJECTS] + [CAMERA_NAME],
+        "objects": [s["id"] for s in SUBJECTS] + [CAMERA_NAME, TARGET_NAME],
         "render": {{
             "engine": RENDER_ENGINE,
             "resolution": {{"width": RENDER_WIDTH, "height": RENDER_HEIGHT}},
@@ -227,20 +227,44 @@ def _segments_literal(plan: dict[str, Any]) -> str:
     return repr(segments)
 
 
+def _camera_keyframes_literal(plan: dict[str, Any]) -> str:
+    """Keyframe every segment boundary from the shared geometric model."""
+
+    frames = sorted(
+        {frame for segment in plan["camera"]["segments"] for frame in segment["frames"]}
+    )
+    return repr(
+        [
+            {"frame": frame, "pos": tuple(_format_number(c) for c in camera_position(plan, frame))}
+            for frame in frames
+        ]
+    )
+
+
+def _target_keyframes_literal(plan: dict[str, Any]) -> str:
+    total = frame_end_of(plan)
+    return repr(
+        [
+            {"frame": frame, "pos": tuple(_format_number(c) for c in subject_center(plan, frame))}
+            for frame in (1, total)
+        ]
+    )
+
+
 def generate_scene_script(plan: dict[str, Any], mode: str = "scene") -> str:
     """Render the deterministic scene script for a validated shot plan."""
 
-    frame_end = int(plan["durationSeconds"] * plan["fps"])
     return _SCRIPT_TEMPLATE.format(
         mode=mode,
         shot_id=str(plan["id"]),
         fps=int(plan["fps"]),
-        frame_end=frame_end,
+        frame_end=frame_end_of(plan),
         lens_mm=float(plan["camera"]["lensMm"]),
-        back_offset=_CAMERA_BACK_OFFSET,
         camera_name=_CAMERA_NAME,
-        camera_rotation=_CAMERA_ROTATION,
+        target_name=_TARGET_NAME,
         subjects=_subjects_literal(plan),
         segments=_segments_literal(plan),
+        camera_keyframes=_camera_keyframes_literal(plan),
+        target_keyframes=_target_keyframes_literal(plan),
         primitive_map=repr(_REPRESENTATION_TO_PRIMITIVE),
     )

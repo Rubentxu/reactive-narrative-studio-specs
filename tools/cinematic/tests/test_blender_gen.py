@@ -65,10 +65,18 @@ def test_only_available_primitives_are_referenced():
 
 def test_camera_keyframes_cover_every_segment():
     script = _script()
-    segment_loop = script[script.index("for segment in SEGMENTS:"):]
-    segment_loop = segment_loop[: segment_loop.index("for fcurve in")]
-    assert 'camera.keyframe_insert(data_path="location", frame=f0)' in segment_loop
-    assert 'camera.keyframe_insert(data_path="location", frame=f1)' in segment_loop
+    assert "for entry in CAMERA_KEYFRAMES:" in script
+    assert 'camera.keyframe_insert(data_path="location", frame=entry["frame"])' in script
+    for boundary in (1, 48, 49, 96, 97, 144):
+        assert "'frame': " + str(boundary) in script
+
+
+def test_subject_is_followed_by_an_aimed_target():
+    script = _script()
+    assert "TARGET_NAME = 'CIN_TARGET'" in script
+    assert 'target = bpy.data.objects.new(TARGET_NAME, None)' in script
+    assert 'constraints.new(type="TRACK_TO")' in script
+    assert 'track.target = target' in script
 
 
 def test_failure_guard_exits_nonzero():

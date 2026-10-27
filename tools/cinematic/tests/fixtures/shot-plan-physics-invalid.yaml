@@ -1,0 +1,18 @@
+# Negative fixture: a locked-off camera while the subject walks the full path,
+# crossing the camera plane. The geometry is legal and the schema is happy; the
+# physics is not — the subject passes through the lens and then goes behind it.
+id: PHYS-BAD-01
+sceneRef: SC1
+sequenceRef: SQ1
+durationSeconds: 4
+fps: 24
+subjects:
+  - id: hero
+    representation: capsule
+    action: walk
+    start: [0, 0, 0]
+    end: [0, -10, 0]
+camera:
+  lensMm: 50
+  segments:
+    - { frames: [1, 96], move: static, height: 1.0 }
