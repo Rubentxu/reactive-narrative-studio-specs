@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-27T21:10:29.417Z",
-  "gitSha": "6c7744568558afd926d67a301bf7454a5309612b",
+  "generatedAt": "2026-10-27T21:26:28.560Z",
+  "gitSha": "f587f219ed0c027c78132743565307ff90fd01e2",
   "target": "all",
   "overall": "PASS",
   "blocking": [],
@@ -1297,6 +1297,17 @@
         "tools/cinematic/tests/test_drive.py"
       ],
       "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-20",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_sequence.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
     },
     {
       "id": "REQ-CIN-3",
@@ -2679,6 +2690,17 @@
         "tools/cinematic/tests/test_drive.py"
       ],
       "detail": "scenario evidence: SCN-CIN-02-001"
+    },
+    {
+      "id": "REQ-CIN-20",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_sequence.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
     },
     {
       "id": "REQ-CIN-3",
