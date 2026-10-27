@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/sequence-plan.schema.json",
+  "title": "SequencePlan",
+  "description": "Continuity contract for a multi-shot sequence: the characters that live in it, the location they share, and an ordered list of shots, each pointing at its own validated shot plan and declaring its screen direction. List order is temporal order; each shot's duration comes from its own plan. Closed contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "characters", "shots"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "locationRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "characters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "shotPlan", "screenDirection", "characters"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "shotPlan": {
+            "type": "string",
+            "minLength": 1
+          },
+          "screenDirection": {
+            "enum": ["neutral", "left_to_right", "right_to_left"]
+          },
+          "characters": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

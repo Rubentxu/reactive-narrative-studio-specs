@@ -422,5 +422,9 @@
   "REQ-CIN-19": {
     "level": "fitness",
     "rationale": "El registro de aprobacion exige decision explicita, captura las comprobaciones deterministas y rechaza planes invalidos; comportamiento de componente verificable por testRefs."
+  },
+  "REQ-CIN-20": {
+    "level": "fitness",
+    "rationale": "El SequencePlan expresa direccion de pantalla, continuidad de personaje y orden temporal; la validacion de continuidad y el prompt multi-plano son derivaciones deterministas verificables por componente."
   }
 }

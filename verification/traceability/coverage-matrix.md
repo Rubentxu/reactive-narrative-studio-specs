@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M18)
 
-- generated: 2026-10-27T21:10:28.246Z
-- git: 6c7744568558afd926d67a301bf7454a5309612b
-- coverage: 115/115 requirements MAPPED · 0 UNMAPPED · 14/28 UATs executable · 1 waivers
+- generated: 2026-10-27T21:26:27.407Z
+- git: f587f219ed0c027c78132743565307ff90fd01e2
+- coverage: 116/116 requirements MAPPED · 0 UNMAPPED · 14/28 UATs executable · 1 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
