@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://narrative.dev/schemas/shot-approval.schema.json",
+  "title": "ShotApproval",
+  "description": "Explicit human approval record for a shot plan. The record exists only for plans that passed the contract and camera physics checks, which the system captures itself; the human contributes the decision, the rationale, and their name. Closed contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "shotPlan", "decision", "rationale", "decidedBy", "decidedAt", "deterministicChecks"],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "shotPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "decision": {
+      "enum": ["approved", "rejected"]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decidedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decidedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deterministicChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaValid", "gatesPassed"],
+      "properties": {
+        "schemaValid": {
+          "const": true
+        },
+        "gatesPassed": {
+          "const": true
+        }
+      }
+    }
+  }
+}
