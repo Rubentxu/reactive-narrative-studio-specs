@@ -15,6 +15,7 @@ import { ReaderUat } from '../views/ReaderUat';
 import { Storyboard } from '../views/Storyboard';
 import { ComicProof } from '../views/ComicProof';
 import { PublishingProof } from '../views/PublishingProof';
+import { Cinematic } from '../views/Cinematic';
 
 // Capability catalog views
 import { CapabilitiesOverview } from '../features/capability-catalog/views/Overview';
@@ -38,6 +39,7 @@ const readerUatRoute = createRoute({ getParentRoute: () => rootRoute, path: '/re
 const storyboardRoute = createRoute({ getParentRoute: () => rootRoute, path: '/storyboard', component: Storyboard });
 const comicRoute = createRoute({ getParentRoute: () => rootRoute, path: '/comic', component: ComicProof });
 const publishRoute = createRoute({ getParentRoute: () => rootRoute, path: '/publish', component: PublishingProof });
+const cinematicRoute = createRoute({ getParentRoute: () => rootRoute, path: '/cinematic', component: Cinematic });
 const overviewRoute = createRoute({ getParentRoute: () => rootRoute, path: '/overview', component: Overview });
 const storyRoute = createRoute({ getParentRoute: () => rootRoute, path: '/story', component: Story });
 const visualRoute = createRoute({ getParentRoute: () => rootRoute, path: '/visual', component: Visual });
@@ -109,6 +111,7 @@ const routeTree = rootRoute.addChildren([
   storyboardRoute,
   comicRoute,
   publishRoute,
+  cinematicRoute,
   overviewRoute,
   storyRoute,
   visualRoute,

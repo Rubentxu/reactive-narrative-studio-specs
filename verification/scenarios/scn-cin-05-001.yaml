@@ -1,0 +1,114 @@
+id: SCN-CIN-05-001
+uat: UAT-CIN-01-shotplan
+requirements: [REQ-CIN-16, REQ-CIN-17]
+claims:
+  proves:
+    - La vista web de planificación de tomas renderiza, valida el ejemplo canonico sin violaciones (estado ready) y rechaza el plano imposible listando 113 violaciones tipadas que incluyen plano trasero, distancia minima y whip pan.
+    - El modelo TypeScript de la web y el modelo Python del CLI producen veredictos byte-identicos (mismo orden, mismos paths y mensajes) para el ejemplo canonico y la fixture fisicamente imposible.
+  doesNotProve:
+    - Calidad visual del previz (el visor reproduce artefactos producidos por el CLI).
+    - El adaptador live del proveedor y la ejecucion real de Blender (escenarios SCN-CIN-02/03).
+steps:
+  - { id: ui.build, driver: process, action: run, params: { cmd: pnpm, args: [build], cwd: control-plane, timeoutMs: 300000, envAllowlist: [PATH, HOME] } }
+  - { id: ui.start-preview, driver: browser, action: start-preview, params: { port: 4173 } }
+  - { id: ui.navigate, driver: browser, action: navigate, params: { path: /cinematic } }
+  - id: ui.probe-initial
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (() => {
+          const heading = document.querySelector('h1')?.textContent ?? '';
+          const hint = document.querySelector('[data-testid="cinematic-status"]')?.textContent ?? '';
+          return { heading: heading, emptyHint: hint.includes('Load a sample') };
+        })()
+  - id: ui.validate-canonical
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (async () => {
+          const wait = async (condition, deadline) => {
+            while (Date.now() < deadline) {
+              if (condition()) return true;
+              await new Promise((resolve) => setTimeout(resolve, 50));
+            }
+            return false;
+          };
+          const deadline = Date.now() + 5000;
+          document.querySelector('[data-testid="cinematic-load-canonical"]').click();
+          const loaded = await wait(() => document.querySelector('[data-testid="cinematic-plan-text"]').value.includes('id: SC12-SH03'), deadline);
+          document.querySelector('[data-testid="cinematic-validate"]').click();
+          await wait(() => Boolean(document.querySelector('[data-testid="cinematic-status"]')), deadline);
+          const status = document.querySelector('[data-testid="cinematic-status"]')?.textContent ?? '';
+          return {
+            loaded: loaded,
+            ready: status.includes('ready for previz'),
+            schemaErrors: document.querySelectorAll('[data-testid="cinematic-schema-errors"] li').length,
+          };
+        })()
+  - id: ui.validate-physics
+    driver: browser
+    action: evaluate
+    params:
+      script: >-
+        (async () => {
+          const wait = async (condition, deadline) => {
+            while (Date.now() < deadline) {
+              if (condition()) return true;
+              await new Promise((resolve) => setTimeout(resolve, 50));
+            }
+            return false;
+          };
+          const deadline = Date.now() + 5000;
+          document.querySelector('[data-testid="cinematic-load-impossible"]').click();
+          const loaded = await wait(() => document.querySelector('[data-testid="cinematic-plan-text"]').value.includes('PHYS-BAD-01'), deadline);
+          document.querySelector('[data-testid="cinematic-validate"]').click();
+          await wait(() => Boolean(document.querySelector('[data-testid="cinematic-gate-violations"], [data-testid="cinematic-status"]')), deadline);
+          const text = document.querySelector('[data-testid="cinematic-gate-violations"]')?.textContent ?? '';
+          return {
+            loaded: loaded,
+            violationCount: document.querySelectorAll('[data-testid="cinematic-gate-violations"] li').length,
+            mentionsBehind: text.includes('behind the camera plane'),
+            mentionsDistance: text.includes('below the rig minimum'),
+            mentionsWhip: text.includes('whip pan'),
+            readyShown: Boolean(document.querySelector('[data-testid="cinematic-status"]')),
+          };
+        })()
+  - { id: parity.cross-runtime, driver: process, action: run, params: { cmd: pnpm, args: [exec, vitest, run, test/cinematic-cross-runtime.spec.ts], cwd: control-plane, timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
+oracles:
+  - id: ui.initial-renders
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.probe-initial.eval.json
+      expected:
+        heading: Cinematic Shot Planning
+        emptyHint: true
+  - id: ui.canonical-ready
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.validate-canonical.eval.json
+      expected:
+        loaded: true
+        ready: true
+        schemaErrors: 0
+  - id: ui.physics-typed
+    type: browser-evaluate
+    config:
+      artifact: browser.ui.validate-physics.eval.json
+      expected:
+        loaded: true
+        violationCount: 113
+        mentionsBehind: true
+        mentionsDistance: true
+        mentionsWhip: true
+        readyShown: false
+  - id: parity.cross-runtime-byte-identical
+    type: process
+    config:
+      step: parity.cross-runtime
+      exitCode: 0
+  - id: browser.health
+    type: browser
+    config:
+      consoleArtifact: browser.ui.navigate.console.json

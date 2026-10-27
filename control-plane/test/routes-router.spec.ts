@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { routePaths } from '../src/routes/routes';
 
 describe('F-004 oracle — routePaths coverage', () => {
-  it('routePaths has exactly 17 entries (m10.2 adds 8 capability catalog routes; M17 adds /decisions)', () => {
-    expect(routePaths.length).toBe(17);
+  it('routePaths has exactly 18 entries (m10.2 adds 8 capability catalog routes; M17 adds /decisions; M18 adds /cinematic)', () => {
+    expect(routePaths.length).toBe(18);
   });
 
   it('includes the /search route entry', () => {

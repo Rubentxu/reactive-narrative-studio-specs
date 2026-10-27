@@ -5,7 +5,15 @@
   "description": "Deterministic shot plan contract. Aligned field-by-field with examples/video/shot-plan.yaml. Closed contract: extending it requires a deliberate schema change.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "sceneRef", "sequenceRef", "durationSeconds", "fps", "subjects", "camera"],
+  "required": [
+    "id",
+    "sceneRef",
+    "sequenceRef",
+    "durationSeconds",
+    "fps",
+    "subjects",
+    "camera"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -31,7 +39,13 @@
       "minimum": 1
     },
     "rig": {
-      "enum": ["gimbal", "tripod", "steadicam", "dolly", "crane"],
+      "enum": [
+        "gimbal",
+        "tripod",
+        "steadicam",
+        "dolly",
+        "crane"
+      ],
       "description": "Camera rig whose physical limits the plan is validated against (default: gimbal)."
     },
     "subjects": {
@@ -40,14 +54,24 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "representation", "action", "start", "end"],
+        "required": [
+          "id",
+          "representation",
+          "action",
+          "start",
+          "end"
+        ],
         "properties": {
           "id": {
             "type": "string",
             "minLength": 1
           },
           "representation": {
-            "enum": ["capsule", "sphere", "cube"],
+            "enum": [
+              "capsule",
+              "sphere",
+              "cube"
+            ],
             "description": "Blocking representation, mapped to a Blender primitive by the scene generator."
           },
           "action": {
@@ -76,7 +100,10 @@
     "camera": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["lensMm", "segments"],
+      "required": [
+        "lensMm",
+        "segments"
+      ],
       "properties": {
         "lensMm": {
           "type": "number",
@@ -88,7 +115,10 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["frames", "move"],
+            "required": [
+              "frames",
+              "move"
+            ],
             "properties": {
               "frames": {
                 "type": "array",
@@ -101,7 +131,11 @@
                 "description": "[start, end]; ordering and full coverage of [1, durationSeconds*fps] is enforced by the semantic validator."
               },
               "move": {
-                "enum": ["static", "tracking_backward", "crane_up"]
+                "enum": [
+                  "static",
+                  "tracking_backward",
+                  "crane_up"
+                ]
               },
               "height": {
                 "type": "number"
@@ -118,26 +152,53 @@
                 "if": {
                   "properties": {
                     "move": {
-                      "enum": ["static", "tracking_backward"]
+                      "enum": [
+                        "static",
+                        "tracking_backward"
+                      ]
                     }
                   },
-                  "required": ["move"]
+                  "required": [
+                    "move"
+                  ]
                 },
                 "then": {
-                  "required": ["height"]
+                  "properties": {
+                    "height": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "height"
+                  ]
                 }
               },
               {
                 "if": {
                   "properties": {
                     "move": {
-                      "enum": ["crane_up"]
+                      "enum": [
+                        "crane_up"
+                      ]
                     }
                   },
-                  "required": ["move"]
+                  "required": [
+                    "move"
+                  ]
                 },
                 "then": {
-                  "required": ["heightFrom", "heightTo"]
+                  "properties": {
+                    "heightFrom": {
+                      "type": "number"
+                    },
+                    "heightTo": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "heightFrom",
+                    "heightTo"
+                  ]
                 }
               }
             ]

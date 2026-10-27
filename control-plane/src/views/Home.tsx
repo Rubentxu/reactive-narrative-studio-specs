@@ -115,6 +115,14 @@ export function Home(): React.ReactElement {
         </p>
       </section>
 
+      <section className="home-tools">
+        <h2>Tools</h2>
+        <p>
+          <Link to="/cinematic" className="home-cinematic-link">Cinematic shot planning</Link> — author a
+          shot plan, check the camera physics, and inspect previz artifacts.
+        </p>
+      </section>
+
       {activeProjectId && (
         <p className="home-active">
           Active project: <strong>{activeProjectId}</strong>{' '}

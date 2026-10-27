@@ -406,5 +406,13 @@
   "REQ-CIN-15": {
     "level": "fitness",
     "rationale": "La invariante de modelo compartido validador-generador se comprueba estructuralmente: los keyframes del script salen de la misma funcion que los gates."
+  },
+  "REQ-CIN-16": {
+    "level": "functional",
+    "rationale": "La superficie web de planificacion es comportamiento observable en navegador real: SCN-CIN-05-001 la valida con el ejemplo canonico y rechaza el plano imposible con violaciones tipadas."
+  },
+  "REQ-CIN-17": {
+    "level": "functional",
+    "rationale": "La paridad cross-runtime de veredictos se demuestra en SCN-CIN-05-001: el spec vitest compara byte a byte el stdout de Python y TypeScript para ambos planes."
   }
 }

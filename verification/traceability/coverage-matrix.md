@@ -1,8 +1,8 @@
 # Traceability Coverage Matrix (M0–M18)
 
-- generated: 2026-10-27T14:12:14.807Z
-- git: 3a87139cf31d33017e330ccf7ed0f8b99ea2ba67
-- coverage: 111/111 requirements MAPPED · 0 UNMAPPED · 14/28 UATs executable · 1 waivers
+- generated: 2026-10-27T18:22:26.377Z
+- git: bd78dddad75a2a14942ab1697e12208287244dd6
+- coverage: 113/113 requirements MAPPED · 0 UNMAPPED · 14/28 UATs executable · 1 waivers
 
 ## M0 — Foundations / specs
 - ⚪ UAT-M0-01 (MANUAL_ONLY) → scenarios: —
@@ -70,7 +70,7 @@
 - 🟢 UAT-M17-01 (EXECUTABLE) → scenarios: scn-m17-01-001.yaml
 
 ## M18 — Cinematic Narrative & Generative Video
-- 🟢 UAT-CIN-01-shotplan (EXECUTABLE) → scenarios: scn-cin-01-001.yaml
+- 🟢 UAT-CIN-01-shotplan (EXECUTABLE) → scenarios: scn-cin-01-001.yaml, scn-cin-05-001.yaml
 - 🟢 UAT-CIN-02-blender-headless (EXECUTABLE) → scenarios: scn-cin-02-001.yaml
 - 🟢 UAT-CIN-03-playblast (EXECUTABLE) → scenarios: scn-cin-03-001.yaml
 - 🟢 UAT-CIN-04-provider-port (EXECUTABLE) → scenarios: scn-cin-04-001.yaml
