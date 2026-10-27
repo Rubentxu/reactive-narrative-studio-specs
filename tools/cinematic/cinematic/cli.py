@@ -294,6 +294,29 @@ def approve(shot_plan: Path, out: Path, decision: str, rationale: str, decided_b
     _exit(exit_codes.EXIT_SUCCESS)
 
 
+@cli.command("sequence-prompt")
+@click.option("--sequence", type=click.Path(exists=True, path_type=Path), required=True)
+@click.option("--json", "as_json", is_flag=True, help="JSON output")
+def sequence_prompt(sequence: Path, as_json: bool) -> None:
+    """Compile the multi-shot video prompt from a validated sequence plan."""
+
+    from cinematic.prompt import compile_sequence_prompt
+    from cinematic.sequence import validate_sequence_file
+
+    document, violations = validate_sequence_file(sequence)
+    if violations:
+        for violation in violations:
+            emit_error(f"{violation.path}: {violation.message}")
+        _exit(exit_codes.EXIT_VALIDATION_ERROR)
+
+    text = compile_sequence_prompt(document, sequence.parent)
+    if as_json:
+        emit({"prompt": text, "sequenceId": str(document["id"])})
+    else:
+        sys.stdout.write(text)
+    _exit(exit_codes.EXIT_SUCCESS)
+
+
 def main() -> None:
     """Entry point that maps click failures to typed exit codes."""
 

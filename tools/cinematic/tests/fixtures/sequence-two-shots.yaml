@@ -1,0 +1,15 @@
+# Two-shot continuity fixture: same character in both shots, ordered
+# temporally by list order, with declared screen directions.
+id: SEQF-01
+locationRef: SC12-corridor
+characters:
+  - maya
+shots:
+  - id: track-and-rise
+    shotPlan: shot-plan-first.yaml
+    screenDirection: neutral
+    characters: [maya]
+  - id: settle
+    shotPlan: shot-plan-second.yaml
+    screenDirection: left_to_right
+    characters: [maya]

@@ -1,0 +1,18 @@
+# Second shot: a locked-off pick-up while the subject settles away from the
+# camera — passes the physics gates (positive view direction, distance grows).
+id: SEQF-SH02
+sceneRef: SC12
+sequenceRef: SEQ04
+durationSeconds: 2
+fps: 24
+subjects:
+  - id: maya
+    representation: capsule
+    action: pause and look back
+    start: [0, -8, 0]
+    end: [0, -6.5, 0]
+camera:
+  lensMm: 50
+  segments:
+    - { frames: [1, 48], move: static, height: 1.2 }
+characterReferences: [characters/maya/approved-front.png]
