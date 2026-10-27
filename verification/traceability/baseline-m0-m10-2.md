@@ -1,8 +1,8 @@
 # Baseline M0–M18 — Verification Coverage
 
-- generated: 2026-10-24T14:00:24.008Z
-- git: e394caab137b730c9856aa71a8e55eefaee47078
-- coverage: 108/108 requirements MAPPED (scenario or test) · 0 UNMAPPED · 14/28 UATs executable · 1 waiver(s)
+- generated: 2026-10-27T14:12:14.807Z
+- git: 3a87139cf31d33017e330ccf7ed0f8b99ea2ba67
+- coverage: 111/111 requirements MAPPED (scenario or test) · 0 UNMAPPED · 14/28 UATs executable · 1 waiver(s)
 
 ## Per-milestone status
 
@@ -87,7 +87,7 @@
 - 🟢 UAT-CIN-03-playblast — EXECUTABLE (scn-cin-03-001.yaml)
 - 🟢 UAT-CIN-04-provider-port — EXECUTABLE (scn-cin-04-001.yaml)
 - ⚪ UAT-CIN-05-approval — MANUAL_ONLY
-- requirements MAPPED (12): REQ-CIN-1, REQ-CIN-10, REQ-CIN-11, REQ-CIN-12, REQ-CIN-2, REQ-CIN-3, REQ-CIN-4, REQ-CIN-5, REQ-CIN-6, REQ-CIN-7, REQ-CIN-8, REQ-CIN-9
+- requirements MAPPED (15): REQ-CIN-1, REQ-CIN-10, REQ-CIN-11, REQ-CIN-12, REQ-CIN-13, REQ-CIN-14, REQ-CIN-15, REQ-CIN-2, REQ-CIN-3, REQ-CIN-4, REQ-CIN-5, REQ-CIN-6, REQ-CIN-7, REQ-CIN-8, REQ-CIN-9
 
 ## Gaps / backlog
 - [HIGH] uat-without-scenario: UAT-M10-01 (M10) — UAT doc exists but no executable scenario links it yet

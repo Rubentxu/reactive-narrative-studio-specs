@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-24T14:00:25.140Z",
-  "gitSha": "e394caab137b730c9856aa71a8e55eefaee47078",
+  "generatedAt": "2026-10-27T14:12:15.915Z",
+  "gitSha": "3a87139cf31d33017e330ccf7ed0f8b99ea2ba67",
   "target": "all",
   "overall": "PASS",
   "blocking": [],
@@ -1202,6 +1202,39 @@
       "scenarioRefs": [],
       "testRefs": [
         "tools/cinematic/tests/test_spike.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-13",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_camera.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-14",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_camera.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-15",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_camera.py"
       ],
       "detail": "fitness level: 1 test ref(s)"
     },
@@ -2505,6 +2538,39 @@
       "scenarioRefs": [],
       "testRefs": [
         "tools/cinematic/tests/test_spike.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-13",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_camera.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-14",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_camera.py"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-CIN-15",
+      "milestone": "M18",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "tools/cinematic/tests/test_camera.py"
       ],
       "detail": "fitness level: 1 test ref(s)"
     },

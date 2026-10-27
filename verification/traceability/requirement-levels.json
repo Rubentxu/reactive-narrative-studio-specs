@@ -394,5 +394,17 @@
   "REQ-CIN-12": {
     "level": "fitness",
     "rationale": "El runner dry-run es orquestacion de piezas ya verificadas con contrato de metricas verificable por pytest; el veredicto A/B live es del operador."
+  },
+  "REQ-CIN-13": {
+    "level": "fitness",
+    "rationale": "Los gates de fisica de camara son geometria determinista sobre el plan: se verifican por tests de componente con planes saboteados (distancia, velocidad, giro, sujeto detras)."
+  },
+  "REQ-CIN-14": {
+    "level": "fitness",
+    "rationale": "La tabla de rigs y el error tipado ante rig desconocido son invariantes estructurales verificables por testRefs; no anaden escenario canonico."
+  },
+  "REQ-CIN-15": {
+    "level": "fitness",
+    "rationale": "La invariante de modelo compartido validador-generador se comprueba estructuralmente: los keyframes del script salen de la misma funcion que los gates."
   }
 }
