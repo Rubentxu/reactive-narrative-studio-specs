@@ -1,7 +1,7 @@
 {
   "schemaVersion": "traceability-registry/v1",
-  "generatedAt": "2026-10-27T21:26:27.407Z",
-  "gitSha": "f587f219ed0c027c78132743565307ff90fd01e2",
+  "generatedAt": "2026-10-27T22:37:36.662Z",
+  "gitSha": "a0988bc943dc0212a3a29edb3b952446f75046b1",
   "milestones": [
     {
       "id": "M0",
@@ -382,16 +382,15 @@
         {
           "id": "REQ-CR-1",
           "sources": [
-            "m13-comic-renderer/spec.md",
-            "m13-comic-renderer/tasks.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md",
+            "audit-response/spec.md",
             "31-CREATION-RECIPES.md"
           ],
-          "scenarios": [],
-          "testRefs": [
-            "control-plane/test/comic-renderer.spec.ts"
+          "scenarios": [
+            "scn-m10-01-001.yaml"
           ],
+          "testRefs": [],
           "status": "MAPPED"
         },
         {
@@ -440,42 +439,32 @@
         {
           "id": "REQ-CR-2",
           "sources": [
-            "m13-comic-renderer/spec.md",
-            "m13-comic-renderer/tasks.md",
             "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [
-            "scn-m13-01-001.yaml"
+            "scn-m10-01-001.yaml"
           ],
-          "testRefs": [
-            "control-plane/test/comic-renderer.spec.ts"
-          ],
+          "testRefs": [],
           "status": "MAPPED"
         },
         {
           "id": "REQ-CR-3",
           "sources": [
-            "m13-comic-renderer/spec.md",
-            "m13-comic-renderer/tasks.md",
             "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [
-            "scn-m13-01-001.yaml"
+            "scn-m10-01-001.yaml"
           ],
-          "testRefs": [
-            "control-plane/test/comic-renderer.spec.ts"
-          ],
+          "testRefs": [],
           "status": "MAPPED"
         },
         {
           "id": "REQ-CR-4",
           "sources": [
-            "m13-comic-renderer/spec.md",
-            "m13-comic-renderer/tasks.md",
             "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md",
@@ -483,24 +472,20 @@
             "debt-evidence-integrity/spec.md"
           ],
           "scenarios": [
-            "scn-m13-01-001.yaml"
+            "scn-m10-01-001.yaml"
           ],
-          "testRefs": [
-            "control-plane/test/comic-renderer.spec.ts"
-          ],
+          "testRefs": [],
           "status": "MAPPED"
         },
         {
           "id": "REQ-CR-5",
           "sources": [
-            "m13-comic-renderer/spec.md",
-            "m13-comic-renderer/tasks.md",
             "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [
-            "scn-m13-01-001.yaml"
+            "scn-m10-01-001.yaml"
           ],
           "testRefs": [],
           "status": "MAPPED"
@@ -508,14 +493,12 @@
         {
           "id": "REQ-CR-6",
           "sources": [
-            "m13-comic-renderer/spec.md",
-            "m13-comic-renderer/tasks.md",
             "m13-comic-renderer/evidence/after-run-pass/artifacts/report.md",
             "m10-1-creation-recipes/spec.md",
             "m10-1-creation-recipes/tasks.md"
           ],
           "scenarios": [
-            "scn-m13-01-001.yaml"
+            "scn-m10-04-001.yaml"
           ],
           "testRefs": [],
           "status": "MAPPED"
@@ -525,7 +508,8 @@
           "sources": [
             "m10-traceability-closure/spec.md",
             "m10-1-creation-recipes/spec.md",
-            "m10-1-creation-recipes/tasks.md"
+            "m10-1-creation-recipes/tasks.md",
+            "audit-response/spec.md"
           ],
           "scenarios": [
             "scn-m10-01-001.yaml"
@@ -542,7 +526,9 @@
           "scenarios": [
             "scn-m10-01-001.yaml"
           ],
-          "testRefs": [],
+          "testRefs": [
+            "control-plane/test/project-flows.spec.ts"
+          ],
           "status": "MAPPED"
         },
         {
@@ -1299,7 +1285,87 @@
           "status": "EXECUTABLE"
         }
       ],
-      "requirements": []
+      "requirements": [
+        {
+          "id": "REQ-M13-1",
+          "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md",
+            "audit-response/spec.md"
+          ],
+          "scenarios": [],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M13-2",
+          "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M13-3",
+          "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M13-4",
+          "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [
+            "control-plane/test/comic-renderer.spec.ts"
+          ],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M13-5",
+          "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        },
+        {
+          "id": "REQ-M13-6",
+          "sources": [
+            "m13-comic-renderer/spec.md",
+            "m13-comic-renderer/tasks.md"
+          ],
+          "scenarios": [
+            "scn-m13-01-001.yaml"
+          ],
+          "testRefs": [],
+          "status": "MAPPED"
+        }
+      ]
     },
     {
       "id": "M14",
@@ -2833,8 +2899,8 @@
     }
   ],
   "coverage": {
-    "requirements": 116,
-    "mapped": 116,
+    "requirements": 122,
+    "mapped": 122,
     "unmapped": 0,
     "uats": 28,
     "executable": 14,

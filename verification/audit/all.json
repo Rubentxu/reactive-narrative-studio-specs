@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-27T21:26:28.560Z",
-  "gitSha": "f587f219ed0c027c78132743565307ff90fd01e2",
+  "generatedAt": "2026-10-27T22:37:37.842Z",
+  "gitSha": "a0988bc943dc0212a3a29edb3b952446f75046b1",
   "target": "all",
   "overall": "PASS",
   "blocking": [],
@@ -176,13 +176,13 @@
     {
       "id": "REQ-CR-1",
       "milestone": "M10.1",
-      "level": "fitness",
+      "level": "functional",
       "status": "PROVEN",
-      "scenarioRefs": [],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
+      "scenarioRefs": [
+        "scn-m10-01-001.yaml"
       ],
-      "detail": "fitness level: 1 test ref(s)"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-10",
@@ -229,12 +229,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
-      ],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-3",
@@ -242,12 +240,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
-      ],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-4",
@@ -255,12 +251,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
-      ],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-5",
@@ -268,10 +262,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
       "testRefs": [],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-6",
@@ -279,10 +273,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-04-001.yaml"
       ],
       "testRefs": [],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "detail": "scenario evidence: SCN-M10-04-001"
     },
     {
       "id": "REQ-CR-7",
@@ -303,7 +297,9 @@
       "scenarioRefs": [
         "scn-m10-01-001.yaml"
       ],
-      "testRefs": [],
+      "testRefs": [
+        "control-plane/test/project-flows.spec.ts"
+      ],
       "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
@@ -890,6 +886,78 @@
         "verification/test/requirement-dispositions.spec.ts"
       ],
       "detail": "scenario evidence: SCN-M11-01-001"
+    },
+    {
+      "id": "REQ-M13-1",
+      "milestone": "M13",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M13-2",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-3",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-4",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-5",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-6",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
     },
     {
       "id": "REQ-M14-01",
@@ -1569,13 +1637,13 @@
     {
       "id": "REQ-CR-1",
       "milestone": "M10.1",
-      "level": "fitness",
+      "level": "functional",
       "status": "PROVEN",
-      "scenarioRefs": [],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
+      "scenarioRefs": [
+        "scn-m10-01-001.yaml"
       ],
-      "detail": "fitness level: 1 test ref(s)"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-10",
@@ -1622,12 +1690,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
-      ],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-3",
@@ -1635,12 +1701,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
-      ],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-4",
@@ -1648,12 +1712,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
-      "testRefs": [
-        "control-plane/test/comic-renderer.spec.ts"
-      ],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-5",
@@ -1661,10 +1723,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-01-001.yaml"
       ],
       "testRefs": [],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
       "id": "REQ-CR-6",
@@ -1672,10 +1734,10 @@
       "level": "functional",
       "status": "PROVEN",
       "scenarioRefs": [
-        "scn-m13-01-001.yaml"
+        "scn-m10-04-001.yaml"
       ],
       "testRefs": [],
-      "detail": "scenario evidence: SCN-M13-01-001"
+      "detail": "scenario evidence: SCN-M10-04-001"
     },
     {
       "id": "REQ-CR-7",
@@ -1696,7 +1758,9 @@
       "scenarioRefs": [
         "scn-m10-01-001.yaml"
       ],
-      "testRefs": [],
+      "testRefs": [
+        "control-plane/test/project-flows.spec.ts"
+      ],
       "detail": "scenario evidence: SCN-M10-01-001"
     },
     {
@@ -2283,6 +2347,78 @@
         "verification/test/requirement-dispositions.spec.ts"
       ],
       "detail": "scenario evidence: SCN-M11-01-001"
+    },
+    {
+      "id": "REQ-M13-1",
+      "milestone": "M13",
+      "level": "fitness",
+      "status": "PROVEN",
+      "scenarioRefs": [],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "fitness level: 1 test ref(s)"
+    },
+    {
+      "id": "REQ-M13-2",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-3",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-4",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [
+        "control-plane/test/comic-renderer.spec.ts"
+      ],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-5",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
+    },
+    {
+      "id": "REQ-M13-6",
+      "milestone": "M13",
+      "level": "functional",
+      "status": "PROVEN",
+      "scenarioRefs": [
+        "scn-m13-01-001.yaml"
+      ],
+      "testRefs": [],
+      "detail": "scenario evidence: SCN-M13-01-001"
     },
     {
       "id": "REQ-M14-01",
