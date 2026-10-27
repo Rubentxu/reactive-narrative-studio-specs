@@ -30,7 +30,8 @@ la fundación determinista no lo requiere)
     validador↔generador. Web: vista /cinematic con validación en cliente (Ajv + port
     TypeScript de los gates con paridad byte Python↔TypeScript verificada por oracle)
     y visor de previz por ficheros.
-    CIN: 001 ✅ 002 ✅ 003 🔶 (id estable sí, SequencePlan no) 004 ✅ 005 ✅ 028 ❌
+    CIN: 001 ✅ 002 ✅ 003 🔶 (id estable sí, SequencePlan como contrato propio:
+    v0.30.0) 004 ✅ 005 ✅
 
   M18.2 Blender Previz
     Status: done (v0.26.0 + v0.27.0)
@@ -75,7 +76,9 @@ la fundación determinista no lo requiere)
   v0.28.0 (oracle byte-idéntico en SCN-CIN-05-001) · CIN-018 ✅ y CIN-030 ✅
   registro de aprobación explícita (v0.29.0: solo tomas validadas se promocionan)
   · CIN-017 🔶 (determinista capturada en el registro; capa machine-assisted
-  pendiente)
+  declinada hasta que haya riesgo identificado que justifique la dependencia)
+  · CIN-028 ✅ SequencePlan (v0.30.0: screenDirection/continuidad/orden temporal
+  + prompt de secuencia con cortes declarados y timeline acumulativa)
 ```
 
 ## Status model
