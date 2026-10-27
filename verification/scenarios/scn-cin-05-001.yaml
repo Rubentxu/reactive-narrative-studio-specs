@@ -75,7 +75,7 @@ steps:
             readyShown: Boolean(document.querySelector('[data-testid="cinematic-status"]')),
           };
         })()
-  - { id: parity.cross-runtime, driver: process, action: run, params: { cmd: pnpm, args: [exec, vitest, run, test/cinematic-cross-runtime.spec.ts], cwd: control-plane, timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
+  - { id: parity.cross-runtime, driver: process, action: run, params: { cmd: node, args: [node_modules/vitest/vitest.mjs, run, test/cinematic-cross-runtime.spec.ts], cwd: control-plane, timeoutMs: 120000, envAllowlist: [PATH, HOME] } }
 oracles:
   - id: ui.initial-renders
     type: browser-evaluate
