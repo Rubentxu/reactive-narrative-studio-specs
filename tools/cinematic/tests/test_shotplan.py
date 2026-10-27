@@ -68,6 +68,14 @@ def test_cli_validate_accepts_and_rejects_deterministically():
     assert len(payload["errors"]) >= 2
 
 
+def test_physics_invalid_fixture_is_rejected_with_typed_gates():
+    physics_fixture = Path(__file__).resolve().parent / "fixtures/shot-plan-physics-invalid.yaml"
+    _, violations = validate_shot_plan_file(physics_fixture)
+    messages = " | ".join(v.message for v in violations)
+    assert any("below the rig minimum" in v.message for v in violations), messages
+    assert any("behind the camera plane" in v.message for v in violations), messages
+
+
 def test_missing_file_is_a_typed_failure():
     _, violations = validate_shot_plan_file("/nonexistent/shot-plan.yaml")
     assert len(violations) == 1

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "audit-report/v1",
-  "generatedAt": "2026-10-24T14:01:54.262Z",
-  "gitSha": "e394caab137b730c9856aa71a8e55eefaee47078",
+  "generatedAt": "2026-10-27T14:12:17.083Z",
+  "gitSha": "3a87139cf31d33017e330ccf7ed0f8b99ea2ba67",
   "target": "milestone M10.2.1",
   "overall": "PASS",
   "blocking": [],
